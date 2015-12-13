@@ -4,14 +4,11 @@ from abstract_data_types.stack import Stack
 
 def expression_to_tree(string):
     """
-    Tree Parser converts mathematical expression as a string into a binary tree
-     by stacking Tree Nodes according to PEMDAS order of mathematical operators
-     '+', '-', '/', '*', '(' and ')' as they are encountered.
+    This parser converts mathematical expression as a string into a Binary Tree
+     by stacking the Nodes whenever mathematical operators '+', '-', '/', '*',
+     '(' and ')' as they are encountered.
 
-    Note: requires usage of both parentheses and whitespaces for correct
-     expression validation.
-
-    Rules:
+    Parsing rules:
      1. If the current token is a '(', add a new node as the left child of the
       current node, and descend to the left child.
      2. If the current token is in the list ['+','-','/','*'], set the root value
@@ -20,6 +17,9 @@ def expression_to_tree(string):
      3. If the current token is a number, set the root value of the current node
       to the number and return to the parent.
      4. If the current token is a ')', go to the parent of the current node.
+
+    Note: requires usage of both parentheses and whitespaces for correct
+     expression validation.
 
     Example inputs:
      wrong: (10 + 3) * 5
