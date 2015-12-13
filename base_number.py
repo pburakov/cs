@@ -25,7 +25,7 @@ def base_convert(decimal_num, base):
 def base_recursive(n, base):
     """
     Recursive implementation of the same algorithm.
-    To understand, start with the basic case of base_recursive(1, 2)
+    To understand, start with the base case of base_recursive(1, 2)
     """
     if n < base:
         return digits[n]
