@@ -1,4 +1,9 @@
 class Node:
+    """
+    Node element of a Linked List. Contains some value and a reference to the
+     next item.
+    """
+
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -9,9 +14,9 @@ class List:
     Linked List is a sequence of Nodes with some value and a reference to
      a next item. Node that is in a beginning of a linked list is referenced
      as Head.
-
     If a Node has no reference to a next item the it's the last Node
-     on the list. Linked list has no index.
+     on the list.
+    Linked list has no index.
     """
 
     def __init__(self):
@@ -22,7 +27,7 @@ class List:
 
     def add(self, item):
         """
-        Has specific implementations
+        Has specific implementations for Ordered an Unordered lists
         """
         pass
 
@@ -66,6 +71,9 @@ class List:
             previous.next = current.next
 
     def __str__(self):
+        """
+        String representation of a linked list
+        """
         current = self.head
         output = '['
         while current:
@@ -84,8 +92,8 @@ class UnorderedList(List):
 
     def add(self, item):
         """
-        Creating a new Node and putting it in a beginning of a list,
-         keeping a reference to the old Head as a next item.
+        Creating a new Node and putting it in a beginning of a list, keeping
+         a reference to the old Head as a next item.
         Complexity: O(1)
         """
         new_node = Node(item)
@@ -120,9 +128,9 @@ class OrderedList(List):
         """
         One of the advantages of an Ordered List, compared to Unordered List,
          is that traversing may stop once it's apparent that we've got
-         past a value we are looking for meaning that following values will
-         only be greater.
-         Complexity: worst O(n), best O(1)
+         past a value we are looking for. It means that all the following
+         values will only be greater.
+        Complexity: worst O(n), best O(1)
         """
         current = self.head
         while current:
