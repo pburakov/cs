@@ -7,9 +7,10 @@ These two methods return the n-th number in a Fibonacci sequence, where
 Fibonacci sequence (F):
  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610...
 
-This sequence is a perfect example although it is given in a recursive form,
- recursive algorithmic solution is not the most optimal. The complexity of F_rec()
- is O(n^2), while iterative function F() is a simple O(n).
+This sequence is a perfect example for a recursive solution with a twist. Although
+ Fibonacci sequence is given in a recursive form, algorithmic solution using
+ recursion is not the most optimal. The complexity of F_rec() is O(n^2), while
+ iterative function F() is simply a O(n).
 """
 
 
