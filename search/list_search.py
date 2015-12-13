@@ -1,12 +1,16 @@
+from abstract_data_types.linked_list import OrderedList
 from abstract_data_types.linked_list import UnorderedList
 
 
-def sequential_search(list, needle):
+def sequential_search(list, needle, ordered=False):
     """
     Brute force iteration search. For explanation, see linked list search.
      Note: average and worst case is faster for an Ordered list.
     """
-    linked_list = UnorderedList()
+    if ordered is True:
+        linked_list = OrderedList()
+    else:
+        linked_list = UnorderedList()
     for i in list:
         linked_list.add(i)
     return linked_list.search(needle)
@@ -37,6 +41,7 @@ def binary_rec_search(ordered_list, needle):
     """
     Recursive version of a Binary Search. List is being split to smaller pieces
      and each chunk is then recursively searched based on anticipated item index.
+    Works ONLY for ordered lists.
     """
     if len(ordered_list) == 0:
         return False
