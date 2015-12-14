@@ -24,6 +24,10 @@ class BinaryHeap:
             self.perc_down(i)
 
     def delete_root(self):
+        """
+        When heap item is deleted, the last bottom item in the heap takes its
+         place at the "root" and is being percolated down.
+        """
         last_value = self.items.pop()
         root_value = self.items[0]
         self.items[0] = last_value
@@ -51,7 +55,8 @@ class BinaryHeap:
 
     def perc_up(self, i):
         """
-        Percolates i-th element of a Heap up to it's appropriate position
+        Percolates i-th element of a Heap up to its appropriate position, being
+         swapped with it's parent.
         """
         i_par = (i - 1) // 2  # Index of a parent
         while i > 0 and self.items[i_par] < self.items[i]:
@@ -61,7 +66,9 @@ class BinaryHeap:
 
     def perc_down(self, i):
         """
-        Percolates i-th element of a Heap down to it's appropriate position
+        Percolates i-th element of a Heap down to its appropriate position, being
+         swapped with its next ranked child.
+         TODO: doesn't work well. needs to be fixed
         """
         i_ch = self.next_rank(i)  # Index of a next child
         while i <= self.size() and self.items[i_ch] < self.items[i]:
