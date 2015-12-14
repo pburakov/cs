@@ -4,9 +4,9 @@ def quick_sort(list):
      but not using additional storage. A Quick Sort first selects a pivot value
      (in this implementation it's the first element on the list), then it
      traverses the remaining partition by moving the left and right marker of
-     the partition. While traversing quick sort keeps smaller values under the
-     left marker and bigger value under the right marker, swapping their positions
-     if needed. Markers move towards the future position of a Pivot Value which
+     the partition. While traversing, quick sort keeps smaller values under the
+     left marker and bigger values under the right marker, swapping their positions
+     as it goes. Markers step towards the future position of a Pivot Value which
      is called the Split Point. The the operation then is repeated recursively
      for both halves to the left and to the right of the Split point.
     Complexity: best/average O(n log(n)), worst O(n^2)
