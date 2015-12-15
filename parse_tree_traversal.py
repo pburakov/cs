@@ -1,5 +1,5 @@
-from abstract_data_types.binary_tree import BinaryTree
 from abstract_data_types.stack import Stack
+from trees.binary_tree import BinaryTree
 
 
 def expression_to_tree(string):
