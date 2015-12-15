@@ -14,9 +14,6 @@ class BinarySearchTree:
     def __init__(self):
         self.root = None
 
-    def __(self, instance, owner):
-        return self.root
-
     def recursive_search(self, node, key):
         """
         Basic recursive search. Search can start at any node. Base case: the
