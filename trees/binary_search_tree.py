@@ -81,8 +81,10 @@ class BinarySearchTree:
             return True
         parent = node.parent
         if parent.left and parent.left == node:
+            # Is left child?
             parent.left = new_node
         elif parent.right and parent.right == node:
+            # Is right child?
             parent.right = new_node
         else:
             # Orphaned node?
@@ -94,7 +96,7 @@ class BinarySearchTree:
          - Node has two children. Find its in-order successor (left-most node in
           its right sub-tree), let's call it R. We copy R's key and value to
           the node, and remove R from its right sub-tree.
-         - Node has one child. The node is deleted and is replaces with its child
+         - Node has one child. The node is deleted and is replaced with its child
          - Node is a leaf and is simply removed
         """
         if node.left and node.right:
