@@ -1,6 +1,6 @@
 class BinaryHeap:
     """
-    Binary Heap is basic implementation of a priority queue based on certain
+    Binary Heap is basic implementation of a Priority Queue based on certain
      properties of a Binary Heap. Even though the diagram of a Bin Heap looks
      like a tree, the easiest way to implement it is using a list, because the
      index of every child Node in a Binary Heap is (i * 2 + 1) for left child
