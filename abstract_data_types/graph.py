@@ -1,7 +1,7 @@
 class Graph:
     """
-    Basic implementation of a Graph. Allows to add vertexes and connect them
-     using weighted connections.
+    Basic implementation of a Graph. Allows to add vertexes and edges as weighted
+     directional connections between them.
     """
 
     def __init__(self):
