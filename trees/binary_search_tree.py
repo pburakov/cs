@@ -54,7 +54,7 @@ class BinarySearchTree:
         """
         if self.root is None:
             self.root = Node(key, value)
-            return True
+            return self.root
         current_node = self.root
         while current_node:
             if key == current_node.key:
@@ -64,13 +64,13 @@ class BinarySearchTree:
                     current_node = current_node.left
                 else:
                     current_node.left = Node(key, value, parent=current_node)
-                    return True
+                    return current_node.left
             else:
                 if current_node.right:
                     current_node = current_node.right
                 else:
                     current_node.right = Node(key, value, parent=current_node)
-                    return True
+                    return current_node.right
 
     def replace_node(self, node, new_node):
         """
@@ -78,7 +78,7 @@ class BinarySearchTree:
         """
         if node == self.root:
             self.root = new_node
-            return True
+            return self.root
         parent = node.parent
         if parent.left and parent.left == node:
             # Is left child?
