@@ -9,6 +9,8 @@ class BinaryHeap:
      variations of it:
       1. Root object (index 0) of max heap is always the highest value.
       2. Root object of min heap is always the lowest value.
+
+    TODO: Currently works as max heap only, min heaps needs some debugging.
     """
 
     def __init__(self, max_heap=False):
@@ -32,33 +34,43 @@ class BinaryHeap:
         root_value = self.items[0]
         self.items[0] = last_value
         if self.max_heap is True:
-            self.perc_up(self.next_rank(0))
+            if self.size() > 1:
+                self.perc_up(self.next_rank(0))
         else:
             self.perc_down(self.next_rank(0))
         return root_value
 
     def next_rank(self, i):
         """
-        Gets index of correct next child according to Heap variation and its rank.
-         Useful for swapping elements.
+        Gets index of next ranked child. Useful for swapping elements.
         """
-        if self.max_heap is True:
-            if self.items[i * 2 + 1] > self.items[i * 2 + 2]:
-                return i * 2 + 1
-            else:
-                return i * 2 + 2
+        if self.size() == 2:
+            return 1
+        if self.items[i * 2 + 1] > self.items[i * 2 + 2]:
+            return i * 2 + 1
         else:
-            if self.items[i * 2 + 1] < self.items[i * 2 + 2]:
-                return i * 2 + 1
-            else:
-                return i * 2 + 2
+            return i * 2 + 2
+
+    def prev_rank(self, i):
+        """
+        Gets index of correct parent. Useful for swapping elements.
+        """
+        if i == 1 or i == 2:
+            # Root
+            return 0
+        if i % 2 == 0:
+            # Even index - right child
+            return (i - 2) // 2
+        else:
+            # Odd index - left child
+            return (i - 1) // 2
 
     def perc_up(self, i):
         """
         Percolates i-th element of a Heap up to its appropriate position, being
          swapped with it's parent.
         """
-        i_par = (i - 1) // 2  # Index of a parent
+        i_par = self.prev_rank(i)  # Index of a parent
         while i > 0 and self.items[i_par] < self.items[i]:
             self.items[i_par], self.items[i] = self.items[i], self.items[i_par]
             i = i_par
@@ -68,7 +80,6 @@ class BinaryHeap:
         """
         Percolates i-th element of a Heap down to its appropriate position, being
          swapped with its next ranked child.
-         TODO: doesn't work well. needs to be fixed
         """
         i_ch = self.next_rank(i)  # Index of a next child
         while i <= self.size() and self.items[i_ch] < self.items[i]:
@@ -87,12 +98,24 @@ class BinaryHeap:
 
 
 min_heap = BinaryHeap(True)
-min_heap.add(2)
-min_heap.add(5)
-min_heap.add(1)
 min_heap.add(3)
-min_heap.add(9)
-min_heap.add(13)
+min_heap.add(6)
+min_heap.add(1)
+min_heap.add(4)
+min_heap.add(10)
+min_heap.add(14)
+print(min_heap.items)
+print(min_heap.delete_root())
+print(min_heap.items)
+print(min_heap.delete_root())
+print(min_heap.items)
+print(min_heap.delete_root())
+print(min_heap.items)
+min_heap.add(2)
+print(min_heap.items)
+print(min_heap.delete_root())
+print(min_heap.items)
+print(min_heap.delete_root())
 print(min_heap.items)
 print(min_heap.delete_root())
 print(min_heap.items)
