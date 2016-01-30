@@ -7,7 +7,7 @@ class BinaryTree:
 
     def __init__(self, value):
         """
-        Instantiates a tree object with a content and empty Children references.
+        Instantiates a tree object with root content and empty Children references.
         """
         self.value = value
         self.left_child = None
