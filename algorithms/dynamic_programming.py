@@ -18,7 +18,8 @@ A DP is an algorithmic technique which is usually
 
 
 def min_coins(coins, S):
-    solutions = [len(coins) + 1] * (S + 1)
+    # List of solutions each representing more coins than the max possible value
+    solutions = [S + 1] * (S + 1)
     solutions[0] = 0
     for s in range(1, S + 1):
         for V in coins:
