@@ -9,7 +9,7 @@ class Item:
 
 class Queue:
     """
-    Implements Queue (first in first out) abstract data type
+    Implements Queue (first in first out) abstract data type.
 
     4 -> [5, 6, 7]
     [4, 5, 6, 7] -> 7
@@ -35,7 +35,7 @@ class Queue:
         output = self.first
         self.first = self.first.next
         if self.first is None:
-            self.last is None
+            self.last = None
         return output
 
     def peek(self):
