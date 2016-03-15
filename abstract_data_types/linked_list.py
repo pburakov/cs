@@ -4,9 +4,12 @@ class Node:
      next item.
     """
 
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, value):
+        self.value = value
         self.next = None
+
+    def __str__(self):
+        return self.value
 
 
 class List:
@@ -60,7 +63,7 @@ class List:
         previous = None
         current = self.head
         while current:
-            if current.data == needle:
+            if current.value == needle:
                 break
             else:
                 previous = current
@@ -77,7 +80,7 @@ class List:
         current = self.head
         output = '['
         while current:
-            output += str(current.data)
+            output += str(current.value)
             current = current.next
         return output + ']'
 
@@ -108,7 +111,7 @@ class UnorderedList(List):
         """
         current = self.head
         while current:
-            if current.data == needle:
+            if current.value == needle:
                 return True
             else:
                 current = current.next
@@ -134,10 +137,10 @@ class OrderedList(List):
         """
         current = self.head
         while current:
-            if current.data == needle:
+            if current.value == needle:
                 return True
             else:
-                if current.data > needle:
+                if current.value > needle:
                     return False
                 else:
                     current = current.getNext()
@@ -155,7 +158,7 @@ class OrderedList(List):
         current = self.head
         previous = None
         while current:
-            if current.data > item:
+            if current.value > item:
                 break
             else:
                 previous = current
