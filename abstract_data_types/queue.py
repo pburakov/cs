@@ -1,5 +1,6 @@
 from abstract_data_types.linked_list import Node as Item
 
+
 class Queue:
     """
     Implements Queue (first in first out) abstract data type.
@@ -39,13 +40,22 @@ class Queue:
     def is_empty(self):
         return self.first is None and self.last is None
 
+    def size(self):
+        next = self.first
+        counter = 0
+        while next is not None:
+            counter += 1
+            next = next.next
+        return counter
+
     def __str__(self):
         next = self.first
-        output = []
+        items = []
         while next is not None:
-            output.append(next.value)
+            items.append(next.value)
             next = next.next
-        return ', '.join(output)
+        tostr = ', '.join(items)
+        return "[{}]".format(tostr)
 
 
 a = Item('a')
@@ -60,8 +70,10 @@ queue.enqueue(c)
 queue.enqueue(d)
 queue.enqueue(e)
 print(queue)
-print(queue.deque().value)
-print(queue.deque().value)
-print(queue.deque().value)
-print(queue.deque().value)
-print(queue.deque().value)
+print("Size: ", queue.size())
+print("Peek: ", queue.peek())
+print(queue.deque())
+print(queue.deque())
+print(queue.deque())
+print(queue.deque())
+print(queue.deque())
