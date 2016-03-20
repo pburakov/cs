@@ -14,19 +14,13 @@ This sequence is a perfect example for a recursive solution with a twist. Althou
 """
 
 
-def F(n):
-    a, b = 1, 1
-    for i in range(n - 1):
-        a, b = b, a + b
-    return a
-
-
-print(F(25))
-start_time = time.clock()
-print("iteration time: %6.6f" % (time.clock() - start_time))
-
-
 def F_rec(n):
+    """
+    Recursive approach (top-down)
+
+    This algorithm has the complexity of O(2^n) and will take several seconds to
+     complete for n > 25 on average machine in 2016
+    """
     if n == 0:
         return 0
     elif n == 1:
@@ -38,3 +32,18 @@ def F_rec(n):
 start_time = time.clock()
 print(F_rec(25))
 print("recursive time: %6.6f" % (time.clock() - start_time))
+
+
+def F(n):
+    """
+    Iterative approach O(log n)
+    """
+    a, b = 1, 1
+    for i in range(n - 1):
+        a, b = b, a + b
+    return a
+
+
+print(F(25))
+start_time = time.clock()
+print("iteration time: %6.6f" % (time.clock() - start_time))

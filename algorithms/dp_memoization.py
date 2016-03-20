@@ -1,16 +1,42 @@
 """
 Here are several problems and their solutions that illustrate and use the
- dynamic programming approach. Taken from TopCoder DP Tutorial.
+ dynamic programming approach. Taken from TopCoder DP Tutorial and "Cracking the
+ Coding Interview" book by GayleMcDowell.
 
-A DP is an algorithmic technique which is usually
- based on a recurrent formula and one (or some) starting states. A sub-solution
- of the problem is constructed from previously found ones. DP solutions have a
- polynomial complexity which assures a much faster running time than other
- techniques like backtracking, brute-force etc.
+A DP is an algorithmic technique which is usually based on a recurrent formula
+ and one (or some) starting states. A sub-solution of the problem is constructed
+ from previously found ones. DP solutions have a polynomial complexity which
+ assures a much faster running time than other techniques like backtracking,
+ brute-force etc.
+
+Dynamic approach is often similar to recursive solution that includes caching
+ or memoization strategy. See fibonacci.py examples in /exercises folder.
 """
 
+
+def memoize(f):
+    """
+    Pythonic memoization decorator.
+    Will return value from `memo` dict cache for function `f` if it was already
+     calculated for given list of arguments `*args`.
+    """
+    memo = {}
+
+    def helper(*args):
+        if args not in memo:
+            memo[args] = f(*args)
+        return memo[args]
+
+    return helper
+
+
+@memoize
+def do_something(a, b):
+    return a * b
+
+
 """
-1. Given a list of N coins, their values (V1, V2, … , VN), and the total sum S.
+Given a list of N coins, their values (V1, V2, … , VN), and the total sum S.
  Find the minimum number of coins the sum of which is S (we can use as many
  coins of one type as we want), or report that it’s not possible to select
  coins in such a way that they sum up to S.
@@ -36,7 +62,7 @@ print(min_coins([1, 3, 5], 10))
 print(min_coins([1, 3, 5], 123))
 
 """
-2. A table `A` composed of `n` x `m` cells, each having a certain quantity of
+A table `A` composed of `n` x `m` cells, each having a certain quantity of
  apples, is given. You start from the upper-left corner. At each step you can go
  down or right one cell. Find the maximum number of apples you can collect.
 """
