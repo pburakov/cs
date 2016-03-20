@@ -44,6 +44,26 @@ def F(n):
     return a
 
 
-print(F(25))
 start_time = time.clock()
+print(F(25))
 print("iteration time: %6.6f" % (time.clock() - start_time))
+
+from algorithms.memoization import memoize
+
+
+@memoize
+def F_memo(n):
+    """
+    Caching (memoization) approach
+    """
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return F_memo(n - 1) + F_memo(n - 2)
+
+
+start_time = time.clock()
+print(F_memo(25))
+print("memoization time: %6.6f" % (time.clock() - start_time))
