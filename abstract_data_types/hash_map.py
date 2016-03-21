@@ -11,7 +11,7 @@ class HashMap:
 
     Hash collision is resolved using rehashing formula
      NewHash = (OldHash + 1) % MapSize
-    until an empty slot is found.
+    until an empty slot is found. This method is called linear probing.
 
     This implementation is very basic and is for demonstration purposes only.
      The bigger HashMap gets, the more collisions will occur and the cost of put()
