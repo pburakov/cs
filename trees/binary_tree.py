@@ -14,6 +14,11 @@ class Node:
         return str(self.value)
 
 
+"""
+Traversal functions for a binary tree
+"""
+
+
 def pre_order(root, f):
     """
     Pre-order tree traversal. Function `f` is called on a visited node.
