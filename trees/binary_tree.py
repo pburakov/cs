@@ -1,35 +1,42 @@
-class BinaryTree:
+class Node:
     """
-    Binary Tree is a simple Tree object, where each Node can have no more than
-     two Children nodes. Each Node holds some value and a reference to its Children,
-     which in their turns are the Root Node for a Binary Tree down one level.
+    Node of a binary tree
     """
 
     def __init__(self, value):
-        """
-        Instantiates a tree object with root content and empty Children references.
-        """
         self.value = value
-        self.left_child = None
-        self.right_child = None
+        self.left = None
+        self.right = None
 
-    def insert_left(self, value):
-        """
-        Places a child node to an empty slot or pushes an existing child
-         down one level. By swapping the link between the two objects.
-        """
-        if self.left_child is None:
-            self.left_child = BinaryTree(value)
-        else:
-            new_node = BinaryTree(value)
-            new_node.left_child, self.left_child = self.left_child, new_node
+    def __str__(self):
+        return str(self.value)
 
-    def insert_right(self, value):
-        """
-        Symmetric to insert_left().
-        """
-        if self.right_child is None:
-            self.right_child = BinaryTree(value)
-        else:
-            new_node = BinaryTree(value)
-            new_node.right_child, self.right_child = self.right_child, new_node
+
+def pre_order(root, f):
+    """
+    Pre-order tree traversal. Function `f` is called on a visited node.
+    """
+    if root is not None:
+        f(root)
+        pre_order(root.left, f)
+        pre_order(root.right, f)
+
+
+def in_order(root, f):
+    """
+    In-order tree traversal. Function `f` is called on a visited node.
+    """
+    if root is not None:
+        in_order(root.left, f)
+        f(root)
+        in_order(root.right, f)
+
+
+def post_order(root, f):
+    """
+    Post-order tree traversal. Function `f` is called on a visited node.
+    """
+    if root is not None:
+        post_order(root.left, f)
+        post_order(root.right, f)
+        f(root)
