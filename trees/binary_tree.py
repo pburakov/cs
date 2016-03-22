@@ -1,6 +1,8 @@
 class Node:
     """
-    Node of a binary tree
+    Node of a binary tree. Holds a value of any type that supports string
+     representation (for traversals) and pointers to left and right child,
+     that in turn are the parent (root) node for its children.
     """
 
     def __init__(self, value):
