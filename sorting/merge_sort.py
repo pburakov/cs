@@ -1,12 +1,9 @@
 def merge_sort(list):
     """
     Merge sort is a recursive sorting algorithm that continuously spits a list in
-     half. If the list is empty or has one item it is sorted by definition (the
-     base case), otherwise the list is split and Merge sort is invoked recursively
-     on both halves. Once the two halves are sorted, the fundamental Merge operation
-     is performed. This operation places the items back into the original list one
-     at a time by repeatedly taking the smallest or biggest item for the sorted lists,
-     depending on sort direction.
+     half, sorts each half with the same method and then merges them into a sorted version.
+     Eventually two list containing a single element are sorted. That is the base case for
+     a merge sort.
 
     Complexity: O(n log(n)) in all cases. Log(n) for splitting, n for merge.
      Merge Sort requires additional memory to hold the sliced two halves which can
