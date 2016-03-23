@@ -1,76 +1,43 @@
-from trees.binary_search_tree import BinarySearchTree
+from trees.binary_search_tree import Node
+from trees.binary_search_tree import *
+
+"""
+AVL tree Node implementation based on Binary Search Tree Node.
+"""
 
 
 def height(node):
+    """
+    Recursively calculates height (h) of a Node.
+
+    :param Node node:
+    :return int: calculated height of node
+    """
     if node is None:
         return -1
     else:
-        return node.height
+        return max(height(node.left), height(node.right)) + 1
 
 
-def update_height(node):
-    node.height = max(height(node.left), height(node.right)) + 1
-
-
-class AVLTree(BinarySearchTree):
+def balance(node):
     """
-    AVL binary search tree implementation.
-    Supports insert, find, and delete-min operations in O(lg n) time.
+    Calculates balance factor (b) of a Node.
+
+    :param Node node:
+    :return int: For AVL trees -1 <= b <= 1
     """
+    return height(node.left) - height(node.right)
 
-    def left_rotate(self, x):
-        y = x.right
-        y.parent = x.parent
-        if y.parent is None:
-            self.root = y
-        else:
-            if y.parent.left is x:
-                y.parent.left = y
-            elif y.parent.right is x:
-                y.parent.right = y
-        x.right = y.left
-        if x.right is not None:
-            x.right.parent = x
-        y.left = x
-        x.parent = y
-        update_height(x)
-        update_height(y)
-
-    def right_rotate(self, x):
-        y = x.left
-        y.parent = x.parent
-        if y.parent is None:
-            self.root = y
-        else:
-            if y.parent.left is x:
-                y.parent.left = y
-            elif y.parent.right is x:
-                y.parent.right = y
-        x.left = y.right
-        if x.left is not None:
-            x.left.parent = x
-        y.right = x
-        x.parent = y
-        update_height(x)
-        update_height(y)
-
-    def insert(self, key, value):
-        node = BinarySearchTree.insert(self, key, value)
-        self.rebalance(node)
-
-    def rebalance(self, node):
-        while node is not None:
-            update_height(node)
-            if height(node.left) >= 2 + height(node.right):
-                if height(node.left.left) >= height(node.left.right):
-                    self.right_rotate(node)
-                else:
-                    self.left_rotate(node.left)
-                    self.right_rotate(node)
-            elif height(node.right) >= 2 + height(node.left):
-                if height(node.right.right) >= height(node.right.left):
-                    self.left_rotate(node)
-                else:
-                    self.right_rotate(node.right)
-                    self.left_rotate(node)
-            node = node.parent
+#
+# root = Node(2)
+# insert(Node(7), root)
+# insert(Node(9), root)
+# insert(Node(5), root)
+# insert(Node(1), root)
+# insert(Node(3), root)
+# insert(Node(4), root)
+# insert(Node(6), root)
+# insert(Node(8), root)
+# print_tree(root)
+# print("Root Height", height(root))
+# print("Root Bal", balance(root))
