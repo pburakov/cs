@@ -48,7 +48,7 @@ start_time = time.clock()
 print(F(25))
 print("iteration time: %6.6f" % (time.clock() - start_time))
 
-from algorithms.memoization import memoize
+from techniques.memoization import memoize
 
 
 @memoize

@@ -18,14 +18,14 @@ def memoize(f):
     """
     Pythonic memoization decorator.
 
-    Will return value from `memo` dict cache for function `f` if it was already
+    Will return value from `cache` for function `f` if it was already
      calculated for given list of arguments `*args`.
     """
-    memo = {}
+    cache = {}
 
     def helper(*args):
-        if args not in memo:
-            memo[args] = f(*args)
-        return memo[args]
+        if args not in cache:
+            cache[args] = f(*args)
+        return cache[args]
 
     return helper

@@ -6,7 +6,7 @@ A child is running up a staircase with n steps and can hop either 1 step, 2 step
  can run up the stairs.
 """
 
-from algorithms.memoization import memoize
+from techniques.memoization import memoize
 
 
 @memoize
