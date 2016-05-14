@@ -18,30 +18,37 @@ def merge_sort(list):
     """
 
     def merge(l, r):
-        p = []  # Product of the merge
-        ml, mr = len(l), len(r)  # Upper bounds
-        il, ir = 0, 0  # Pointers
-        while il < ml and ir < mr:
-            if r[ir] > l[il]:  # Flip this comparison for reversed ordering
-                p.append(l[il])
-                il += 1
+        s = len(l) + len(r)                    # Final size of the product of the merge
+        p = [None] * s                         # Allocated memory for the product of the merge
+        i_l, i_r = 0, 0                        # Pointers for `l` and `r` arrays
+        max_l, max_r = len(l) - 1, len(r) - 1  # Upper bounds for the pointers
+        for i in range(0, s):
+            # Pointers went out-of-bounds cases (adding element from the remaining side)
+            if i_l > max_l:
+                p[i] = r[i_r]
+                i_r += 1
+                continue
+            if i_r > max_r:
+                p[i] = l[i_l]
+                i_l += 1
+                continue
+            # Picking smaller element at the pointer
+            if r[i_r] > l[i_l]:  # Flip this comparison for reversed ordering
+                p[i] = l[i_l]
+                i_l += 1
             else:
-                p.append(r[ir])
-                ir += 1
-        # Unequal lengths of `l` and `r` will result in one of the lists to have remaining
-        # items. Adding them using Python's permissive array slicing.
-        p.extend(l[il:])
-        p.extend(r[ir:])
+                p[i] = r[i_r]
+                i_r += 1
         return p
 
     n = len(list)
-    n_2 = n // 2
     if n < 2:
-        # Base case
+        # Base case. Single-element list is already sorted by definition.
         return list
     else:
         # The array will be sliced down recursively to smaller pieces until the base case
         # is hit and then merged back up.
+        n_2 = n // 2  # Slice-point
         l = merge_sort(list[0:n_2])
         r = merge_sort(list[n_2:n])
         return merge(l, r)
