@@ -1,18 +1,16 @@
 def insertion_sort(list):
     """
     Insertion Sort traverses the list starting with a second element and assumes
-     that items to the left of the Marker are already sorted. It "picks" the next
-     element to the right of the Marker in the list and puts it in its position
-     in the sorted part of an array, iteratively comparing with previous
-     elements.
+     that items to the left of the pointer are already sorted. It "picks" the next
+     element to the right of the pointer and puts it in its position in the sorted
+     part of an array, iteratively comparing it with previous elements. The best
+     analogy for insertion sort is sorting a hand of cards.
 
-    The best analogy for insertion sort is sorting a hand of cards. It generally
-     shows good performance on small number of elements due to lesser constant-time
-     operations (compared to merge sort, for example).
+    Insertion Sort generally shows good performance on small number of elements due
+     to lesser constant-time operations (compared to merge sort, for example).
 
     Complexity: best O(n), average/worst O(n^2). Insertion Sort swaps elements in
      place and does not require additional storage.
-
     """
 
     n = len(list)
