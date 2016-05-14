@@ -1,47 +1,50 @@
 def merge_sort(list):
     """
-    Merge sort is a recursive sorting algorithm that continuously spits a list in
-     half, sorts each half with the same method and then merges them into a sorted version.
-     Eventually two list containing a single element are sorted. That is the base case for
-     a merge sort.
+    Merge sort is a recursive sorting algorithm that continuously splits a list in
+     half recursively until eventually, it hits two lists containing a single element.
+     Sorted halves, starting with two single-element lists (that are already sorted by
+     definition) are then merged back together.
+
+    The implementation of merge sort is a great example of divide-and-conquer technique,
+     when the problem is broken to smaller pieces each or which is solved and then solved
+     parts are combined back together.
+
+    `merge(list)` method does the both the "conquer" and "combine" part, merging two sorted
+     arrays. The body of the `merge_sort()` method implements the recursive "divide",
+     or the slicing of the array.
 
     Complexity: O(n log(n)) in all cases. Log(n) for splitting, n for merge.
-     Merge Sort requires additional memory to hold the sliced two halves which can
-     be critical for larger sets.
+     Merge Sort requires additional memory to hold the sliced two halves.
     """
 
-    def merge(left, right):
-        """
-        This merge helper is doing the "heavy lifting". Values are picked one by one form `left`
-         and `right` lists.
-        Lists that have more than one element are already sorted, so the first element from
-         each is "picked".
-        """
-        print('merging', left, 'and', right, end=' ')
-        result = []
-        left_i, right_i = 0, 0
-        while left_i < len(left) and right_i < len(right):
-            # Change the direction of this comparison to change the direction of the sort
-            if left[left_i] <= right[right_i]:
-                result.append(left[left_i])
-                left_i += 1
+    def merge(l, r):
+        p = []  # Product of the merge
+        ml, mr = len(l), len(r)  # Upper bounds
+        il, ir = 0, 0  # Pointers
+        while il < ml and ir < mr:
+            if r[ir] > l[il]:  # Flip this comparison for reversed ordering
+                p.append(l[il])
+                il += 1
             else:
-                result.append(right[right_i])
-                right_i += 1
-        # Adds remaining elements
-        if left:
-            result.extend(left[left_i:])
-        if right:
-            result.extend(right[right_i:])
-        print('into', result)
-        return result
+                p.append(r[ir])
+                ir += 1
+        # Unequal lengths of `l` and `r` will result in one of the lists to have remaining
+        # items. Adding them using Python's permissive array slicing.
+        p.extend(l[il:])
+        p.extend(r[ir:])
+        return p
 
-    print('splitting', list, 'in half')
-    if len(list) <= 1:
-        return list  # Base case
-    mid_i = len(list) // 2
-    left = list[:mid_i]
-    right = list[mid_i:]
-    left = merge_sort(left)
-    right = merge_sort(right)
-    return merge(left, right)
+    n = len(list)
+    n_2 = n // 2
+    if n < 2:
+        # Base case
+        return list
+    else:
+        # The array will be sliced down recursively to smaller pieces until the base case
+        # is hit and then merged back up.
+        l = merge_sort(list[0:n_2])
+        r = merge_sort(list[n_2:n])
+        return merge(l, r)
+
+
+print(merge_sort([9, 7, 8, 1, 5, 3, 4, 2, 6]))
