@@ -19,7 +19,7 @@ def insertion_sort(list):
         v = list[k]  # Value of a picked element
         i = k        # Index of picked element
 
-        while i > 0 and list[i - 1] < v:  # Flip this comparison for reversed order
+        while i > 0 and list[i - 1] > v:  # Flip this comparison for reversed order
             list[i], list[i - 1] = list[i - 1], list[i]
             i -= 1
         list[i] = v
