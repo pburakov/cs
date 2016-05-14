@@ -55,6 +55,3 @@ def merge_sort(list):
         l = merge_sort(list[0:n_2])
         r = merge_sort(list[n_2:n])
         return merge(l, r)
-
-
-print(merge_sort([9, 7, 8, 1, 5, 3, 4, 2, 6]))
