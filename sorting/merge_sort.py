@@ -22,17 +22,18 @@ def merge_sort(list):
         p = [None] * s                         # Allocated memory for the product of the merge
         i_l, i_r = 0, 0                        # Pointers for `l` and `r` arrays
         max_l, max_r = len(l) - 1, len(r) - 1  # Upper bounds for the pointers
+
         for i in range(0, s):
             # Pointers went out-of-bounds cases (adding element from the remaining side)
             if i_l > max_l:
                 p[i] = r[i_r]
                 i_r += 1
-                continue
+                continue  # Skip to the next iteration
             if i_r > max_r:
                 p[i] = l[i_l]
                 i_l += 1
-                continue
-            # Picking smaller element at the pointer
+                continue  # Skip to the next iteration
+            # Normal in-bound case. Picking smaller element located at the pointer.
             if r[i_r] > l[i_l]:  # Flip this comparison for reversed ordering
                 p[i] = l[i_l]
                 i_l += 1
@@ -41,7 +42,9 @@ def merge_sort(list):
                 i_r += 1
         return p
 
+    # Body of `merge_sort()`
     n = len(list)
+
     if n < 2:
         # Base case. Single-element list is already sorted by definition.
         return list
