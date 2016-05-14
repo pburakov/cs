@@ -1,13 +1,13 @@
 def merge_sort(list):
     """
-    Merge sort is a recursive sorting algorithm that continuously splits a list in
-     half recursively until eventually, it hits two lists containing a single element.
-     Sorted halves, starting with two single-element lists (that are already sorted by
-     definition) are then merged back together.
+    Merge sort is a recursive sorting algorithm that first recursively splits an array
+     in half until it reaches two arrays containing a single element (that are already
+     sorted by definition). Halves are sorted and merged until an entire array is
+     merged back together.
 
-    The implementation of merge sort is a great example of divide-and-conquer technique,
-     when the problem is broken to smaller pieces each or which is solved and then solved
-     parts are combined back together.
+    The recursive nature of merge sort is a great example of divide-and-conquer technique,
+     when the problem is broken to smaller pieces each of which is [more or less]
+     trivially solved. The solved parts are combined back together.
 
     `merge(list)` method does the both the "conquer" and "combine" part, merging two sorted
      arrays. The body of the `merge_sort()` method implements the recursive "divide",
