@@ -34,7 +34,7 @@ def merge_sort(list):
                 i_l += 1
                 continue  # Skip to the next iteration
             # Normal in-bound case. Picking smaller element located at the pointer.
-            if r[i_r] > l[i_l]:  # Flip this comparison for reversed ordering
+            if r[i_r] > l[i_l]:  # Flip this comparison for reversed order
                 p[i] = l[i_l]
                 i_l += 1
             else:
