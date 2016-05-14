@@ -6,8 +6,9 @@ def insertion_sort(list):
      in the sorted part of an array, iteratively comparing with previous
      elements.
 
-    The best analogy for insertion sort is sorting a hand of cards. Insertion sort
-     generally shows a good performance on small number of elements.
+    The best analogy for insertion sort is sorting a hand of cards. It generally
+     shows good performance on small number of elements due to lesser constant-time
+     operations (compared to merge sort, for example).
 
     Complexity: best O(n), average/worst O(n^2). Insertion Sort swaps elements in
      place and does not require additional storage.
@@ -20,7 +21,7 @@ def insertion_sort(list):
         i = k        # Index of picked element
 
         while i > 0 and list[i - 1] > v:  # Flip this comparison for reversed order
-            list[i], list[i - 1] = list[i - 1], list[i]
+            list[i] = list[i - 1]
             i -= 1
         list[i] = v
 
