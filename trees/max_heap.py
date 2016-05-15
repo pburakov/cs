@@ -4,14 +4,14 @@ Binary Heap is a basic implementation of a Priority Queue. Although heap is pres
  because the tree representation of a heap is nearly complete.
 
 Given that the first index of a tree starts at `0`, the index of every child
- Node in a Binary Heap can be computed as `i * 2 + 1` for left child and `i * 2 + 2`
- for the right child.
+ Node in an array representation can be computed as `i * 2 + 1` for left child
+ and `i * 2 + 2` for the right child.
 
 Representation invariant of a Binary Heap determines its main use and common
  variations: max-heap and min-heap. For max-heap, every element is bigger than
- its children and it has the biggest element at the root. Thus, by induction, it
- can be proven that the largest element will always be on the top as long as heap
- properties are maintained at any modification made to its structure.
+ its children. Thus, by induction, it can be proven that the largest element will
+ always be on the top as long as heap properties are maintained at any modification
+ made to its structure.
 
 Heap structure is useful when a fast O(n) access to the top element is required,
  however, the remainder of the array is kept partially unsorted.
