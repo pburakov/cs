@@ -45,7 +45,9 @@ def build_max_heap(A):
      properties are maintained.
     :return: None. List `A` is mutated.
     """
-    n_2 = (len(A) // 2) - 1  # Index of last children's parent
 
-    for i in range(n_2, -1, -1):
+    i_n = len(A) - 1  # Index of a last element
+    i_n_2 = i_n // 2  # Index of last element's parent
+
+    for i in range(i_n_2, -1, -1):
         max_heapify(A, i)
