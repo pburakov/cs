@@ -4,9 +4,8 @@
 
  For more information about the max-heap data structure, see trees/max_heap.
 
- Important note: This implementation uses additional storage yielding the product
-  of the sort `P`. However, typical heap sort can be performed in-place, if
-  `max_heapify()` is performed on a subset of an array `A`.
+ Heap sort can be performed in-place, and `max_heapify()` is performed on a
+  reduced subset of an array `A` after each iteration.
 
  Complexity: O(n log (n)). Heap Sort is not stable, its runtime depends on the
   implementation of the heap. Heap is typically build in n time, heapify function
@@ -18,17 +17,13 @@ from trees.max_heap import max_heapify
 
 
 def heap_sort(A):
-    n = len(A)      # Length of an array
-    P = [None] * n  # Product of the heap sort
-    i_n = n - 1     # Index of a last element
+    n = len(A)   # Length of an array
+    i_n = n - 1  # Index of a last element
 
     build_max_heap(A)
-    for i in range(i_n, -1, -1):
-        A[0], A[i] = A[i], A[0]  # Exchange top element with the bottom one
-        # Stash the bottom element as part of a sorted subset whilst reducing
-        # "heapified" portion of an array.
-        P[i] = A.pop(i)
-        # Fix the reduced heap with the lowest element on top
-        max_heapify(A, 0)
-
-    return P
+    for i in range(i_n, 0, -1):
+        # Stash top element at the end of the array, replace top element with
+        # the one at the bottom of the heap.
+        A[0], A[i] = A[i], A[0]
+        # Elements below `i` are in the sorted order.
+        max_heapify(A, 0, i)  # Fix the still "heapified" portion of an array.

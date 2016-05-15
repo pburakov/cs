@@ -19,16 +19,18 @@ Heap structure is useful when it is required to have fast access to the top elem
 """
 
 
-def max_heapify(A, i):
+def max_heapify(A, i, n=None):
     """
     Rearranges array `A` "below" index `i` to maintain max-heap properties. It assumes
      that binary trees rooted at indexes `l` and `r` (children of `A[i]`) are max-
      heaps, but that A[i] might violate max-heap property of being larger element.
     This algorithm lets the value at `A[i]` "float-down" in the max-heap so that the
      subtree rooted at index `i` obeys the max-heap property.
+    :param: Int. Size of the subset of array `A` to heapify (used in heap sort)
     :return: None. List `A` is mutated.
     """
-    n = len(A)      # Heap size
+    if n is None:
+        n = len(A)  # Heapify entire array
     l = 2 * i + 1   # Index of a left child
     r = 2 * i + 2   # Index of a right child
     i_largest = i   # Index of a largest element (`i` by default)
@@ -39,7 +41,7 @@ def max_heapify(A, i):
         i_largest = r
     if i_largest != i:
         A[i], A[i_largest] = A[i_largest], A[i]
-        max_heapify(A, i_largest)  # Repeat one level down
+        max_heapify(A, i_largest, n)  # Repeat one level down
     else:
         pass  # No changes
 

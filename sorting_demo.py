@@ -13,5 +13,6 @@ l = [4, 7, 5, 2, 3, 9, 6, 1, 8]
 print(merge_sort(l))
 
 l = [4, 7, 5, 2, 3, 9, 6, 1, 8]
-# Heap Sort implementation yields a new array
-print(heap_sort(l))
+# Heap Sort performs in place sorting
+heap_sort(l)
+print(l)
