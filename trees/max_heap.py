@@ -26,7 +26,9 @@ def max_heapify(A, i, n=None):
      heaps, but that A[i] might violate max-heap property of being larger element.
     This algorithm lets the value at `A[i]` "float-down" in the max-heap so that the
      subtree rooted at index `i` obeys the max-heap property.
-    :param: Int. Optional size of the subset of array `A` to heapify (used in heap
+    :param A: Array (list) to heapify
+    :param i: Integer index of a root
+    :param n: Optional integer size of the subset of array `A` to heapify (used in heap
      sort). When defined, array won't be "heapified" below index of `n-1`.
     :return: None. List `A` is mutated.
     """
@@ -51,6 +53,7 @@ def build_max_heap(A):
     """
     Rearranges list `A` into a representation of a max-heap, in a "bottom-up"
      manner, ensuring that the heap properties are maintained.
+    :param A: Array (list) to heapify
     :return: None. List `A` is mutated.
     """
 
@@ -64,6 +67,7 @@ def build_max_heap(A):
 def heap_extract_max(A):
     """
     Removes max element from the top of the heap and returns it.
+    :param A: Array (list) to heapify
     :return: Max element. List `A` is mutated in the process.
     """
     n = len(A)   # Heap size

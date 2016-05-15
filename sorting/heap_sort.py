@@ -1,22 +1,24 @@
-"""
- Heap Sort takes an advantage of one of the main properties of the max-heap,
-  that is that the max element is always at the top of the heap.
-
- For more information about the max-heap data structure, see trees/max_heap.
-
- Heap sort can be performed in-place, and `max_heapify()` is performed on a
-  reduced subset of an array `A` after each iteration.
-
- Complexity: O(n log (n)). Heap Sort is not stable, its runtime depends on the
-  implementation of the heap. Heap is typically build in n time, heapify function
-  takes log(n) since the subset of `A` is reduced in each iteration.
-"""
-
 from trees.max_heap import build_max_heap
 from trees.max_heap import max_heapify
 
 
 def heap_sort(A):
+    """
+    Heap Sort takes an advantage of one of the main properties of the max-heap,
+     that is that the max element is always at the top of the heap.
+
+    For more information about the max-heap data structure, see trees/max_heap.
+
+    Heap sort can be performed in-place, and `max_heapify()` is performed on a
+     reduced subset of an array `A` after each iteration.
+
+    Complexity: O(n log (n)). Heap Sort is not stable, its runtime depends on the
+     implementation of the heap. Heap is typically build in n time, heapify function
+     takes log(n) since the subset of `A` is reduced in each iteration.
+
+    :param A: Array (list) to sort
+    :return: None. List `A` is mutated.
+    """
     n = len(A)   # Length of an array
     i_n = n - 1  # Index of a last element
 
