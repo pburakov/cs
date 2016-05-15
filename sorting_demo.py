@@ -1,6 +1,6 @@
 from sorting.insertion_sort import insertion_sort
 from sorting.merge_sort import merge_sort
-from trees.max_heap import heap_sort
+from sorting.heap_sort import heap_sort
 
 l = [4, 7, 5, 2, 3, 9, 6, 1, 8]
 
@@ -13,5 +13,5 @@ l = [4, 7, 5, 2, 3, 9, 6, 1, 8]
 print(merge_sort(l))
 
 l = [4, 7, 5, 2, 3, 9, 6, 1, 8]
-# Heap Sort yields a new array
+# Heap Sort implementation yields a new array
 print(heap_sort(l))
