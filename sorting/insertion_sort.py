@@ -7,10 +7,10 @@ def insertion_sort(list):
      analogy for insertion sort is sorting a hand of cards.
 
     Insertion Sort generally shows good performance on small number of elements due
-     to lesser constant-time operations (compared to merge sort, for example).
+     to less constant-time operations (compared to merge sort, for example).
 
-    Complexity: best O(n), average/worst O(n^2). Insertion Sort swaps elements in
-     place and does not require additional storage.
+    Complexity: best O(n), average/worst O(n^2). Insertion Sort is stable, swaps
+     elements in place and does not require additional storage.
     """
 
     n = len(list)
