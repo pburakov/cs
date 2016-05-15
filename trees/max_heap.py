@@ -28,7 +28,7 @@ def max_heapify(A, i, n=None):
      subtree rooted at index `i` obeys the max-heap property.
     :param A: Array (list) to heapify
     :param i: Integer index of a root
-    :param n: Optional integer size of the subset of array `A` to heapify (used in heap
+    :param n: Optional integer length of the subset of array `A` to heapify (used in heap
      sort). When defined, array won't be "heapified" below index of `n-1`.
     :return: None. List `A` is mutated.
     """
