@@ -13,14 +13,19 @@ Another important properties of a Binary Heap determine its main uses and common
  its children and it has the biggest element at the root thus giving the constant
  time O(1) for the max() operation. Heap properties must be maintained throughout
  any modification made to it.
+
+Heap structure is useful when it is required to have fast access to the top element,
+ however, the remainder of the array is kept partially unsorted.
 """
 
 
 def max_heapify(A, i):
     """
-    Rearranges array `A` "below" index `i` maintaining max-heap properties. Assumes
+    Rearranges array `A` "below" index `i` to maintain max-heap properties. It assumes
      that binary trees rooted at indexes `l` and `r` (children of `A[i]`) are max-
-     heaps but that A[i] might violate max-heap property of being larger element.
+     heaps, but that A[i] might violate max-heap property of being larger element.
+    This algorithm lets the value at `A[i]` "float-down" in the max-heap so that the
+     subtree rooted at index `i` obeys the max-heap property.
     :return: None. List `A` is mutated.
     """
     n = len(A)      # Heap size
@@ -36,13 +41,13 @@ def max_heapify(A, i):
         A[i], A[i_largest] = A[i_largest], A[i]
         max_heapify(A, i_largest)  # Repeat one level down
     else:
-        pass                       # No changes
+        pass  # No changes
 
 
 def build_max_heap(A):
     """
-    Rearranges list `A` into a representation of a max-heap, ensuring that the heap
-     properties are maintained.
+    Rearranges list `A` into a representation of a max-heap, in a "bottom-up"
+     manner, ensuring that the heap properties are maintained.
     :return: None. List `A` is mutated.
     """
 
@@ -51,3 +56,20 @@ def build_max_heap(A):
 
     for i in range(i_n_2, -1, -1):
         max_heapify(A, i)
+
+
+def heap_extract_max(A):
+    """
+    Removes max element from the top of the heap and returns it.
+    :return: Max element. List `A` is mutated in the process.
+    """
+    n = len(A)   # Heap size
+    i_n = n - 1  # Index of a last element
+
+    if n < 1:
+        raise ValueError("Heap underflow")
+
+    m = A[0]           # Take the top element
+    A[0] = A.pop(i_n)  # Move bottom element to the top
+    max_heapify(A, 0)  # Fix the heap
+    return m
