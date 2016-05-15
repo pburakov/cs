@@ -1,4 +1,4 @@
-def insertion_sort(list):
+def insertion_sort(A):
     """
     Insertion Sort traverses the list starting with a second element and assumes
      that items to the left of the pointer are already sorted. It "picks" the next
@@ -12,15 +12,15 @@ def insertion_sort(list):
     Complexity: best O(n), average/worst O(n^2). Insertion Sort is stable, swaps
      elements in place and does not require additional storage.
     """
+    n = len(A)
 
-    n = len(list)
     for k in range(1, n):
-        v = list[k]  # Value of a picked element
-        i = k        # Index of picked element
+        v = A[k]  # Value of a picked element
+        i = k     # Index of a picked element
 
-        while i > 0 and list[i - 1] > v:  # Flip this comparison for reversed order
-            list[i] = list[i - 1]
+        while i > 0 and A[i - 1] > v:  # Flip this comparison for reversed order
+            A[i] = A[i - 1]
             i -= 1
-        list[i] = v
+        A[i] = v
 
-    return list
+    # List `A` is mutated in the process
