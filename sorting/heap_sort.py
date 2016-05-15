@@ -11,9 +11,9 @@ def heap_sort(A):
     Heap sort is performed in-place, and `max_heapify()` is applied to a reduced
      subset of an array `A` after each iteration.
 
-    Complexity: O(n log (n)). Heap Sort is not stable, its runtime depends on the
-     implementation of the heap. Heap is typically build in n time, heapify function
-     takes log(n) since the subset of `A` is reduced in each iteration.
+    Complexity: O(n log(n)). Heap Sort is not stable, its runtime depends on the
+     implementation of the heap. Heap is typically build in `n` time, heapify function
+     takes `log(n)` since the subset of `A` is reduced in each iteration.
     :param A: Array (list) to sort
     :return: None. List `A` is mutated.
     """

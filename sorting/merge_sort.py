@@ -13,8 +13,8 @@ def merge_sort(A):
      arrays. The body of the `merge_sort()` method implements the recursive "divide",
      or the slicing of the array.
 
-    Complexity: O(n log(n)) in all cases. Log(n) for splitting, n for merge. Merge sort
-     is stable and it requires additional memory to hold the sliced two halves.
+    Complexity: O(n log(n)) in all cases. `Log(n)` for splitting, `n` for merge. Merge
+     sort is stable and it requires additional memory to hold the sliced two halves.
     :param A: Array (list) to sort
     :return: Sorted product of an array `A`
     """

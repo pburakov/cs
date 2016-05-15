@@ -7,13 +7,14 @@ Given that the first index of a tree starts at `0`, the index of every child
  Node in a Binary Heap can be computed as `i * 2 + 1` for left child and `i * 2 + 2`
  for the right child.
 
-Other important properties of a Binary Heap determine its main uses and common
+Representation invariant of a Binary Heap determines its main use and common
  variations: max-heap and min-heap. For max-heap, every element is bigger than
- its children and it has the biggest element at the root.
+ its children and it has the biggest element at the root. Thus, by induction, it
+ can be proven that the largest element will always be on the top as long as heap
+ properties are maintained at any modification made to its structure.
 
 Heap structure is useful when a fast O(n) access to the top element is required,
- however, the remainder of the array is kept partially unsorted. Heap properties
- must be maintained at any modification made to its structure.
+ however, the remainder of the array is kept partially unsorted.
 """
 
 
@@ -22,8 +23,11 @@ def max_heapify(A, i, n=None):
     Rearranges array `A` "below" index `i` to maintain max-heap properties. It assumes
      that binary trees rooted at indexes `l` and `r` (children of `A[i]`) are max-
      heaps, but that A[i] might violate max-heap property of being larger element.
+
     This algorithm lets the value at `A[i]` "float-down" in the max-heap so that the
      subtree rooted at index `i` obeys the max-heap property.
+
+    Complexity: O(log(n)) due to recurrence, or O(h) where `h` is the height of the heap.
     :param A: Array (list) to heapify
     :param i: Integer index of a root
     :param n: Optional integer length of the subset of array `A` to heapify (used in heap
@@ -50,7 +54,12 @@ def max_heapify(A, i, n=None):
 def build_max_heap(A):
     """
     Rearranges list `A` into a representation of a max-heap, in a "bottom-up"
-     manner, ensuring that the heap properties are maintained.
+     manner, starting at second to last level or nodes and ensuring that the heap
+     properties are maintained.
+
+    Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound,
+     since `max_heapify()` is bounded by the constant factor of height `h` divided
+     by 2.
     :param A: Array (list) to heapify
     :return: None. List `A` is mutated.
     """
@@ -65,6 +74,8 @@ def build_max_heap(A):
 def heap_extract_max(A):
     """
     Removes max element from the top of the heap and returns it.
+
+    Complexity: O(log(n)) from use of `max_heapify()`
     :param A: Array (list) to heapify
     :return: Max element. List `A` is mutated in the process.
     """

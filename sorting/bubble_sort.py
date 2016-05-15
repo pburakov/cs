@@ -8,7 +8,7 @@ def bubble_sort(A):
      over the unsorted part, that is similar to Insertion sort.
 
     Complexity: best O(n), average/worst O(n^2). Bubble sort is a stable algorithm
-     and performs an in-place sorting.
+     and performs in-place sorting.
     :param A: Array (list) to sort
     :return: None. List `A` is mutated.
     """
