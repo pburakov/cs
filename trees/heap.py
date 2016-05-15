@@ -49,7 +49,3 @@ def build_max_heap(A):
 
     for i in range(n_2, -1, -1):
         max_heapify(A, i)
-
-l = [4,1,3,2,16,9,10,14,8,7]
-build_max_heap(l)
-print(l)
