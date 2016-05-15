@@ -24,5 +24,3 @@ def insertion_sort(A):
             A[i] = A[i - 1]
             i -= 1
         A[i] = v
-
-    # List `A` is mutated in the process
