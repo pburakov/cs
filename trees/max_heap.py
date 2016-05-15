@@ -3,9 +3,9 @@ Binary Heap is a basic implementation of a Priority Queue. Although heap is pres
  as a Binary Tree, is is usually implemented as an array (or a list in Python)
  because the tree representation of a heap is nearly complete.
 
-Given that the first index of a tree starts at `0`, the index of every child
- Node in an array representation can be computed as `i * 2 + 1` for left child
- and `i * 2 + 2` for the right child.
+Given that the first index of a tree starts at `0`, the index of a child node in an
+ array representation can be computed as `i * 2 + 1` for left side child and
+ `i * 2 + 2` for right side child.
 
 Representation invariant of a Binary Heap determines its main use and common
  variations: max-heap and min-heap. For max-heap, every element is bigger than
@@ -54,7 +54,7 @@ def max_heapify(A, i, n=None):
 def build_max_heap(A):
     """
     Rearranges list `A` into a representation of a max-heap, in a "bottom-up"
-     manner, starting at second to last level or nodes and ensuring that the heap
+     manner, starting at second to last level of nodes and ensuring that the heap
      properties are maintained.
 
     Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound,
