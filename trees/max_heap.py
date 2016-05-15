@@ -1,21 +1,19 @@
 """
-Binary Heap is a basic implementation of a Priority Queue. Because heap is represented
- as a nearly complete Binary Tree, is is usually implemented as an array (or a list
- in Python).
+Binary Heap is a basic implementation of a Priority Queue. Although heap is presented
+ as a Binary Tree, is is usually implemented as an array (or a list in Python)
+ because the tree representation of a heap is nearly complete.
 
 Given that the first index of a tree starts at `0`, the index of every child
  Node in a Binary Heap can be computed as `i * 2 + 1` for left child and `i * 2 + 2`
- for the right child (or root at `1`, `i * 2` and `i * 2 + 1` for children
- respectively, as presented in CLRS).
+ for the right child.
 
-Another important properties of a Binary Heap determine its main uses and common
+Other important properties of a Binary Heap determine its main uses and common
  variations: max-heap and min-heap. For max-heap, every element is bigger than
- its children and it has the biggest element at the root thus giving the constant
- time O(1) for the max() operation. Heap properties must be maintained throughout
- any modification made to it.
+ its children and it has the biggest element at the root.
 
-Heap structure is useful when it is required to have fast access to the top element,
- however, the remainder of the array is kept partially unsorted.
+Heap structure is useful when a fast O(n) access to the top element is required,
+ however, the remainder of the array is kept partially unsorted. Heap properties
+ must be maintained at any modification made to its structure.
 """
 
 
