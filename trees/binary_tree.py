@@ -9,9 +9,9 @@ Every node in a binary tree is a root to its own subtree. This property allows t
  implementation of easy to understand recursive traversal algorithms.
 
 Traversal algorithms are called in-order, pre-order and post-order, so named because
- of the sequence in which the algorithm "visit" a node (and for example prints
- its value or applies other function) between the traversal of its left and right
- subtree. This operation recurs until all the nodes in a tree are eventually
+ of the sequence in which the algorithm "visit" a node (for example prints
+ its value or possibly mutates traversed node) between the traversal of its left and
+ right subtree. This operation recurs until all the nodes in a tree are eventually
  "visited".
 
 Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
@@ -37,12 +37,11 @@ class Node:
 
 def pre_order(root, f):
     """
-    Post-order tree traversal. Function `f` is called on a visited node.
-     Function can either mutate a traversed node, or perform a side-effect
-     actions such as printing out node contents.
+    Pre-order tree traversal.
+
     :param Node root: Starting node
-    :param function f: Callback function
-    :return None: Will call function `f` on each traversal
+    :param callable f: Callback function
+    :return None: Will call function `f` on every node traversal
     """
     if root is not None:
         f(root)
@@ -52,12 +51,11 @@ def pre_order(root, f):
 
 def in_order(root, f):
     """
-    Post-order tree traversal. Function `f` is called on a visited node.
-     Function can either mutate a traversed node, or perform a side-effect
-     actions such as printing out node contents.
+    In-order tree traversal.
+
     :param Node root: Starting node
-    :param function f: Callback function
-    :return None: Will call function `f` on each traversal
+    :param callable f: Callback function
+    :return None: Will call function `f` on every node traversal
     """
     if root is not None:
         in_order(root.left, f)
@@ -67,12 +65,11 @@ def in_order(root, f):
 
 def post_order(root, f):
     """
-    Post-order tree traversal. Function `f` is called on a visited node.
-     Function can either mutate a traversed node, or perform a side-effect
-     actions such as printing out node contents.
+    Post-order tree traversal.
+
     :param Node root: Starting node
-    :param function f: Callback function
-    :return None: Will call function `f` on each traversal
+    :param callable f: Callback function
+    :return None: Will call function `f` on every node traversal
     """
     if root is not None:
         post_order(root.left, f)
