@@ -10,8 +10,11 @@ Traversal algorithms are called in-order, pre-order and post-order, so named bec
  subtree. This operation recurs until all the nodes in a tree are eventually
  "visited".
 
+Most well-known type of a binary tree is BST (Binary Search Tree) (see trees/bst.py)
+
 Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
- in the tree (considering the function that is applied during traversal takes O(1))
+ in the tree (considering the function that is applied during traversal takes
+ O(1)).
 """
 
 
