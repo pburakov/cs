@@ -11,8 +11,8 @@ def insertion_sort(A):
 
     Complexity: best O(n), average/worst O(n^2). Insertion Sort is stable, swaps
      elements in place and does not require additional storage.
-    :param A: Array (list) to sort
-    :return: None. List `A` is mutated.
+    :param list A: Array (list) to sort
+    :return None: List `A` is mutated.
     """
     n = len(A)
 

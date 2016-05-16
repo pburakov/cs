@@ -15,8 +15,8 @@ def merge_sort(A):
 
     Complexity: O(n log(n)) in all cases. `Log(n)` for splitting, `n` for merge. Merge
      sort is stable and it requires additional memory to hold the sliced two halves.
-    :param A: Array (list) to sort
-    :return: Sorted product of an array `A`
+    :param list A: Array (list) to sort
+    :return list: Sorted product of an array `A`
     """
     n = len(A)
 
@@ -36,13 +36,13 @@ def merge_sort(A):
 def merge(L, R):
     """
     Merges two sorted arrays `L` and `R` into a single array `P` and returns it.
-    :param L: Sorted array
-    :param R: Sorted array
-    :return: Merged product of arrays `L` and `R`
+    :param list L: Sorted array
+    :param list R: Sorted array
+    :return list: Merged product of arrays `L` and `R`
     """
     s = len(L) + len(R)  # Final size of the product of the merge
-    P = [None] * s  # Allocated memory for the product of the merge
-    i_l, i_r = 0, 0  # Pointers for arrays `L` and `R`
+    P = [None] * s       # Allocated memory for the product of the merge
+    i_l, i_r = 0, 0      # Pointers for arrays `L` and `R`
     max_l, max_r = len(L) - 1, len(R) - 1  # Upper bounds for the pointers
 
     for i in range(0, s):

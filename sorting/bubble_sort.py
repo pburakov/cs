@@ -9,8 +9,8 @@ def bubble_sort(A):
 
     Complexity: best O(n), average/worst O(n^2). Bubble sort is a stable algorithm
      and performs in-place sorting.
-    :param A: Array (list) to sort
-    :return: None. List `A` is mutated.
+    :param list A: Array (list) to sort
+    :return None: List `A` is mutated.
     """
     n = len(A)   # Size of the array
     i_n = n - 1  # Index of last element
@@ -28,8 +28,8 @@ def bubble_sort_orig(A):
      sorted.
 
     Complexity: O(n^2) in all cases.
-    :param A: Array (list) to sort
-    :return: None. List `A` is mutated.
+    :param list A: Array (list) to sort
+    :return None: List `A` is mutated.
     """
     n = len(A)   # Size of the array
     i_n = n - 1  # Index of last element

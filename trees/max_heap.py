@@ -28,11 +28,11 @@ def max_heapify(A, i, n=None):
      subtree rooted at index `i` obeys the max-heap property.
 
     Complexity: O(log(n)) due to recurrence, or O(h) where `h` is the height of the heap.
-    :param A: Array (list) to heapify
-    :param i: Integer index of a root
-    :param n: Optional integer length of the subset of array `A` to heapify (used in heap
+    :param list A: Array (list) to heapify
+    :param int i: Integer index of a root
+    :param int n: Optional integer length of the subset of array `A` to heapify (used in heap
      sort). When defined, array won't be "heapified" below index of `n-1`.
-    :return: None. List `A` is mutated.
+    :return None: List `A` is mutated.
     """
     if n is None:
         n = len(A)  # Heapify entire array
@@ -60,8 +60,8 @@ def build_max_heap(A):
     Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound,
      since `max_heapify()` is bounded by the constant factor of height `h` divided
      by 2.
-    :param A: Array (list) to heapify
-    :return: None. List `A` is mutated.
+    :param list A: Array (list) to heapify
+    :return None: List `A` is mutated.
     """
 
     i_n = len(A) - 1  # Index of a last element
@@ -77,7 +77,7 @@ def heap_extract_max(A):
 
     Complexity: O(log(n)) from use of `max_heapify()`
     :param A: Array (list) to heapify
-    :return: Max element. List `A` is mutated in the process.
+    :return Any: Largest element of list `A`. List `A` is mutated in the process.
     """
     n = len(A)   # Heap size
     i_n = n - 1  # Index of a last element
