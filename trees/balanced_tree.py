@@ -1,5 +1,5 @@
-from trees.binary_search_tree import Node
-from trees.binary_search_tree import insert as bst_insert
+from trees.bst import Node
+from trees.bst import insert as bst_insert
 
 """
 AVL tree Node implementation based on Binary Search Tree Node.
