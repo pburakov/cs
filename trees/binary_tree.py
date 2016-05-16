@@ -1,7 +1,11 @@
 """
 Binary Tree is a linked data structure, where each node can point to two other
- nodes at most. These nodes are called left and right child nodes. Every node
- in a binary tree is a root to its own subtree. This property allows the
+ nodes at most. These nodes are called left and right child nodes.
+
+Most well-known type of a binary tree is called BST (Binary Search Tree) (see
+ trees/bst.py).
+
+Every node in a binary tree is a root to its own subtree. This property allows the
  implementation of easy to understand recursive traversal algorithms.
 
 Traversal algorithms are called in-order, pre-order and post-order, so named because
@@ -9,8 +13,6 @@ Traversal algorithms are called in-order, pre-order and post-order, so named bec
  its value or applies other function) between the traversal of its left and right
  subtree. This operation recurs until all the nodes in a tree are eventually
  "visited".
-
-Most well-known type of a binary tree is BST (Binary Search Tree) (see trees/bst.py)
 
 Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
  in the tree (considering the function that is applied during traversal takes
@@ -35,9 +37,9 @@ class Node:
 
 def pre_order(root, f):
     """
-    Pre-order tree traversal. Function `f` is called on a visited node.
-     Function can either apply some action on a traversed node, or perform
-     a side-effect actions such as printing out node contents.
+    Post-order tree traversal. Function `f` is called on a visited node.
+     Function can either mutate a traversed node, or perform a side-effect
+     actions such as printing out node contents.
     :param Node root: Starting node
     :param function f: Callback function
     :return None: Will call function `f` on each traversal
@@ -50,9 +52,9 @@ def pre_order(root, f):
 
 def in_order(root, f):
     """
-    In-order tree traversal. Function `f` is called on a visited node.
-     Function can either apply some action on a traversed node, or perform
-     a side-effect actions such as printing out node contents.
+    Post-order tree traversal. Function `f` is called on a visited node.
+     Function can either mutate a traversed node, or perform a side-effect
+     actions such as printing out node contents.
     :param Node root: Starting node
     :param function f: Callback function
     :return None: Will call function `f` on each traversal
@@ -66,8 +68,8 @@ def in_order(root, f):
 def post_order(root, f):
     """
     Post-order tree traversal. Function `f` is called on a visited node.
-     Function can either apply some action on a traversed node, or perform
-     a side-effect actions such as printing out node contents.
+     Function can either mutate a traversed node, or perform a side-effect
+     actions such as printing out node contents.
     :param Node root: Starting node
     :param function f: Callback function
     :return None: Will call function `f` on each traversal
