@@ -84,8 +84,10 @@ def heap_extract_max(A):
 
     if n < 1:
         raise ValueError("Heap underflow")
-
-    m = A[0]           # Take the top element
-    A[0] = A.pop(i_n)  # Move bottom element to the top
-    max_heapify(A, 0)  # Fix the heap
-    return m
+    elif n == 1:
+        return A.pop(0)    # Return the only element in the heap
+    else:
+        m = A[0]           # Take the top element
+        A[0] = A.pop(i_n)  # Move bottom element to the top
+        max_heapify(A, 0)  # Fix the heap
+        return m
