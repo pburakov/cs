@@ -1,26 +1,25 @@
 """
 BST (Binary Search Tree) is a convenient Binary Tree data structure that allows
- fast value lookup. Basic operations on a BST take time proportional to a height
- of a tree rather that a number of elements. For a complete BST such operations
- would take O(log(n) worst-case time.
+ fast value lookup. Basic operations on a copmlete BST take time proportional to
+ a height of a tree rather that a number of elements.
 
 The values (or keys as named in CLRS) in a BST are stored in such a way as to
  satisfy the main BST property. For any parent node in a BST, its left child
  must hold a smaller value and its right child must hold a bigger value.
 
-Every node in a binary tree is a root to its own subtree. The BST property
+Every node in a binary tree is a root to its own subtree. Inductively, BST property
  guarantees that any value in a left subtree will be smaller than the root node
- and any value in a right subtree will be bigger. For example that directly follows
- from this property is that in-order printing of nodes in a BST will produce
- sorted output of it's values.
+ and any value in a right subtree will be bigger.
 
 Nodes in augmented BSTs can hold more properties and offer even more efficient
- operations and a handful of applications.
+ operations and a handful of applications. For example in-order printing
+ of nodes in a BST will produce sorted output of it's values.
 
-The correctness of following algorithms is guaranteed by the BST properties.
- Notice that the update algorithms such as `tree_insert()` and `tree_delete()`
- (algorithms that cause the dynamic set represented by BST to change) operate on
- an instance of BST, while query algorithms operate on arbitrary nodes.
+The correctness of these algorithms is guaranteed by the BST properties. Notice
+ that the update algorithms implemented here, such as `tree_insert()`, `transplant()`
+ and `tree_delete()` (algorithms that cause the dynamic set represented by BST
+ to change) operate on an instance of BST, while query algorithms operate on
+ arbitrary nodes.
 
 Most BST operations take O(h) time where `h` is a height of a tree. If tree is
  complete or perfect, `h` will be log(n) (see trees/balanced_tree.py). In worst
