@@ -11,9 +11,9 @@ Every node in a binary tree is a root to its own subtree. Inductively, BST prope
  guarantees that any value in a left subtree will be smaller than the root node
  and any value in a right subtree will be bigger.
 
-Nodes in augmented BSTs can hold more properties and offer even more efficient
- operations and a handful of applications. For example in-order printing
- of nodes in a BST will produce sorted output of it's values.
+In-order printing of nodes in a BST will produce sorted output of its values.
+ Nodes in augmented BSTs can hold more properties and offer more efficient
+ operations in a handful of applications.
 
 The correctness of these algorithms is guaranteed by the BST properties. Notice
  that the update algorithms implemented here, such as `tree_insert()`, `transplant()`
@@ -22,9 +22,9 @@ The correctness of these algorithms is guaranteed by the BST properties. Notice
  arbitrary nodes.
 
 Most BST operations take O(h) time where `h` is a height of a tree. If tree is
- complete or perfect, `h` will be log(n) (see trees/balanced_tree.py). In worst
+ perfectly complete, `h` will be log(n) (see trees/balanced_tree.py). In worst
  case with all the nodes on one side, BST will resemble a linked list and take
- O(n) as it's height will be proportional to number of elements.
+ O(n) as it's height will be proportional to the number of elements.
 """
 from trees.binary_tree import BinaryTree
 from trees.binary_tree import Node as BinaryTreeNode
