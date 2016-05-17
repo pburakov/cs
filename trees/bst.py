@@ -1,7 +1,7 @@
 """
 BST (Binary Search Tree) is a convenient Binary Tree data structure that allows
- fast value lookup. Basic operations on a copmlete BST take time proportional to
- a height of a tree rather that a number of elements.
+ fast value lookup. Basic operations on a complete BST take time proportional to
+ a height of a tree rather that the number of its elements.
 
 The values (or keys as named in CLRS) in a BST are stored in such a way as to
  satisfy the main BST property. For any parent node in a BST, its left child
