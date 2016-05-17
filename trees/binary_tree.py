@@ -1,18 +1,23 @@
 """
 Binary Tree is a linked data structure, where each node can point to two other
- nodes at most. These nodes are called left and right child nodes.
+ nodes at most. These nodes are called left and right child nodes. Nodes that don't
+ have any children pointers (replaced with `None`) are called leafs.
 
 Most well-known type of a binary tree is called BST (Binary Search Tree) (see
  trees/bst.py).
 
 Every node in a binary tree is a root to its own subtree. This property allows the
- implementation of easy to understand recursive traversal algorithms.
+ implementation of easy to understand recursive traversal algorithms that operate
+ within a subtree of any given node (not necessarily the root of the whole tree).
 
-Traversal algorithms are called in-order, pre-order and post-order, so named because
- of the sequence in which the algorithm "visit" a node (for example prints
- its value or possibly mutates traversed node) between the traversal of its left and
- right subtree. This operation recurs until all the nodes in a tree are eventually
+Traversal algorithms are called pre-order, post-order and in-order, so named because
+ of the sequence in which the algorithm "visits" a node between the traversal of its
+ left and right subtree without mutating it (for example printing its value on
+ the screen). This operation recurs until all the nodes in a sub-tree are eventually
  "visited".
+
+Operations that don't change the dynamic set of a tree are called querying.
+ Operations that cause change are called updating.
 
 Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
  in the tree (considering the function that is applied during traversal takes
@@ -20,10 +25,19 @@ Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
 """
 
 
+class BinaryTree:
+    """
+    Binary Tree set representation class that holds a pointer to its root.
+    """
+
+    def __init__(self):
+        self.root = None
+
+
 class Node:
     """
     Node of a binary tree. Holds a value of any type (called a key) and pointers
-     to left and right child.
+     to left and/or right child.
     """
 
     def __init__(self, key):
@@ -35,43 +49,43 @@ class Node:
         return str(self.key)
 
 
-def pre_order(root, f):
+def pre_order(node, f):
     """
     Pre-order tree traversal.
 
-    :param Node root: Starting node
+    :param Node node: Starting node
     :param callable f: Callback function
-    :return None: Will call function `f` on every node traversal
+    :return None: Will apply function `f` to a traversed node
     """
-    if root is not None:
-        f(root)
-        pre_order(root.left, f)
-        pre_order(root.right, f)
+    if node is not None:
+        f(node)
+        pre_order(node.left, f)
+        pre_order(node.right, f)
 
 
-def in_order(root, f):
+def in_order(node, f):
     """
     In-order tree traversal.
 
-    :param Node root: Starting node
+    :param Node node: Starting node
     :param callable f: Callback function
-    :return None: Will call function `f` on every node traversal
+    :return None: Will apply function `f` to a traversed node
     """
-    if root is not None:
-        in_order(root.left, f)
-        f(root)
-        in_order(root.right, f)
+    if node is not None:
+        in_order(node.left, f)
+        f(node)
+        in_order(node.right, f)
 
 
-def post_order(root, f):
+def post_order(node, f):
     """
     Post-order tree traversal.
 
-    :param Node root: Starting node
+    :param Node node: Starting node
     :param callable f: Callback function
-    :return None: Will call function `f` on every node traversal
+    :return None: Will apply function `f` to a traversed node
     """
-    if root is not None:
-        post_order(root.left, f)
-        post_order(root.right, f)
-        f(root)
+    if node is not None:
+        post_order(node.left, f)
+        post_order(node.right, f)
+        f(node)
