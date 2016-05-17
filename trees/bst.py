@@ -213,8 +213,8 @@ def transplant(T, u, v):
 def tree_delete(T, z):
     """
     Deletes a given node `z` from a BST `T` maintaining BST properties. This
-     algorithm organizes its cases according to tree possible locations of a
-     given node. These cases are described in detail in inline comments.
+     algorithm organizes its cases according to node location in a tree. These
+     cases are described in detail in inline comments.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param BST T: BST to update
