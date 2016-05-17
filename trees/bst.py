@@ -239,13 +239,13 @@ def tree_delete(T, z):
         y = tree_minimum(z.right)  # `z`'s successor
 
         # 3a. Successor `y` lies within `z`'s right subtree, but it's not `z`'s
-        # right child. `y` needs to be detached first before case 3b applies.
+        # right child. `y` needs to be detached first, then resume with the case 3b.
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
             y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
             y.right.parent = y         # `y` becomes a parent of `z`'s right subtree
         # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
-        transplant(T, z, y)
-        y.left = z.left    # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y  # `y` becomes a parent of `z`'s left subtree
+        transplant(T, z, y)  # `y` takes `z`'s place
+        y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
+        y.left.parent = y    # `y` becomes a parent of `z`'s left subtree
