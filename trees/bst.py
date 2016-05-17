@@ -125,7 +125,7 @@ def tree_successor(node):
         return tree_minimum(node.right)
     else:
         # -- or, if there is no right child, go up the tree from `node` until
-        # we encounter a node that is the left child of it's parent.
+        # we encounter a node that is the left child of its parent.
         p = node.parent
         while p is not None and node == p.right:
             node = p
@@ -166,7 +166,7 @@ def tree_insert(T, z):
     :param Node z: New node, holding unique value (key)
     :return None: BST `T` is updated
     """
-    p = None  # Pointer to a parent of a `z` node.
+    p = None    # Pointer to a parent of a `z` node.
     q = T.root  # Node to start iteration with
 
     # Locate parent `p` to "attach" a new node to, while satisfying BST properties
@@ -238,14 +238,14 @@ def tree_delete(T, z):
     else:
         y = tree_minimum(z.right)  # `z`'s successor
 
-        # 3a. `y` lies within `z`'s right subtree but it's not `z`'s right child.
-        # `y` needs to be detached first before case 3b applies.
+        # 3a. Successor `y` lies within `z`'s right subtree, but it's not `z`'s
+        # right child. `y` needs to be detached first before case 3b applies.
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
             y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
-            y.right.parent = y         # `y` becomes a parent of `z`'s right child
+            y.right.parent = y         # `y` becomes a parent of `z`'s right subtree
         # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
         transplant(T, z, y)
         y.left = z.left    # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y  # `y` becomes a parent of `z`'s left child
+        y.left.parent = y  # `y` becomes a parent of `z`'s left subtree
