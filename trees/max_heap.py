@@ -29,7 +29,7 @@ def max_heapify(A, i, n=None):
 
     Complexity: O(log(n)) due to recurrence, or O(h) where `h` is the height of the heap.
     :param list A: Array (list) to heapify
-    :param int i: Integer index of a root
+    :param int i: Integer index of an element to float down
     :param int n: Optional integer length of the subset of array `A` to heapify (used in heap
      sort). When defined, array won't be "heapified" below index of `n-1`.
     :return None: List `A` is mutated.
@@ -91,3 +91,41 @@ def heap_extract_max(A):
         A[0] = A.pop(i_n)  # Move bottom element to the top
         max_heapify(A, 0)  # Fix the heap
         return m
+
+
+def bubble_up(A, i):
+    """
+    Causes i-th element in a heap to bubble up to its appropriate position
+     if heap property is broken. This method assumes that heap property is
+     maintained through the rest of the heap.
+
+    This method is a "bottom-up" version of max-heapify.
+
+    Complexity: O(h), where `h` is the height of the heap or worst case
+     O(log(n)) when element is percolated from bottom to the root.
+    :param list A: Array (list) to heapify
+    :param int i: Integer index of an element to bubble up
+    :return None: List `A` is mutated.
+    """
+    p = (i - 1) // 2  # Parent's index (valid for both left and right child)
+
+    if p >= 0 and A[i] > A[p]:
+        A[p], A[i] = A[i], A[p]  # Exchange child with parent
+        bubble_up(A, p)          # Repeat one level up
+
+
+def max_heap_insert(A, z):
+    """
+    Inserts a new element into the heap and ensures heap properties are
+     maintained.
+
+    :param list A: Array (list) to heapify
+    :param Any z: New element
+    :return None: List `A` is mutated.
+    """
+    A.append(z)  # Add element to the bottom of a heap
+    n = len(A)   # Length of a heap
+    i_n = n - 1  # Index of last element
+
+    if n > 1:
+        bubble_up(A, i_n)
