@@ -22,9 +22,13 @@ The correctness of these algorithms is guaranteed by the BST properties. Notice
  arbitrary nodes.
 
 Most BST operations take O(h) time where `h` is a height of a tree. If tree is
- perfectly complete, `h` will be log(n) (see trees/balanced_tree.py). In worst
- case with all the nodes on one side, BST will resemble a linked list and take
- O(n) as it's height will be proportional to the number of elements.
+ perfectly complete and balanced, `h` will be log(n) (see trees/balanced_tree.py).
+ In worst case with all the nodes on one side, BST will resemble a linked list and
+ take O(n) as it's height will be proportional to the number of elements.
+
+There are many kinds of self-balanced BSTs, that maintain balanced tree structure.
+ Most commonly mentioned are AVL tree and red-black tree but there are many other
+ instances.
 """
 from trees.binary_tree import BinaryTree
 from trees.binary_tree import Node as BinaryTreeNode
@@ -166,7 +170,7 @@ def tree_insert(T, z):
     :param Node z: New node, holding unique value (key)
     :return None: BST `T` is updated
     """
-    p = None    # Pointer to a parent of a `z` node.
+    p = None  # Pointer to a parent of a `z` node.
     q = T.root  # Node to start iteration with
 
     # Locate parent `p` to "attach" a new node to, while satisfying BST properties
@@ -200,13 +204,13 @@ def transplant(T, u, v):
     :param Node v: Node to replace `u` with. Can be None
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    if u.parent is None:        # Node `u` is a root
+    if u.parent is None:  # Node `u` is a root
         T.root = v
-    elif u == u.parent.left:    # Node `u` is a left child of its parent
+    elif u == u.parent.left:  # Node `u` is a left child of its parent
         u.parent.left = v
-    else:                       # Node `u` is a right child of its parent
+    else:  # Node `u` is a right child of its parent
         u.parent.right = v
-    if v is not None:           # `u`'s parents become `v`'s parents
+    if v is not None:  # `u`'s parents become `v`'s parents
         v.parent = u.parent
 
 
@@ -242,10 +246,10 @@ def tree_delete(T, z):
         # right child. `y` needs to be detached first, then resume with the case 3b.
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
-            y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
-            y.right.parent = y         # `y` becomes a parent of `z`'s right subtree
+            y.right = z.right  # `z`'s right subtree becomes `y`'s right subtree
+            y.right.parent = y  # `y` becomes a parent of `z`'s right subtree
         # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
         transplant(T, z, y)  # `y` takes `z`'s place
-        y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y    # `y` becomes a parent of `z`'s left subtree
+        y.left = z.left  # `z`'s left subtree becomes `y`'s left subtree
+        y.left.parent = y  # `y` becomes a parent of `z`'s left subtree
