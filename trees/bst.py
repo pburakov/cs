@@ -52,109 +52,109 @@ class Node(BinaryTreeNode):
         self.parent = None
 
 
-def tree_search(node, k):
+def tree_search(x, k):
     """
     Recursive search query algorithm for finding a key in BST.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the search with
+    :param Node x: Node to start the search with
     :param Any k: A key (value) to search
     :return: Any: A found node or None if key `k` was not found in the tree
     """
-    if node is None or node.key == k:
-        return node
-    elif k < node.key:
-        return tree_search(node.left, k)
-    elif k > node.key:
-        return tree_search(node.right, k)
+    if x is None or x.key == k:
+        return x
+    elif k < x.key:
+        return tree_search(x.left, k)
+    elif k > x.key:
+        return tree_search(x.right, k)
 
 
-def iterative_tree_search(node, k):
+def iterative_tree_search(x, k):
     """
     Iterative version of BST search algorithm. It is more efficient on most
      computers due to reduced use of a memory stack.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the search with
+    :param Node x: Node to start the search with
     :param Any k: A key (value) to search
     :return: Any: A found node or None if key `k` was not found in the tree
     """
-    while k is not None and k != node.key:
-        if k < node.key:
-            node = node.left
-        elif k > node.key:
-            node = node.right
-    return node
+    while k is not None and k != x.key:
+        if k < x.key:
+            x = x.left
+        elif k > x.key:
+            x = x.right
+    return x
 
 
-def tree_minimum(node):
+def tree_minimum(x):
     """
     Returns a pointer to a node holding a minimum value (key) which is a
      leftmost node as directed by BST property.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the lookup
+    :param Node x: Node to start the lookup
     :return: Node: Node holding minimum value
     """
-    while node.left is not None:
-        node = node.left
-    return node
+    while x.left is not None:
+        x = x.left
+    return x
 
 
-def tree_maximum(node):
+def tree_maximum(x):
     """
     Returns a pointer to a node holding a maximum value (key) which is a
      rightmost node as directed by BST property.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the lookup
+    :param Node x: Node to start the lookup
     :return: Node: Node holding maximum value
     """
-    while node.right is not None:
-        node = node.right
-    return node
+    while x.right is not None:
+        x = x.right
+    return x
 
 
-def tree_successor(node):
+def tree_successor(x):
     """
-    Returns element successor, or next node, determined by a sorted in-order
+    Returns element `x`'s successor, or next node, determined by a sorted in-order
      tree traversal.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the lookup
+    :param Node x: Node to start the lookup
     :return Any: Will return successor node if it exists, None otherwise
     """
-    if node.right is not None:
+    if x.right is not None:
         # Return minimum element (leftmost node) in a right subtree --
-        return tree_minimum(node.right)
+        return tree_minimum(x.right)
     else:
-        # -- or, if there is no right child, go up the tree from `node` until
+        # -- or, if there is no right child, go up the tree from `x` until
         # we encounter a node that is the left child of its parent.
-        p = node.parent
-        while p is not None and node == p.right:
-            node = p
+        p = x.parent
+        while p is not None and x == p.right:
+            x = p
             p = p.parent
         return p
 
 
-def tree_predecessor(node):
+def tree_predecessor(x):
     """
-    Returns element predecessor, or previous node, determined by a sorted
+    Returns element `x`'s predecessor, or previous node, determined by a sorted
      in-order tree traversal.
 
     Complexity: O(h) where `h` is the height of a tree.
-    :param Node node: Node to start the lookup
+    :param Node x: Node to start the lookup
     :return Any: Will return predecessor node if it exists, None otherwise
     """
-    if node.left is not None:
+    if x.left is not None:
         # Return maximum element (rightmost node) in a left subtree --
-        return tree_maximum(node.left)
+        return tree_maximum(x.left)
     else:
-        # -- or, if there is no left child, go up the tree from `node` until
+        # -- or, if there is no left child, go up the tree from `x` until
         # we encounter a node that is the right child of its parent
-        p = node.parent
-        while p is not None and node == p.left:
-            node = p
+        p = x.parent
+        while p is not None and x == p.left:
+            x = p
             p = p.parent
         return p
 
@@ -204,13 +204,13 @@ def transplant(T, u, v):
     :param Node v: Node to replace `u` with. Can be None
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    if u.parent is None:  # Node `u` is a root
+    if u.parent is None:      # Node `u` is a root
         T.root = v
     elif u == u.parent.left:  # Node `u` is a left child of its parent
         u.parent.left = v
-    else:  # Node `u` is a right child of its parent
+    else:                     # Node `u` is a right child of its parent
         u.parent.right = v
-    if v is not None:  # `u`'s parents become `v`'s parents
+    if v is not None:         # `u`'s parents become `v`'s parents
         v.parent = u.parent
 
 
@@ -246,10 +246,10 @@ def tree_delete(T, z):
         # right child. `y` needs to be detached first, then resume with the case 3b.
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
-            y.right = z.right  # `z`'s right subtree becomes `y`'s right subtree
-            y.right.parent = y  # `y` becomes a parent of `z`'s right subtree
+            y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
+            y.right.parent = y         # `y` becomes a parent of `z`'s right subtree
         # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
         transplant(T, z, y)  # `y` takes `z`'s place
-        y.left = z.left  # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y  # `y` becomes a parent of `z`'s left subtree
+        y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
+        y.left.parent = y    # `y` becomes a parent of `z`'s left subtree

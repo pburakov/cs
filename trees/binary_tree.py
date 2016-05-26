@@ -49,43 +49,43 @@ class Node:
         return str(self.key)
 
 
-def pre_order(node, f):
+def pre_order(x, f):
     """
     Pre-order tree traversal.
 
-    :param Node node: Starting node
+    :param Node x: Starting node
     :param callable f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
-    if node is not None:
-        f(node)
-        pre_order(node.left, f)
-        pre_order(node.right, f)
+    if x is not None:
+        f(x)
+        pre_order(x.left, f)
+        pre_order(x.right, f)
 
 
-def in_order(node, f):
+def in_order(x, f):
     """
     In-order tree traversal.
 
-    :param Node node: Starting node
+    :param Node x: Starting node
     :param callable f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
-    if node is not None:
-        in_order(node.left, f)
-        f(node)
-        in_order(node.right, f)
+    if x is not None:
+        in_order(x.left, f)
+        f(x)
+        in_order(x.right, f)
 
 
-def post_order(node, f):
+def post_order(x, f):
     """
     Post-order tree traversal.
 
-    :param Node node: Starting node
+    :param Node x: Starting node
     :param callable f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
-    if node is not None:
-        post_order(node.left, f)
-        post_order(node.right, f)
-        f(node)
+    if x is not None:
+        post_order(x.left, f)
+        post_order(x.right, f)
+        f(x)
