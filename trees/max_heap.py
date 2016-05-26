@@ -20,9 +20,11 @@ Heap structure is useful when a fast O(n) access to the top element is required,
 
 def max_heapify(A, i, n=None):
     """
-    Rearranges array `A` "below" index `i` to maintain max-heap properties. It assumes
-     that binary trees rooted at indexes `l` and `r` (children of `A[i]`) are max-
-     heaps, but that A[i] might violate max-heap property of being larger element.
+    Rearranges array `A` "below" index `i` to maintain max-heap properties.
+
+    It implicitly assumes that binary trees rooted at indexes `l` and `r` (children of
+     `A[i]`) are max-heaps, but that A[i] might violate max-heap property of being
+     larger element.
 
     This algorithm lets the value at `A[i]` "float-down" in the max-heap so that the
      subtree rooted at index `i` obeys the max-heap property.
@@ -30,8 +32,8 @@ def max_heapify(A, i, n=None):
     Complexity: O(log(n)) due to recurrence, or O(h) where `h` is the height of the heap.
     :param list A: Array (list) to heapify
     :param int i: Integer index of an element to float down
-    :param int n: Optional integer length of the subset of array `A` to heapify (used in heap
-     sort). When defined, array won't be "heapified" below index of `n-1`.
+    :param int n: Optional integer length of the subset of array `A` to heapify (used
+     in heap sort). When defined, array won't be "heapified" below index of `n-1`.
     :return None: List `A` is mutated.
     """
     if n is None:
@@ -53,9 +55,10 @@ def max_heapify(A, i, n=None):
 
 def build_max_heap(A):
     """
-    Rearranges list `A` into a representation of a max-heap, in a "bottom-up"
-     manner, starting at second to last level of nodes and ensuring that the heap
-     properties are maintained.
+    Rearranges list `A` into a representation of a max-heap.
+
+    Heap is built in a "bottom-up" manner, starting at second to last level of nodes
+     and ensuring that the heap properties are maintained.
 
     Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound,
      since `max_heapify()` is bounded by the constant factor of height `h` divided
@@ -95,11 +98,10 @@ def heap_extract_max(A):
 
 def bubble_up(A, i):
     """
-    Causes i-th element in a heap to bubble up to its appropriate position
-     if heap property is broken. This method assumes that heap property is
-     maintained through the rest of the heap.
+    Causes i-th element in a heap to "bubble up" to its appropriate position.
 
-    This method is a "bottom-up" version of max-heapify.
+    It is implicitly assumed that heap properties are not violated through the rest of
+     the heap. This method is a "bottom-up" version of max-heapify.
 
     Complexity: O(h), where `h` is the height of the heap or worst case
      O(log(n)) when element is percolated from bottom to the root.
@@ -116,8 +118,10 @@ def bubble_up(A, i):
 
 def max_heap_insert(A, z):
     """
-    Inserts a new element into the heap and ensures heap properties are
-     maintained.
+    Inserts a new element into the heap.
+
+    Newly added element is forced to bubble-up to it's appropriate position to ensure
+     that heap properties are maintained.
 
     :param list A: Array (list) to heapify
     :param Any z: New element
