@@ -194,9 +194,9 @@ def tree_insert(T, z):
 def transplant(T, u, v):
     """
     Replaces one subtree as a child of its parent with another subtree.
-     This utility method helps moving subtrees around and does not maintain
-     BST properties, and does not update `v` child sub-trees, although it swaps
-     relationship with `u`'s parent node (if not empty).
+     This simple utility method only helps moving subtrees around. It does not
+     maintain BST properties, and does not update `v` child sub-trees. It only
+     maintains appropriate relations for parents of replaced nodes (if exists).
 
     Complexity: O(1).
     :param BST T: BST to update
@@ -247,9 +247,77 @@ def tree_delete(T, z):
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
             y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
-            y.right.parent = y         # `y` becomes a parent of `z`'s right subtree
+            y.right.parent = y         # ...and `y` becomes a parent of `z`'s right subtree
+
         # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
         transplant(T, z, y)  # `y` takes `z`'s place
         y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y    # `y` becomes a parent of `z`'s left subtree
+        y.left.parent = y    # ...and `y` becomes a parent of `z`'s left subtree
+
+
+def left_rotate(T, x):
+    """
+    Left rotation of a tree around pivot node `x`.
+
+    Rotation algorithm switches node pointers around so that the tree is rotated
+     counter-clockwise around `x`. Rotation is performed locally, assuming that `x`
+     has a right child.
+
+    Order of operations is important so that no pointers are lost in the process. The
+     method is accompanied by step-by-step inline comments to help remember these.
+     In-order traversal of a tree should remain the same after rotation, thus
+     proving that rotation did not damage BST properties.
+
+    Complexity: O(1), only pointers are changed, other attributes of a node remain
+     the same.
+    :param BST T: BST to update
+    :param Node x: Node to pivot the tree around
+    :return None: Dynamic set of BST `T` is mutated in the process
+    """
+    if x.right is None:
+        raise ValueError("Node has no right child")
+
+    y = x.right               # let `y` be `x`'s right subtree, it will change places with `x`
+
+    x.right = y.left          # `y`'s left subtree becomes `x`'s right subtree
+    if y.left is not None:
+        y.left.parent = x     # and `x` becomes a parent of `y`'s left subtree (if it exists)
+    y.parent = x.parent       # `x`'s old parent becomes `y`s parent
+    if x.parent is None:      # `y` will become the root if `x` had no parent
+        T.root = y
+    elif x == x.parent.left:  # `y` will be adopted by `x`'s parents depending on
+        x.parent.left = y
+    else:                     # ...which child was `x` (left or right)
+        x.parent.right = y
+    y.left = x                # `x` becomes `y`'s child
+    x.parent = y              # ...and `y` becomes its parent
+
+
+def right_rotate(T, x):
+    """
+    Right rotation of a tree around pivot node `x`.
+
+    The code is symmetrical to `left_rotate()`.
+
+    Complexity: O(1), only pointers are changed, other attributes of a node remain
+     the same.
+    :param BST T: BST to update
+    :param Node x: Node to pivot the tree around
+    :return None: Dynamic set of BST `T` is mutated in the process
+    """
+    if x.left is None:
+        raise ValueError("Node has no left child")
+    y = x.left  # Left child of `x`
+    x.left = y.right
+    if y.right is not None:
+        y.right.parent = x
+    y.parent = x.parent
+    if x.parent is None:
+        T.root = y
+    elif x == x.parent.right:
+        x.parent.right = y
+    else:
+        x.parent.left = y
+    y.right = x
+    x.parent = y
