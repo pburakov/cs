@@ -26,11 +26,10 @@ Complexity of all traversal algorithms is O(n), where `n` is the number of nodes
 
 
 class BinaryTree:
-    """
-    Binary Tree set representation class that holds a pointer to its root.
-    """
-
     def __init__(self):
+        """
+        Binary Tree set representation class that holds a pointer to its root.
+        """
         self.root = None
 
 

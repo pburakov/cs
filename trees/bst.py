@@ -36,18 +36,20 @@ from trees.binary_tree import Node as BinaryTreeNode
 
 class BST(BinaryTree):
     """
-    Represented just as a regular Binary Tree, holds a pointer to the root node.
+    Similar to a regular BinaryTree, holds a pointer to the root node.
     """
     pass
 
 
 class Node(BinaryTreeNode):
-    """
-    Slightly augmented variant of a Binary Tree Node, that additionally holds a
-     reference to its parent.
-    """
-
     def __init__(self, key):
+        """
+        Augmented variant of a BinaryTreeNode.
+
+        Additionally holds a reference to its parent.
+
+        :param Any key: Node's value (key)
+        """
         super().__init__(key)
         self.parent = None
 
@@ -71,8 +73,10 @@ def tree_search(x, k):
 
 def iterative_tree_search(x, k):
     """
-    Iterative version of BST search algorithm. It is more efficient on most
-     computers due to reduced use of a memory stack.
+    Iterative version of BST search algorithm.
+
+    Iterative search is more efficient on most computers due to reduced use of
+     a memory stack.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the search with
@@ -89,8 +93,9 @@ def iterative_tree_search(x, k):
 
 def tree_minimum(x):
     """
-    Returns a pointer to a node holding a minimum value (key) which is a
-     leftmost node as directed by BST property.
+    Returns a pointer to a node holding a minimum value (key).
+
+    According to BST properties it is the leftmost node in a tree.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the lookup
@@ -103,8 +108,9 @@ def tree_minimum(x):
 
 def tree_maximum(x):
     """
-    Returns a pointer to a node holding a maximum value (key) which is a
-     rightmost node as directed by BST property.
+    Returns a pointer to a node holding a maximum value (key).
+
+    According to BST properties it is the rightmost node in a tree.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the lookup
@@ -117,8 +123,9 @@ def tree_maximum(x):
 
 def tree_successor(x):
     """
-    Returns element `x`'s successor, or next node, determined by a sorted in-order
-     tree traversal.
+    Returns successor of a node `x`.
+
+    Successor is a next node, determined by a sorted in-order tree traversal.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the lookup
@@ -139,8 +146,9 @@ def tree_successor(x):
 
 def tree_predecessor(x):
     """
-    Returns element `x`'s predecessor, or previous node, determined by a sorted
-     in-order tree traversal.
+    Returns predecessor of a node `x`.
+
+    Predecessor is a previous node, determined by a sorted in-order tree traversal.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the lookup
@@ -161,9 +169,11 @@ def tree_predecessor(x):
 
 def tree_insert(T, z):
     """
-    Inserts a new node into an appropriate position in the BST `T` in such a way,
-     that the properties of BST continue to hold. This algorithm is similar to
-     `tree_search()` and can also be implemented recursively.
+    Inserts a new node into an appropriate position in the BST `T`.
+
+    The node is inserted in such a way, that the properties of BST continue to
+     hold. This algorithm is similar to `tree_search()` and can also be
+     implemented recursively.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param BST T: BST to update
@@ -194,7 +204,8 @@ def tree_insert(T, z):
 def transplant(T, u, v):
     """
     Replaces one subtree as a child of its parent with another subtree.
-     This simple utility method only helps moving subtrees around. It does not
+
+    This simple utility method only helps moving subtrees around. It does not
      maintain BST properties, and does not update `v` child sub-trees. It only
      maintains appropriate relations for parents of replaced nodes (if exists).
 
@@ -216,9 +227,10 @@ def transplant(T, u, v):
 
 def tree_delete(T, z):
     """
-    Deletes a given node `z` from a BST `T` maintaining BST properties. This
-     algorithm organizes its cases according to node location in a tree. These
-     cases are described in detail in inline comments.
+    Deletes a given node `z` from a BST `T` maintaining BST properties.
+
+    This algorithm organizes its cases according to node location in a tree.
+     These cases are described in detail in inline comments.
 
     Complexity: O(h) where `h` is the height of a tree.
     :param BST T: BST to update
@@ -308,7 +320,7 @@ def right_rotate(T, x):
     """
     if x.left is None:
         raise ValueError("Node has no left child")
-    y = x.left  # Left child of `x`
+    y = x.left
     x.left = y.right
     if y.right is not None:
         y.right.parent = x
