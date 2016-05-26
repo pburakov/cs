@@ -22,7 +22,7 @@ class AVLTree(BST):
 class Node(BSTNode):
     def __init__(self, key):
         """
-        Augmented BST node with additional height property
+        Augmented BST node with additional height attribute.
 
         :param Any key: Node's value (key)
         """
@@ -32,18 +32,43 @@ class Node(BSTNode):
 
 def height(x):
     """
-    :param Node x:
-    :return int:
+    Returns height attribute of a node `x`.
+
+    Null nodes (children of leaf nodes) have a height of -1 to make a height and
+     balance factor formulae work. This algorithm assumes that height attributes of
+     children nodes are correct.
+
+    Complexity: O(1)
+    :param Node x: Subject node
+    :return int: Height of node `x`
     """
     if x is None:
         return -1
     else:
-        return max(height(x.left), height(x.right)) + 1
+        return x.height
 
 
-def balance(x):
+def update_height(x):
     """
-    :param Node x:
-    :return int:
+    Calculates and writes height attribute into node `x`.
+
+    This algorithm assumes that height attributes of children nodes are correct.
+
+    Complexity: O(1).
+    :param Node x: Subject node
+    :return None: Node `x` is mutated in the process
+    """
+    x.height = max(height(x.left), height(x.right)) + 1
+
+
+def balance_factor(x):
+    """
+    Returns balance factor of node `x`.
+
+    This algorithm assumes that height attributes of children nodes are correct.
+
+    Complexity: O(1).
+    :param Node x: Subject node
+    :return int: Balance factor of node `x`
     """
     return height(x.left) - height(x.right)
