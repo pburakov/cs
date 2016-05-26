@@ -44,9 +44,7 @@ class BST(BinaryTree):
 class Node(BinaryTreeNode):
     def __init__(self, key):
         """
-        Augmented variant of a BinaryTreeNode.
-
-        Additionally holds a reference to its parent.
+        Augmented variant of a BinaryTreeNode with a pointer to its parent.
 
         :param Any key: Node's value (key)
         """

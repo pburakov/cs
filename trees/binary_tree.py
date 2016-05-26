@@ -34,12 +34,14 @@ class BinaryTree:
 
 
 class Node:
-    """
-    Node of a binary tree. Holds a value of any type (called a key) and pointers
-     to left and/or right child.
-    """
-
     def __init__(self, key):
+        """
+        Node of a binary tree.
+
+        Holds a value of any type (called a key) and pointers to left and/or right child.
+
+        :param Any key: Node's value (key)
+        """
         self.key = key
         self.left = None
         self.right = None
