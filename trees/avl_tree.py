@@ -8,6 +8,7 @@ Besides regular BST properties, AVL tree keeps the heights of the two child subt
  rotations on every update of a dynamic set. Balanced tree structure guarantees
  node lookup, insertion and deletion in O(log(n)) time.
 """
+from trees.bst import tree_insert
 from trees.bst import BST
 from trees.bst import Node as BSTNode
 
@@ -72,3 +73,23 @@ def balance_factor(x):
     :return int: Balance factor of node `x`
     """
     return height(x.left) - height(x.right)
+
+
+def avl_rebalance(T, x):
+    """
+    :param AVLTree T:
+    :param Node x:
+    :return:
+    """
+    while x is not None:
+        pass
+
+
+def avl_insert(T, z):
+    """
+    :param AVLTree T:
+    :param Node z:
+    :return None:
+    """
+    tree_insert(T, z)
+    avl_rebalance(T, z)
