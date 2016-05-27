@@ -88,10 +88,10 @@ def avl_rebalance(T, x):
     """
     Recursive AVL rebalancing.
 
-    This algorithm assumes that AVL properties are maintained for nodes below `x`.
-     Once node `x` is fixed, rebalancing will continue for `x`'s parents until the
-     root of a subtree is reached and AVL properties are maintained for an entire
-     subtree.
+    This algorithm implicitly assumes that AVL properties are maintained for nodes
+     below `x`. Once node `x` is fixed, rebalancing will continue for `x`'s parents
+     until the root of a subtree is reached and AVL properties are maintained for
+     an entire subtree.
 
     Rebalancing has several edge cases depending on a balance factor of a node.
      Inline comments are added to the code, describing those cases. Height attributes
