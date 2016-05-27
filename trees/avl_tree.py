@@ -104,7 +104,7 @@ def avl_rebalance(T, x):
     """
     if x is not None:
         update_height(x)
-        f = balance_factor(x)  # Balance factor of node `x`
+        f = balance_factor(x)
 
         # 1. `x`'s right subtree is "heavier"
         if f < -1:
@@ -117,7 +117,8 @@ def avl_rebalance(T, x):
                 update_height(a)
                 left_rotate(T, x)
 
-            # 1b. Edges of `x`, `a` and `a`'s heaviest child form a straight line
+            # 1b. Edges of `x`, `a` and `a`'s heaviest child form a straight line,
+            # single rotation is required.
             else:
                 left_rotate(T, x)
             update_height(x)  # In either cases 1a and 1b `x`'s height is updated
@@ -132,7 +133,7 @@ def avl_rebalance(T, x):
                 update_height(b)
                 right_rotate(T, x)
 
-            # 2b. Edges of `x`, `b` and `b`'s heaviest child form a straight line
+            # 2b. Symmetric case for 1b.
             else:
                 right_rotate(T, x)
             update_height(x)
