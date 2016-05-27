@@ -167,13 +167,13 @@ def tree_predecessor(x):
 
 def tree_insert(T, z):
     """
-    Inserts a new node into an appropriate position in the BST `T`.
+    Inserts a new node into BST.
 
     The node is inserted in such a way, that the properties of BST continue to
      hold. This algorithm is similar to `tree_search()` and can also be
      implemented recursively.
 
-    Complexity: O(h) where `h` is the height of a tree.
+    Complexity: O(h) where `h` is the height of a tree, worst case log(n).
     :param BST T: BST to update
     :param Node z: New node, holding unique value (key)
     :return None: BST `T` is updated
@@ -225,12 +225,12 @@ def transplant(T, u, v):
 
 def tree_delete(T, z):
     """
-    Deletes a given node `z` from a BST `T` maintaining BST properties.
+    Removes a node from a BST maintaining BST properties.
 
     This algorithm organizes its cases according to node location in a tree.
      These cases are described in detail in inline comments.
 
-    Complexity: O(h) where `h` is the height of a tree.
+    Complexity: O(h) where `h` is the height of a tree, worst case log(n).
     :param BST T: BST to update
     :param Node z: Node to be deleted
     :return None: Dynamic set of BST `T` is mutated in the process
