@@ -1,5 +1,7 @@
 def insertion_sort(A):
     """
+    Sort an array of objects in place using insertion sorting algorithm.
+
     Insertion Sort traverses the list starting with a second element and assumes
      that items to the left of the pointer are already sorted. It "picks" the next
      element to the right of the pointer and puts it in its position in the sorted

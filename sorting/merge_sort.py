@@ -1,5 +1,7 @@
 def merge_sort(A):
     """
+    Sorts an array of objects using merge-sort algorithm and returns sorted array.
+
     Merge sort is a recursive sorting algorithm that first recursively splits an array
      in half until it reaches two arrays containing a single element (that are already
      sorted by definition). Halves are sorted and merged until an entire array is
@@ -35,7 +37,9 @@ def merge_sort(A):
 
 def merge(L, R):
     """
-    Merges two sorted arrays `L` and `R` into a single array `P` and returns it.
+    Merges two sorted arrays into a single array and returns it.
+
+    Complexity: O(k), where `k` is the sum of the length of two arrays.
     :param list L: Sorted array
     :param list R: Sorted array
     :return list: Merged product of arrays `L` and `R`

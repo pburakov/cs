@@ -4,12 +4,15 @@ from trees.max_heap import max_heapify
 
 def heap_sort(A):
     """
+    Sort an array of objects in place using heap sorting algorithm.
+
     Heap Sort takes an advantage of one of the main properties of the max-heap,
      that is that the max element is always at the top of the heap. For more
      information about the max-heap data structure, see trees/max_heap.
 
     Heap sort is performed in-place, and `max_heapify()` is applied to a reduced
-     subset of an array `A` after each iteration.
+     subset of an array `A` after each iteration. Heap sort is one of the most optimal
+     sorting algorithms using comparison model.
 
     Complexity: O(n log(n)). Heap Sort is not stable, its runtime depends on the
      implementation of the heap. Heap is typically build in `n` time, heapify function
