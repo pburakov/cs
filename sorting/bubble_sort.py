@@ -14,7 +14,7 @@ def bubble_sort(A):
     :param list A: Array (list) to sort
     :return None: List `A` is mutated.
     """
-    n = len(A)   # Size of the array
+    n = len(A)
     i_n = n - 1  # Index of last element
 
     for k in range(0, i_n):
@@ -35,7 +35,7 @@ def bubble_sort_orig(A):
     :param list A: Array (list) to sort
     :return None: List `A` is mutated.
     """
-    n = len(A)   # Size of the array
+    n = len(A)
     i_n = n - 1  # Index of last element
 
     for k in range(0, i_n):

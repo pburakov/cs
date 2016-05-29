@@ -20,7 +20,7 @@ def heap_sort(A):
     :param list A: Array (list) to sort
     :return None: List `A` is mutated.
     """
-    n = len(A)   # Length of an array
+    n = len(A)
     i_n = n - 1  # Index of a last element
 
     build_max_heap(A)
