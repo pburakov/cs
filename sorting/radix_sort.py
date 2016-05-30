@@ -17,7 +17,7 @@ def radix_sort(A, d, b=10):
     :param list A: Array to sort
     :param int d: Maximum number of digits for elements in array. Using out-of-bounds
      `d` will result in unnecessary iterations of sorting subroutine.
-    :param b: Base of integer elements in the array (default base is 10)
+    :param int b: Base of integer elements in the array (default base is 10)
     :return list: Sorted product of array `A`
     """
     P = A  # Product of sorting iterations
@@ -57,6 +57,7 @@ def digit_counting_sort(A, i, b=10):
     # `R[d]` now contains the number of elements having `i`-th digit that is less
     # than or equal to `d`.
 
+    # Iterating backwards to maintain stability, same as regular counting sort
     for j in range(i_n, -1, -1):
         e = A[j]                # Element in input array
         d = get_digit(e, i, b)  # `i`-th digit of an element `e`
@@ -77,6 +78,6 @@ def get_digit(n, i, b=10):
     :param int i: Digit to return (reversed). `i=0` being the least significant digit.
      Using out-of-bounds `i` will produce trailing 0.
     :param int b: Base of `n` (default base is 10)
-    :return:
+    :return int: `i`-th digit of an input integer or trailing 0
     """
     return (n // b ** i) % b
