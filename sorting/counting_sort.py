@@ -28,16 +28,17 @@ def counting_sort(A, k):
     for j in range(0, n):
         C[A[j]] += 1
     # `C[i]` now contains number (count) of elements equal to `i`
-    s = n  # Decreasing running sum of total counted elements
+
+    s = n  # Running sum of total counted elements, going backwards
     for i in range(k, -1, -1):
         C[i] = s - C[i]
         s = C[i]
-    # `C[i]` now contains number of elements less than or equal to `i` which now
-    # serves as a map for final location `j` for each element `e` from input array.
+    # `C[i]` now contains number of elements less than or equal to `i`. Array `C` will
+    # serve as a map for a final location of each element picked from input array.
     for e in A:
         j = C[e]  # Location index of the element `e` in output array
         P[j] = e
         # Counter is updated in order to keep next element of the same value
-        # from overwriting other one.
+        # from overwriting previous one.
         C[e] += 1
     return P
