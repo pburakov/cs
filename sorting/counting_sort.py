@@ -1,6 +1,6 @@
 def counting_sort(A, k):
     """
-    Sorts an array of integers using counting sort algorithm and returns sorted array.
+    Sorts an array of integer elements using counting sort and returns sorted array.
 
     Counting sort assumes that each element in the array is an integer in the range
      `[0..k]`. The algorithm determines, for each element `x`, the number of elements
@@ -30,17 +30,17 @@ def counting_sort(A, k):
     for x in A:
         C[x] += 1
     # `C[x]` now contains number (count) of elements equal to `x`
-    for i in range(1, k + 1):
-        C[i] += C[i - 1]
-    # `C[i]` now contains number of elements less than or equal to `i`.
+    for x in range(1, k + 1):
+        C[x] += C[x - 1]
+    # `C[x]` now contains number of elements less than or equal to `x`.
 
     # Array `C` serves as an initial index map for the final location of each element
     # in the sorted output. We need to go backwards to preserve stability of the sort.
     for j in range(i_n, -1, -1):
-        x = A[j]
-        i = C[x] - 1  # Location index of the element `x` in output array
-        P[i] = x
+        e = A[j]
+        i = C[e] - 1  # Location index of the element `e` in the output array
+        P[i] = e
         # Counter is updated in order to keep next element of the same value from
         # overwriting previous one.
-        C[x] -= 1
+        C[e] -= 1
     return P
