@@ -26,8 +26,8 @@ def counting_sort(A, k):
     P = [None] * n     # Allocated memory for sorted output
     C = [0] * (k + 1)  # Working storage (auxiliary array for counting)
 
-    for j in range(0, n):
-        C[A[j]] += 1
+    for x in A:
+        C[x] += 1
     # `C[i]` now contains number (count) of elements equal to `i`
 
     s = n  # Running sum of total counted elements, going backwards
@@ -36,10 +36,10 @@ def counting_sort(A, k):
         s = C[i]
     # `C[i]` now contains number of elements less than or equal to `i`. Array `C` will
     # serve as a map for a final location of each element picked from input array.
-    for e in A:
-        j = C[e]  # Location index of the element `e` in output array
-        P[j] = e
+    for x in A:
+        j = C[x]  # Location index of the element `x` in output array
+        P[j] = x
         # Counter is updated in order to keep next element of the same value from
         # overwriting previous one.
-        C[e] += 1
+        C[x] += 1
     return P
