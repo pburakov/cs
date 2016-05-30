@@ -44,9 +44,9 @@ def digit_counting_sort(A, i, b=10):
     :return list: Sorted product of array `A`
     """
     n = len(A)
-    i_n = n - 1
-    P = [None] * n
-    R = [0] * b  # Working storage for all possible numbers in radix representation
+    i_n = n - 1     # Index of a last element in the input array
+    P = [None] * n  # Allocated memory for sorted output
+    R = [0] * b     # Working storage for all possible numbers in radix representation
 
     for e in A:
         d = get_digit(e, i, b)  # `i`-th digit of an element `e`
