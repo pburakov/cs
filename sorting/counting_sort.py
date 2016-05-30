@@ -23,23 +23,25 @@ def counting_sort(A, k):
     :return list: Sorted product of array `A`
     """
     n = len(A)
+    i_n = n - 1        # Index of last element
     P = [None] * n     # Allocated memory for sorted output
     C = [0] * (k + 1)  # Working storage (auxiliary array for counting)
 
     for x in A:
         C[x] += 1
     # `C[x]` now contains number (count) of elements equal to `x`
+    for i in range(1, k + 1):
+        C[i] += C[i - 1]
+    # `C[i]` now contains number of elements less than or equal to `i`.
 
-    s = n  # Running sum of total counted elements, going backwards
-    for x in range(k, -1, -1):
-        C[x] = s - C[x]
-        s = C[x]
-    # `C[x]` now contains number of elements less than or equal to `x`. Array `C` will
-    # serve as a map for a final location of each element picked from input array.
-    for x in A:
-        i = C[x]  # Location index of the element `x` in output array
+    # Array `C` serves as an initial index map for a final location of each element
+    # in a sorted output. We need to go backwards to preserve the stability of the
+    # algorithm.
+    for j in range(i_n, -1, -1):
+        x = A[j]
+        i = C[x] - 1  # Location index of the element `x` in output array
         P[i] = x
         # Counter is updated in order to keep next element of the same value from
         # overwriting previous one.
-        C[x] += 1
+        C[x] -= 1
     return P
