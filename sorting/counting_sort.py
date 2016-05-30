@@ -35,7 +35,7 @@ def counting_sort(A, k):
     # `C[i]` now contains number of elements less than or equal to `i` which now
     # serves as a map for final location `j` for each element `e` from input array.
     for e in A:
-        j = C[e]
+        j = C[e]  # Element's location index in output array
         P[j] = e
         # Counter is updated in order to keep next element of the same value
         # from overwriting other one.
