@@ -1,6 +1,6 @@
 def bubble_sort(A):
     """
-    Sort an array of objects in place using optimized bubble sorting algorithm.
+    Sort an array of objects in place using bubble sorting algorithm.
 
     Bubble Sort repeatedly swaps neighbour elements that are out of order. Elements
      "bubble" up or down (depending on sorting direction) in the list.
@@ -21,24 +21,3 @@ def bubble_sort(A):
         for i in range(i_n, k, -1):
             if A[i] < A[i - 1]:  # Flip this comparison for reversed order
                 A[i], A[i - 1] = A[i - 1], A[i]
-
-
-def bubble_sort_orig(A):
-    """
-    Sort an array of objects in place using suboptimal bubble-sort algorithm.
-
-    Original (unoptimized) version of Bubble Sort that takes quadratic time in all
-     cases as it will compare every element n^2 times, even if the list is already
-     sorted.
-
-    Complexity: O(n^2) in all cases.
-    :param list A: Array (list) to sort
-    :return None: List `A` is mutated.
-    """
-    n = len(A)
-    i_n = n - 1  # Index of last element
-
-    for k in range(0, i_n):
-        for i in range(0, i_n):
-            if A[i] > A[i + 1]:  # Flip this comparison for reversed order
-                A[i], A[i + 1] = A[i + 1], A[i]
