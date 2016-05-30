@@ -60,7 +60,9 @@ def digit_counting_sort(A, i, b=10):
     for j in range(i_n, -1, -1):
         e = A[j]                # Element in input array
         d = get_digit(e, i, b)  # `i`-th digit of an element `e`
-        k = R[d] - 1            # Location index of the element `e` in output array
+        # Let `k` be the location index of element `e` in the output array sorted on `i`-th
+        # digit `d`. Deducting `1` since indexes are zero-based, but the counts are not.
+        k = R[d] - 1
         P[k] = e
         # Counter is updated in order to keep the next element with the same `i`-th digit
         # in its value from overwriting previous one.

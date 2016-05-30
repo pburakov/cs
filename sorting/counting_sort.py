@@ -38,7 +38,9 @@ def counting_sort(A, k):
     # in the sorted output. We need to go backwards to preserve stability of the sort.
     for j in range(i_n, -1, -1):
         e = A[j]
-        i = C[e] - 1  # Location index of the element `e` in the output array
+        # Let `i` be the location index of element `e` in the output array. Deducting `1`,
+        # since indexes are zero-based, but the counts are not.
+        i = C[e] - 1
         P[i] = e
         # Counter is updated in order to keep next element of the same value from
         # overwriting previous one.
