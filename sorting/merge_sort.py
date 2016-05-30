@@ -16,9 +16,9 @@ def merge_sort(A):
      or the slicing of the array.
 
     Complexity: O(n log(n)) in all cases. `Log(n)` for splitting, `n` for merge. Merge
-     sort is stable and it requires additional memory to hold the sliced two halves.
+     sort is stable and it requires additional memory to hold the sliced halves.
     :param list A: Array (list) to sort
-    :return list: Sorted product of an array `A`
+    :return list: Sorted product of array `A`
     """
     n = len(A)
 
