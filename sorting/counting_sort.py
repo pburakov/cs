@@ -24,7 +24,7 @@ def counting_sort(A, k):
     """
     n = len(A)
     P = [None] * n     # Allocated memory for sorted output
-    C = [0] * (k + 1)  # Working storage (auxiliary array)
+    C = [0] * (k + 1)  # Working storage (auxiliary array) for counting
 
     for j in range(0, n):
         C[A[j]] += 1
