@@ -34,9 +34,8 @@ def counting_sort(A, k):
         C[i] += C[i - 1]
     # `C[i]` now contains number of elements less than or equal to `i`.
 
-    # Array `C` serves as an initial index map for a final location of each element
-    # in a sorted output. We need to go backwards to preserve the stability of the
-    # algorithm.
+    # Array `C` serves as an initial index map for the final location of each element
+    # in the sorted output. We need to go backwards to preserve stability of the sort.
     for j in range(i_n, -1, -1):
         x = A[j]
         i = C[x] - 1  # Location index of the element `x` in output array
