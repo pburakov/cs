@@ -20,7 +20,7 @@ def counting_sort(A, k):
     :param list A: Array to sort
     :param int k: Inclusive upper bound for the range of integers in the array, for
      instance for A = [0, 1, 3], k = 3 or `max(A)`.
-    :return list: Sorted product of an array `A`
+    :return list: Sorted product of array `A`
     """
     n = len(A)
     P = [None] * n     # Allocated memory for sorted output
