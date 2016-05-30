@@ -31,9 +31,9 @@ def digit_counting_sort(A, i, b=10):
     """
     Stable linear-time sort of an array on a single digit.
 
-    This is an implementation of counting sort which sorts elements of an entire array
-     based on a single digit. Differences between regular counting sort are accompanied
-     with inline comments.
+    This is an adapted implementation of counting sort which sorts elements of an entire
+     array based on a single digit. Differences between regular counting sort are
+     highlighted with inline comments.
 
     Complexity: O(n+b), where `n` is the number of elements in array. This is a stable
      sorting algorithm, storage requirements are O(n+b).
