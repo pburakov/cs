@@ -4,14 +4,14 @@ def counting_sort(A, k):
 
     Counting sort assumes that each element in the array is an integer in the range
      `[0..k]`. It determines, for each element `x`, the number of elements less than `x`.
-     It uses this information to place element `x` directly into its position in the
-     output array.
+     The algorithm uses this information to place element `x` directly into its position
+     in the output array.
 
     This algorithm breaks lower bound of comparison sort log(n). In fact, no comparisons
      between input elements occur in the code. The values of the elements are used to
-     index into an array. Counting sort stability is not at all important when comparing
-     integer elements without satellite data carried with it. It is critical, however,
-     when it is used as a subroutine in radix sort (see sorting/radix_sort.py)
+     index into an array. Counting sort stability is not important for sorting arrays of
+     integers without satellite data carried with them, but it is critical, when counting
+     sort is used as a subroutine in radix sort (see sorting/radix_sort.py)
 
     Complexity: O(n+k), where `k` is the number of distinct elements in the array.
      Counting sort is stable and requires additional `n` storage for the output and
@@ -35,7 +35,7 @@ def counting_sort(A, k):
     # `C[i]` now contains number of elements less than or equal to `i` which now
     # serves as a map for final location `j` for each element `e` from input array.
     for e in A:
-        j = C[e]  # Element's location index in output array
+        j = C[e]  # Location index of the element `e` in output array
         P[j] = e
         # Counter is updated in order to keep next element of the same value
         # from overwriting other one.
