@@ -42,10 +42,10 @@ def push(S, x):
 
 def pop(S):
     """
-    Deletes an element from the top of the stack and returns it
+    Dereferences an element from the top of the stack and returns it
 
     :param Stack S: Instance of a stack
-    :return Any: Pointer or an instance of an element from the top of the stack
+    :return Any: Pointer or an instance of an element at the top of the stack
     """
     if stack_empty(S):
         raise ValueError("Stack underflow")
@@ -57,10 +57,10 @@ def pop(S):
 
 def peek(S):
     """
-    Returns current element at the top of the stack without deleting it
+    Returns current element at the top of the stack without removing it
 
     :param Stack S: Instance of a stack
-    :return Any: Pointer or an instance of an element from the top of the stack
+    :return Any: Pointer or an instance of an element at the top of the stack
     """
     if stack_empty(S):
         raise ValueError("Empty stack")
