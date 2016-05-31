@@ -40,7 +40,7 @@ def dequeue(Q):
     Deletes an element from the head of the queue and returns it
 
     :param Queue Q: Instance of a queue
-    :return Any: A pointer or an instance of an element from the head of the queue
+    :return Any: A pointer or an instance of an element at the head of the queue
     """
     if Q.length == 0:
         raise ValueError("Queue underflow")
@@ -57,8 +57,8 @@ def next(Q):
     """
     Returns current element at the head of the queue without deleting it
 
-    :param Stack S: Instance of a stack
-    :return Any: Pointer or an instance of an element from the top of the stack
+    :param Queue Q: Instance of a queue
+    :return Any: Pointer or an instance of an element at the head of the queue
     """
     if Q.length == 0:
         raise ValueError("Empty queue")
