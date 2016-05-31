@@ -37,7 +37,7 @@ def enqueue(Q, x):
 
 def dequeue(Q):
     """
-    Deletes an element from the head of the queue and returns it
+    Dereferences an element from the head of the queue and returns it
 
     :param Queue Q: Instance of a queue
     :return Any: A pointer or an instance of an element at the head of the queue
@@ -55,7 +55,7 @@ def dequeue(Q):
 
 def next(Q):
     """
-    Returns current element at the head of the queue without deleting it
+    Returns current element at the head of the queue without removing it
 
     :param Queue Q: Instance of a queue
     :return Any: Pointer or an instance of an element at the head of the queue
