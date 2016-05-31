@@ -174,7 +174,7 @@ def tree_insert(T, z):
      implemented recursively.
 
     Complexity: O(h) where `h` is the height of a tree, worst case log(n).
-    :param BST T: BST to update
+    :param BST T: Instance of a BST to update
     :param Node z: New node, holding unique value (key)
     :return None: BST `T` is updated
     """
@@ -208,7 +208,7 @@ def transplant(T, u, v):
      maintains appropriate relations for parents of replaced nodes (if exists).
 
     Complexity: O(1).
-    :param BST T: BST to update
+    :param BST T: Instance of a BST to update
     :param Node u: Node to be replaced
     :param Node v: Node to replace `u` with. Can be None
     :return None: Dynamic set of BST `T` is mutated in the process
@@ -231,7 +231,7 @@ def tree_delete(T, z):
      These cases are described in detail in inline comments.
 
     Complexity: O(h) where `h` is the height of a tree, worst case log(n).
-    :param BST T: BST to update
+    :param BST T: Instance of a BST to update
     :param Node z: Node to be deleted
     :return None: Dynamic set of BST `T` is mutated in the process
     """
@@ -281,7 +281,7 @@ def left_rotate(T, x):
 
     Complexity: O(1), only pointers are changed, other attributes of a node remain
      the same.
-    :param BST T: BST to update
+    :param BST T: Instance of a BST to update
     :param Node x: Node to pivot the tree around
     :return None: Dynamic set of BST `T` is mutated in the process
     """
@@ -312,7 +312,7 @@ def right_rotate(T, x):
 
     Complexity: O(1), only pointers are changed, other attributes of a node remain
      the same.
-    :param BST T: BST to update
+    :param BST T: Instance of a BST to update
     :param Node x: Node to pivot the tree around
     :return None: Dynamic set of BST `T` is mutated in the process
     """

@@ -98,7 +98,7 @@ def avl_rebalance(T, x):
      of all traversed nodes are updated in the process.
 
     Complexity: O(log(n)). Rotations take O(1) time.
-    :param AVLTree T: AVL tree to update
+    :param AVLTree T: Instance of an AVL tree to update
     :param Node x: Node to adjust (if needed)
     :return None: Dynamic set of AVL tree `T` is mutated in the process
     """
@@ -148,7 +148,7 @@ def avl_insert(T, z):
 
     Complexity: O(log(n)), O(log(n)) for lookup for an appropriate insert position
      and O(log(n)) for average rebalancing.
-    :param AVLTree T: AVL tree to update
+    :param AVLTree T: Instance of an AVL tree to update
     :param Node z: Node to insert
     :return None: Dynamic set of AVL tree `T` is mutated in the process
     """
@@ -163,7 +163,7 @@ def avl_delete(T, z):
     Node is deleted in such a way so that AVL tree properties continue to hold.
 
     Complexity: O(log(n)), same as `avl_insert()`
-    :param AVLTree T: AVL tree to update
+    :param AVLTree T: Instance of an AVL tree to update
     :param Node z: Node to remove
     :return None: Dynamic set of AVL tree `T` is mutated in the process
     """
