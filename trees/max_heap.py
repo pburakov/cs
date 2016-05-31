@@ -80,7 +80,8 @@ def heap_extract_max(A):
 
     Complexity: O(log(n)) from use of `max_heapify()`
     :param A: Array (list) to heapify
-    :return Any: Largest element of list `A`. List `A` is mutated in the process.
+    :return Any: Largest element, or a pointer to the largest elements of list `A`.
+     List `A` is mutated in the process.
     """
     n = len(A)   # Heap size
     i_n = n - 1  # Index of a last element
@@ -124,7 +125,7 @@ def max_heap_insert(A, z):
      that heap properties are maintained.
 
     :param list A: Array (list) to heapify
-    :param Any z: New element
+    :param Any z: Pointer or an instance of a new element
     :return None: List `A` is mutated.
     """
     A.append(z)  # Add element to the bottom of a heap
