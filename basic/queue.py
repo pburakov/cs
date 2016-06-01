@@ -1,5 +1,27 @@
+"""
+Queue is dynamic sets that follows "first-in, first-out" policy. This means that the
+ element deleted from the set is the one that have been in the queue for the longest
+ time.
+
+This implementation uses an array of size `n` to store the elements and guarantee O(1)
+ access time. `n` is the maximum amount of elements that the queue can hold. Elements
+ are never physically removed from the array. It's only pointers to the head and the
+ tail of the queue, represented by an array indices, are shifted. Pointers keep
+ elements in the queue from being replaced by newly added elements.
+
+Keeping track of currently enqueued elements helps making sure that the allocated size
+ is never exceeded. In some sense, this representation of a queue resembles a snake
+ chasing its own tail.
+
+
+Like a newly arriving customer takes a place in the line, the enqueued element is
+ added at the tail of the queue. And like the customer at the head of the line, the
+ dequeued element is always at the head of a queue.
+"""
+
+
 class Queue:
-    def __init__(self, s):
+    def __init__(self, n):
         """
         Basic implementation of a FIFO structure
 
@@ -7,12 +29,13 @@ class Queue:
          to elements in the queue. Additionally stored are allocated memory size, current
          count of enqueued elements and pointers to the first and the last element in
          the queue.
-        :param int s: Maximum size of the queue
+
+        :param int n: Maximum size of the queue
         """
         self.head = 0
         self.tail = 0
-        self.size = s
-        self.items = [None] * s  # Allocated memory for elements in the stack
+        self.size = n
+        self.items = [None] * n  # Allocated memory for elements in the stack
         self.length = 0  # Number of currently enqueued items
 
 
@@ -20,6 +43,9 @@ def enqueue(Q, x):
     """
     Adds an element at the tail of the queue
 
+    Exceeding allocated memory will cause a "queue overflow" error.
+
+    Complexity: O(1)
     :param Queue Q: Instance of a queue
     :param Any x: Pointer or an instance of an element to insert into a tail of
      the queue
@@ -39,6 +65,9 @@ def dequeue(Q):
     """
     Dereferences an element from the head of the queue and returns it
 
+    Attempt to dequeue from an empty queue will cause a "queue underflow" error.
+
+    Complexity: O(1)
     :param Queue Q: Instance of a queue
     :return Any: A pointer or an instance of an element at the head of the queue
     """
@@ -57,6 +86,10 @@ def next(Q):
     """
     Returns current element at the head of the queue without removing it
 
+    Attempt to lookup next element in an empty queue will cause an "empty queue"
+     error.
+
+    Complexity: O(1)
     :param Queue Q: Instance of a queue
     :return Any: Pointer or an instance of an element at the head of the queue
     """
