@@ -22,9 +22,9 @@ The correctness of these algorithms is guaranteed by the BST properties. Notice
  arbitrary nodes.
 
 Most BST operations take O(h) time where `h` is a height of a tree. If tree is
- perfectly complete and balanced, `h` will be log(n) (see trees/balanced_tree.py).
- In worst case with all the nodes on one side, BST will resemble a linked list and
- take O(n) as it's height will be proportional to the number of elements.
+ perfectly complete and balanced, `h` will be log(n). In worst case with all the
+ nodes on one side, BST will resemble a linked list and take O(n) as its height
+ will be proportional to the number of elements.
 
 There are many kinds of self-balanced BSTs, that maintain balanced tree structure.
  Most commonly mentioned are AVL tree and red-black tree but there are many other

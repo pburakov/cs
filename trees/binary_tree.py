@@ -3,8 +3,7 @@ Binary Tree is a linked data structure, where each node can point to two other
  nodes at most. These nodes are called left and right child nodes. Nodes that don't
  have any children pointers (replaced with `None`) are called leafs.
 
-Most well-known type of a binary tree is called BST (Binary Search Tree) (see
- trees/bst.py).
+Most well-known type of a binary tree is called BST (Binary Search Tree)
 
 Every node in a binary tree is a root to its own subtree. This property allows the
  implementation of easy to understand recursive traversal algorithms that operate
