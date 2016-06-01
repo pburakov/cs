@@ -5,8 +5,10 @@ Stack is dynamic sets that follows "last-in, first-out" policy. This means that 
 This implementation uses an array of size `n` to store the elements and guarantee O(1)
  access time. `n` is the maximum amount of elements that the stack can hold. Elements
  are never physically removed from the array. It's only the pointer to the top of the
- stack, represented by an array index, that is updated. Pointer keeps elements in the
- stack from being replaced by newly added elements.
+ stack, represented by an array index, that is updated. This pointer keeps elements in
+ the stack from being replaced by newly added elements.
+
+The removed element is always at the top of the stack.
 """
 
 
@@ -61,7 +63,7 @@ def pop(S):
     """
     Dereferences an element from the top of the stack and removes it
 
-    Exceeding allocated memory will cause a "stack underflow" error.
+    Attempt to pop from an empty stack will cause a "stack underflow" error.
 
     Complexity: O(1)
     :param Stack S: Instance of a stack
@@ -78,6 +80,8 @@ def pop(S):
 def peek(S):
     """
     Returns current element at the top of the stack without removing it
+
+    Attempt to peek at an empty stack will cause a "stack underflow" error.
 
     Complexity: O(1)
     :param Stack S: Instance of a stack
