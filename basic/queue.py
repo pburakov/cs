@@ -3,16 +3,18 @@ Queue is dynamic sets that follows "first-in, first-out" policy. This means that
  element deleted from the set is the one that have been in the queue for the longest
  time.
 
-This implementation uses an array of size `n` to store the elements and guarantee O(1)
- access time. `n` is the maximum amount of elements that the queue can hold. Elements
- are never physically removed from the array. It's only pointers to the head and the
- tail of the queue, represented by an array indices, are shifted. Pointers keep
- elements in the queue from being replaced by newly added elements.
+Query can be implemented using a linked list with pointers to both head and the tail
+ of the list.
+
+This implementation uses an array of size `n` to store the elements. `n` is the
+ maximum amount of elements that the queue can hold. Elements are never physically
+ removed from the array. Only pointers to the head and the tail of the queue,
+ represented by array indices, are shifted. Pointers keep elements still used in
+ the queue from being replaced by newly added elements.
 
 Keeping track of currently enqueued elements helps making sure that the allocated size
  is never exceeded. In some sense, this representation of a queue resembles a snake
  chasing its own tail.
-
 
 Like a newly arriving customer takes a place in the line, the enqueued element is
  added at the tail of the queue. And like the customer at the head of the line, the
