@@ -331,3 +331,25 @@ def right_rotate(T, x):
         x.parent.left = y
     y.right = x
     x.parent = y
+
+
+def successor_order(x, f):
+    """
+    In-order traversal using iterative successor search algorithm
+
+    This algorithm has a small quirk. Although it might look like this algorithm
+     runs in O(n log(n)) time, the amortized cost of this algorithm is the same as
+     in-order traversal O(2n) since every of `n` edges of a BST is traversed exactly
+     twice.
+
+    Complexity: O(n) amortized
+    :param Node x: Starting node
+    :param callable f: Callback function
+    :return None: Will apply function `f` to a traversed node
+    """
+    m = tree_minimum(x)
+    f(m)
+    y = tree_successor(m)
+    while y is not None:
+        f(y)
+        y = tree_successor(y)
