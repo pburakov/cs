@@ -25,7 +25,7 @@ Like a newly arriving customer takes a place in the line, the enqueued element i
 class Queue:
     def __init__(self, n):
         """
-        Basic implementation of a FIFO structure
+        Basic implementation of a fixed size FIFO structure
 
         This implementation uses an array (Python list) to store elements or pointers
          to elements in the queue. Additionally stored are allocated memory size, current

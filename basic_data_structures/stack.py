@@ -18,7 +18,7 @@ The removed element is always at the top of the stack.
 class Stack:
     def __init__(self, n):
         """
-        Basic implementation of a LIFO structure
+        Basic implementation of a fixed size LIFO structure
 
         This implementation uses an array (Python list) to store elements or pointers
          to elements in the stack. Additionally stored are allocated memory size and
