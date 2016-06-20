@@ -56,7 +56,7 @@ def dfs_visit(G, u, t):
 
     :param Graph G: Adjacency list graph representation
     :param Vertex u: Vertex to visit
-    :param Timer t: Mutable timer (integer ticker)
+    :param Timer t: Mutable timer (integer counter)
     :return None: Vertex `u` and adjacent vertices are updated
     """
     t.tick += 1
