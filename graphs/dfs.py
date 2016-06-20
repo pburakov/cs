@@ -40,7 +40,7 @@ def dfs(G):
     :param Graph G: Adjacency list graph representation
     :return None: Vertices are updated
     """
-    t = Timer()  # Mutable timer ticking object
+    t = Timer()  # Mutable counter
 
     for u in G.V:
         u.color = WHITE

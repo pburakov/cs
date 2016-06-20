@@ -36,7 +36,7 @@ class Vertex:
                        # ...both directed and undirected graph types.
         self.p = None  # Pointer to a parent vertex (from which it was visited)
         self.d = None  # Distance to the vertex from starting vertex (in BFS)
-                       # ...or time (ticker) at which it was discovered (DFS).
+                       # ...or time (counter) at which it was discovered (in DFS).
         self.f = None  # Time (ticker) at which all adjacent vertices have been
                        # discovered (DFS has finished the vertex).
         self.color = None
