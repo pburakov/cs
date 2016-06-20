@@ -1,15 +1,18 @@
 """
-Graph is a linked data structure represented by vertices and edges.
+Graph is a linked data structure comprised of vertices (nodes or points) and edges
+ (lines, arrows or arcs) representing relationships between vertices.
 
-Some of the graph properties are ...
-
-Types of edges are ...
-
-Handshaking lemma is...
+Every finite undirected graph has an even number of vertices with odd degree. This
+ is so called handshaking lemma, so named due to a notorious example. In a party of
+ people some of whom shake hands, an even number of people must have shaken an odd
+ number of other people's hands.
 
 There are several ways to represent a graph. Most commonly used are adjacency list
  (array) and adjacency matrix (2D array) representations. This implementation uses
- vertex objects with adjacency list stored as an attribute of vertex.
+ vertex objects with adjacency list stored as an attribute of vertex. Adjacency
+ list can be used to represent both directed and undirected graph types. For an
+ undirected graph, relation between adjacent vertices is always mutual, while in
+ a directed graph, it is not necessarily the case.
 """
 
 
@@ -27,7 +30,10 @@ class Vertex:
         self.key = key
         self.Adj = []  # List of pointers to adjacent vertices.
         self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.d = None  # Distance to the vertex from parent node
+        self.d = None  # Distance to the vertex from starting vertex (in BFS)
+                       # ...or time (ticker) at which it was discovered (DFS)
+        self.f = None  # Time (ticker) at which all adjacent vertices have been
+                       # discovered (DFS has finished the vertex)
         self.color = None
 
     def degree(self):
