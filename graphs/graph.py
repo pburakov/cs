@@ -22,7 +22,7 @@ Adjacency list can be used to represent both directed and undirected graph types
 
 
 class Vertex:
-    def __init__(self, key):
+    def __init__(self, label):
         """
         Basic graph node
 
@@ -32,7 +32,7 @@ class Vertex:
 
         :param Any key: Key (value) held by a vertex
         """
-        self.key = key
+        self.label = label
         self.Adj = []  # Adjacency list for the vertex. Can be used to represent
                        # ...both directed and undirected graph types.
         self.p = None  # Pointer to a parent vertex (from which it was visited)
@@ -51,7 +51,7 @@ class Vertex:
         return len(self.Adj)
 
     def __str__(self):
-        return str(self.key)
+        return str(self.label)
 
 
 class Graph:
