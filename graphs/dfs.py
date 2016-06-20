@@ -3,6 +3,8 @@ from graphs.graph import Graph, Vertex
 
 def dfs(G):
     """
+    Depth-first search of a graph
+
     The strategy of depth-first search is to search deeper in the graph whenever
      possible. Once all the edges of the most recently discovered vertex have been
      explored, the search backtracks to the next undiscovered vertex.
