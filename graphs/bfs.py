@@ -19,10 +19,10 @@ def bfs(G, s):
      adjacent white vertices. Gray vertices represent the frontier between discovered
      and undiscovered vertices.
 
-    When vertex is discovered BFS writes pointer to a predecessor (or parent) vertex
-     and the distance from the source vertex. That said BFS correctly computes the
-     shortest path or a minimum amount of edges it took to reach the vertex from the
-     starting vertex.
+    When vertex is discovered BFS saves a pointer to the predecessor (or parent)
+     vertex and the distance from the source vertex. That said, BFS correctly computes
+     the shortest path, or a minimum amount of edges, it took to reach the vertex from
+     the starting vertex.
 
     Complexity: O(V+E). `V` devoted to queue operations for each vertex and `E` is
      for the total time spent on scanning adjacent vertices.
@@ -45,7 +45,7 @@ def bfs(G, s):
     while Q.length != 0:
         u = dequeue(Q)
         for v in u.Adj:
-            if v.color == WHITE:
+            if v.color is WHITE:
                 v.color = GRAY
                 v.d = u.d + 1
                 v.p = u
