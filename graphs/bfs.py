@@ -60,7 +60,7 @@ def bfs(G, s):
 """
 Constants used in BFS
 """
-WHITE = "WHITE"
-GRAY = "GRAY"
-BLACK = "BLACK"
+WHITE = "WHITE"  # Unvisited
+GRAY = "GRAY"    # Discovered
+BLACK = "BLACK"  # Visited
 inf = float("inf")

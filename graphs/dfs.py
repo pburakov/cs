@@ -76,9 +76,9 @@ def dfs_visit(G, u, t):
 """
 Constants and auxiliary objects used in DFS
 """
-WHITE = "WHITE"
-GRAY = "GRAY"
-BLACK = "BLACK"
+WHITE = "WHITE"  # Unvisited
+GRAY = "GRAY"    # Discovered
+BLACK = "BLACK"  # Visited
 
 
 class Timer:
