@@ -22,9 +22,11 @@ def bfs(G, s):
      and undiscovered vertices.
 
     When vertex is discovered BFS saves a pointer to the predecessor (or parent)
-     vertex and the distance from the source vertex. That said, BFS correctly computes
-     the shortest path, or a minimum amount of edges, it took to reach the vertex from
-     the starting vertex.
+     vertex and the distance from the source vertex. BFS correctly computes the shortest
+     path, or a minimum amount of edges, it took to reach the vertex from the starting
+     vertex. If we follow V.p records after BFS was finished all the way to the
+     starting vertex we'll get the shortest route it woule take to reach the destination
+     vertex.
 
     Complexity: O(V+E). `V` devoted to queue operations for each vertex and `E` is
      for the total time spent on scanning adjacent vertices.
