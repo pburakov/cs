@@ -15,8 +15,8 @@ def topological_sort(G):
      is almost identical to that of the DFS with an addition of the output linked list.
      Vertex is inserted onto the front of an output list, once all of its edges have been
      explored and DFS "backtracked" to the vertex and its color has been changed to black,
-     We can observe that in general, the vertices in the output list would be arranged in
-     reverse order of these events.
+     We can observe that the vertices in the output list would be arranged in reverse
+     order of these events.
 
     Complexity: O(V+E) same as DFS, with O(V) additional storage for the output list
     :param Graph G: Adjacency list representation of a DAG
@@ -41,6 +41,7 @@ def visit(u, t, L):
     Finished vertex is inserted at the head of linked list. The code is almost identical
      to the `dfs_visit()` procedure with a simple addition of `list_insert()`.
 
+    Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Vertex u: Vertex to visit
     :param Timer t: Mutable timer (integer counter)
     :param LinkedList L: Output linked list

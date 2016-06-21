@@ -56,6 +56,7 @@ def dfs_visit(G, u, t):
     """
     Vertex visit procedure
 
+    Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Graph G: Adjacency list graph representation
     :param Vertex u: Vertex to visit
     :param Timer t: Mutable timer (integer counter)
