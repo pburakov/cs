@@ -19,7 +19,7 @@ def dfs(G):
      structure of recursive calls of `dfs_visit()`. It is also called the forest of
      depth-first trees.
 
-    Another property is that if we replace vertex `u` discovery and finishing times
+    Another property is that if we replace discovery and finishing times of vertex `u`
      with symbols `(u` and `u)`, the history makes a well-formed expression with
      properly nested parentheses.
 
@@ -36,7 +36,7 @@ def dfs(G):
 
     Note that this implementation of DFS has no arbitrary starting point. Search is
      performed on all vertices present in adjacency list, although it should be
-     trivial to alter the code to make it perform a local DFS.
+     trivial to alter the code to perform a local DFS.
 
     Complexity: O(V+E), no additional space is used.
     :param Graph G: Adjacency list graph representation

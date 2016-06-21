@@ -16,17 +16,15 @@ def bfs(G, s):
 
     To keep track of the progress BFS colors each vertex white, gray or black.
      All vertices start out white. A vertex is discovered the first time it is
-     encountered during the search at which time it becomes nonwhite. All vertices
-     adjacent to black vertices have been discovered while gray vertices may have
-     adjacent white vertices. Gray vertices represent the frontier between discovered
-     and undiscovered vertices.
+     encountered during the search at which time it becomes nonwhite. Gray vertices
+     represent the frontier between discovered and undiscovered vertices.
 
     When vertex is discovered BFS saves a pointer to the predecessor (or parent)
      vertex and the distance from the source vertex. BFS correctly computes the shortest
-     path, or a minimum amount of edges, it took to reach the vertex from the starting
-     vertex. If we follow V.p records after BFS was finished all the way to the
-     starting vertex we'll get the shortest route it woule take to reach the destination
-     vertex.
+     path, or a minimum amount of edges it took to reach the vertex from the starting
+     vertex in an unweighted graph. If we follow parent records after BFS was finished
+     all the way to the starting vertex we'll get the shortest route it would take to
+     reach the destination vertex.
 
     Complexity: O(V+E). `V` devoted to queue operations for each vertex and `E` is
      for the total time spent on scanning adjacent vertices.
