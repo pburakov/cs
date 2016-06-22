@@ -33,12 +33,12 @@ class Vertex:
         :param Any key: Key (value) held by a vertex
         """
         self.key = key
-        self.Adj = []  # Adjacency list for the vertex. Can be used to represent
-                       # ...both directed and undirected graph types.
+        self.adj = {}  # Adjacency list for the vertex
+        self.w = {}    # Weights of associated edges
         self.p = None  # Pointer to a parent vertex (from which it was visited)
         self.d = None  # Distance to the vertex from starting vertex (in BFS)
                        # ...or time (counter) at which it was discovered (in DFS).
-        self.f = None  # Time (ticker) at which all adjacent vertices have been
+        self.f = None  # Time (counter) at which all adjacent vertices have been
                        # discovered (DFS has finished the vertex).
         self.color = None
 
@@ -48,10 +48,34 @@ class Vertex:
 
         :return int: Degree of a vertex
         """
-        return len(self.Adj)
+        return len(self.adj)
+
+    def Adj(self):
+        """
+        Generator of adjacent vertices
+
+        :return __generator: Yields next adjacent vertex
+        """
+        for x in self.adj.values():
+            yield x
 
     def __str__(self):
         return str(self.key)
+
+
+def weight(u, v):
+    """
+    Returns weight of an edge in a weighted graph
+
+    :param Vertex u: First vertex
+    :param Vertex v: Second vertex
+    :return int: Edge weight
+    """
+    if len(u.w) == 0:
+        raise AttributeError("Unweighted graph")
+    if v.key not in u.w:
+        raise KeyError("No such edge")
+    return u.w[v.key]
 
 
 class Graph:
@@ -60,3 +84,14 @@ class Graph:
         Basic graph adjacency list graph representation
         """
         self.V = []  # List of all vertices in a graph
+
+    def connect(self, u, v, w=None):
+        """
+        :param Vertex u: First vertex
+        :param Vertex v: Second vertex
+        :param int w: Weight of an edge (optional)
+        :return None: Vertices are updated
+        """
+        u.adj[v.key] = v
+        if w is not None:
+            u.w[v.key] = w
