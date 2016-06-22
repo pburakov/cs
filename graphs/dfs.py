@@ -65,7 +65,7 @@ def dfs_visit(G, u, t):
     t.tick += 1
     u.d = t.tick  # Saving discovery time of vertex `u`
     u.color = GRAY
-    for v in u.Adj:  # Explore `u`'s edges
+    for v in u.Adj():  # Explore `u`'s edges
         if v.color is WHITE:
             v.p = u
             dfs_visit(G, v, t)  # Recursively visit adjacent vertex

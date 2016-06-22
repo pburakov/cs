@@ -46,7 +46,7 @@ def bfs(G, s):
     enqueue(Q, s)
     while Q.length != 0:
         u = dequeue(Q)
-        for v in u.Adj:
+        for v in u.Adj():
             if v.color is WHITE:
                 v.color = GRAY
                 v.d = u.d + 1
