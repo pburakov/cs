@@ -60,17 +60,15 @@ def build_max_heap(A):
     Heap is built in a "bottom-up" manner, starting at second to last level of nodes
      and ensuring that the heap properties are maintained.
 
-    Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound,
-     since `max_heapify()` is bounded by the constant factor of height `h` divided
-     by 2.
+    Complexity: O(n log(n)) on upper bound, O(n) on tighter asymptotic bound.
     :param list A: Array (list) to heapify
     :return None: List `A` is mutated.
     """
 
     i_n = len(A) - 1  # Index of a last element
-    i_n_2 = i_n // 2  # Index of last element's parent
+    i_n_p = i_n // 2  # Index of last element's parent
 
-    for i in range(i_n_2, -1, -1):
+    for i in range(i_n_p, -1, -1):
         max_heapify(A, i)
 
 
