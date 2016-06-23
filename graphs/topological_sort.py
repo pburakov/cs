@@ -50,7 +50,7 @@ def visit(u, t, L):
     t.tick += 1
     u.d = t.tick
     u.color = GRAY
-    for v in u.Adj():
+    for v in u.adj:
         if v.color is WHITE:
             v.p = u
             visit(v, t, L)
