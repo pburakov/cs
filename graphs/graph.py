@@ -24,7 +24,7 @@ Adjacency list can be used to represent both directed and undirected graph types
 class Vertex:
     def __init__(self, key):
         """
-        Basic unweighted graph node
+        Basic graph node
 
         Implementation of a basic graph node. Has useful attributes such as `color`
          and `p`, that are used for topological sort, depth-first and breadth-first
@@ -33,21 +33,12 @@ class Vertex:
         :param Any key: Key (value) held by a vertex
         """
         self.key = key
-        self.adj = []  # Adjacency list for the vertex
         self.p = None  # Pointer to a parent vertex (from which it was visited)
         self.d = None  # Distance to the vertex from starting vertex (in BFS)
-                       # ...or time (counter) at which it was discovered (in DFS).
+        # ...or time (counter) at which it was discovered (in DFS).
         self.f = None  # Time (counter) at which all adjacent vertices have been
-                       # discovered (DFS has finished the vertex).
+        # discovered (DFS has finished the vertex).
         self.color = None
-
-    def degree(self):
-        """
-        Returns degree of a vertex (a number of outgoing edges)
-
-        :return int: Degree of a vertex
-        """
-        return len(self.adj)
 
     def __str__(self):
         return str(self.key)
@@ -56,6 +47,70 @@ class Vertex:
 class Graph:
     def __init__(self):
         """
-        Basic unweighted graph adjacency list graph representation
+        Basic graph adjacency list graph representation
+
+        Assumed adjacency list representation:
+         - `{'A': ['B', 'C']}` for unweighted graphs
+         - `{'A': {'B': 3.0, 'C': 1.5}} for weighted graphs
         """
-        self.V = []  # List of all vertices in a graph
+        self.v = {}  # Map of all vertices in a graph by key
+        self.adj = {}  # Adjacency list graph representation
+
+    def V(self):
+        """
+        Generates all vertices in a graph
+
+        :return: __generator
+        """
+        for v in self.v.values():
+            yield v
+
+    def Adj(self, v):
+        """
+        Generates all edges of a vertex
+
+        :param Vertex v:
+        :return __generator:
+        """
+        for k in self.adj[v.key]:
+            yield self.v[k]
+
+
+def degree(G, v):
+    """
+    Returns degree of a vertex (a number of outgoing edges)
+
+    :param Graph G: Adjacency list representation of a graph
+    :param Vertex v: Vertex
+    :return int: Degree of a vertex
+    """
+    return len(G.adj[v.key])
+
+
+def weight(G, u, v):
+    """
+    Returns weight of an edge connecting `u` and `v` vertices
+
+    :param Graph G: Adjacency list representation of a weighted graph
+    :param Vertex u: First vertex
+    :param Vertex v: Second vertex
+    :return float: Weight of an edge
+    """
+    e = G.adj[u.key]
+    if type(e) is not dict:
+        raise AttributeError("Not a weighted edge")
+    return e[v.key]
+
+
+def dict_to_graph(D):
+    """
+
+    :param dict D:
+    :return Graph:
+    """
+    G = Graph()
+    for k in D:
+        v = Vertex(k)
+        G.v[v.key] = v
+    G.adj = D
+    return G

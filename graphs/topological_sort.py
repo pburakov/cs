@@ -25,16 +25,16 @@ def topological_sort(G):
     t = Timer()
     L = LinkedList()
 
-    for u in G.V:
+    for u in G.V():
         u.color = WHITE
         u.p = None
-    for u in G.V:
+    for u in G.V():
         if u.color is WHITE:
-            visit(u, t, L)
+            visit(G, u, t, L)
     return L
 
 
-def visit(u, t, L):
+def visit(G, u, t, L):
     """
     Vertex visit procedure with topological sort
 
@@ -42,6 +42,7 @@ def visit(u, t, L):
      to the `dfs_visit()` procedure with a simple addition of `list_insert()`.
 
     Complexity: O(Adj) where `Adj` is number of adjacent vertices
+    :param Graph G: Adjacency list representation of a DAG
     :param Vertex u: Vertex to visit
     :param Timer t: Mutable timer (integer counter)
     :param LinkedList L: Output linked list
@@ -50,10 +51,10 @@ def visit(u, t, L):
     t.tick += 1
     u.d = t.tick
     u.color = GRAY
-    for v in u.adj:
+    for v in G.Adj(u):
         if v.color is WHITE:
             v.p = u
-            visit(v, t, L)
+            visit(G, v, t, L)
     u.color = BLACK
     t.tick += 1
     u.f = t.tick
