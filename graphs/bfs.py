@@ -6,13 +6,13 @@ def bfs(G, s):
     """
     Breadth-first search of a graph
 
-    Breadth-first search is one of the simplest algorithms for searching a graph.
-     It is also the archetype for many important graph algorithms.
+    Breadth-first search is one of the simplest algorithms for searching a graph. It
+     is also the archetype for many important graph algorithms.
 
     BFS is so named because it gradually expands the frontier between discovered
      and undiscovered vertices uniformly across the breadth of the frontier. That
-     is it will discover all vertices at the nearest distance before discovering
-     any vertices on further distances, as opposed to depth-first search.
+     is it will discover all vertices at the nearest distance before discovering any
+     vertices on further distances, as opposed to depth-first search.
 
     To keep track of the progress BFS colors each vertex white, gray or black.
      All vertices start out white. A vertex is discovered the first time it is
@@ -22,9 +22,9 @@ def bfs(G, s):
     When vertex is discovered BFS saves a pointer to the predecessor (or parent)
      vertex and the distance from the source vertex. BFS correctly computes the shortest
      path, or a minimum amount of edges it took to reach the vertex from the starting
-     vertex in an unweighted graph. If we follow parent records after BFS was finished
-     all the way to the starting vertex we'll get the shortest route it would take to
-     reach the destination vertex.
+     vertex in an unweighted graph. If we follow parent records in a breadth-first tree
+     after BFS was finished all the way to the starting vertex we'll get the shortest
+     route it would take to reach the destination vertex.
 
     Complexity: O(V+E). `V` devoted to queue operations for each vertex and `E` is
      for the total time spent on scanning adjacent vertices.
@@ -53,6 +53,25 @@ def bfs(G, s):
                 v.p = u
                 enqueue(Q, v)
         u.color = BLACK
+
+
+def path(G, s, v):
+    """
+    Returns vertices on a shortest path between two vertices as a string
+
+    This procedure assumes BFS has already computed the breadth-first tree.
+
+    :param Graph G: Adjacency list graph representation
+    :param Vertex s: Starting vertex
+    :param Vertex v: Finishing vertex
+    :return str: Output string
+    """
+    if v == s:
+        return str(s)
+    elif v.p is None:
+        raise RecursionError("No such path exists")
+    else:
+        return path(G, s, v.p) + ' ' + str(v)
 
 
 """
