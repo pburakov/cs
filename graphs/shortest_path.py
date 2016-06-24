@@ -32,7 +32,7 @@ def initialize_single_source(G, s):
     :param Vertex s: Starting vertex
     :return None: Graph vertices are updated
     """
-    for v in G.V():
+    for v in G.V:
         v.d = inf
         v.p = None
     s.d = 0
@@ -77,9 +77,10 @@ def bellman_ford(G, s):
     :param Graph G: Adjacency list weighted directed graph representation
     :param Vertex s: Starting vertex
     :return bool: Returns True iff the graph contains no negative-weight cycles
-     that are reachable from the starting vertex, False otherwise.
+     that are reachable from the starting vertex, False otherwise. Graph vertices
+     are updated.
     """
-    n = len(G.v)  # Total number of vertices in a graph
+    n = len(G.V)  # Total number of vertices in a graph
 
     initialize_single_source(G, s)
     for i in range(0, n - 1):
@@ -89,6 +90,25 @@ def bellman_ford(G, s):
         if v.d > u.d + weight(G, u, v):
             return False
     return True
+
+
+def dijkstra(G, s):
+    """
+    Dijkstra single-source shortest-paths algorithm
+
+    :param Graph G: Adjacency list weighted directed graph representation
+    :param Vertex s: Starting vertex
+    :return None: Graph vertices are updated
+    """
+    from basic_data_structures.min_heap import build_min_heap, heap_extract_min
+    initialize_single_source(G, s)
+    S = []
+    build_min_heap(G.V)
+    while len(G.V) > 0:
+        u = heap_extract_min(G.V)
+        S.append(u)
+        for v in G.Adj(u):
+            relax(G, u, v)
 
 
 """
