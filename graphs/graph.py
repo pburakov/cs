@@ -34,8 +34,9 @@ class Vertex:
         """
         self.key = key
         self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.d = None  # Distance to the vertex from starting vertex (in BFS)
-                       # ...or time (counter) at which it was discovered (in DFS).
+        self.d = None  # Distance to the vertex from starting vertex (in BFS),
+                       # ...time (counter) at which it was discovered (in DFS),
+                       # ...shortest path estimate (in shortest path relaxation).
         self.f = None  # Time (counter) at which all adjacent vertices have been
                        # discovered (DFS has finished the vertex).
         self.color = None
@@ -61,6 +62,17 @@ class Graph:
         for v in self.v.values():
             yield v
 
+    def E(self):
+        """
+        Generates tuples of all edges in a graph
+
+        :return __generator: Tuple of next edge in a graph
+        """
+        for u in self.v.values():
+            for k in self.adj[u.key]:
+                v = self.v[k]
+                yield u, v
+
     def Adj(self, v):
         """
         Generates pointers to all adjacent vertices of a vertex
@@ -85,7 +97,7 @@ def degree(G, v):
 
 def weight(G, u, v):
     """
-    Returns weight of an edge connecting `u` and `v` vertices
+    Returns weight of an edge `(u, v)`
 
     Assumes that edge is weighted.
 
