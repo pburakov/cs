@@ -25,10 +25,10 @@ def topological_sort(G):
     t = Timer()
     L = LinkedList()
 
-    for u in G.V():
+    for u in G.V:
         u.color = WHITE
         u.p = None
-    for u in G.V():
+    for u in G.V:
         if u.color is WHITE:
             visit(G, u, t, L)
     return L

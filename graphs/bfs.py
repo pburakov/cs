@@ -32,9 +32,9 @@ def bfs(G, s):
     :param Vertex s: Pointer to the starting vertex
     :return None: Vertices are updated
     """
-    n = len(G.v)  # Total number of vertices in a graph
+    n = len(G.V)  # Total number of vertices in a graph
 
-    for u in G.V():
+    for u in G.V:
         if u != s:
             u.color = WHITE
             u.d = inf

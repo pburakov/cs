@@ -44,10 +44,10 @@ def dfs(G):
     """
     t = Timer()  # Mutable counter
 
-    for u in G.V():
+    for u in G.V:
         u.color = WHITE
         u.p = None
-    for u in G.V():
+    for u in G.V:
         if u.color is WHITE:
             dfs_visit(G, u, t)
 

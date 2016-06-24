@@ -41,6 +41,24 @@ class Vertex:
                        # discovered (DFS has finished the vertex).
         self.color = None
 
+    """
+    Vertex comparison operators based on `d` value (used in prioritization)
+    """
+    def __lt__(self, other):
+        return self.d < other.d
+
+    def __le__(self, other):
+        return self.d <= other.d
+
+    def __gt__(self, other):
+        return self.d > other.d
+
+    def __ge__(self, other):
+        return self.d >= other.d
+
+    def __eq__(self, other):
+        return self.d == other.d
+
     def __str__(self):
         return str(self.key)
 
@@ -50,17 +68,9 @@ class Graph:
         """
         Basic adjacency list graph representation
         """
-        self.v = {}    # Map of pointers to all vertices in a graph by their key
+        self.V = []    # List of pointers to all vertices in a graph
+        self.map = {}  # Map of pointers to all vertices in a graph by their key
         self.adj = {}  # Adjacency list graph representation
-
-    def V(self):
-        """
-        Generates pointers to all vertices in a graph
-
-        :return __generator: Pointer to the next vertex
-        """
-        for v in self.v.values():
-            yield v
 
     def E(self):
         """
@@ -68,9 +78,9 @@ class Graph:
 
         :return __generator: Tuple of next edge in a graph
         """
-        for u in self.v.values():
+        for u in self.V:
             for k in self.adj[u.key]:
-                v = self.v[k]
+                v = self.map[k]
                 yield u, v
 
     def Adj(self, v):
@@ -81,7 +91,7 @@ class Graph:
         :return __generator: Pointer to the next vertex
         """
         for k in self.adj[v.key]:
-            yield self.v[k]
+            yield self.map[k]
 
 
 def degree(G, v):
@@ -126,6 +136,7 @@ def dict_to_graph(D):
     G = Graph()
     for k in D:
         v = Vertex(k)
-        G.v[v.key] = v
+        G.map[v.key] = v
+        G.V.append(v)
     G.adj = D
     return G
