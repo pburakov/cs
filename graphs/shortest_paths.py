@@ -24,7 +24,7 @@ Algorithms in this module cover solutions to single-source shortest path problem
 from graphs.graph import Graph, Vertex, weight
 
 
-def path(G, s, v):
+def path_string(G, s, v):
     """
     Returns vertices on a shortest path between two vertices as a string
 
@@ -40,7 +40,7 @@ def path(G, s, v):
     elif v.p is None:
         raise RecursionError("No such path exists")
     else:
-        return path(G, s, v.p) + ' ' + str(v)
+        return path_string(G, s, v.p) + ' ' + str(v)
 
 
 def initialize_single_source(G, s):
@@ -113,6 +113,33 @@ def bellman_ford(G, s):
         if v.d > u.d + weight(G, u, v):
             return False
     return True
+
+
+def dag_shortest_paths(G, s):
+    """
+    Generic shortest-paths algorithm for dags
+
+    The algorithm starts by topologically sorting the dag. If the dag contains a
+     shortest path from vertex `u` to vertex `v`, then `u` precedes `v` in the
+     topological sort. We can make just one pass over the vertices in sorted order.
+
+    Complexity: O(V+E) linear size in the size of adjacency list representation.
+     Topological sort takes O(V+E) time, O(V) for initialization, O(E) for
+     relaxation, as each edge is relaxed exactly once (aggregated analysis).
+    :param Graph G: Adjacency list weighted dag representation
+    :param Vertex s: Starting vertex
+    :return:
+    """
+    from graphs.topological_sort import topological_sort
+
+    L = topological_sort(G)
+    initialize_single_source(G, s)
+    node = L.head
+    while node is not None:
+        u = node.key
+        for v in G.Adj(u):
+            relax(G, u, v)
+        node = node.next
 
 
 def dijkstra(G, s):
