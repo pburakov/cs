@@ -21,46 +21,24 @@ Adjacency list can be used to represent both directed and undirected graph types
 """
 
 
-class Vertex:
-    def __init__(self, key):
-        """
-        Basic graph node
-
-        Implementation of a basic graph node. Has useful attributes such as `color`
-         and `p`, that are used for topological sort, depth-first and breadth-first
-         search algorithms. Pointers to adjacent vertices are stored in a list `d`.
-
-        :param Any key: Key (value) held by a vertex
-        """
-        self.key = key
-        self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.d = None  # Distance to the vertex from starting vertex (in BFS),
-                       # ...time (counter) at which it was discovered (in DFS),
-                       # ...shortest path estimate (in shortest path relaxation).
-        self.f = None  # Time (counter) at which all adjacent vertices have been
-                       # discovered (DFS has finished the vertex).
-        self.color = None
-
+def dict_to_graph(D):
     """
-    Vertex comparison operators based on `d` value (used in prioritization)
+    Converts dictionary into a set of graph and vertex objects
+
+    Assumed dictionary representation is in following format:
+     - `{'A': ['B', 'C']}` for unweighted graphs
+     - `{'A': {'B': 3.0, 'C': 1.5}} for weighted graphs
+
+    :param dict D: Input dictionary
+    :return Graph: Output graph object
     """
-    def __lt__(self, other):
-        return self.d < other.d
-
-    def __le__(self, other):
-        return self.d <= other.d
-
-    def __gt__(self, other):
-        return self.d > other.d
-
-    def __ge__(self, other):
-        return self.d >= other.d
-
-    def __eq__(self, other):
-        return self.d == other.d
-
-    def __str__(self):
-        return str(self.key)
+    G = Graph()
+    for k in D:
+        v = Vertex(k)
+        G.map[v.key] = v
+        G.V.append(v)
+    G.adj = D
+    return G
 
 
 class Graph:
@@ -78,7 +56,7 @@ class Graph:
 
         :return __generator: Tuple of next edge in a graph
         """
-        for u in self.V:
+        for u in self.map:
             for k in self.adj[u.key]:
                 v = self.map[k]
                 yield u, v
@@ -122,21 +100,44 @@ def weight(G, u, v):
     return e[v.key]
 
 
-def dict_to_graph(D):
-    """
-    Converts dictionary into a set of graph and vertex objects
+class Vertex:
+    def __init__(self, key):
+        """
+        Basic graph node
 
-    Assumed dictionary representation is in following format:
-     - `{'A': ['B', 'C']}` for unweighted graphs
-     - `{'A': {'B': 3.0, 'C': 1.5}} for weighted graphs
+        Implementation of a basic graph node. Has useful attributes such as `color`
+         and `p`, that are used for topological sort, depth-first and breadth-first
+         search algorithms. Pointers to adjacent vertices are stored in a list `d`.
 
-    :param dict D: Input dictionary
-    :return Graph: Output graph object
+        :param Any key: Key (value) held by a vertex
+        """
+        self.key = key
+        self.p = None  # Pointer to a parent vertex (from which it was visited)
+        self.d = None  # Distance to the vertex from starting vertex (in BFS),
+                       # ...time (counter) at which it was discovered (in DFS),
+                       # ...shortest path estimate (in shortest path relaxation).
+        self.f = None  # Time (counter) at which all adjacent vertices have been
+                       # discovered (DFS has finished the vertex).
+        self.color = None
+
     """
-    G = Graph()
-    for k in D:
-        v = Vertex(k)
-        G.map[v.key] = v
-        G.V.append(v)
-    G.adj = D
-    return G
+    Vertex comparison operators based on `d` value (used in edge prioritization)
+    """
+
+    def __lt__(self, other):
+        return self.d < other.d
+
+    def __le__(self, other):
+        return self.d <= other.d
+
+    def __gt__(self, other):
+        return self.d > other.d
+
+    def __ge__(self, other):
+        return self.d >= other.d
+
+    def __eq__(self, other):
+        return self.d == other.d
+
+    def __str__(self):
+        return str(self.key)
