@@ -14,7 +14,9 @@ Representation invariant of a Binary Heap determines its main use and common
  made to its structure.
 
 Heap structure is useful when a fast O(n) access to the top element is required,
- however, the remainder of the array is kept partially unsorted.
+ however, the remainder of the array is kept partially unsorted. Heaps are commonly
+ in various algorithms. This heap implementation contains various additional
+ arguments, that helps reducing running times in various cases.
 """
 
 
@@ -72,12 +74,15 @@ def build_min_heap(A):
         min_heapify(A, i)
 
 
-def heap_extract_min(A):
+def heap_extract_min(A, fix=True):
     """
     Removes min element from the top of the heap and returns it.
 
     Complexity: O(log(n)) from use of `min_heapify()`
     :param A: Array (list) to heapify
+    :param bool fix: Determines if heap-fixing step should be performed immediately
+     after extraction (default is True). Heap properties will not be guaranteed
+     when skipped.
     :return Any: Largest element, or a pointer to the largest elements of list `A`.
      List `A` is mutated in the process.
     """
@@ -91,7 +96,8 @@ def heap_extract_min(A):
     else:
         m = A[0]           # Take the top element
         A[0] = A.pop(i_n)  # Move bottom element to the top
-        min_heapify(A, 0)  # Fix the heap
+        if fix is True:
+            min_heapify(A, 0)  # Fix the heap
         return m
 
 
