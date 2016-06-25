@@ -9,7 +9,7 @@ def permutations(L, P, i=0):
     """
     n = len(L)
     if i == n - 1:
-        P.append(L.copy())
+        P.append(L.copy())  # Creates an exact copy of L
         return
     else:
         for k in range(i, n):
@@ -24,16 +24,16 @@ def subsets(L, P, r=0, w=0, S=None):
 
     :param list L: Input set
     :param list P: Output list of subsets
-    :param int r: Read index (optional) in input set `L`
-    :param int w: Write index (optional) in generated subset `S`
-    :param list S: Generated subset (optional)
+    :param int r: Read index in input set `L` (optional)
+    :param int w: Write index in generated subset `S` (optional)
+    :param list S: Intermediately generated subset (optional)
     :return None: List `P` is populated
     """
     n = len(L)
     if S is None:
         S = [None] * n
     if r >= n:
-        P.append(S.copy()[0:w])
+        P.append(S[0:w])  # Creates a sliced copy of S
         return
     else:
         subsets(L, P, r + 1, w, S)
