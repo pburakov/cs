@@ -101,7 +101,7 @@ def heap_extract_min(A, fix=True):
         return m
 
 
-def bubble_up(A, i):
+def heap_increase_key(A, i):
     """
     Causes i-th element in a heap to "bubble up" to its appropriate position.
 
@@ -118,7 +118,7 @@ def bubble_up(A, i):
 
     if p >= 0 and A[i] < A[p]:
         A[p], A[i] = A[i], A[p]  # Exchange child with parent
-        bubble_up(A, p)          # Repeat one level up
+        heap_increase_key(A, p)  # Repeat one level up
 
 
 def min_heap_insert(A, z):
@@ -137,4 +137,4 @@ def min_heap_insert(A, z):
     i_n = n - 1  # Index of last element
 
     if n > 1:
-        bubble_up(A, i_n)
+        heap_increase_key(A, i_n)

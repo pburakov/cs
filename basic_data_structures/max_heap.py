@@ -101,15 +101,15 @@ def heap_extract_max(A, fix=True):
         return m
 
 
-def bubble_up(A, i):
+def heap_increase_key(A, i):
     """
     Causes i-th element in a heap to "bubble up" to its appropriate position.
 
     It is implicitly assumed that heap properties are not violated through the rest of
      the heap. This method is a "bottom-up" version of max-heapify.
 
-    Complexity: O(h), where `h` is the height of the heap or worst case
-     O(log(n)) when element is percolated from bottom to the root.
+    Complexity: O(h), where `h` is the height of the heap or worst case. O(log(n))
+     when element is percolated from bottom to the root.
     :param list A: Array (list) to heapify
     :param int i: Integer index of an element to bubble up
     :return None: List `A` is mutated.
@@ -118,7 +118,7 @@ def bubble_up(A, i):
 
     if p >= 0 and A[i] > A[p]:
         A[p], A[i] = A[i], A[p]  # Exchange child with parent
-        bubble_up(A, p)          # Repeat one level up
+        heap_increase_key(A, p)  # Repeat one level up
 
 
 def max_heap_insert(A, z):
@@ -137,4 +137,4 @@ def max_heap_insert(A, z):
     i_n = n - 1  # Index of last element
 
     if n > 1:
-        bubble_up(A, i_n)
+        heap_increase_key(A, i_n)
