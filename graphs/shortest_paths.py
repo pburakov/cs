@@ -24,6 +24,25 @@ Algorithms in this module cover solutions to single-source shortest path problem
 from graphs.graph import Graph, Vertex, weight
 
 
+def path(G, s, v):
+    """
+    Returns vertices on a shortest path between two vertices as a string
+
+    This procedure assumes search/path was already computed the predecessor tree.
+
+    :param Graph G: Adjacency list graph representation
+    :param Vertex s: Starting vertex
+    :param Vertex v: Finishing vertex
+    :return str: Output string
+    """
+    if v == s:
+        return str(s)
+    elif v.p is None:
+        raise RecursionError("No such path exists")
+    else:
+        return path(G, s, v.p) + ' ' + str(v)
+
+
 def initialize_single_source(G, s):
     """
     Initialization of shortest-path estimates and predecessor pointers

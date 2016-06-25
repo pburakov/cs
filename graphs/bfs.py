@@ -55,25 +55,6 @@ def bfs(G, s):
         u.color = BLACK
 
 
-def path(G, s, v):
-    """
-    Returns vertices on a shortest path between two vertices as a string
-
-    This procedure assumes BFS has already computed the breadth-first tree.
-
-    :param Graph G: Adjacency list graph representation
-    :param Vertex s: Starting vertex
-    :param Vertex v: Finishing vertex
-    :return str: Output string
-    """
-    if v == s:
-        return str(s)
-    elif v.p is None:
-        raise RecursionError("No such path exists")
-    else:
-        return path(G, s, v.p) + ' ' + str(v)
-
-
 """
 Constants used in BFS
 """
