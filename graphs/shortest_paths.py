@@ -14,7 +14,9 @@ Shortest-paths algorithms rely on the property that shortest path contains other
 Shortest path is represented by a tree of vertex predecessors (as in breadth-
  first tree). Weight of a path to a vertex equals the sum of weights of all the
  edges that have led to the vertex. Vertex predecessor is another vertex with
- which it shares the most relaxed edge.
+ which it shares the most relaxed edge. If we follow parent records in a
+ predecessor-tree all the way to the starting vertex after search was finished,
+ we'll get the shortest route it would take to reach the destination vertex.
 
 Algorithms in this module cover solutions to single-source shortest paths problem.
  They share technique of initialization, edge relaxation and shortest-path
