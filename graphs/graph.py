@@ -105,19 +105,19 @@ class Vertex:
         """
         Basic graph node
 
-        Implementation of a basic graph node. Has useful attributes such as `color`
-         and `p`, that are used for topological sort, depth-first and breadth-first
-         search algorithms. Pointers to adjacent vertices are stored in a list `d`.
-
-        :param Any key: Key (value) held by a vertex
+        :param Any key: Key (or label) held by a vertex
         """
         self.key = key
         self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.d = None  # Distance to the vertex from starting vertex (in BFS),
-                       # ...time (counter) at which it was discovered (in DFS),
-                       # ...shortest path estimate (in shortest path relaxation).
-        self.f = None  # Time (counter) at which all adjacent vertices have been
-                       # discovered (DFS has finished the vertex).
+        """
+        Depending on a running algorithm, value `d` represents different attributes
+        of a vertex:
+         - in BFS - distance to the vertex from a starting vertex
+         - in DFS - time (counter) at which it was discovered
+         - in shortest-paths - `(s, v)` path-weight estimate after edge relaxation
+        """
+        self.d = None
+        self.f = None  # Time (counter) at which all DFS has finished the vertex
         self.color = None
 
     """
