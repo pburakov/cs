@@ -19,12 +19,13 @@ def bfs(G, s):
      encountered during the search at which time it becomes nonwhite. Gray vertices
      represent the frontier between discovered and undiscovered vertices.
 
-    When vertex is discovered BFS saves a pointer to the predecessor (or parent)
-     vertex and the distance from the source vertex. BFS correctly computes the shortest
-     path, or a minimum amount of edges it took to reach the vertex from the starting
-     vertex in an unweighted graph. If we follow parent records in a breadth-first tree
-     after BFS was finished all the way to the starting vertex we'll get the shortest
-     route it would take to reach the destination vertex.
+    When vertex is discovered BFS saves a pointer to the predecessor (or parent) vertex
+     from which it was discovered, and the distance from the source vertex. BFS
+     correctly computes the shortest path, or a minimum amount of edges it took to
+     reach the vertex from the starting vertex in an unweighted graph. If we follow
+     parent records in a breadth-first tree after BFS was finished all the way to
+     the starting vertex we'll get the shortest route it would take to reach the
+     destination vertex.
 
     Complexity: O(V+E). `V` devoted to queue operations for each vertex and `E` is
      for the total time spent on scanning adjacent vertices.
