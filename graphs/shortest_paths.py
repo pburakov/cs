@@ -16,7 +16,7 @@ Shortest path is represented by a tree of vertex predecessors (as in breadth-
  edges that have led to the vertex. Vertex predecessor is another vertex with
  which it shares the most relaxed edge.
 
-Algorithms in this module cover solutions to single-source shortest path problem.
+Algorithms in this module cover solutions to single-source shortest paths problem.
  They share technique of initialization, edge relaxation and shortest-path
  estimation.
 """
@@ -28,7 +28,7 @@ def path_string(G, s, v):
     """
     Returns vertices on a shortest path between two vertices as a string
 
-    This procedure assumes search/path was already computed the predecessor tree.
+    This procedure assumes search/path has already computed the predecessor tree.
 
     :param Graph G: Adjacency list graph representation
     :param Vertex s: Starting vertex
@@ -151,13 +151,16 @@ def dijkstra(G, s):
      It is very similar to BFS, only it prioritises "lightest" edges with the smallest
      estimate (hence the strategy name).
 
-    This implementation uses min-priority queue built with the list vertices keyed by
-     their `d` values. Priority queue is built after initialization, but it also needs
-     to be rebuilt after series of edge relaxations.
-
     Greedy approach does not always yield optimal results, but Dijkstra algorithm does
      indeed compute shortest paths. Each time vertex `u` is added to the set `S`, `u.d`
      is already `∂(s, u)` (completely relaxed).
+
+    Dijkstra algorithm is easy to modify to make it solve single-source single-target
+     problem. All we need is to stop the while loop once the target vertex is found.
+
+    This implementation uses min-priority queue built with the list vertices keyed by
+     their `d` values. Priority queue is built after initialization, but it also needs
+     to be rebuilt after series of edge relaxations.
 
     Complexity: O(E log V) (or O(EV) with this implementation of min-heap). There are at
      most |reachable E| relax operations. If we manage to maintain heap properties after
