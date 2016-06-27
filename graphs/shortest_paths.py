@@ -20,7 +20,8 @@ Shortest path is represented by a tree of vertex predecessors (as in breadth-
 
 Algorithms in this module cover solutions to single-source shortest paths problem.
  They share technique of initialization, edge relaxation and shortest-path
- estimation.
+ estimation. Other powerful method worth mentioning is a bidirectional search
+ (not implemented here).
 """
 
 from graphs.graph import Graph, Vertex, weight
