@@ -72,6 +72,10 @@ def relax(G, u, v):
     Once upper bound property (∂) is achieved, it never changes. Relaxed edges
      also follow triangle inequality: `∂(s, v) ≤ ∂(s, u) + w(u, v)`.
 
+    Note that weights can be affected by a potential function, reducing the running
+     time by prioritizing edges in a goal-directed search, thus allowing to hit the
+     search target sooner.
+
     Complexity: O(1)
     :param Graph G: Adjacency list graph representation
     :param Vertex u: First vertex
@@ -138,7 +142,7 @@ def dag_shortest_paths(G, s):
     initialize_single_source(G, s)
     node = L.head
     while node is not None:
-        u = node.key
+        u = node.key  # Gets vertex from a linked list
         for v in G.Adj(u):
             relax(G, u, v)
         node = node.next
