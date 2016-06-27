@@ -83,11 +83,22 @@ def degree(G, v):
     return len(G.adj[v.key])
 
 
+def potential(v):
+    """
+    Returns a potential of a vertex
+
+    :param Vertex v: Subject vertex
+    :return float: Potential of a vertex
+    """
+    return v.pt
+
+
 def weight(G, u, v):
     """
     Returns weight of an edge `(u, v)`
 
-    Assumes that edge is weighted.
+    Assumes that edge is weighted. Allows potential function to be applied to
+     a final result when used in goal-directed path search.
 
     :param Graph G: Adjacency list representation of a weighted graph
     :param Vertex u: First vertex
@@ -97,7 +108,7 @@ def weight(G, u, v):
     e = G.adj[u.key]
     if type(e) is not dict:
         raise AttributeError("Not a weighted edge")
-    return e[v.key]
+    return e[v.key] - potential(u) + potential(v)
 
 
 class Vertex:
@@ -109,6 +120,7 @@ class Vertex:
         """
         self.key = key
         self.p = None  # Pointer to a parent vertex (from which it was visited)
+
         """
         Depending on a running algorithm, value `d` represents different attributes
         of a vertex:
@@ -117,8 +129,10 @@ class Vertex:
          - in shortest-paths - `(s, v)` path-weight estimate after edge relaxation
         """
         self.d = None
+
         self.f = None  # Time (counter) at which all DFS has finished the vertex
         self.color = None
+        self.pt = 0.0  # Potential of a vertex (used in reduced edge cost estimation)
 
     """
     Vertex comparison operators based on `d` value (used in edge prioritization)
