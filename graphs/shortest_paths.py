@@ -38,7 +38,7 @@ def path_string(G, s, v):
     :param Vertex v: Finishing vertex
     :return str: Output string
     """
-    if v == s:
+    if v is s:
         return str(s)
     elif v.p is None:
         raise RecursionError("No such path exists")

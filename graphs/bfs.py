@@ -36,7 +36,7 @@ def bfs(G, s):
     n = len(G.V)  # Total number of vertices in a graph
 
     for u in G.V:
-        if u != s:
+        if u is not s:
             u.color = WHITE
             u.d = inf
             u.p = None
