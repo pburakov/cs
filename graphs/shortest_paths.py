@@ -21,7 +21,7 @@ Shortest path is represented by a tree of vertex predecessors (as in breadth-
 Algorithms in this module cover solutions to single-source shortest paths problem.
  They share technique of initialization, edge relaxation and shortest-path
  estimation. Other powerful method worth mentioning is a bidirectional search
- (not implemented here).
+ (not implemented here). Longest path can be calculated by negating weights.
 """
 
 from graphs.graph import Graph, Vertex, weight
@@ -75,7 +75,7 @@ def relax(G, u, v):
 
     Note that weights can be affected by a potential function, reducing the running
      time by prioritizing edges in a goal-directed search, thus allowing to hit the
-     search target sooner.
+     search target sooner. Longest path is calculated using negated weights.
 
     Complexity: O(1)
     :param Graph G: Adjacency list graph representation
