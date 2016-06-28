@@ -56,9 +56,10 @@ class Graph:
 
         :return __generator: Tuple of next edge in a graph
         """
-        for u in self.map:
-            for k in self.adj[u.key]:
-                v = self.map[k]
+        for i in self.map:
+            u = self.map[i]
+            for j in self.adj[i]:
+                v = self.map[j]
                 yield u, v
 
     def Adj(self, v):
