@@ -9,7 +9,7 @@ This implementation uses an array of size `n` to store the elements and guarante
  access time. `n` is the maximum amount of elements that the stack can hold. Elements
  are never physically removed from the array. It's only the pointer to the top of the
  stack, represented by an array index, that is updated. This pointer keeps elements
- still used in the stack from being replaced by newly added elements.
+ that are still used in the stack from being replaced by newly added elements.
 
 The removed element is always at the top of the stack.
 """

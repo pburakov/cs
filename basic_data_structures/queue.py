@@ -9,16 +9,16 @@ Query can be implemented using a linked list with pointers to both head and the 
 This implementation uses an array of size `n` to store the elements. `n` is the
  maximum amount of elements that the queue can hold. Elements are never physically
  removed from the array. Only pointers to the head and the tail of the queue,
- represented by array indices, are shifted. Pointers keep elements still used in
- the queue from being replaced by newly added elements.
+ represented by array indices, are shifted. Pointers keep elements that are still
+ used in the queue from being replaced by newly added elements.
 
-Keeping track of currently enqueued elements helps making sure that the allocated size
- is never exceeded. In some sense, this representation of a queue resembles a snake
- chasing its own tail.
+Keeping track of a quantity of currently enqueued elements helps making sure that
+ the allocated size is never exceeded. In some sense, this representation of a queue
+ resembles a snake chasing its own tail.
 
 Like a newly arriving customer takes a place in the line, the enqueued element is
  added at the tail of the queue. And like the customer at the head of the line, the
- dequeued element is always at the head of a queue.
+ de-queued element is always at the head of a queue.
 """
 
 
@@ -37,7 +37,7 @@ class Queue:
         self.head = 0
         self.tail = 0
         self.size = n
-        self.items = [None] * n  # Allocated memory for elements in the stack
+        self.items = [None] * n  # Allocated memory for elements in the queue
         self.length = 0  # Number of currently enqueued items
 
 
