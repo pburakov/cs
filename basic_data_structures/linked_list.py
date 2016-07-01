@@ -31,6 +31,7 @@ class Node:
         :param Any key: Node's value (key)
         """
         self.key = key
+        self.data = None  # Auxiliary data storage for arbitrary data
         self.next = None
         self.prev = None
 
@@ -44,6 +45,22 @@ class LinkedList:
         Basic implementation of a doubly linked list, holds a pointer to its head.
         """
         self.head = None
+
+    """
+    Python implementation for linked list iteration
+    """
+
+    def __iter__(self):
+        self.p = self.head  # Iteration pointer
+        return self
+
+    def __next__(self):
+        if self.p is None:
+            raise StopIteration
+        else:
+            x = self.p
+            self.p = self.p.next
+            return x
 
 
 def list_search(L, k):
