@@ -96,7 +96,7 @@ def lcs(X, Y, i=None, j=None):
 
     This is well known problem whose recursive formula is similar to a subset algorithm.
      Recursion compares two elements at given indices, one for each string, starting at
-     the end. Once matching characters are found, one recursive call is made with both
+     the end. If matching characters are found, one recursive call is made with both
      indices shifted. Otherwise search continues recursively on both strings with one
      index shifted at a time.
 
