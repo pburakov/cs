@@ -94,12 +94,11 @@ def lcs(X, Y, i=None, j=None):
     """
     Returns longest common sub-sequence of two strings
 
-    This is well known recursive algorithm can be described as a subsets problem for
-     two strings, without mutating the initial state.
-
-    Recursion compares two elements at given indices, one for each string, starting at
+    This is well known problem whose recursive formula is similar to a subset algorithm.
+     Recursion compares two elements at given indices, one for each string, starting at
      the end. Once matching characters are found, one recursive call is made with both
-     indices shifted. Otherwise search continues recursively on both strings.
+     indices shifted. Otherwise search continues recursively on both strings with one
+     index shifted at a time.
 
     Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
      strings.
