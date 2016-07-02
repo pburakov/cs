@@ -18,49 +18,50 @@ Description of common steps of a backtracking algorithm:
  1. Define base case for recursion to finish. For instance, report a found solution
   or report that algorithm has exhausted all possible solutions for given
   configuration.
- 2. Construct a new candidate, or several, for a solution. For example, swap or
-  replace an element or on the contrary, "lock" an element and rearrange remaining
-  elements in a set.
+ 2. Construct a new candidate, or several, for a solution. For example, exclude, swap
+  or replace an element of a set.
  3. Check if proposed solution does not violate conditions, if such are defined by
   the problem. This is where we abandon a branch of a recursive tree.
  4. Call itself on new candidate or, if many, on each of the new candidates.
  5. Undo updates made to a set (optional). This step occurs after the running process
   exits the recursion (or "backtracks").
 
-Below are the implementations of some common combinatorial search algorithms.
+Below are the implementation templates for some of the most common combinatorial
+ search problems.
 """
 
 
-def permutations(L, P, i=0):
+def permutations(S, P, i=0):
     """
     Produces all permutations of a set
 
-    Exhaustively searches all possible combinations of elements in a set (Python list)
-     by continuously swapping pairs of elements using recursion with backtracking.
+    Permutation of a set contains all the same elements, but in a different order.
+     This algorithm exhaustively searches all possible combinations of elements in
+     a set (Python list) by continuously swapping pairs of elements using recursion,
+     then backtracks to the original state of a set.
 
     Complexity: Theta(nn!) time. Space complexity is O(n!n) is proportional to the
      output. There are `n!` permutations of a set of `n`-elements set by definition.
-    :param list L: Input set
+    :param list S: Input set
     :param list P: Output list of permutations
     :param int i: Starting index (used in recursion)
     :return None: List `P` is populated
     """
-    n = len(L)
-    if i == n - 1:
-        P.append(L.copy())  # Creates an exact copy of L
-        return
+    n = len(S)
+    if i >= n - 1:
+        P.append(S.copy())
     else:
         for k in range(i, n):
-            L[i], L[k] = L[k], L[i]  # Swap
-            permutations(L, P, i + 1)
-            L[i], L[k] = L[k], L[i]  # Swap back
+            S[i], S[k] = S[k], S[i]  # Swap
+            permutations(S, P, i + 1)
+            S[i], S[k] = S[k], S[i]  # Swap back
 
 
-def subsets(L, P, r=0, w=0, S=None):
+def subsets(S, P, r=0, w=0, s=None):
     """
     Produces all subsets of a set
 
-    Exhaustively searches all possible subsets of a set (Python list), order is not
+    Exhaustively searches all possible subsets of a set (Python list). Order is not
      important. For example, `{1, 3}` and `{3, 1}` are the same subset. At each step
      algorithm "decides" whether include next element or not. Same algorithm is called
      for each decision.
@@ -71,57 +72,54 @@ def subsets(L, P, r=0, w=0, S=None):
 
     Complexity: Theta(2^n) for time. Recursive tree is binary, for each of `n` elements
      we decide whether we include that element in a subset or not.
-    :param list L: Input set
+    :param list S: Input set
     :param list P: Output list of subsets
-    :param int r: Read index in input set `L` (used in recursion)
-    :param int w: Write index in generated subset `S` (used in recursion)
-    :param list S: Intermediately generated subset (used in recursion)
+    :param int r: Read index in input set `S` (used in recursion)
+    :param int w: Write index in candidate subset `s` (used in recursion)
+    :param list s: Candidate subset (used in recursion)
     :return None: List `P` is populated
     """
-    n = len(L)
-    if S is None:
-        S = [None] * n
+    n = len(S)
+    if s is None:
+        s = [None] * n
     if r >= n:
-        P.append(S[0:w])  # Creates a sliced copy of S
-        return
+        P.append(s[0:w])
     else:
-        subsets(L, P, r + 1, w, S)  # Subsets without `r`-th element
-        S[w] = L[r]  # Add `r`-th element to a candidate
-        subsets(L, P, r + 1, w + 1, S)  # Subsets with new candidate
+        subsets(S, P, r + 1, w, s)  # Subsets without `r`-th element
+        s[w] = S[r]  # Include `r`-th element to a candidate from input subset
+        subsets(S, P, r + 1, w + 1, s)  # Subsets with `r`-th element included
 
 
-def lcs(X, Y, i=None, j=None):
+def partitions(S, P, s=0, p=None):
     """
-    Returns longest common sub-sequence of two strings
+    Produces all possible partitions of a set
 
-    This is well known problem whose recursive formula is similar to a subset algorithm.
-     Recursion compares two elements at given indices, one for each string, starting at
-     the end. If matching characters are found, one recursive call is made with both
-     indices shifted. Otherwise search continues recursively on both strings with one
-     index shifted at a time.
+    Partitioned set contains such subsets that, when joined, they produce the original
+     set. Order of elements is preserved. For example a set `{a,b,c}` can be partitioned
+     into `{a,b,c}`, `{a}+{b,c}`, `{a,b}+{c}` or `{a}+{b}+{c}`.
 
-    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
-     strings.
-    :param str X: First string
-    :param str Y: Second string
-    :param int i: Lookup index in a first string (used in recursion)
-    :param int j: Lookup index in a second string (used in recursion)
-    :return str: Output string
+    This algorithm is similar to subsets generation. Instead of deciding whether to
+     include an element into a partition, it decides whether the set should be "sliced" at
+     this point starting at the beginning of the set. The remainder part of a set to the
+     "right" of the slice, is added to the stack and same algorithm is called on it.
+
+    After partitions have been computed, the algorithm "backtracks" and retracts the
+     stack, then operation is repeated.
+
+    Complexity: O(2^n) bounded by (2^n)/2 possible partitions
+    :param list S: Input set
+    :param list P: Output list of set partitions
+    :param int s: Starting index (used in recursion)
+    :param list p: Intermediate partition stack (used in recursion)
+    :return None: List `P` is populated
     """
-    if i is None:
-        i = len(X) - 1
-    if j is None:
-        j = len(Y) - 1
-    if i < 0 or j < 0:  # Base case (out of bounds)
-        return ''
-    elif X[i] == Y[j]:  # Matching characters are found
-        return lcs(X, Y, i - 1, j - 1) + X[i]
+    n = len(S)
+    if p is None:
+        p = []  # Partition stack
+    if s >= n:
+        P.append(p.copy())
     else:
-        # Recursive calls increasing index for each of the string
-        s1 = lcs(X, Y, i, j - 1)
-        s2 = lcs(X, Y, i - 1, j)
-        # Backtrack with the longest string found so far
-        if len(s1) > len(s2):
-            return s1
-        else:
-            return s2
+        for i in range(s + 1, n + 1):
+            p.append(S[s:i])
+            partitions(S, P, i, p)
+            p.pop()
