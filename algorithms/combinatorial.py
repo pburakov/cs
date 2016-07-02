@@ -1,36 +1,33 @@
 """
 Many combinatorial problems can be solved to optimality using exhaustive search
- techniques, although time complexity of such solutions can be enormous, even
- unfeasible. The time and spaces complexity of a combinatorial search problem is
- coherent with the size of its output. Output is predictable with the use of
- counting theory formulas.
+ techniques, although computational cost of such solutions can be enormous, even
+ unfeasible. The time and spaces complexity of such problems are coherent with the
+ size of its output. It is predictable with the use of counting theory formulas.
 
 This class of problems is often called "n-choose-k", due to the binomial
- coefficient that denotes the number of `k`-combinations of an `n`-set of
- elements.
+ coefficient that denotes the number of `k`-combinations of a set of `n` elements.
 
 Combinatorial search algorithms use recursion with a backtracking technique.
- Backtracking is a systematic way to iterate through all the possible states in
- a search space, while avoiding repetitions and bad configurations. Such solutions
- resemble depth-first search algorithm where graph represents all possible
- configurations.
+ Recursive solutions resemble depth-first search algorithm where graph represents all
+ possible configurations, or states. Backtracking is a systematic way to iterate
+ through all these sates in a search space, while avoiding repetitions and bad
+ configurations. Backtracking algorithm abandons a partial candidate as soon as
+ it determines that it cannot possibly be completed to a valid solution
 
 Description of common steps of a backtracking algorithm:
  1. Define base case for recursion to finish. For instance, report a found solution
   or report that algorithm has exhausted all possible solutions for given
   configuration.
- 2. Construct a new candidate configuration for a solution (a state) by updating
-  initial set. For example, swap or replace an element or on the contrary, "lock" an
-  element and rearrange remaining elements in a set.
+ 2. Construct a new candidate, or several, for a solution. For example, swap or
+  replace an element or on the contrary, "lock" an element and rearrange remaining
+  elements in a set.
  3. Check if proposed solution does not violate conditions, if such are defined by
-  the problem. This is where we cut of a branch of a recursive tree.
- 4. Backtrack (call the same method) on new candidate or, if many, invoke
-  backtracking on each new candidate.
- 5. Undo updates made to a set (optional). After the running process will exit the
-  recursion set will be returned to an original state.
+  the problem. This is where we abandon a branch of a recursive tree.
+ 4. Call itself on new candidate or, if many, on each of the new candidates.
+ 5. Undo updates made to a set (optional). This step occurs after the running process
+  exits the recursion (or "backtracks").
 
-Below are the implementations of some common combinatorial algorithms that share
- the use of backtracking technique.
+Below are the implementations of some common combinatorial search algorithms.
 """
 
 
@@ -91,3 +88,41 @@ def subsets(L, P, r=0, w=0, S=None):
         subsets(L, P, r + 1, w, S)  # Subsets without `r`-th element
         S[w] = L[r]  # Add `r`-th element to a candidate
         subsets(L, P, r + 1, w + 1, S)  # Subsets with new candidate
+
+
+def lcs(X, Y, i=None, j=None):
+    """
+    Returns longest common sub-sequence of two strings
+
+    This is well known recursive algorithm can be described as a subsets problem for
+     two strings, without mutating the initial state.
+
+    Recursion compares two elements at given indices, one for each string, starting at
+     the end. Once matching characters are found, one recursive call is made with both
+     indices shifted. Otherwise search continues recursively on both strings.
+
+    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
+     strings.
+    :param str X: First string
+    :param str Y: Second string
+    :param int i: Lookup index in a first string (used in recursion)
+    :param int j: Lookup index in a second string (used in recursion)
+    :return str: Output string
+    """
+    if i is None:
+        i = len(X) - 1
+    if j is None:
+        j = len(Y) - 1
+    if i < 0 or j < 0:  # Base case (out of bounds)
+        return ''
+    elif X[i] == Y[j]:  # Matching characters are found
+        return lcs(X, Y, i - 1, j - 1) + X[i]
+    else:
+        # Recursive calls increasing index for each of the string
+        s1 = lcs(X, Y, i, j - 1)
+        s2 = lcs(X, Y, i - 1, j)
+        # Backtrack with the longest string found so far
+        if len(s1) > len(s2):
+            return s1
+        else:
+            return s2
