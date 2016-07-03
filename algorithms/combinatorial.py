@@ -107,10 +107,10 @@ def partitions(S, P, f, s=0, p=None):
 
     This algorithm is similar to subsets generation. Instead of deciding whether to
      include an element into a partition, it decides whether the set should be "sliced" at
-     this point starting at the beginning of the set. The remainder sub-partition to the
+     this point, starting at the beginning of the set. The remainder sub-partition to the
      "right" of the slice, is added to the stack and same algorithm is called on it.
 
-    After partitions have been computed, the algorithm "backtracks" and retracts the
+    After sub-partitions have been computed, the algorithm "backtracks" and retracts the
      stack, then operation is repeated.
 
     Complexity: O(2^n) bounded by (2^n)/2 possible partitions
