@@ -37,7 +37,7 @@ class Queue:
         self.head = 0
         self.tail = 0
         self.size = n
-        self.items = [None] * n  # Allocated memory for elements in the queue
+        self.items = [object] * n  # Allocated memory for elements in the queue
         self.length = 0  # Number of currently enqueued items
 
 

@@ -28,7 +28,7 @@ class Stack:
         """
         self.top = -1
         self.size = n
-        self.items = [None] * n  # Allocated memory for elements in the stack
+        self.items = [object] * n  # Allocated memory for elements in the stack
 
 
 def stack_empty(S):
