@@ -54,7 +54,7 @@ def pre_order(x, f):
     Pre-order tree traversal.
 
     :param Node x: Starting node
-    :param callable f: Callback function
+    :param (Node)->Any f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:
@@ -68,7 +68,7 @@ def in_order(x, f):
     In-order tree traversal.
 
     :param Node x: Starting node
-    :param callable f: Callback function
+    :param (Node)->Any f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:
@@ -82,7 +82,7 @@ def post_order(x, f):
     Post-order tree traversal.
 
     :param Node x: Starting node
-    :param callable f: Callback function
+    :param (Node)->Any f: Callback function
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:
