@@ -15,7 +15,9 @@ def quicksort(A, p=0, r=None):
      in a variety of ways. In this implementation partitioning starts with the last item
      of the array as the initial pivot element.
 
-    Complexity: O(n log(n))
+    Complexity: O(n log(n)), O(n^2) worst case. Quicksort shows good average-case efficiency
+     due to a small amount of constant operations in its notation. Quicksort is unstable,
+     however, it does not require additional space.
     :param list A: Input array
     :param int p: Lower bound (default is 0)
     :param int r: Upper bound (default is `|A|-1`)
@@ -42,7 +44,7 @@ def partition(A, p, r):
     The partitioning routine is widely used in other algorithms in various optimized
      versions.
 
-    Complexity: O(k), where `k=r-p`.
+    Complexity: O(k), where `k` is the size of a subarray.
     :param list A: Input array
     :param int p: Lower bound of the partition
     :param int r: Upper bound of the partition, initial index of pivot element
@@ -56,8 +58,3 @@ def partition(A, p, r):
             i += 1
     A[i], A[r] = A[r], A[i]  # Transplant pivot element to its final position
     return i
-
-
-l = [2, 8, 7, 1, 3, 5, 6, 4]
-quicksort(l)
-print(l)
