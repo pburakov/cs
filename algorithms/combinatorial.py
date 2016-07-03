@@ -38,12 +38,14 @@ def subsets(S, P, i=0, M=None):
     Exhaustively searches all possible subsets of a set (Python list). Order is not
      important. For example, `{1, 3}` and `{3, 1}` are the same subset.
 
-    At each step algorithm "decides" whether include next element or not. Same
-     algorithm is called for each decision. The problem is solved in the same manner
-     as a permutation problem. Decisions table is represented as an `n`-sized bit map,
+    At each step algorithm "decides" whether to include next element or not. Same
+     algorithm is invoked for each decision. The problem is solved in the same manner
+     as a permutation problem.
+
+    In this implementation the decisions table is represented as an `n`-sized bit map,
      where bits `1` and `0` at `i`-th position determine whether `i`-th element should
-     be included or not. This implementation does not include early termination and
-     backtracking for clarity purposes.
+     be included or not. It does not include early termination and backtracking for
+     clarity purposes.
 
     Complexity: Theta(2^n) for time. Recursive tree is binary, for each of `n` elements
      we decide whether we include that element in a subset or not.
@@ -90,7 +92,7 @@ def permutations(S, P, f, i=0):
     else:
         for k in range(i, n):
             S[i], S[k] = S[k], S[i]  # Swap
-            if f(S):
+            if f(S):  # Cutting out invalid configuration early
                 permutations(S, P, f, i + 1)
             S[i], S[k] = S[k], S[i]  # Swap back
 
@@ -105,7 +107,7 @@ def partitions(S, P, f, s=0, p=None):
 
     This algorithm is similar to subsets generation. Instead of deciding whether to
      include an element into a partition, it decides whether the set should be "sliced" at
-     this point starting at the beginning of the set. The remainder part of a set to the
+     this point starting at the beginning of the set. The remainder sub-partition to the
      "right" of the slice, is added to the stack and same algorithm is called on it.
 
     After partitions have been computed, the algorithm "backtracks" and retracts the
@@ -126,8 +128,8 @@ def partitions(S, P, f, s=0, p=None):
         P.append(p.copy())
     else:
         for i in range(s + 1, n + 1):
-            sub = S[s:i]
-            if f(sub):
-                p.append(sub)
+            sub_partition = S[s:i]
+            if f(sub_partition):  # Cutting out invalid configuration early
+                p.append(sub_partition)
                 partitions(S, P, f, i, p)
                 p.pop()
