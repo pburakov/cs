@@ -136,7 +136,7 @@ def tree_successor(x):
         # -- or, if there is no right child, go up the tree from `x` until
         # we encounter a node that is the left child of its parent.
         p = x.parent
-        while p is not None and x == p.right:
+        while p is not None and x is p.right:
             x = p
             p = p.parent
         return p
@@ -159,7 +159,7 @@ def tree_predecessor(x):
         # -- or, if there is no left child, go up the tree from `x` until
         # we encounter a node that is the right child of its parent
         p = x.parent
-        while p is not None and x == p.left:
+        while p is not None and x is p.left:
             x = p
             p = p.parent
         return p
@@ -214,7 +214,7 @@ def transplant(T, u, v):
     """
     if u.parent is None:      # Node `u` is a root
         T.root = v
-    elif u == u.parent.left:  # Node `u` is a left child of its parent
+    elif u is u.parent.left:  # Node `u` is a left child of its parent
         u.parent.left = v
     else:                     # Node `u` is a right child of its parent
         u.parent.right = v
@@ -234,31 +234,19 @@ def tree_delete(T, z):
     :param Node z: Node to be deleted
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    # Case 1. If `z` has only right child, then it's removed and replaced by its
-    # right child. `z`'s right child can be a leaf or None (handled by
-    # `transplant()` method. Right child's own children are "taken" with him.
-    if z.left is None:
+    if z.left is None:     # `z` has only right child
         transplant(T, z, z.right)
-    # Case 2. If `z` has only left child, we replace `z` by its left child,
-    # similarly to case 1.
-    elif z.right is None:
+    elif z.right is None:  # `z` has only left child
         transplant(T, z, z.left)
-    # Case 3. Otherwise `z` has both left and right child. We find `z` successor
-    # (leftmost element in `z` right subtree. We want to splice it out and
-    # have it replace `z` in the tree.
-    else:
+    else:                  # `z` has both left and right child
         y = tree_minimum(z.right)  # `z`'s successor
-        # Case 3a. Successor `y` lies within `z`'s right subtree, but it's not `z`'s
-        # right child. `y` needs to be detached first, then resume with the case 3b.
-        if y.parent is not z:
-            transplant(T, y, y.right)  # `y`'s right child takes its place
-            y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
-            y.right.parent = y         # ...and `y` becomes a parent of `z`'s right subtree
-        # Case 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
-        # leaving `y`'s right child unmodified.
-        transplant(T, z, y)  # `y` takes `z`'s place
-        y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
-        y.left.parent = y    # ...and `y` becomes a parent of `z`'s left subtree
+        if y.parent is not z:      # Successor is not `z`'s right child
+            transplant(T, y, y.right)
+            y.right = z.right
+            y.right.parent = y
+        transplant(T, z, y)        # Successor is `z`'s right child
+        y.left = z.left
+        y.left.parent = y
 
 
 def left_rotate(T, x):
@@ -282,19 +270,19 @@ def left_rotate(T, x):
     """
     if x.right is None:
         raise ValueError("Node has no right child")
-    y = x.right               # let `y` be `x`'s right subtree, it will change places with `x`
-    x.right = y.left          # `y`'s left subtree becomes `x`'s right subtree
+    y = x.right  # right subtree of `x`
+    x.right = y.left
     if y.left is not None:
-        y.left.parent = x     # and `x` becomes a parent of `y`'s left subtree (if it exists)
-    y.parent = x.parent       # `x`'s old parent becomes `y`s parent
-    if x.parent is None:      # `y` will become the root if `x` had no parent
+        y.left.parent = x
+    y.parent = x.parent
+    if x.parent is None:      # `x` was root
         T.root = y
-    elif x == x.parent.left:  # `y` will be adopted by `x`'s parents depending on
+    elif x is x.parent.left:  # `x` was a left child
         x.parent.left = y
-    else:                     # ...which child was `x` (left or right)
+    else:                     # `x` was a right child
         x.parent.right = y
-    y.left = x                # `x` becomes `y`'s child
-    x.parent = y              # ...and `y` becomes its parent
+    y.left = x
+    x.parent = y
 
 
 def right_rotate(T, x):
@@ -311,16 +299,16 @@ def right_rotate(T, x):
     """
     if x.left is None:
         raise ValueError("Node has no left child")
-    y = x.left
+    y = x.left  # left subtree of `x`
     x.left = y.right
     if y.right is not None:
         y.right.parent = x
     y.parent = x.parent
-    if x.parent is None:
+    if x.parent is None:       # `x` was a root
         T.root = y
-    elif x == x.parent.right:
+    elif x is x.parent.right:  # `x` was a right child
         x.parent.right = y
-    else:
+    else:                      # `x` was a left child
         x.parent.left = y
     y.right = x
     x.parent = y
