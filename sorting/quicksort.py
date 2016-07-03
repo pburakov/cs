@@ -41,8 +41,7 @@ def partition(A, p, r):
      that are greater than `x`. `A[j..r]` are not covered by any of these cases. `A[r]`
      is the pivot element that is placed to its final position at index `i`.
 
-    The partitioning routine is widely used in other algorithms in various optimized
-     versions.
+    The partitioning routine has many variations and is widely used in other algorithms.
 
     Complexity: O(k), where `k` is the size of a subarray.
     :param list A: Input array
