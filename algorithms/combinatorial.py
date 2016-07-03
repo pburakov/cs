@@ -1,8 +1,8 @@
 """
 Many combinatorial problems can be solved to optimality using exhaustive search
  techniques, although computational cost of such solutions can be enormous, even
- unfeasible. The time and spaces complexity of such problems are coherent with the
- size of its output. It is predictable with the use of counting theory formulas.
+ unfeasible. Time and space complexity of such problems are coherent with the
+ size of its output. It is predictable using counting theory formulas.
 
 This class of problems is often called "n-choose-k", due to the binomial
  coefficient that denotes the number of `k`-combinations of a set of `n` elements.
@@ -10,7 +10,7 @@ This class of problems is often called "n-choose-k", due to the binomial
 Combinatorial search algorithms use recursion with a backtracking technique.
  Recursive solutions resemble depth-first search algorithm where graph represents all
  possible configurations, or states. Backtracking is a systematic way to iterate
- through all these sates in a search space, while avoiding repetitions and bad
+ through all the sates in a search space, while avoiding repetitions and bad
  configurations. Backtracking algorithm abandons a partial candidate as soon as
  it determines that it cannot possibly be completed to a valid solution
 
@@ -31,7 +31,43 @@ Below are the implementation templates for some of the most common combinatorial
 """
 
 
-def permutations(S, P, i=0):
+def subsets(S, P, i=0, M=None):
+    """
+    Produces all subsets of a set
+
+    Exhaustively searches all possible subsets of a set (Python list). Order is not
+     important. For example, `{1, 3}` and `{3, 1}` are the same subset.
+
+    At each step algorithm "decides" whether include next element or not. Same
+     algorithm is called for each decision. The problem is solved in the same manner
+     as a permutation problem. Decisions table is represented as an `n`-sized bit map,
+     where bits `1` and `0` at `i`-th position determine whether `i`-th element should
+     be included or not. This implementation does not include early termination and
+     backtracking for clarity purposes.
+
+    Complexity: Theta(2^n) for time. Recursive tree is binary, for each of `n` elements
+     we decide whether we include that element in a subset or not.
+    :param list S: Input set
+    :param list P: Output list of subsets
+    :param int i: Element lookup index (used in recursion)
+    :param list M: Bitmap of a subset (used in recursion)
+    :return None: List `P` is populated
+    """
+    n = len(S)
+    if M is None:
+        M = [False] * n  # Allocating memory for bitmap or a subset
+    if i >= n:
+        # Converts bit map to a subset copy
+        s = [S[i] for i in range(n) if M[i] is True]
+        P.append(s)
+    else:
+        M[i] = True
+        subsets(S, P, i + 1, M)  # Generate subsets including `i`-th element
+        M[i] = False
+        subsets(S, P, i + 1, M)  # Generate subsets excluding `i`-th element
+
+
+def permutations(S, P, f, i=0):
     """
     Produces all permutations of a set
 
@@ -44,6 +80,7 @@ def permutations(S, P, i=0):
      output. There are `n!` permutations of a set of `n`-elements set by definition.
     :param list S: Input set
     :param list P: Output list of permutations
+    :param (list)->bool f: Boolean function that evaluates valid candidate set
     :param int i: Starting index (used in recursion)
     :return None: List `P` is populated
     """
@@ -53,44 +90,12 @@ def permutations(S, P, i=0):
     else:
         for k in range(i, n):
             S[i], S[k] = S[k], S[i]  # Swap
-            permutations(S, P, i + 1)
+            if f(S):
+                permutations(S, P, f, i + 1)
             S[i], S[k] = S[k], S[i]  # Swap back
 
 
-def subsets(S, P, r=0, w=0, s=None):
-    """
-    Produces all subsets of a set
-
-    Exhaustively searches all possible subsets of a set (Python list). Order is not
-     important. For example, `{1, 3}` and `{3, 1}` are the same subset. At each step
-     algorithm "decides" whether include next element or not. Same algorithm is called
-     for each decision.
-
-    This problem can also be solved as a more space-efficient permutation problem.
-     For example we can calculate permutations of `n`-sized bit map, where bits `1` and
-     `0` determine whether an element should be included or not.
-
-    Complexity: Theta(2^n) for time. Recursive tree is binary, for each of `n` elements
-     we decide whether we include that element in a subset or not.
-    :param list S: Input set
-    :param list P: Output list of subsets
-    :param int r: Read index in input set `S` (used in recursion)
-    :param int w: Write index in candidate subset `s` (used in recursion)
-    :param list s: Candidate subset (used in recursion)
-    :return None: List `P` is populated
-    """
-    n = len(S)
-    if s is None:
-        s = [None] * n
-    if r >= n:
-        P.append(s[0:w])
-    else:
-        subsets(S, P, r + 1, w, s)  # Subsets without `r`-th element
-        s[w] = S[r]  # Include `r`-th element to a candidate from input subset
-        subsets(S, P, r + 1, w + 1, s)  # Subsets with `r`-th element included
-
-
-def partitions(S, P, s=0, p=None):
+def partitions(S, P, f, s=0, p=None):
     """
     Produces all possible partitions of a set
 
@@ -109,6 +114,7 @@ def partitions(S, P, s=0, p=None):
     Complexity: O(2^n) bounded by (2^n)/2 possible partitions
     :param list S: Input set
     :param list P: Output list of set partitions
+    :param (list)->bool f: Boolean function that evaluates valid partition
     :param int s: Starting index (used in recursion)
     :param list p: Intermediate partition stack (used in recursion)
     :return None: List `P` is populated
@@ -120,6 +126,8 @@ def partitions(S, P, s=0, p=None):
         P.append(p.copy())
     else:
         for i in range(s + 1, n + 1):
-            p.append(S[s:i])
-            partitions(S, P, i, p)
-            p.pop()
+            sub = S[s:i]
+            if f(sub):
+                p.append(sub)
+                partitions(S, P, f, i, p)
+                p.pop()
