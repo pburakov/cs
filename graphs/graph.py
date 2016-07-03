@@ -23,7 +23,7 @@ Adjacency list can be used to represent both directed and undirected graph types
 
 def dict_to_graph(D):
     """
-    Converts dictionary into a set of graph and vertex objects.
+    Converts dictionary into a graph and set of vertex objects.
 
     Assumed dictionary representation is in following format:
      - `{'A': ['B', 'C']}` for unweighted graphs
