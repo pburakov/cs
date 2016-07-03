@@ -87,11 +87,11 @@ def list_insert(L, x):
     :param Node x: Pointer to a new doubly linked list node to insert
     :return None: List `L` is mutated
     """
-    x.next = L.head         # Old head of a list now becomes `x`'s successor
-    if L.head is not None:  # If list wasn't empty,
-        L.head.prev = x     # ...maintaining pointer to the predecessor
-    L.head = x              # `x` becomes a new head of the list.
-    x.prev = None           # First node has no predecessor
+    x.next = L.head
+    if L.head is not None:
+        L.head.prev = x
+    L.head = x
+    x.prev = None
 
 
 def list_delete(L, x):
@@ -104,9 +104,9 @@ def list_delete(L, x):
     :param Node x: Pointer to a doubly linked list node to remove
     :return None: List `L` is mutated
     """
-    if x.prev is not None:    # 1. Element is somewhere near to the end of the list
-        x.prev.next = x.next  # Previous item now points to `x`'s successor
-    else:                     # 2. List's head is removed
-        L.head = x.next       # List's head now points to `x`'s successor
-    if x.next is not None:    # And if we're not at the end of the list,
-        x.next.prev = x.prev  # ...maintaining pointer to the predecessor.
+    if x.prev is not None:
+        x.prev.next = x.next
+    else:
+        L.head = x.next
+    if x.next is not None:
+        x.next.prev = x.prev

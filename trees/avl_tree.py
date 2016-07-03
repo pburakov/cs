@@ -105,33 +105,25 @@ def avl_rebalance(T, x):
     if x is not None:
         update_height(x)
         f = balance_factor(x)
-        # Case 1. `x`'s right subtree is "heavier"
-        if f < -1:
-            a = x.right  # Pointer to `x`'s right subtree
-            # Case 1a. Two rotations will be required when edges of `x`, `a` and `a`'s
-            # heaviest child form a "zig-zag"
-            if height(a.left) >= height(a.right):
+        if f < -1:  # `x`'s right subtree is "heavier"
+            a = x.right
+            if height(a.left) >= height(a.right):  # Right successors form a "zig-zag"
                 right_rotate(T, a)
                 update_height(a)
                 left_rotate(T, x)
-            # Case 1b. Edges of `x`, `a` and `a`'s heaviest child form a straight line,
-            # single rotation is required.
             else:
                 left_rotate(T, x)
-            update_height(x)  # In either cases 1a and 1b `x`'s height is updated
-        # Case 2. `x`'s left subtree is "heavier"
-        elif f > 1:
-            b = x.left  # Pointer to `x`s left subtree
-            # Case 2a. Symmetric cases for edges of `x`, `b` and `b`'s heaviest child
-            if height(b.right) >= height(b.left):
+            update_height(x)
+        elif f > 1:  # `x`'s left subtree is "heavier"
+            b = x.left
+            if height(b.right) >= height(b.left):  # Left successors form a "zig-zag"
                 left_rotate(T, b)
                 update_height(b)
                 right_rotate(T, x)
-            # Case 2b. Symmetric case for 1b.
             else:
                 right_rotate(T, x)
             update_height(x)
-        avl_rebalance(T, x.parent)  # Going up one level of `x`
+        avl_rebalance(T, x.parent)  # Recursive call
 
 
 def avl_insert(T, z):
@@ -161,8 +153,6 @@ def avl_delete(T, z):
     :param Node z: Node to remove
     :return None: Dynamic set of AVL tree `T` is mutated in the process
     """
-    p = z.parent  # Keep pointer to a parent of a deleted node
+    p = z.parent
     tree_delete(T, z)
-    # Other node or null will take `z`'s place. First node that is potentially
-    # out of balance is `z`'s parent.
-    avl_rebalance(T, p)
+    avl_rebalance(T, p)  # first node that is potentially out of balance is the parent.
