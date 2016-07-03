@@ -81,23 +81,25 @@ def relax(G, u, v):
     :param Vertex v: Second vertex
     :return None: Vertex `v` is updated
     """
-    if v.d > u.d + weight(G, u, v):
-        v.d = u.d + weight(G, u, v)
+    w = weight(G, u, v)
+    if v.d > u.d + w:
+        v.d = u.d + w
         v.p = u
 
 
 def bellman_ford(G, s):
     """
-    Bellman-Ford single-source shortest-paths solution in the general case
+    Bellman-Ford single-source shortest-paths solution in the general case.
 
     Algorithm relaxes edges, making `|V|-1` passes over the edges of the graph,
      decreasing an estimate on the path from starting vertex `s`, gradually
-     spreading the frontier of relaxed edges beyond those already estimated. After
-     `|V|-1` passes of every edge in a graph it will deterministically completely
-     relax all it's edges, unless there's a negative-weight cycle.
+     spreading the frontier of relaxed edges beyond those already estimated.
+     In that sense, Bellman-Ford is regarded as a dynamic programming algorithm.
 
-    Second loop checks for cycles by verifying that none of the edges can be further
-     relaxed otherwise reporting that negative-weight cycle exists.
+    After `|V|-1` passes of every edge in a graph, it will deterministically
+     completely relax all of its edges, unless there's a negative-weight cycle.
+     Second loop checks for cycles by verifying that none of the edges can be
+     further relaxed otherwise reporting that negative-weight cycle exists.
 
     Complexity: O(VE) for main loop. Initialization O(V) + O(E) for cycle check.
     :param Graph G: Adjacency list weighted directed graph representation
@@ -107,7 +109,6 @@ def bellman_ford(G, s):
      are updated.
     """
     n = len(G.V)  # Total number of vertices in a graph
-
     initialize_single_source(G, s)
     for i in range(0, n - 1):
         # Relax every edge `|V|-1` times
