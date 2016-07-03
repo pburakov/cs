@@ -40,7 +40,7 @@ def merge(L, R):
     :return list: Merged product of arrays `L` and `R`
     """
     s = len(L) + len(R)  # Final size of the product of the merge
-    P = [None] * s       # Allocated memory for the product of the merge
+    P = [object] * s     # Allocated memory for the product of the merge
     i_l, i_r = 0, 0      # Pointers for arrays `L` and `R`
     max_l, max_r = len(L) - 1, len(R) - 1  # Upper bounds for the pointers
     for i in range(0, s):
