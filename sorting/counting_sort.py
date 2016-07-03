@@ -26,14 +26,12 @@ def counting_sort(A, k):
     i_n = n - 1        # Index of last element
     P = [int] * n      # Allocated memory for sorted output
     C = [0] * (k + 1)  # Working storage (auxiliary array for counting)
-
     for x in A:
         C[x] += 1
     # `C[x]` now contains number (count) of elements equal to `x`
     for x in range(1, k + 1):
         C[x] += C[x - 1]
     # `C[x]` now contains number of elements less than or equal to `x`.
-
     # Array `C` serves as an initial index map for the final location of each element
     # in the sorted output. We need to go backwards to preserve stability of the sort.
     for j in range(i_n, -1, -1):

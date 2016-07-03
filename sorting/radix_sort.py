@@ -47,7 +47,6 @@ def digit_counting_sort(A, i, b=10):
     i_n = n - 1     # Index of a last element in the input array
     P = [int] * n   # Allocated memory for sorted output
     R = [0] * b     # Working storage for all possible numbers in radix representation
-
     for e in A:
         d = get_digit(e, i, b)  # `i`-th digit of an element `e`
         R[d] += 1
@@ -56,7 +55,6 @@ def digit_counting_sort(A, i, b=10):
         R[d] += R[d - 1]
     # `R[d]` now contains the number of elements having `i`-th digit that is less
     # than or equal to `d`.
-
     # Iterating backwards to maintain stability, same as regular counting sort
     for j in range(i_n, -1, -1):
         e = A[j]                # Element in input array

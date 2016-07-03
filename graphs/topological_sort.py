@@ -1,5 +1,5 @@
 from basic_data_structures.linked_list import LinkedList, Node, list_insert
-from graphs.dfs import Timer, WHITE, GRAY, BLACK
+from graphs.dfs import Counter, WHITE, GRAY, BLACK
 from graphs.graph import Graph, Vertex
 
 
@@ -22,9 +22,8 @@ def topological_sort(G):
     :param Graph G: Adjacency list representation of a DAG
     :return LinkedList: List of vertices in order of precedence
     """
-    t = Timer()
+    t = Counter()
     L = LinkedList()
-
     for u in G.V:
         u.color = WHITE
         u.p = None
@@ -44,7 +43,7 @@ def visit(G, u, t, L):
     Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Graph G: Adjacency list representation of a DAG
     :param Vertex u: Vertex to visit
-    :param Timer t: Mutable timer (integer counter)
+    :param Counter t: Mutable timer (integer counter)
     :param LinkedList L: Output linked list
     :return None: Finished vertex is updated and added to the list `L`
     """

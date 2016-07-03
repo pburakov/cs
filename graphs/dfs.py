@@ -42,8 +42,7 @@ def dfs(G):
     :param Graph G: Adjacency list graph representation
     :return None: Vertices are updated
     """
-    t = Timer()  # Mutable counter
-
+    t = Counter()  # Mutable counter
     for u in G.V:
         u.color = WHITE
         u.p = None
@@ -59,7 +58,7 @@ def dfs_visit(G, u, t):
     Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Graph G: Adjacency list graph representation
     :param Vertex u: Vertex to visit
-    :param Timer t: Mutable timer (integer counter)
+    :param Counter t: Mutable timer (integer counter)
     :return None: Vertex `u` and adjacent vertices are updated
     """
     t.tick += 1
@@ -82,7 +81,7 @@ GRAY = "GRAY"    # Discovered
 BLACK = "BLACK"  # Visited
 
 
-class Timer:
+class Counter:
     def __init__(self, t=0):
         """
         Simple mutable counter object

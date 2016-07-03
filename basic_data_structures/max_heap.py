@@ -43,7 +43,6 @@ def max_heapify(A, i, n=None):
     l = 2 * i + 1   # Index of a left child
     r = 2 * i + 2   # Index of a right child
     i_largest = i   # Index of a largest element (`i` by default)
-
     if l < n and A[l] > A[i]:
         i_largest = l
     if r < n and A[r] > A[i_largest]:
@@ -69,7 +68,6 @@ def build_max_heap(A):
 
     i_n = len(A) - 1  # Index of a last element
     i_n_p = i_n // 2  # Index of last element's parent
-
     for i in range(i_n_p, -1, -1):
         max_heapify(A, i)
 
@@ -88,7 +86,6 @@ def heap_extract_max(A, fix=True):
     """
     n = len(A)   # Heap size
     i_n = n - 1  # Index of a last element
-
     if n < 1:
         raise ValueError("Heap underflow")
     elif n == 1:
@@ -115,7 +112,6 @@ def heap_increase_key(A, i):
     :return None: List `A` is mutated.
     """
     p = (i - 1) // 2  # Parent's index (valid for both left and right child)
-
     if p >= 0 and A[i] > A[p]:
         A[p], A[i] = A[i], A[p]  # Exchange child with parent
         heap_increase_key(A, p)  # Repeat one level up
@@ -135,6 +131,5 @@ def max_heap_insert(A, z):
     A.append(z)  # Add element to the bottom of a heap
     n = len(A)   # Length of a heap
     i_n = n - 1  # Index of last element
-
     if n > 1:
         heap_increase_key(A, i_n)

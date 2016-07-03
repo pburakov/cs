@@ -180,7 +180,6 @@ def tree_insert(T, z):
     """
     p = None  # Pointer to a parent of a `z` node.
     q = T.root  # Node to start iteration with
-
     # Locate parent `p` to "attach" a new node to, while satisfying BST properties
     while q is not None:
         p = q  # Keep a trailing pointer to a parent
@@ -235,31 +234,27 @@ def tree_delete(T, z):
     :param Node z: Node to be deleted
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    # 1. If `z` has only right child, then it's removed and replaced by its
+    # Case 1. If `z` has only right child, then it's removed and replaced by its
     # right child. `z`'s right child can be a leaf or None (handled by
     # `transplant()` method. Right child's own children are "taken" with him.
     if z.left is None:
         transplant(T, z, z.right)
-
-    # 2. If `z` has only left child, we replace `z` by its left child,
+    # Case 2. If `z` has only left child, we replace `z` by its left child,
     # similarly to case 1.
     elif z.right is None:
         transplant(T, z, z.left)
-
-    # 3. Otherwise `z` has both left and right child. We find `z` successor
+    # Case 3. Otherwise `z` has both left and right child. We find `z` successor
     # (leftmost element in `z` right subtree. We want to splice it out and
     # have it replace `z` in the tree.
     else:
         y = tree_minimum(z.right)  # `z`'s successor
-
-        # 3a. Successor `y` lies within `z`'s right subtree, but it's not `z`'s
+        # Case 3a. Successor `y` lies within `z`'s right subtree, but it's not `z`'s
         # right child. `y` needs to be detached first, then resume with the case 3b.
         if y.parent is not z:
             transplant(T, y, y.right)  # `y`'s right child takes its place
             y.right = z.right          # `z`'s right subtree becomes `y`'s right subtree
             y.right.parent = y         # ...and `y` becomes a parent of `z`'s right subtree
-
-        # 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
+        # Case 3b. If `y` is `z`'s right child we simply have it take `z`'s position,
         # leaving `y`'s right child unmodified.
         transplant(T, z, y)  # `y` takes `z`'s place
         y.left = z.left      # `z`'s left subtree becomes `y`'s left subtree
@@ -287,9 +282,7 @@ def left_rotate(T, x):
     """
     if x.right is None:
         raise ValueError("Node has no right child")
-
     y = x.right               # let `y` be `x`'s right subtree, it will change places with `x`
-
     x.right = y.left          # `y`'s left subtree becomes `x`'s right subtree
     if y.left is not None:
         y.left.parent = x     # and `x` becomes a parent of `y`'s left subtree (if it exists)

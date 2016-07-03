@@ -17,11 +17,9 @@ def insertion_sort(A):
     :return None: List `A` is mutated.
     """
     n = len(A)
-
     for k in range(1, n):
         v = A[k]  # Value of a picked element
         i = k     # Index of a picked element
-
         while i > 0 and A[i - 1] > v:  # Flip this comparison for reversed order
             A[i] = A[i - 1]
             i -= 1

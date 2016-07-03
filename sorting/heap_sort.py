@@ -22,7 +22,6 @@ def heap_sort(A):
     """
     n = len(A)
     i_n = n - 1  # Index of a last element
-
     build_max_heap(A)
     for i in range(i_n, 0, -1):
         # Stash top element at the end of the array, replace top element with

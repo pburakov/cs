@@ -21,7 +21,6 @@ def merge_sort(A):
     :return list: Sorted product of array `A`
     """
     n = len(A)
-
     if n < 2:
         # Single-element or empty list is already sorted by definition.
         return A
@@ -29,7 +28,6 @@ def merge_sort(A):
         # The array will be sliced down recursively to smaller pieces until the base case
         # is hit and then merged back up.
         i_n_2 = n // 2  # Slice-point
-
         L = merge_sort(A[:i_n_2])
         R = merge_sort(A[i_n_2:])
         return merge(L, R)  # Return product of the merge
@@ -48,7 +46,6 @@ def merge(L, R):
     P = [None] * s       # Allocated memory for the product of the merge
     i_l, i_r = 0, 0      # Pointers for arrays `L` and `R`
     max_l, max_r = len(L) - 1, len(R) - 1  # Upper bounds for the pointers
-
     for i in range(0, s):
         # Pointers went out-of-bounds cases (adding element from the remaining side)
         if i_l > max_l:
@@ -59,7 +56,6 @@ def merge(L, R):
             P[i] = L[i_l]
             i_l += 1
             continue  # Skip to the next iteration
-
         # Normal in-bound case. Picking smaller element located at the pointer.
         if R[i_r] > L[i_l]:  # Flip this comparison for reversed order
             P[i] = L[i_l]

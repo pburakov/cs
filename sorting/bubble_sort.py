@@ -16,7 +16,6 @@ def bubble_sort(A):
     """
     n = len(A)
     i_n = n - 1  # Index of last element
-
     for k in range(0, i_n):
         for i in range(i_n, k, -1):
             if A[i] < A[i - 1]:  # Flip this comparison for reversed order

@@ -105,35 +105,29 @@ def avl_rebalance(T, x):
     if x is not None:
         update_height(x)
         f = balance_factor(x)
-
-        # 1. `x`'s right subtree is "heavier"
+        # Case 1. `x`'s right subtree is "heavier"
         if f < -1:
             a = x.right  # Pointer to `x`'s right subtree
-
-            # 1a. Two rotations will be required when edges of `x`, `a` and `a`'s
+            # Case 1a. Two rotations will be required when edges of `x`, `a` and `a`'s
             # heaviest child form a "zig-zag"
             if height(a.left) >= height(a.right):
                 right_rotate(T, a)
                 update_height(a)
                 left_rotate(T, x)
-
-            # 1b. Edges of `x`, `a` and `a`'s heaviest child form a straight line,
+            # Case 1b. Edges of `x`, `a` and `a`'s heaviest child form a straight line,
             # single rotation is required.
             else:
                 left_rotate(T, x)
             update_height(x)  # In either cases 1a and 1b `x`'s height is updated
-
-        # 2. `x`'s left subtree is "heavier"
+        # Case 2. `x`'s left subtree is "heavier"
         elif f > 1:
             b = x.left  # Pointer to `x`s left subtree
-
-            # 2a. Symmetric cases for edges of `x`, `b` and `b`'s heaviest child
+            # Case 2a. Symmetric cases for edges of `x`, `b` and `b`'s heaviest child
             if height(b.right) >= height(b.left):
                 left_rotate(T, b)
                 update_height(b)
                 right_rotate(T, x)
-
-            # 2b. Symmetric case for 1b.
+            # Case 2b. Symmetric case for 1b.
             else:
                 right_rotate(T, x)
             update_height(x)
