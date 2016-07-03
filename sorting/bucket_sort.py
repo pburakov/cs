@@ -8,10 +8,10 @@ def bucket_sort(A):
      Depending on the nature of the input additional sorting routines may be
      performed on each bucket.
 
-    This implementation of bucket sort assumes that, for `n`-sized array `A`, items
-     are uniformly distributed integers across an interval {0..n}. In order to
-     maintain stability of the sort, buckets are represented by dynamic LIFO
-     structures or stacks.
+    Implementation of bucket sort largely depends on the input data. This variant
+     assumes that, for `n`-sized array `A`, items are uniformly distributed integers
+     across an interval {0..n}. In order to maintain stability of the sort, buckets
+     are represented by dynamic LIFO structures or stacks.
 
     Complexity: O(n) in average case for uniformly or evenly distributed input
     :param list[int] A: Input array
