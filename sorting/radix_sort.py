@@ -20,7 +20,7 @@ def radix_sort(A, d, b=10):
     :param int b: Base of integer elements in the array (default base is 10)
     :return list: Sorted product of array `A`
     """
-    P = A  # Product of sorting iterations
+    P = A.copy()  # Product of sorting iterations
     for i in range(0, d):
         # Stable sort to sort array on digit `i`
         P = digit_counting_sort(P, i, b)
