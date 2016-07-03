@@ -98,8 +98,9 @@ def weight(G, u, v):
     """
     Returns weight of an edge (u, v).
 
-    Assumes that edge is weighted. Allows potential function to be applied to
-     a final result when used in goal-directed path search.
+    Assumes that edge is weighted. Note that weights can be affected by a potential
+     function, reducing the running time by prioritizing edges in a goal-directed
+     search, thus allowing to hit the search target sooner.
 
     :param Graph G: Adjacency list representation of a weighted graph
     :param Vertex u: First vertex

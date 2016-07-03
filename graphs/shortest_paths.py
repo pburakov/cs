@@ -73,9 +73,7 @@ def relax(G, u, v):
     Once upper bound property (∂) is achieved, it never changes. Relaxed edges
      also follow triangle inequality: `∂(s, v) ≤ ∂(s, u) + w(u, v)`.
 
-    Note that weights can be affected by a potential function, reducing the running
-     time by prioritizing edges in a goal-directed search, thus allowing to hit the
-     search target sooner. Longest path is calculated using negated weights.
+    Longest path can be calculated using negated weights.
 
     Complexity: O(1)
     :param Graph G: Adjacency list graph representation
