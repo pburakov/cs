@@ -1,10 +1,10 @@
 """
-Queue is dynamic sets that follows "first-in, first-out" policy. This means that the
+Queue is a dynamic set that follows "first-in, first-out" policy. This means that the
  element deleted from the set is the one that have been in the queue for the longest
  time.
 
-Query can be implemented using a linked list with pointers to both head and the tail
- of the list.
+Query can be implemented using a doubly linked list using pointers to the head and
+ the tail of the list as the head and the tail of the queue.
 
 This implementation uses an array of size `n` to store the elements. `n` is the
  maximum amount of elements that the queue can hold. Elements are never physically

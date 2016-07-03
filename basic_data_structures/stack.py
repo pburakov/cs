@@ -1,9 +1,9 @@
 """
-Stack is dynamic sets that follows "last-in, first-out" policy. This means that the
+Stack is a dynamic set that follows "last-in, first-out" policy. This means that the
  element deleted from the set is the one most recently inserted.
 
-Stack can be implemented using a linked list with top of the stack represented by the
- head of the list.
+Stack can be implemented using a linked list where the head of the list is also the top
+ of the stack .
 
 This implementation uses an array of size `n` to store the elements and guarantee O(1)
  access time. `n` is the maximum amount of elements that the stack can hold. Elements
