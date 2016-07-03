@@ -1,12 +1,14 @@
 def lcs(X, Y, i=None, j=None):
     """
-    Returns longest common sub-sequence of two sets
+    Returns longest common sub-sequence of two sets found recursively
 
-    This is well known problem whose recursive formula is similar to a subset algorithm.
-     Recursion compares two elements at given indices, one for each string, starting at
-     the end. If matching characters are found, one recursive call is made with both
-     indices shifted. Otherwise search continues recursively on both strings with one
-     index shifted at a time.
+    This is well known combinatorial problem whose recursive formula is similar to
+     a subset algorithm. Recursion compares two elements at given indices, one for
+     each string, starting at the end. If matching characters are found, one recursive
+     call is made with both indices shifted. Otherwise search continues recursively
+     on both strings with one index shifted at a time.
+
+    Related sections: Combinatorial Search, Recursion.
 
     Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
      strings.
@@ -33,8 +35,3 @@ def lcs(X, Y, i=None, j=None):
             return s1
         else:
             return s2
-
-
-a = list("foobaz")
-b = list("zzzfzzozozzbarz")
-print(lcs(a, b))
