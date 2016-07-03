@@ -25,7 +25,7 @@ Like a newly arriving customer takes a place in the line, the enqueued element i
 class Queue:
     def __init__(self, n):
         """
-        Basic implementation of a fixed size FIFO structure
+        Basic implementation of a fixed size FIFO structure.
 
         This implementation uses an array (Python list) to store elements or pointers
          to elements in the queue. Additionally stored are allocated memory size, current
@@ -43,13 +43,13 @@ class Queue:
 
 def enqueue(Q, x):
     """
-    Adds an element at the tail of the queue
+    Adds an element at the tail of the queue.
 
     Exceeding allocated memory will cause a "queue overflow" error.
 
     Complexity: O(1)
     :param Queue Q: Instance of a queue
-    :param Any x: Pointer or an instance of an element to insert into a tail of
+    :param object x: Pointer or an instance of an element to insert into a tail of
      the queue
     :return None: Queue `Q` is updated
     """
@@ -65,7 +65,7 @@ def enqueue(Q, x):
 
 def dequeue(Q):
     """
-    Dereferences an element from the head of the queue and returns it
+    Dereferences an element from the head of the queue and returns it.
 
     Attempt to dequeue from an empty queue will cause a "queue underflow" error.
 
@@ -86,7 +86,7 @@ def dequeue(Q):
 
 def next(Q):
     """
-    Returns current element at the head of the queue without removing it
+    Returns current element at the head of the queue without removing it.
 
     Attempt to lookup next element in an empty queue will cause an "empty queue"
      error.

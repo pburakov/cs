@@ -33,7 +33,7 @@ Below are the implementation templates for some of the most common combinatorial
 
 def subsets(S, P, i=0, M=None):
     """
-    Produces all subsets of a set
+    Produces all subsets of a set.
 
     Exhaustively searches all possible subsets of a set (Python list). Order is not
      important. For example, `{1, 3}` and `{3, 1}` are the same subset.
@@ -71,7 +71,7 @@ def subsets(S, P, i=0, M=None):
 
 def permutations(S, P, f, i=0):
     """
-    Produces all permutations of a set
+    Produces all permutations of a set.
 
     Permutation of a set contains all the same elements, but in a different order.
      This algorithm exhaustively searches all possible combinations of elements in
@@ -99,7 +99,7 @@ def permutations(S, P, f, i=0):
 
 def partitions(S, P, f, s=0, p=None):
     """
-    Produces all possible partitions of a set
+    Produces all possible partitions of a set.
 
     Partitioned set contains such subsets that, when joined, they produce the original
      set. Order of elements is preserved. For example a set `{a,b,c}` can be partitioned

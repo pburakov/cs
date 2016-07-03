@@ -23,7 +23,7 @@ Adjacency list can be used to represent both directed and undirected graph types
 
 def dict_to_graph(D):
     """
-    Converts dictionary into a set of graph and vertex objects
+    Converts dictionary into a set of graph and vertex objects.
 
     Assumed dictionary representation is in following format:
      - `{'A': ['B', 'C']}` for unweighted graphs
@@ -44,7 +44,7 @@ def dict_to_graph(D):
 class Graph:
     def __init__(self):
         """
-        Basic adjacency list graph representation
+        Basic adjacency list graph representation.
         """
         self.V = []    # List of pointers to all vertices in a graph
         self.map = {}  # Map of pointers to all vertices in a graph by their key
@@ -52,7 +52,7 @@ class Graph:
 
     def E(self):
         """
-        Generates tuples of all edges in a graph
+        Generates tuples of all edges in a graph.
 
         :return __generator: Tuple of next edge in a graph
         """
@@ -64,7 +64,7 @@ class Graph:
 
     def Adj(self, v):
         """
-        Generates pointers to all adjacent vertices of a vertex
+        Generates pointers to all adjacent vertices of a vertex.
 
         :param Vertex v: Subject vertex
         :return __generator: Pointer to the next vertex
@@ -75,7 +75,7 @@ class Graph:
 
 def degree(G, v):
     """
-    Returns degree of a vertex (a number of outgoing edges)
+    Returns degree of a vertex (a number of outgoing edges).
 
     :param Graph G: Adjacency list representation of a graph
     :param Vertex v: Subject vertex
@@ -86,7 +86,7 @@ def degree(G, v):
 
 def potential(v):
     """
-    Returns a potential of a vertex
+    Returns a potential of a vertex.
 
     :param Vertex v: Subject vertex
     :return float: Potential of a vertex
@@ -96,7 +96,7 @@ def potential(v):
 
 def weight(G, u, v):
     """
-    Returns weight of an edge `(u, v)`
+    Returns weight of an edge (u, v).
 
     Assumes that edge is weighted. Allows potential function to be applied to
      a final result when used in goal-directed path search.
@@ -115,9 +115,9 @@ def weight(G, u, v):
 class Vertex:
     def __init__(self, key):
         """
-        Basic graph node
+        Basic graph node.
 
-        :param Any key: Key (or label) held by a vertex
+        :param object key: Key (or label) held by a vertex
         """
         self.key = key
         self.p = None  # Pointer to a parent vertex (from which it was visited)

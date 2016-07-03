@@ -129,7 +129,7 @@ def min_heap_insert(A, z):
      that heap properties are maintained.
 
     :param list A: Array (list) to heapify
-    :param Any z: Pointer or an instance of a new element
+    :param object z: Pointer or an instance of a new element
     :return None: List `A` is mutated.
     """
     A.append(z)  # Add element to the bottom of a heap

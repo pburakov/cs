@@ -17,14 +17,14 @@ def counting_sort(A, k):
     Complexity: O(n+k), where `k` is the number of distinct elements in the array.
      Counting sort is stable and requires additional `n` storage for the output and
      auxiliary working storage of size `k` for count.
-    :param list A: Array to sort
+    :param list[int] A: Array to sort
     :param int k: Inclusive upper bound for the range of integers in the array, for
      instance for A = [0, 1, 3], k = 3 or `max(A)`.
-    :return list: Sorted product of array `A`
+    :return list[int]: Sorted product of array `A`
     """
     n = len(A)
     i_n = n - 1        # Index of last element
-    P = [None] * n     # Allocated memory for sorted output
+    P = [int] * n      # Allocated memory for sorted output
     C = [0] * (k + 1)  # Working storage (auxiliary array for counting)
 
     for x in A:

@@ -32,7 +32,7 @@ class Node(BSTNode):
         """
         Augmented BST node with additional height attribute.
 
-        :param Any key: Node's value (key)
+        :param object key: Node's value (key)
         """
         super().__init__(key)
         self.height = 0
@@ -86,7 +86,7 @@ def balance_factor(x):
 
 def avl_rebalance(T, x):
     """
-    Recursive AVL rebalancing.
+    Recursive AVL rebalancing operation.
 
     This algorithm implicitly assumes that AVL properties are maintained for nodes
      below `x`. Once node `x` is fixed, rebalancing will continue for `x`'s parents

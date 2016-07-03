@@ -1,6 +1,6 @@
 def lcs(X, Y, i=None, j=None):
     """
-    Returns longest common sub-sequence of two sets found recursively
+    Returns longest common sub-sequence of two sets found recursively.
 
     This is well known combinatorial problem whose recursive formula is similar to
      a subset algorithm. Recursion compares two elements at given indices, one for

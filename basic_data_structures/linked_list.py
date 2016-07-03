@@ -28,10 +28,9 @@ class Node:
         Has a value and two pointer attributes: the next and previous adjacent element
          in the list.
 
-        :param Any key: Node's value (key)
+        :param object key: Node's value (key)
         """
         self.key = key
-        self.data = None  # Auxiliary data storage for arbitrary data
         self.next = None
         self.prev = None
 
@@ -65,13 +64,13 @@ class LinkedList:
 
 def list_search(L, k):
     """
-    Finds the first element with a given key in a linked list
+    Finds the first element with a given key in a linked list.
 
     Complexity: O(n), in worst case the entire list will be searched if an element
      with a given key is not present in the list.
     :param LinkedList L: An instance of a linked list
-    :param Any k: A key (value) to search
-    :return Any|None: Found element or None if key was not found
+    :param object k: A key (value) to search
+    :return Any: Found element or None if key was not found
     """
     x = L.head
     while x is not None and x.key != k:
@@ -81,7 +80,7 @@ def list_search(L, k):
 
 def list_insert(L, x):
     """
-    Inserts a new node at the head of a doubly linked list
+    Inserts a new node at the head of a doubly linked list.
 
     Complexity: O(1), only the head pointer of a list is updated
     :param LinkedList L: An instance of a doubly linked list
@@ -97,7 +96,7 @@ def list_insert(L, x):
 
 def list_delete(L, x):
     """
-    Removes a node from a doubly linked list
+    Removes a node from a doubly linked list.
 
     Complexity: O(1), for a known node, since only the pointers are removed. It will
      take additional O(n) time to find an arbitrary node.

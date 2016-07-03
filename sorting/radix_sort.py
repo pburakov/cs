@@ -14,7 +14,7 @@ def radix_sort(A, d, b=10):
     Complexity: O(d(n+k)) given an array of `n` `d`-digit numbers. This is a stable
      algorithm. This implementation requires additional O(n+k) storage for a counting
      sort subroutine and additional O(n) for the output array.
-    :param list A: Array to sort
+    :param list[int] A: Array to sort
     :param int d: Maximum number of digits for elements in array. Using out-of-bounds
      `d` will result in unnecessary iterations of sorting subroutine.
     :param int b: Base of integer elements in the array (default base is 10)
@@ -37,7 +37,7 @@ def digit_counting_sort(A, i, b=10):
 
     Complexity: O(n+b), where `n` is the number of elements in array. This is a stable
      sorting algorithm, storage requirements are O(n+b).
-    :param list A: Input array
+    :param list[int] A: Input array
     :param int i: Digit to sort on (reversed). `i=0` being the least significant digit.
     :param int b: Base of integers in array `A`. Base here serves as an upper bound `k` for
      digits involved in sorting. Default base is 10.
@@ -45,7 +45,7 @@ def digit_counting_sort(A, i, b=10):
     """
     n = len(A)
     i_n = n - 1     # Index of a last element in the input array
-    P = [None] * n  # Allocated memory for sorted output
+    P = [int] * n   # Allocated memory for sorted output
     R = [0] * b     # Working storage for all possible numbers in radix representation
 
     for e in A:
@@ -74,6 +74,7 @@ def digit_counting_sort(A, i, b=10):
 def get_digit(n, i, b=10):
     """
     Returns given digit of an integer in arbitrary base representation.
+
     :param int n: Input integer
     :param int i: Digit to return (reversed). `i=0` being the least significant digit.
      Using out-of-bounds `i` will produce trailing 0.

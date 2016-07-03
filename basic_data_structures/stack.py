@@ -18,7 +18,7 @@ The removed element is always at the top of the stack.
 class Stack:
     def __init__(self, n):
         """
-        Basic implementation of a fixed size LIFO structure
+        Basic implementation of a fixed size LIFO structure.
 
         This implementation uses an array (Python list) to store elements or pointers
          to elements in the stack. Additionally stored are allocated memory size and
@@ -33,7 +33,7 @@ class Stack:
 
 def stack_empty(S):
     """
-    Evaluates if stack instance is empty
+    Evaluates if stack instance is empty.
 
     Complexity: O(1)
     :param Stack S: Instance of a stack
@@ -47,13 +47,13 @@ def stack_empty(S):
 
 def push(S, x):
     """
-    Pushes a new element into the stack
+    Pushes a new element into the stack.
 
     Exceeding allocated memory will cause a "stack overflow" error.
 
     Complexity: O(1)
     :param Stack S: Instance of a stack
-    :param Any x: Pointer or an instance of an element to insert into stack
+    :param object x: Pointer or an instance of an element to insert into stack
     :return None: Stack `S` is updated
     """
     if S.top + 1 >= S.size:
@@ -64,7 +64,7 @@ def push(S, x):
 
 def pop(S):
     """
-    Dereferences an element from the top of the stack and removes it
+    Dereferences an element from the top of the stack and removes it.
 
     Attempt to pop from an empty stack will cause a "stack underflow" error.
 
@@ -82,7 +82,7 @@ def pop(S):
 
 def peek(S):
     """
-    Returns current element at the top of the stack without removing it
+    Returns current element at the top of the stack without removing it.
 
     Attempt to peek at an empty stack will cause a "stack underflow" error.
 

@@ -4,7 +4,7 @@ from basic_data_structures.queue import Queue, enqueue, dequeue
 
 def bfs(G, s):
     """
-    Breadth-first search of a graph
+    Breadth-first search of a graph.
 
     Breadth-first search is one of the simplest algorithms for searching a graph. It
      is also the archetype for many important graph algorithms.

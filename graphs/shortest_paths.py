@@ -29,7 +29,7 @@ from graphs.graph import Graph, Vertex, weight
 
 def path_string(G, s, v):
     """
-    Returns vertices on a shortest path between two vertices as a string
+    Returns vertices on a shortest path between two vertices as a string.
 
     This procedure assumes search/path has already computed the predecessor tree.
 
@@ -48,7 +48,7 @@ def path_string(G, s, v):
 
 def initialize_single_source(G, s):
     """
-    Initialization of shortest-path estimates and predecessor pointers
+    Initialization of shortest-path estimates and predecessor pointers.
 
     Complexity: O(V).
     :param Graph G: Adjacency list graph representation
@@ -63,7 +63,7 @@ def initialize_single_source(G, s):
 
 def relax(G, u, v):
     """
-    Relaxes edge `(u, v)`
+    Relaxes edge (u, v).
 
     Term "relaxation" actually means tightening an upper bound. The process
      consists of testing whether we can improve the shortest path to `v` found
@@ -124,7 +124,7 @@ def bellman_ford(G, s):
 
 def dag_shortest_paths(G, s):
     """
-    Generic shortest-paths algorithm for dags
+    Generic shortest-paths algorithm for dags.
 
     The algorithm starts by topologically sorting the dag. If the dag contains a
      shortest path from vertex `u` to vertex `v`, then `u` precedes `v` in the
@@ -151,7 +151,7 @@ def dag_shortest_paths(G, s):
 
 def dijkstra(G, s):
     """
-    Dijkstra single-source shortest-paths algorithm
+    Dijkstra single-source shortest-paths algorithm.
 
     Dijkstra's algorithm uses greedy strategy on solving the single-source shortest
      paths problems for the case in which all edge weights in a DAG are non-negative.

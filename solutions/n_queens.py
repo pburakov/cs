@@ -1,6 +1,6 @@
 def n_queens(n):
     """
-    Solves N-queens problem for n-sized board
+    Solves N-queens problem for n-sized board.
 
     N-queens is the problem of placing `n` chess queens on an `n`×`n` chessboard so
      that no two queens threaten each other. Thus, a solution requires that no two
@@ -35,7 +35,7 @@ def n_queens(n):
 
 def permute_board(B, P, i=0):
     """
-    Exhaustively searches for all "valid" solutions of a board
+    Exhaustively searches for all "valid" solutions of a board.
 
     :param list[int] B: Input list with no repeating elements
     :param list[list] P: Output list of valid queen placements in 1-dimensional board
@@ -57,7 +57,7 @@ def permute_board(B, P, i=0):
 
 def valid_board(B, i):
     """
-    Evaluates validity of a board
+    Evaluates validity of queens placement on a board.
 
     Checks if no queens are in line of attack of each other. Returns True if board
      beyond `i` has already been built valid.
@@ -74,7 +74,7 @@ def valid_board(B, i):
 
 def printout(B):
     """
-    Prints out board
+    Prints out board.
 
     :param list[int] B: Queen placements in 1-dimensional board list representation
     :return None: Output is printed to Std out

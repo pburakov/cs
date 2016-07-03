@@ -5,7 +5,7 @@ from graphs.graph import Graph, Vertex
 
 def topological_sort(G):
     """
-    Topological sort of directed acyclic graph
+    Topological sort of directed acyclic graph.
 
     Topological sort is a linear ordering of all vertices of a graph in order of
      precedence. If graph `G` contains an edge `(u, v)` then `u` appears before `v` in
@@ -36,7 +36,7 @@ def topological_sort(G):
 
 def visit(G, u, t, L):
     """
-    Vertex visit procedure with topological sort
+    Vertex visit procedure with topological sort.
 
     Finished vertex is inserted at the head of linked list. The code is almost identical
      to the `dfs_visit()` procedure with a simple addition of `list_insert()`.

@@ -39,7 +39,7 @@ class Node:
 
         Holds a value of any type (called a key) and pointers to left and/or right child.
 
-        :param Any key: Node's value (key)
+        :param object key: Node's value (key)
         """
         self.key = key
         self.left = None
@@ -54,7 +54,7 @@ def pre_order(x, f):
     Pre-order tree traversal.
 
     :param Node x: Starting node
-    :param (Node)->Any f: Callback function
+    :param (Node)->Any f: Procedure applied to a node on traversal
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:
@@ -68,7 +68,7 @@ def in_order(x, f):
     In-order tree traversal.
 
     :param Node x: Starting node
-    :param (Node)->Any f: Callback function
+    :param (Node)->Any f: Procedure applied to a node on traversal
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:
@@ -82,7 +82,7 @@ def post_order(x, f):
     Post-order tree traversal.
 
     :param Node x: Starting node
-    :param (Node)->Any f: Callback function
+    :param (Node)->Any f: Procedure applied to a node on traversal
     :return None: Will apply function `f` to a traversed node
     """
     if x is not None:

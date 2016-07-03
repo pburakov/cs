@@ -46,7 +46,7 @@ class Node(BinaryTreeNode):
         """
         Augmented variant of a BinaryTreeNode with a pointer to its parent.
 
-        :param Any key: Node's value (key)
+        :param object key: Node's value (key)
         """
         super().__init__(key)
         self.parent = None
@@ -58,7 +58,7 @@ def tree_search(x, k):
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the search with
-    :param Any k: A key (value) to search
+    :param object k: A key (value) to search
     :return: Any: A found node or None if key `k` was not found in the tree
     """
     if x is None or x.key == k:
@@ -78,7 +78,7 @@ def iterative_tree_search(x, k):
 
     Complexity: O(h) where `h` is the height of a tree.
     :param Node x: Node to start the search with
-    :param Any k: A key (value) to search
+    :param object k: A key (value) to search
     :return: Any: A found node or None if key `k` was not found in the tree
     """
     while k is not None and k != x.key:
@@ -335,7 +335,7 @@ def right_rotate(T, x):
 
 def successor_order(x, f):
     """
-    In-order traversal using iterative successor search algorithm
+    In-order traversal using iterative successor search algorithm.
 
     This algorithm has a small quirk. Although it might look like this algorithm
      runs in O(n log(n)) time, the amortized cost of this algorithm is the same as
@@ -344,7 +344,7 @@ def successor_order(x, f):
 
     Complexity: O(n) amortized
     :param Node x: Starting node
-    :param callable f: Callback function
+    :param (Node)->Any f: Procedure called on node on traversal
     :return None: Will apply function `f` to a traversed node
     """
     m = tree_minimum(x)

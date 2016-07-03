@@ -3,7 +3,7 @@ from graphs.graph import Graph, Vertex
 
 def dfs(G):
     """
-    Depth-first search of a graph
+    Depth-first search of a graph.
 
     The strategy of depth-first search is to search deeper in the graph whenever
      possible. Once all the edges of the most recently discovered vertex have been
@@ -54,7 +54,7 @@ def dfs(G):
 
 def dfs_visit(G, u, t):
     """
-    Vertex visit procedure
+    Vertex visit procedure.
 
     Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Graph G: Adjacency list graph representation
