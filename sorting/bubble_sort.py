@@ -5,12 +5,12 @@ def bubble_sort(A):
     Bubble Sort repeatedly swaps neighbour elements that are out of order. Elements
      "bubble" up or down (depending on sorting direction) in the list.
 
-    Original Bubble Sort is considered one the most ineffective sorting methods.
-     Below is slightly "optimized" version of the algorithm that iterates backwards
-     over the unsorted part, that is similar to Insertion sort.
+    Bubble Sort is considered one the most ineffective sorting methods. In this slightly
+     "optimized" version of the algorithm still makes `n` runs over the whole array.
+     In every pass it iterates backwards over yet-to-be-sorted part.
 
-    Complexity: best O(n), average/worst O(n^2). Bubble sort is a stable algorithm
-     and performs in-place sorting.
+    Complexity: average/worst O(n^2), O(n) if array is already sorted. Bubble sort
+     is a stable in-place sorting algorithm.
     :param list A: Array (list) to sort
     :return None: List `A` is mutated.
     """
