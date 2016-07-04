@@ -13,7 +13,8 @@ def bucket_sort(A):
      across an interval {0..n}. In order to maintain stability of the sort, buckets
      are represented by dynamic LIFO structures or stacks.
 
-    Complexity: O(n) in average case for uniformly or evenly distributed input
+    Complexity: O(n+k) in average case for uniformly or evenly distributed input,
+     where `k` is the number of "buckets". Worst case O(n^2).
     :param list[int] A: Input array
     :return list[int]: Sorted array
     """
