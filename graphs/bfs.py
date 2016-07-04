@@ -1,4 +1,4 @@
-from graphs.graph import Graph, Vertex
+from graphs import Graph, Vertex
 from basic_data_structures.queue import Queue, enqueue, dequeue
 
 

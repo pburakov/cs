@@ -24,7 +24,7 @@ Algorithms in this module cover solutions to single-source shortest paths proble
  (not implemented here). Longest path can be calculated by negating weights.
 """
 
-from graphs.graph import Graph, Vertex, weight
+from graphs import Graph, Vertex, weight
 
 
 def path_string(G, s, v):

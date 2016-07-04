@@ -1,4 +1,4 @@
-from graphs.graph import Graph, Vertex
+from graphs import Graph, Vertex
 
 
 def dfs(G):

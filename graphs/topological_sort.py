@@ -1,6 +1,6 @@
 from basic_data_structures.linked_list import LinkedList, Node, list_insert
 from graphs.dfs import Counter, WHITE, GRAY, BLACK
-from graphs.graph import Graph, Vertex
+from graphs import Graph, Vertex
 
 
 def topological_sort(G):
