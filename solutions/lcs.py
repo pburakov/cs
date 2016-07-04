@@ -68,9 +68,9 @@ def lcs_dp(X, Y):
             else:
                 DP[i][j] = max(DP[i][j - 1], DP[i - 1][j])
     # Backtracking on the results of the calculation
-    i, j = m, n
-    k = DP[i][j]  # Starting at rightmost bottom cell (max length)
-    P = [str] * k  # Allocating memory for the result
+    i, j = m, n  # Vertical and horizontal indices
+    k = DP[i][j]  # Start at rightmost bottom cell (max length)
+    P = [str] * k  # Allocate memory for the result
     # Start navigating the table
     while i > 0 and j > 0:
         # Characters match: navigating diagonally one cell up-left
