@@ -13,7 +13,8 @@ def quicksort(A, p=0, r=None):
 
     The key to the algorithm is in the partitioning procedure, which can be implemented
      in a variety of ways. In this implementation partitioning starts with the last item
-     of the array as the initial pivot element.
+     of the array as the initial pivot element. Other implementations use random choice of
+     pivot to avoid worst case running time on sorted input.
 
     Complexity: O(n log(n)), O(n^2) worst case. Quicksort shows good average-case efficiency
      due to a small amount of constant operations in its notation. Quicksort is unstable,
@@ -41,7 +42,8 @@ def partition(A, p, r):
      that are greater than `x`. `A[j..r]` are not covered by any of these cases. `A[r]`
      is the pivot element that is placed to its final position at index `i`.
 
-    The partitioning routine has many variations and is widely used in other algorithms.
+    This partitioning scheme is called Lomuto. Partitioning operation has many variations
+     (Hoare, parallellized quicksort and others) and is widely used in other algorithms.
 
     Complexity: O(k), where `k` is the size of a subarray.
     :param list A: Input array
