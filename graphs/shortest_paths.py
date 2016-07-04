@@ -177,7 +177,7 @@ def dijkstra(G, s):
     :param Vertex s: Starting vertex
     :return None: Graph vertices are updated
     """
-    from basic_data_structures.min_heap import build_min_heap, heap_extract_min
+    from basic_data_structures.heaps.min_heap import build_min_heap, heap_extract_min
 
     initialize_single_source(G, s)
     S = []  # Set of vertices whose final shortest-path weights have been determined
