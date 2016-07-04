@@ -5,17 +5,19 @@ def tower_of_hanoi(P):
     Tower of Hanoi is a classic problem that is often used to demonstrate recursion.
      Here's a simple solution for two disks:
 
-    Let A be the original rod, B the destination, C auxiliary rod.
-     - pick from A, put on C
-     - pick another disk from A, put directly onto B
-     - pick disk from C, put on B
+    Let `A` be the original rod, `B` the destination and `C` the auxiliary rod.
+     - pick from `A`, put on `C`
+     - pick another disk from `A`, put directly onto `B`
+     - pick disk from `C`, put on `B`
 
-    However, if we add another disk into the problem, we're going to need to
+    However, if we add another disk into the problem (`h=4`), we're going to need to
      generalize the approach.
 
-    First we need to solve Tower of Hanoi problem for rods `A` and `C` for `h-1`
-     (or 3 first disks), which is recursive step 1) using rod `B` as an auxiliary.
-     Then we move the last remaining disk from A to B (step 2). After that we solve
+    First we need to solve Tower of Hanoi problem for rods `A` and `C` and `h-1` (or
+     first three disks), which is recursive step 1. We're going to need to use rod
+     `B` as an auxiliary.
+
+    Then we move the last remaining disk from A to B (step 2). After that we solve
      Tower of Hanoi for remaining disks or `h-1-1` for rods `C` and `B`, this time
      using rod A as an auxiliary (recursive step 3).
 
