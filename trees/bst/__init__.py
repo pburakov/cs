@@ -30,8 +30,8 @@ There are many kinds of self-balanced BSTs, that maintain balanced tree structur
  Most commonly mentioned are AVL tree and red-black tree but there are many other
  instances.
 """
-from trees.binary_tree import BinaryTree
-from trees.binary_tree import Node as BinaryTreeNode
+from trees.binary.__init__ import BinaryTree
+from trees.binary.__init__ import Node as BinaryTreeNode
 
 
 class BST(BinaryTree):
