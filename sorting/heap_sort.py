@@ -1,5 +1,5 @@
-from basic_data_structures.max_heap import build_max_heap
-from basic_data_structures.max_heap import max_heapify
+from basic_data_structures.heaps.max_heap import build_max_heap
+from basic_data_structures.heaps.max_heap import max_heapify
 
 
 def heap_sort(A):
