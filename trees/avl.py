@@ -14,20 +14,20 @@ Rebalancing is performed by one of more tree rotations on every update of a dyna
 Augmented BST structure stores height attribute in every node in order to reduce the
  number of height computations.
 """
-from trees.bst import tree_insert, tree_delete
+from trees.bst import BinarySearchTree
+from trees.bst import Node as BinarySearchTreeNode
 from trees.bst import right_rotate, left_rotate
-from trees.bst import BST
-from trees.bst import Node as BSTNode
+from trees.bst import tree_insert, tree_delete
 
 
-class AVLTree(BST):
+class AVLTree(BinarySearchTree):
     """
     AVL tree is a self-balanced implementation of a BST
     """
     pass
 
 
-class Node(BSTNode):
+class Node(BinarySearchTreeNode):
     def __init__(self, key):
         """
         Augmented BST node with additional height attribute.
