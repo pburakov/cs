@@ -16,8 +16,6 @@ def n_queens(n):
      has fewer solutions than the 5-queens puzzle. There are 22,317,699,616,364,044
      solutions for `n=26`.
 
-    Related sections: Combinatorial Search, Recursion.
-
     Complexity: There is currently no known formula for the exact number of solutions,
      or even for its asymptotic behaviour.
     :param int n: Number of queens and dimension of the board

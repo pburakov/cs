@@ -8,8 +8,6 @@ def lcs(X, Y, i=None, j=None):
      call is made with both indices shifted. Otherwise search continues recursively
      on both strings with one index shifted at a time.
 
-    Related sections: Combinatorial Search, Recursion.
-
     Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
      strings.
     :param str X: First string
@@ -48,8 +46,6 @@ def lcs_dp(X, Y):
 
     The key to the solution is backtracking algorithm that reads stored results and
      builds the output based on calculated lengths.
-
-    Related sections: Combinatorial Search, DP, Optimization.
 
     Complexity: O(mn) or O(n^2) if m=n.
     :param str X: First set

@@ -25,8 +25,6 @@ def tower_of_hanoi(P):
     `h=1` becomes our base case when we halt the recursion and proceed to the next step,
      which means that we need to keep track of the height of the tower.
 
-    Related sections: Combinatorial Search, Recursion.
-
     Complexity: O(2^n). The time and space complexity is bounded by the number of
      moves, which grows exponentially with every added disk.
     :param list[str] P: Origin pole
