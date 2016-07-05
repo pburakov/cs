@@ -4,10 +4,18 @@ Optimization problems can have many possible solutions, each of which has a valu
  typically solved with the use of dynamic programming or DP.
 
 There's no strong definition of the concept. DP usually involves some sort of
- memoization technique or solutions that build on already sub-problems that already
- have been solved to optimality. In that sense DP goes hand in hand with recursion and
- shortest paths algorithms. In fact one of the contributors to Bellman-Ford algorithm,
- Richard Bellman, developed dynamic programming.
+ memoization technique or solutions that build on sub-problems that already have been
+ solved to optimality. In that sense DP goes hand in hand with recursion and shortest
+ paths algorithms. In fact one of the contributors to Bellman-Ford algorithm, Richard
+ Bellman developed dynamic programming.
+
+Most famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
+ Subsequence, Longest Increasing Sequence, Coin Change, Matrix Multiplication, Text
+ Justification, Path Planning and many more.
+
+Below are basic DP templates, that help introduce the concept. It is essential to
+ thoroughly examine these, including comments. Keep in mind, that practical applications
+ of DP go well beyond these examples and require substantial amount of practice.
 """
 
 
@@ -39,7 +47,7 @@ def fib(n):
     Calculates n-th Fibonacci number recursively.
 
     Although Fibonacci formula is recursive in nature, simple recursion, as in many
-     recurrent calculation problems, is not the optimal solution for it. This is a
+     recurrent calculation problems, is not an optimal solution for it. This is a
      textbook Fibonacci example, optimized with memoization by Python decorator.
 
     Complexity: O(2^n) without optimization as each call invokes two more recursive
@@ -63,16 +71,20 @@ def fib_dp(n):
     Calculates n-th Fibonacci number using DP.
 
     This is a canonical DP example. Although it is based on a recursive solution, it
-     uses different memoization technique by keeping calculated values in an array. DP
-     algorithms make use of arrays to store solved states, including multidimensional
+     uses different memoization technique by keeping calculated values in an array. Most
+     DP algorithms make use of arrays to store solved states, including multidimensional
      arrays.
 
     This template is used in many DP solutions. To better understand it, try to
      represent its operation as a topologically sorted graph and think about the
      relations between vertices. In this case there's only one way to get to the `i`-th
-     vertex, which is to calculate vertices `i-2` and `i-1`. There's the same cost of
-     getting there, consider it to be a weight of `1`. In many other problems there may
+     vertex, which is to calculate vertices `i-2` and `i-1`. There's also the same cost
+     of getting there, consider it to be a weight of `1`. In many DP problems there may
      be more than one way to reach a vertex with different costs associated with each.
+
+    Lastly, in many DP problems saved calculations usually not so obvious as in this
+     example. Often they need to be interpreted to return a final solution for a given
+     problem.
 
     Complexity: O(n) with O(n) additional storage space.
     :param int n: Number in Fibonacci sequence
