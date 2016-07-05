@@ -35,6 +35,7 @@ def permute_board(B, P, i=0):
     """
     Exhaustively searches for all "valid" solutions of a board.
 
+    Complexity: Asymptotic boundary is unknown.
     :param list[int] B: Input list with no repeating elements
     :param list[list] P: Output list of valid queen placements in 1-dimensional board
      list representations
@@ -60,6 +61,8 @@ def valid_board(B, i):
     Checks if no queens are in line of attack of each other. Returns True if board
      beyond `i` has already been built valid.
 
+    Complexity: O(1) to O(i). Insignificant routine compared to the rest of the
+     solution.
     :param list[int] B: Queen placements in 1-dimensional board list representation
     :param int i: Current index
     :return bool: Evaluation result
@@ -74,6 +77,7 @@ def printout(B):
     """
     Prints out board.
 
+    Complexity: O(n^2) for one solution, where `n` is the size of the board
     :param list[int] B: Queen placements in 1-dimensional board list representation
     :return None: Output is printed to Std out
     """
