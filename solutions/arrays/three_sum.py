@@ -3,9 +3,13 @@ def three_sum(A):
     Finds integers triplets in an array with the sum of 0.
 
     This might seem like a trivial problem, but a good approach to iterating the
-     array while maintaining three pointers in quadratic time.
+     array while maintaining three pointers in quadratic time. First two pointers
+     go forward one after another and third one traverses array backwards. An array
+     has to be sorted first in order to correctly find all possible solutions and
+     break the traversal when no further solution can be found.
 
-    Example: [1, -6, 3, 8, -2, 2] -> (-6, -2, 8)
+    Input: [1, -6, 3, 8, -2, 2] -> sort -> [-6, -2, 1, 2, 3, 8]
+    Output: (-6, -2, 8)
 
     Complexity: O(n^2)
     :param list[int] A: Input array
@@ -15,11 +19,11 @@ def three_sum(A):
     P = []
     if n < 3:
         return P
-    A.sort()  # Any sorting algorithm that runs better than O(n^2)
-    for i in range(0, n - 2):
+    A.sort()  # Any sorting algorithm better than O(n^2)
+    for i in range(0, n - 2):  # First pointer
         if i == 0 or A[i] > A[i - 1]:
-            j = i + 1
-            k = n - 1
+            j = i + 1  # Second pointer
+            k = n - 1  # Third pointer
             while j < k:
                 if A[i] + A[j] + A[k] == 0:
                     P.append((A[i], A[j], A[k]))
