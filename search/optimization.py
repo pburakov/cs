@@ -1,20 +1,13 @@
 """
-Optimization problems can have many possible solutions, each of which has a
- value, and we wish to find one with the optimal (minimum or maximum) value.
+Optimization problems can have many possible solutions, each of which has a value, and
+ we wish to find one with the optimal (minimum or maximum) value. These problems are
+ typically solved with the use of dynamic programming or DP.
 
-Optimization problems are typically solved with the use of dynamic programming
- or DP. Although, there's no strong definition of the DP concept. DP usually
- involves some sort of memoization technique for recursive divide-and-conquer
- algorithms that repeatedly solve the same sub-problem, thus avoiding excessive
- computation.
-
-When developing DP algorithm we follows these steps:
- 1. Characterize the structure of _an_ optimal solution.
- 2. Recursively define the value of an optimal solution.
- 3. Compute the value of an optimal solution, typically in a bottom-up fashion.
- 4. Construct _the_ optimal solution from computed information.
-
-Below is a simple canonical template that may apply to many DP solutions.
+There's no strong definition of the concept. DP usually involves some sort of
+ memoization technique or solutions that build on already sub-problems that already
+ have been solved to optimality. In that sense DP goes hand in hand with recursion and
+ shortest paths algorithms. In fact one of the contributors to Bellman-Ford algorithm,
+ Richard Bellman, developed dynamic programming.
 """
 
 
@@ -22,8 +15,9 @@ def memoize(f):
     """
     Memoization function decorator.
 
-    Loads value from cache if it was already computed. Arguments of a function
-     are required to be hashable to be stored in cache.
+    Loads value from cache if it was already computed. Arguments of a function need to
+     be hashable to be stored in cache. This is Python-specific implementation,
+     applicable to simple cases of recursive functions.
 
     Complexity: O(1) for storage and retrieval.
     :param (tuple)->(Any) f: Function
@@ -44,10 +38,9 @@ def fib(n):
     """
     Calculates n-th Fibonacci number recursively.
 
-    Although Fibonacci formula is recursive in nature, simple recursion, as in
-     many recurrent calculation problems, is not the optimal solution for it. This
-     is a textbook Fibonacci example, optimized by memoization using a Python
-     decorator function.
+    Although Fibonacci formula is recursive in nature, simple recursion, as in many
+     recurrent calculation problems, is not the optimal solution for it. This is a
+     textbook Fibonacci example, optimized with memoization by Python decorator.
 
     Complexity: O(2^n) without optimization as each call invokes two more recursive
      calls. Time is reduced to linear O(n) with the use of memoization, which takes
@@ -69,13 +62,17 @@ def fib_dp(n):
     """
     Calculates n-th Fibonacci number using DP.
 
-    This is a canonical DP example. Although it is based on a recursive solution,
-     it uses different memoization approach by keeping calculated values in an
-     array.
+    This is a canonical DP example. Although it is based on a recursive solution, it
+     uses different memoization technique by keeping calculated values in an array. DP
+     algorithms make use of arrays to store solved states, including multidimensional
+     arrays.
 
-    This template is used in many DP solutions. Some DP algorithms make use of
-     multidimensional arrays to store solved states. To better understand this
-     solution, try to represent its operations as a topologically sorted graph.
+    This template is used in many DP solutions. To better understand it, try to
+     represent its operation as a topologically sorted graph and think about the
+     relations between vertices. In this case there's only one way to get to the `i`-th
+     vertex, which is to calculate vertices `i-2` and `i-1`. There's the same cost of
+     getting there, consider it to be a weight of `1`. In many other problems there may
+     be more than one way to reach a vertex with different costs associated with each.
 
     Complexity: O(n) with O(n) additional storage space.
     :param int n: Number in Fibonacci sequence
