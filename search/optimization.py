@@ -79,12 +79,12 @@ def fib_dp(n):
      represent its operation as a topologically sorted graph and think about the
      relations between vertices. In this case there's only one way to get to the `i`-th
      vertex, which is to calculate vertices `i-2` and `i-1`. There's also the same cost
-     of getting there, consider it to be a weight of `1`. In many DP problems there may
-     be more than one way to reach a vertex with different costs associated with each.
+     of getting there, consider it to be a weight of `1`. In many DP problems there is
+     more than one way to reach a vertex with different costs associated with each.
 
-    Lastly, in many DP problems saved calculations usually not so obvious as in this
-     example. Often they need to be interpreted to return a final solution for a given
-     problem.
+    Lastly, in many DP problems saved calculations usually are not so obvious as in this
+     example. Often they need to be interpreted or "traced back" in order to return a
+     final solution for a given problem.
 
     Complexity: O(n) with O(n) additional storage space.
     :param int n: Number in Fibonacci sequence
