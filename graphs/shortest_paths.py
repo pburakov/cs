@@ -87,14 +87,43 @@ def relax(G, u, v):
         v.p = u
 
 
+def dag_shortest_paths(G, s):
+    """
+    Generic shortest-paths algorithm for dags.
+
+    The algorithm starts by topologically sorting the dag. If the dag contains a
+     shortest path from vertex `u` to vertex `v`, then `u` precedes `v` in the
+     topological sort. We can make just one pass over the vertices in sorted order.
+
+    The concept of continuous relaxation, assuming that the shortest path to a
+     previous  vertex already has already been solved to optimality, is commonly
+     used in dynamic programming.
+
+    Complexity: O(V+E) linear size in the size of adjacency list representation.
+     Topological sort takes O(V+E) time, O(V) for initialization, O(E) for
+     relaxation, as each edge is relaxed exactly once (aggregated analysis).
+    :param Graph G: Adjacency list weighted dag representation
+    :param Vertex s: Starting vertex
+    :return:
+    """
+    from graphs.topological_sort import topological_sort
+
+    L = topological_sort(G)
+    initialize_single_source(G, s)
+    for node in L:
+        u = node.key  # Gets vertex from a linked list
+        for v in G.Adj(u):
+            relax(G, u, v)
+
+
 def bellman_ford(G, s):
     """
     Bellman-Ford single-source shortest-paths solution in the general case.
 
     Algorithm relaxes edges, making `|V|-1` passes over the edges of the graph,
-     decreasing an estimate on the path from starting vertex `s`, gradually
-     spreading the frontier of relaxed edges beyond those already estimated.
-     In that sense, Bellman-Ford is regarded as a dynamic programming algorithm.
+     decreasing an estimate on the path from starting vertex `s`, gradually spreading
+     the frontier of relaxed edges beyond those already estimated. In that sense,
+     Bellman-Ford is also commonly regarded as a dynamic programming algorithm.
 
     After `|V|-1` passes of every edge in a graph, it will deterministically
      completely relax all of its edges, unless there's a negative-weight cycle.
@@ -121,41 +150,14 @@ def bellman_ford(G, s):
     return True
 
 
-def dag_shortest_paths(G, s):
-    """
-    Generic shortest-paths algorithm for dags.
-
-    The algorithm starts by topologically sorting the dag. If the dag contains a
-     shortest path from vertex `u` to vertex `v`, then `u` precedes `v` in the
-     topological sort. We can make just one pass over the vertices in sorted order.
-
-    Complexity: O(V+E) linear size in the size of adjacency list representation.
-     Topological sort takes O(V+E) time, O(V) for initialization, O(E) for
-     relaxation, as each edge is relaxed exactly once (aggregated analysis).
-    :param Graph G: Adjacency list weighted dag representation
-    :param Vertex s: Starting vertex
-    :return:
-    """
-    from graphs.topological_sort import topological_sort
-
-    L = topological_sort(G)
-    initialize_single_source(G, s)
-    node = L.head
-    while node is not None:
-        u = node.key  # Gets vertex from a linked list
-        for v in G.Adj(u):
-            relax(G, u, v)
-        node = node.next
-
-
 def dijkstra(G, s):
     """
     Dijkstra single-source shortest-paths algorithm.
 
-    Dijkstra's algorithm uses greedy strategy on solving the single-source shortest
-     paths problems for the case in which all edge weights in a DAG are non-negative.
-     It is very similar to BFS, only it prioritises "lightest" edges with the smallest
-     estimate (hence the strategy name).
+    In contrast to Bellman-Ford, Dijkstra's algorithm uses greedy strategy on solving
+     the single-source shortest paths problems for the case in which all edge weights in
+     a DAG are non-negative. It is very similar to BFS, only it prioritises "lightest"
+     edges with the smallest estimate (hence the strategy name).
 
     Greedy approach does not always yield optimal results, but Dijkstra algorithm does
      indeed compute shortest paths. Each time vertex `u` is added to the set `S`, `u.d`
