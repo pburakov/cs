@@ -4,16 +4,21 @@ Optimization problems can have many possible solutions, each of which has a valu
  typically solved with the use of dynamic programming or DP.
 
 There's no strong definition of the concept. DP usually involves some sort of
- memoization technique or solutions that build on sub-problems that already have been
- solved to optimality. In that sense DP goes hand in hand with recursion and shortest
- paths algorithms. In fact one of the contributors to Bellman-Ford algorithm, Richard
- Bellman developed dynamic programming.
+ memoization technique or solutions built on sub-problems that already have been solved
+ to optimality. In that sense DP goes hand in hand with recursion and shortest paths
+ algorithms. In fact one of the contributors to Bellman-Ford algorithm, Richard Bellman
+ developed dynamic programming.
 
-Most famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
+Steps to find dynamic programming solution involve finding a recursive solution first.
+ Once the state or the configuration of sub-problem is known, it then can be saved.
+ Another helpful tip is describing state transitions as a graph problem to which a
+ shortest or longest path algorithm can be applied.
+
+Some famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
  Subsequence, Longest Increasing Sequence, Coin Change, Matrix Multiplication, Text
  Justification, Path Planning and many more.
 
-Below are basic DP templates, that help introduce the concept. It is essential to
+Below are some basic DP templates, that help introduce the concept. It is essential to
  thoroughly examine these, including comments. Keep in mind, that practical applications
  of DP go well beyond these examples and require substantial amount of practice.
 """
