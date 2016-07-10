@@ -12,9 +12,10 @@ def lis(A):
      It may seem like there's a lot of magic going on, but really, it's all about building
      the following DP table:
      ```
-              Index i: 0 1 2 3 4 5 6 7 8 9
-                Input: 2 4 3 5 1 7 6 9 8 6
-     DP[i] (LIS at i): 1 2 2 3 1 4 4 5 5 4
+                  Index i: 0 1 2 3 4 5 6 7 8 9
+                    Input: 2 4 3 5 1 7 6 9 8 6
+         DP[i] (LIS at i): 1 2 2 3 1 4 4 5 5 4   last max DP[i]=5 (i=8)
+     Output predecessor i: - - 0 2 - - 3 - 6 -   <-- direction of traversal
      ```
     Output LIS can be constructed by traversing `DP` table backwards.
 
@@ -31,8 +32,8 @@ def lis(A):
             # for the subsequence that would include `DP[i]`.
             if A[i] > A[j] and DP[i] < DP[j] + 1:
                 DP[i] = DP[j] + 1
-        if DP[i] >= max_lis:
-            max_lis = DP[i]  # Keeping track of maximum LIS
+        if DP[i] >= max_lis:  # Keeping track of last seen maximum LIS
+            max_lis = DP[i]
     # Backtracking on the results of the calculation
     P = [object] * max_lis  # Allocating memory for the output
     j = max_lis - 1  # Index in output list
