@@ -43,8 +43,7 @@ def subsets(S, P, i=0, M=None):
 
     In this implementation the decisions table is represented as an `n`-sized bit map,
      where bits `1` and `0` at `i`-th position determine whether `i`-th element should
-     be included or not. It does not include early termination and backtracking for
-     clarity purposes.
+     be included or not.
 
     Complexity: Theta(2^n) for time. Recursive tree is binary, for each of `n` elements
      we decide whether we include that element in a subset or not.
@@ -68,7 +67,7 @@ def subsets(S, P, i=0, M=None):
         subsets(S, P, i + 1, M)  # Generate subsets excluding `i`-th element
 
 
-def permutations(S, P, f, i=0):
+def permutations(S, P, i=0):
     """
     Produces all permutations of a set.
 
@@ -81,7 +80,6 @@ def permutations(S, P, f, i=0):
      output. There are `n!` permutations of a set of `n`-elements set by definition.
     :param list S: Input set
     :param list P: Output list of permutations
-    :param (list)->bool f: Boolean function that evaluates valid candidate set
     :param int i: Starting index (used in recursion)
     :return None: List `P` is populated
     """
@@ -91,12 +89,11 @@ def permutations(S, P, f, i=0):
     else:
         for k in range(i, n):
             S[i], S[k] = S[k], S[i]  # Swap
-            if f(S):  # Cutting out invalid configuration early
-                permutations(S, P, f, i + 1)
+            permutations(S, P, i + 1)  # Backtrack
             S[i], S[k] = S[k], S[i]  # Swap back
 
 
-def partitions(S, P, f, s=0, p=None):
+def partitions(S, P, s=0, p=None):
     """
     Produces all possible partitions of a set.
 
@@ -110,13 +107,12 @@ def partitions(S, P, f, s=0, p=None):
      to the "right" of the slice, is added to the stack and same algorithm is called
      on it.
 
-    After sub-partitions have been computed, the algorithm "backtracks" and retracts the
-     stack, then operation is repeated.
+    After sub-partitions have been computed, the algorithm "backtracks" and pops counted
+     elements of the partition from the stack. Then operation is repeated.
 
     Complexity: O(2^n) bounded by (2^n)/2 possible partitions
     :param list S: Input set
     :param list P: Output list of set partitions
-    :param (list)->bool f: Boolean function that evaluates valid partition
     :param int s: Starting index (used in recursion)
     :param list p: Intermediate partition stack (used in recursion)
     :return None: List `P` is populated
@@ -129,7 +125,6 @@ def partitions(S, P, f, s=0, p=None):
     else:
         for i in range(s + 1, n + 1):
             sub_partition = S[s:i]
-            if f(sub_partition):  # Cutting out invalid configuration early
-                p.append(sub_partition)
-                partitions(S, P, f, i, p)
-                p.pop()
+            p.append(sub_partition)
+            partitions(S, P, i, p)
+            p.pop()
