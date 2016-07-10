@@ -27,8 +27,8 @@ def lis(A):
     max_lis = 0  # Length of maximum found found LIS
     for i in range(1, n):
         for j in range(0, i):
-            # Comparing `DP[i]` and `DP[j]+1` ensures that we increase the max LIS
-            # for the subsequence that would include `DP[i]`
+            # Comparing `DP[i]` and `DP[j]+1` ensures that we increase the length _only_
+            # for the subsequence that would include `DP[i]`.
             if A[i] > A[j] and DP[i] < DP[j] + 1:
                 DP[i] = DP[j] + 1
         if DP[i] >= max_lis:
