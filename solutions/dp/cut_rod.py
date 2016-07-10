@@ -5,24 +5,24 @@ def cut_rod(P, n):
     """
     Rod cutting problem solver using recursive algorithm.
 
-    This is an excellent example of dynamic programming approach, discussed in detail
-     in CLRS book (Introduction to Algorithms).
+    This is an excellent example of dynamic programming approach, discussed in detail in
+     CLRS book (Introduction to Algorithms).
 
-    Imagine we have a rod and we can cut it to pieces of integral lengths. Each
-     length has a price, and our task is to cut to get the maximum profit for any
-     given length if possible. Given length may not exceed the maximum length we have
-     in our "price-list".
+    Imagine we have a rod and we can cut it to pieces of integral lengths. Each length
+     has a price, and our task is to cut to get the maximum profit for any given length
+     if possible. Given length may not exceed the maximum length we have in our
+     "price-list".
 
     Example:
      Given the price chart `P=[0, 1, 5, 8, 9]`, where `P[i]` is the profit for cut of
-     length `i`, and a total length of `n=4`, the optimal strategy would be to make
-     two cuts of length `2` which will result in maximum gain of `10` and not `9`.
+     length `i`, and a total length of `n=4`, the optimal strategy would be to make two
+     cuts of length `2` which will result in maximum gain of `10` and not `9`.
 
-    This is a highly inefficient top-down recursive algorithm which checks every
-     possible option numerous times unless memoization technique is used. The principle
-     is the same as partitions generation algorithm (we decide whether we want to cut
-     the rod at this point of not), although it doesn't use as much space, since we
-     only care about the maximum revenue.
+    This is a highly inefficient top-down recursive algorithm which checks every possible
+     option numerous times unless memoization technique is used. The principle is the
+     same as partitions generation algorithm (we decide whether we want to cut the rod at
+     this point of not), although it doesn't use as much space, since we only care about
+     the maximum revenue.
 
     Complexity: O(2^n) time and space, because for every `i` we decide whether to make
      the cut or not.
@@ -71,8 +71,8 @@ def cut_rod_dp(P, n):
     """
     Rod cutting problem solver using bottom-up DP
 
-    We can optimize the solution even further without use of recursion. Solution is
-     similar to Fibonacci example.
+    We can optimize the solution even further without use of recursion. Solution uses
+     the same formula, as the DP solution for Fibonacci numbers.
 
     Complexity: O(n) time, O(n) space for DP array
     :param list[float] P: Prices for cuts {0..k}
@@ -88,10 +88,3 @@ def cut_rod_dp(P, n):
             q = max(q, P[j] + DP[i - j])
         DP[i] = q
     return DP[n]
-
-
-p1 = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
-
-print(cut_rod(p1, 10))
-print(cut_rod_memo(p1, 10))
-print(cut_rod_dp(p1, 10))
