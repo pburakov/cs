@@ -19,8 +19,8 @@ Description of common steps of a backtracking algorithm:
   report that algorithm has exhausted all possible solutions for given configuration.
  2. Construct a new candidate, or several, for a solution. For example, exclude, swap
   or replace an element of a set.
- 3. Check if proposed solution does not violate conditions, if such are defined by the
-  problem. This is where we abandon a branch of a recursive tree.
+ 3. Check if proposed solution does not violate problem conditions. This is where we
+  abandon a branch of a recursive tree (not shown in examples).
  4. Call itself on new candidate or, if many, on each of the new candidates.
  5. Undo updates made to a set (optional). This step occurs after the running process
   exits the recursion (or "backtracks").
