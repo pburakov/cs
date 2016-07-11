@@ -3,20 +3,20 @@ Optimization problems can have many possible solutions, each of which has a valu
  we wish to find one with the optimal (minimum or maximum) value. These problems are
  typically solved with the use of dynamic programming or DP.
 
-There's no strong definition of the concept. DP usually involves some sort of
- memoization technique or solutions built on sub-problems that already have been solved
- to optimality. In that sense DP goes hand in hand with recursion and shortest paths
- algorithms. In fact one of the contributors to Bellman-Ford algorithm, Richard Bellman
- developed dynamic programming.
+There two key attributes that a problem must have in order for DP to be applicable:
+ overlapping sub-problems and optimal substructure. DP usually involves the use of some
+ sort of memoization technique. Solutions are built on sub-problems that already have
+ been solved to optimality, or are being solved repeatedly.
 
-Steps to find dynamic programming solution involve finding a recursive solution first.
- Once the state or the configuration of sub-problem is known, it then can be saved.
- Another helpful tip is describing state transitions as a graph problem to which a
- shortest or longest path algorithm can be applied.
+DP solution is not obvious. Suggested first step is finding a recursive solution first.
+ Second step is finding the state or the configuration that can be saved and reused. A
+ helpful technique is describing state transitions as a graph problem to which a
+ shortest or longest path algorithm can be applied. In fact Richard Bellman, one of the
+ contributors to Bellman-Ford algorithm, was the one who developed dynamic programming.
 
 Some famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
  Subsequence, Longest Increasing Sequence, Coin Change, Matrix Multiplication, Text
- Justification, Path Planning and many more.
+ Justification, Max Cost Grid Path and many more.
 
 Below are some basic DP templates, that help introduce the concept. It is essential to
  thoroughly examine these, including comments. Keep in mind, that practical applications
