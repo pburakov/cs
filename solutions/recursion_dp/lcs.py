@@ -50,10 +50,10 @@ def dp(X, Y):
     Optimized solution to the same problem using dynamic programming. It almost reads like
      magic, but it should be clear that the underlying logic is the same as the recursive
      approach. Instead of keeping results in the stack, we store calculated lengths in
-     the table.
+     the table `DP`.
 
-    The key to the solution is backtracking algorithm that reads stored results and builds
-     the output based on calculated lengths.
+    The key to the solution is in reconstruction algorithm that reads the computed table
+     in sequence and builds the output based on calculated lengths.
 
     Complexity: O(mn) or O(n^2) if m=n.
     :param str X: First string
@@ -71,11 +71,10 @@ def dp(X, Y):
                 DP[i][j] = DP[i - 1][j - 1] + 1
             else:
                 DP[i][j] = max(DP[i][j - 1], DP[i - 1][j])
-    # Backtracking on the results of the calculation
-    i, j = m, n  # Vertical and horizontal indices
+    # Reconstructing solution based on results of the calculation
+    i, j = m, n
     k = DP[i][j]  # Start at rightmost bottom cell (max length)
-    P = [str] * k  # Allocate memory for the result
-    # Start navigating the table
+    P = [str] * k  # Allocate memory for the output
     while i > 0 and j > 0:
         # Characters match: navigating diagonally one cell up-left
         if X[i - 1] == Y[j - 1]:
