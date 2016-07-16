@@ -10,7 +10,7 @@ You are given a source string `S` and a target string `T`. Three types of operat
  - *delete* a character from string `S`.
 
 Find minimum amount of edits required to transform `S` into `T`. For example, edit
- distance of string "cat" and "nuts" is 2 (add `s`, replace `a` with `u`, replace `c`
+ distance of string "cat" and "nuts" is 3 (add `s`, replace `a` with `u`, replace `c`
  with `n`).
 
 This algorithm is used in spell checkers and quantify the similarity of DNA sequences.
