@@ -1,19 +1,27 @@
-def lcs(X, Y, i=None, j=None):
+"""
+Given two strings, `X` and `Y`, find the longest string which is substring of both `X` and
+ `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is string
+ "ABC" of length 3. Other common substrings are "A", "AB", "B", "BA", "BC" and "C".
+
+LCS is a very similar variation of longest common subsequence problem.
+"""
+
+
+def backtrack(X, Y, i=None, j=None):
     """
-    Returns longest common sub-sequence of two strings calculated recursively.
+    Returns longest common substring of two strings calculated recursively.
 
-    This is well known combinatorial problem whose recursive formula is similar to
-     a subset algorithm. Recursion compares two elements at given indices, one for
-     each string, starting at the end. If matching characters are found, one recursive
-     call is made with both indices shifted. Otherwise search continues recursively
-     on both strings with one index shifted at a time.
+    This is well known combinatorial problem whose recursive formula is similar to a
+     subset algorithm. Recursion compares two elements at given indices, one for each
+     string, starting at the end. If matching characters are found, one recursive call
+     is made with both indices shifted. Otherwise search continues recursively on both
+     strings with one index shifted at a time.
 
-    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
-     strings.
+    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input strings.
     :param str X: First string
     :param str Y: Second string
-    :param int i: Lookup index in a first set (used in recursion)
-    :param int j: Lookup index in a second set (used in recursion)
+    :param int i: Lookup index in a first string (used in recursion)
+    :param int j: Lookup index in a second string (used in recursion)
     :return str: Output string
     """
     if i is None:
@@ -23,11 +31,11 @@ def lcs(X, Y, i=None, j=None):
     if i < 0 or j < 0:  # Base case (out of bounds)
         return ''
     elif X[i] == Y[j]:  # Matching characters are found
-        return lcs(X, Y, i - 1, j - 1) + X[i]
+        return backtrack(X, Y, i - 1, j - 1) + X[i]
     else:
         # Recursive calls increasing index for each of the string
-        s1 = lcs(X, Y, i, j - 1)
-        s2 = lcs(X, Y, i - 1, j)
+        s1 = backtrack(X, Y, i, j - 1)
+        s2 = backtrack(X, Y, i - 1, j)
         # Backtrack with the max. length common string found so far
         if len(s1) > len(s2):
             return s1
@@ -35,22 +43,22 @@ def lcs(X, Y, i=None, j=None):
             return s2
 
 
-def lcs_dp(X, Y):
+def dp(X, Y):
     """
     Returns longest common sub-sequence of two strings calculated using DP.
 
-    Optimized solution to the same problem using dynamic programming. It almost reads
-     like magic, but it should be clear that the underlying logic is the same as the
-     recursive approach. Instead of keeping results in the stack, we store calculated
-     lengths in the table.
+    Optimized solution to the same problem using dynamic programming. It almost reads like
+     magic, but it should be clear that the underlying logic is the same as the recursive
+     approach. Instead of keeping results in the stack, we store calculated lengths in
+     the table.
 
-    The key to the solution is backtracking algorithm that reads stored results and
-     builds the output based on calculated lengths.
+    The key to the solution is backtracking algorithm that reads stored results and builds
+     the output based on calculated lengths.
 
     Complexity: O(mn) or O(n^2) if m=n.
-    :param str X: First set
-    :param str Y: Second set
-    :return str: Output set
+    :param str X: First string
+    :param str Y: Second string
+    :return str: Output string
     """
     m = len(X)
     n = len(Y)

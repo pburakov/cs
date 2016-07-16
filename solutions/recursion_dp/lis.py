@@ -1,16 +1,18 @@
-def lis(A):
+"""
+Longest increasing subsequence, or LIS, if a sequence of increasing, not necessarily
+ continuous elements of an input set in order of their appearance. Single element is LIS
+ by definition.
+
+Example: `A=[2, 4, 3, 5, 1, 7, 6, 9, 8, 6]`, `output=[2, 3, 5, 6, 8]`.
+"""
+
+
+def dp(A):
     """
-    Longest increasing subsequence of a set.
+    Returns longest increasing subsequence of a set.
 
-    Longest increasing subsequence, or LIS, if a sequence of increasing, not necessarily
-     continuous elements of an input set in order of their appearance. Single element is
-     LIS by definition.
-
-    Example: `A=[2, 4, 3, 5, 1, 7, 6, 9, 8, 6]`, `output=[2, 3, 5, 6, 8]`.
-
-    Let's jump straight to DP rather than maintaining the state of a recursive algorithm.
-     It may seem like there's a lot of magic going on, but really, it's all about building
-     the following DP table:
+    Let's skip the recursive definition and jump straight to DP. It may seem like there's
+     a lot of magic going on, but really, it's all about building the following DP table:
      ```
                   Index i: 0 1 2 3 4 5 6 7 8 9
                     Input: 2 4 3 5 1 7 6 9 8 6
@@ -34,7 +36,7 @@ def lis(A):
                 DP[i] = DP[j] + 1
         if DP[i] >= max_lis:  # Keeping track of last seen maximum LIS
             max_lis = DP[i]
-    # Backtracking on the results of the calculation
+    # Interpreting the results of the calculation
     P = [object] * max_lis  # Allocating memory for the output
     j = max_lis - 1  # Index in output list
     for i in range(n - 1, -1, -1):
