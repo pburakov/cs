@@ -1,15 +1,17 @@
 """
-Longest increasing subsequence, or LIS, if a sequence of increasing, not necessarily
- continuous elements of an input set in order of their appearance. Single element is LIS
+Longest increasing sequence, or LIS, if a sequence of increasing, not necessarily
+ continuous, elements of an input set in order of their appearance. Single element is LIS
  by definition.
 
 Example: `A=[2, 4, 3, 5, 1, 7, 6, 9, 8, 6]`, `output=[2, 3, 5, 6, 8]`.
+
+This algorithm is described in detail in the book "Algorithm Design Manual" by S. Skiena.
 """
 
 
 def dp(A):
     """
-    Returns longest increasing subsequence of a set.
+    Returns longest increasing sequence of a set.
 
     Let's skip the recursive definition and jump straight to DP. It may seem like there's
      a lot of magic going on, but really, it's all about building the following DP table:
@@ -21,11 +23,11 @@ def dp(A):
                Output: 2 - 3 5 - - 6 - 8 -
      ```
     Output LIS can be constructed by traversing `DP` table backwards. `DP[i]` is the
-     length of the longest subsequence seen so far, if the element `i` was in it.
+     length of the longest such sequence seen so far, if the element `i` was in it.
 
     Complexity: O(n) and O(n+p) space for DP tables.
     :param list A: Input set (list) of comparable objects
-    :return list: Output subsequence
+    :return list: Output sequence
     """
     n = len(A)
     DP = [1] * n
@@ -33,7 +35,7 @@ def dp(A):
     for i in range(1, n):
         for j in range(0, i):
             # Note: comparing `DP[i]` and `DP[j]+1` ensures that we increase the length
-            # *only* for the subsequence that would include `DP[i]`.
+            # *only* for the sequence that would include `DP[i]`.
             if A[i] > A[j] and DP[i] < DP[j] + 1:
                 DP[i] = DP[j] + 1
         if DP[i] >= max_lis:
