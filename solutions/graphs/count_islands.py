@@ -1,31 +1,36 @@
+"""
+The input is a 2-D matrix of integers `0` and `1`. Let `1` represent a tile of land. A
+ group of vertically and horizontally connected `1`s forms an island. Count the number
+ of "islands" on a map.
+
+ Example input:
+ ```
+    [[0, 0, 0, 1, 1],
+     [1, 1, 0, 0, 1],
+     [0, 1, 0, 1, 1],
+     [0, 0, 0, 0, 1],
+     [0, 0, 1, 0, 0]]
+ ```
+ Output: `3`.
+"""
+
+
 def count_islands(M):
     """
     Count Islands problem solver.
 
-    This is a variation of a solution strongly connected components of a DAG. The
-     input is a list of list of integers `0` and `1`. Let `1` represent a tile of land.
-     A group of vertically and horizontally connected `1`s forms an island.
-
-    The problem can be easily solved by applying DFS on each component. In each DFS
-     call, a component or a sub-graph is visited. If we keep track of visited tiles and
-     count the number of calls to DFS we'll get the count of connected components.
-     BFS can also be used.
-
-    Example input:
-        [[0, 0, 0, 1, 1],
-         [1, 1, 0, 0, 1],
-         [0, 1, 0, 1, 1],
-         [0, 0, 0, 0, 1],
-         [0, 0, 1, 0, 0]]
-    Output: 3.
+    This is a variation of a solution strongly connected components of a DAG. The problem
+     can be easily solved by applying DFS on each component. In each DFS call, a component
+     or a sub-graph is visited. If we keep track of visited tiles and count the number of
+     calls to DFS we'll get the count of connected components. BFS can also be used.
 
     Complexity: O(V+E') where `E'` is number of edges within "islands".
     :param list[list[int]] M: Input map
     :return int: Count of islands
     """
-    count = 0     # Output counter
+    count = 0  # Output counter
     visited = {}  # Hash map of visited coordinates
-    m = len(M)    # Vertical size
+    m = len(M)  # Vertical size
     for i in range(0, m):
         n = len(M[i])  # Horizontal size
         for j in range(0, n):
@@ -34,6 +39,11 @@ def count_islands(M):
                 explore(M, i, j, visited)
                 count += 1
     return count
+
+
+"""
+Auxiliary routines used in the solution
+"""
 
 
 def adj(M, y, x):
