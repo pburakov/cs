@@ -90,6 +90,6 @@ def dp(P, n):
 
 
 """
-Constants used in a solution
+Constants used in the solution
 """
 inf = float("inf")
