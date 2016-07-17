@@ -9,7 +9,7 @@ There are no solutions for `n` less than 4. Interestingly, the 6-queens puzzle h
 """
 
 
-def n_queens(n):
+def solution(n):
     """
     Solves N-queens problem for n-sized board.
 

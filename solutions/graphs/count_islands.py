@@ -15,7 +15,7 @@ The input is a 2-D matrix of integers `0` and `1`. Let `1` represent a tile of l
 """
 
 
-def count_islands(M):
+def solution(M):
     """
     Count Islands problem solver.
 
