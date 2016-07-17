@@ -13,8 +13,9 @@ Find minimum amount of edits required to transform `S` into `T`. For example, ed
  distance of string "cat" and "nuts" is 3 (add `s`, replace `a` with `u`, replace `c`
  with `n`).
 
-This algorithm is used in spell checkers and quantify the similarity of DNA sequences.
- It is described in detail in the book "Algorithm Design Manual" by S. Skiena.
+This algorithm is used in spell checkers and to quantify the similarity of DNA
+ sequences. It is described in great detail in the book "Algorithm Design Manual" by
+ S. Skiena.
 """
 
 
@@ -43,17 +44,18 @@ def backtrack(S, T, i=None, j=None):
         i = len(S)
         j = len(T)
     if i == 0:
-        b = T[j - 1]
-        return j * cost_insert(b)
+        return j * COST
     if j == 0:
-        a = S[i - 1]
-        return i * cost_delete(a)
+        return i * COST
     a, b = S[i - 1], T[j - 1]  # Pick next two characters to compare
-    return min(
-        backtrack(S, T, i - 1, j - 1) + cost_replace(a, b),
-        backtrack(S, T, i, j - 1) + cost_insert(b),
-        backtrack(S, T, i - 1, j) + cost_delete(a)
-    )
+    if a == b:
+        return backtrack(S, T, i - 1, j - 1)  # No added cost
+    else:
+        return COST + min(
+            backtrack(S, T, i - 1, j - 1),
+            backtrack(S, T, i, j - 1),
+            backtrack(S, T, i - 1, j)
+        )
 
 
 def dp(S, T):
@@ -68,96 +70,46 @@ def dp(S, T):
          'n' 'u' 't' 's'
      'c'  1   1   1   1
      'a'  1   2   2   2
-     't'  1   2   2   3
-
+     't'  1   2   2   3  <- the goal
+     ```
     The DP solution uses same subroutines as the recursive solution with the addition of
      `find_goal()` subroutine that will find the maximum value in the table, since the
      cheapest place to match the entire pattern is not necessarily at the end of both
-     string. Additionally we can store the history of decisions in auxiliary table, that
-     can be used to rebuild intermediate transformations of the string `S`.
+     string.
 
+    Additionally we can store the history of decisions in auxiliary table, that can be
+     used to rebuild intermediate transformations of the string `S` (not implemented).
+
+    Complexity: O(nm). Use of dynamic programming allows us to upgrade the speed of this
+     algorithm to polynomial time, sacrificing O(mn) space.
     :param str S: Source string
     :param str T: Target string
     :return int: Edit distance between `S` and `T`
     """
     m = len(S)
     n = len(T)
-    if m == 0:
-        return n * cost_insert('')
-    if n == 0:
-        return m * cost_delete('')
-    DP = [[0 for _ in range(n)] for _ in range(m)]
-    for i in range(0, m):
-        for j in range(0, n):
-            a = S[i]
-            b = T[j]
-            DP[i][j] = min(
-                DP[i - 1][j - 1] + cost_replace(a, b),
-                DP[i][j - 1] + cost_insert(b),
-                DP[i - 1][j] + cost_delete(b)
-            )
-    y, x = find_goal(DP)
-    return DP[y][x]
+    DP = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
+    for i in range(0, m + 1):
+        for j in range(0, n + 1):
+            # The logic of populating the table is the same as recursive approach
+            a, b = S[i - 1], T[j - 1]
+            if i == 0:
+                DP[i][j] = j * COST
+            elif j == 0:
+                DP[i][j] = i * COST
+            elif a == b:
+                DP[i][j] = DP[i - 1][j - 1]  # No added cost
+            else:
+                DP[i][j] = COST + min(
+                    DP[i - 1][j - 1],
+                    DP[i][j - 1],
+                    DP[i - 1][j]
+                )
+    return DP[m][n]
 
 
 """
-Auxiliary methods and constants used in the solution
+Constants used in the solution
 """
 inf = float("inf")
-
-
-def cost_replace(x, y):
-    """
-    Returns the cost of replacement of two characters in a string.
-
-    Complexity: O(1)
-    :param str x: First character
-    :param str y: Second character
-    :return int: Cost of replacement
-    """
-    if x == y:
-        return 0  # No need for a substitution
-    else:
-        return 1
-
-
-def cost_insert(x):
-    """
-    Returns the cost of insertion of an arbitrary character into a string.
-
-    Complexity: O(1)
-    :param str x: Subject character
-    :return int: Cost of insertion
-    """
-    return 1
-
-
-def cost_delete(x):
-    """
-    Returns the cost of deletion of an arbitrary character from a string.
-
-    Complexity: O(1)
-    :param str x: Subject character
-    :return int: Cost of deletion
-    """
-    return 1
-
-
-def find_goal(T):
-    """
-    Returns indexes of largest element in a matrix.
-
-    Complexity: O(mn)
-    :param list[list] T: Two-dimensional array (list) or positive integers
-    :return tuple: Output indexes
-    """
-    max = -inf
-    y, x = 0, 0
-    m = len(T)
-    for i in range(0, m):
-        n = len(T[i])
-        for j in range(0, n):
-            if T[i][j] >= max:
-                max = T[i][j]
-                y, x = i, j
-    return y, x
+COST = 1

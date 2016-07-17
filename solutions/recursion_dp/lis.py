@@ -41,11 +41,11 @@ def dp(A):
         if DP[i] >= max_lis:
             max_lis = DP[i]
     # Interpreting the results of the calculation
-    j = max_lis - 1
-    P = [object] * max_lis  # Allocating memory for the output
+    j = max_lis - 1  # Start at the last seen max(DP[i])
+    P = [object] * max_lis  # Allocate memory for the output
     for i in range(n - 1, -1, -1):
         if DP[i] == max_lis:
-            P[j] = A[i]
-            max_lis -= 1
+            P[j] = A[i]  # Add to output
+            max_lis -= 1  # Skip to the next max value
             j -= 1
     return P

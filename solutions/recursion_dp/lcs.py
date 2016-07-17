@@ -1,9 +1,12 @@
 """
+LCS is a very close variation of a Longest Common Subsequence and many other dynamic
+ programming puzzles.
+
 Given two strings, `X` and `Y`, find the longest string which is substring of both `X` and
  `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is string
  "ABC" of length 3. Other common substrings are "A", "AB", "B", "BA", "BC" and "C".
 
-LCS is a very similar variation of longest common subsequence problem.
+Its solution is based on Edit Distance solution routine, but returns an actual string.
 """
 
 
@@ -30,8 +33,9 @@ def backtrack(X, Y, i=None, j=None):
         j = len(Y) - 1
     if i < 0 or j < 0:  # Base case (out of bounds)
         return ''
-    elif X[i] == Y[j]:  # Matching characters are found
-        return backtrack(X, Y, i - 1, j - 1) + X[i]
+    a, b = X[i], Y[j]
+    if a == b:
+        return backtrack(X, Y, i - 1, j - 1) + a  # Adding character to a substring
     else:
         # Recursive calls increasing index for each of the string
         s1 = backtrack(X, Y, i, j - 1)
@@ -50,7 +54,7 @@ def dp(X, Y):
     Optimized solution to the same problem using dynamic programming. It almost reads like
      magic, but it should be clear that the underlying logic is the same as the recursive
      approach. Instead of keeping results in the stack, we store calculated lengths in
-     the table `DP`.
+     the table `DP`. Note that indexes are shifted to return valid output for empty strings.
 
     The key to the solution is in reconstruction algorithm that reads the computed table
      in sequence and builds the output based on calculated lengths.
@@ -63,11 +67,11 @@ def dp(X, Y):
     m = len(X)
     n = len(Y)
     DP = [[0 for _ in range(n + 1)] for _ in range(m + 1)]
-    # Bottom-up saving max length of common sub-sequence at character pairs
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             # The logic of populating the table is the same as recursive approach
-            if X[i - 1] == Y[j - 1]:
+            a, b = X[i - 1], Y[j - 1]
+            if a == b:
                 DP[i][j] = DP[i - 1][j - 1] + 1
             else:
                 DP[i][j] = max(DP[i][j - 1], DP[i - 1][j])
@@ -77,8 +81,9 @@ def dp(X, Y):
     P = [str] * k  # Allocate memory for the output
     while i > 0 and j > 0:
         # Characters match: navigating diagonally one cell up-left
-        if X[i - 1] == Y[j - 1]:
-            P[k - 1] = X[i - 1]
+        a, b = X[i - 1], Y[j - 1]
+        if a == b:
+            P[k - 1] = a  # Add to output
             i -= 1
             j -= 1
             k -= 1
