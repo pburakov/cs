@@ -1,20 +1,26 @@
+"""
+N-queens is the problem of placing `n` chess queens on an `n`×`n` chessboard so that no
+ two queens threaten each other. Thus, a solution requires that no two queens share the
+ same row, column, or diagonal.
+
+There are no solutions for `n` less than 4. Interestingly, the 6-queens puzzle has fewer
+ solutions than the 5-queens puzzle. There are 22,317,699,616,364,044 solutions for
+ `n=26`.
+"""
+
+
 def n_queens(n):
     """
     Solves N-queens problem for n-sized board.
 
-    N-queens is the problem of placing `n` chess queens on an `n`×`n` chessboard so
-     that no two queens threaten each other. Thus, a solution requires that no two
-     queens share the same row, column, or diagonal.
+    There are various ways to solve this problem. This solution uses combinatorial search
+     of all possible permutations of a one-dimensional array of unique integers, with an
+     addition of pruning a recursive branch when has an invalid state.
 
-    There are various ways to solve this problem. This solution uses permutations of
-     a one-dimensional array of unique integers. Since queens cannot share same row
-     or column, one of the dimensions can be taken out of the problem completely.
-     Each generated permutation is checked for validity of a solution. Copmlete
-     2-dimensional board can be easily reconstructed once the solution is found.
-
-    There are no solutions for `n` less than 4. Interestingly, the 6-queens puzzle
-     has fewer solutions than the 5-queens puzzle. There are 22,317,699,616,364,044
-     solutions for `n=26`.
+    Since queens cannot share same row or column, one of the dimensions can be taken out
+     of the problem completely. Each generated permutation is checked for validity of a
+     solution. Copmlete 2-dimensional board can be easily reconstructed once the
+     solution is found.
 
     Complexity: There is currently no known formula for the exact number of solutions,
      or even for its asymptotic behaviour.
@@ -31,9 +37,17 @@ def n_queens(n):
             printout(b)
 
 
+"""
+Auxiliary routines used in the solution
+"""
+
+
 def permute_board(B, P, i=0):
     """
     Exhaustively searches for all "valid" solutions of a board.
+
+    Permutes all possible combinations of queen placements. Search assumes that elements
+     beyond `i` form a correct solution.
 
     Complexity: Asymptotic boundary is unknown.
     :param list[int] B: Input list with no repeating elements
