@@ -1,15 +1,22 @@
-def three_sum(A):
+"""
+Find integer triplets in an array with the sum of 0.
+
+Example:
+ Input: [1, -6, 3, 8, -2, 2] -> sort -> [-6, -2, 1, 2, 3, 8]
+ Output: (-6, -2, 8)
+
+This might seem like a trivial problem, yet it can be regarded as a decently good
+ approach to iterating the array using three pointers in quadratic time.
+"""
+
+
+def solution(A):
     """
     Finds integers triplets in an array with the sum of 0.
 
-    This might seem like a trivial problem, but a good approach to iterating the
-     array while maintaining three pointers in quadratic time. First two pointers
-     go forward one after another and third one traverses array backwards. An array
-     has to be sorted first in order to correctly find all possible solutions and
-     break the traversal when no further solution can be found.
-
-    Input: [1, -6, 3, 8, -2, 2] -> sort -> [-6, -2, 1, 2, 3, 8]
-    Output: (-6, -2, 8)
+    First two pointers go forward one after another and third one traverses array
+     backwards. An array has to be sorted first in order to correctly find all possible
+     solutions and break the traversal when no further solution can be found.
 
     Complexity: O(n^2)
     :param list[int] A: Input array
