@@ -70,7 +70,7 @@ def list_search(L, k):
      with a given key is not present in the list.
     :param LinkedList L: An instance of a linked list
     :param object k: A key (value) to search
-    :return Any: Found element or None if key was not found
+    :return Any: Pointer to a element or None if key was not found
     """
     x = L.head
     while x is not None and x.key != k:
