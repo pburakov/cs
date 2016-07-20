@@ -1,6 +1,6 @@
 """
-LCS is a very close variation of a Longest Common Subsequence and many other dynamic
- programming puzzles.
+Longest Common Substring, or LCS, is a very close variation of a Longest Common
+ Subsequence and many other dynamic programming puzzles.
 
 Given two strings, `X` and `Y`, find the longest string which is substring of both `X` and
  `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is string
