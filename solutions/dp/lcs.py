@@ -10,15 +10,14 @@ Its solution is based on Edit Distance solution routine, but returns an actual s
 """
 
 
-def backtrack(X, Y, i=None, j=None):
+def backtrack(X, Y, i=0, j=0):
     """
     Returns longest common substring of two strings calculated recursively.
 
     This is well known combinatorial problem whose recursive formula is similar to a
-     subset algorithm. Recursion compares two elements at given indices, one for each
-     string, starting at the end. If matching characters are found, one recursive call
-     is made with both indices shifted. Otherwise search continues recursively on both
-     strings with one index shifted at a time.
+     subset algorithm. Recursion compares two elements at given indices. If matching
+     characters are found, one recursive call is made with both indices shifted.
+     Otherwise search continues recursively with one index shifted at a time.
 
     Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input strings.
     :param str X: First string
@@ -27,24 +26,21 @@ def backtrack(X, Y, i=None, j=None):
     :param int j: Lookup index in a second string (used in recursion)
     :return str: Output string
     """
-    if i is None:
-        i = len(X) - 1
-    if j is None:
-        j = len(Y) - 1
-    if i < 0 or j < 0:  # Base case (out of bounds)
-        return ''
-    a, b = X[i], Y[j]
-    if a == b:
-        return backtrack(X, Y, i - 1, j - 1) + a  # Adding character to a substring
-    else:
-        # Recursive calls increasing index for each of the string
-        s1 = backtrack(X, Y, i, j - 1)
-        s2 = backtrack(X, Y, i - 1, j)
-        # Backtrack with the max. length common string found so far
-        if len(s1) > len(s2):
-            return s1
+    if i < len(X) and j < len(Y):
+        a, b = X[i], Y[j]
+        if a == b:
+            return backtrack(X, Y, i + 1, j + 1) + a  # Adding character to a substring
         else:
-            return s2
+            # Recursive calls increasing index for each of the string
+            s1 = backtrack(X, Y, i, j + 1)
+            s2 = backtrack(X, Y, i + 1, j)
+            # Backtrack with the max. length common string found so far
+            if len(s1) > len(s2):
+                return s1
+            else:
+                return s2
+    else:
+        return ''  # Base case (out of bounds)
 
 
 def dp(X, Y):
