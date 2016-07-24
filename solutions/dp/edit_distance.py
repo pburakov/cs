@@ -72,13 +72,9 @@ def dp(S, T):
      'a'  1   2   2   2
      't'  1   2   2   3  <- the goal
      ```
-    The DP solution uses same subroutines as the recursive solution with the addition of
-     `find_goal()` subroutine that will find the maximum value in the table, since the
-     cheapest place to match the entire pattern is not necessarily at the end of both
-     string.
-
-    Additionally we can store the history of decisions in auxiliary table, that can be
-     used to rebuild intermediate transformations of the string `S` (not implemented).
+    The DP solution uses same subroutines as the recursive solution. Additionally we can
+     store the history of decisions in auxiliary table, that can be used to rebuild
+     intermediate transformations of the string `S` (not implemented).
 
     Complexity: O(nm). Use of dynamic programming allows us to upgrade the speed of this
      algorithm to polynomial time, sacrificing O(mn) space.
