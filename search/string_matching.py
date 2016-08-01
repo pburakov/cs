@@ -30,7 +30,7 @@ def rabin_karp(T, P, d=256, q=239):
     :param str P: Pattern string (needle)
     :param int d: Cardinality of a character set (default is 256, corresponding to ASCII)
     :param int q: Prime number (default is 239, closest to the space of 256)
-    :return:
+    :return int: Index of first occurrence of a matching pattern substring `P` in `T`.
     """
     n = len(T)
     m = len(P)
@@ -48,6 +48,3 @@ def rabin_karp(T, P, d=256, q=239):
             # Hash with character at index `s` removed and character at `s+m` added
             t = (d * (t - ord(T[s]) * h) + ord(T[s + m])) % q
     return -1
-
-
-print(rabin_karp("kbazpgabz", "gab"))
