@@ -1,4 +1,4 @@
-def radix_sort(A, d, b=10):
+def sort(A, d, b=10):
     """
     Sorts an array of integer elements using radix sort and returns sorted array.
 

@@ -1,4 +1,4 @@
-def counting_sort(A, k):
+def sort(A, k):
     """
     Sorts an array of integer elements using counting sort and returns sorted array.
 

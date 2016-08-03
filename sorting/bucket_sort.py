@@ -1,4 +1,4 @@
-def bucket_sort(A):
+def sort(A):
     """
     Sorts an array of integers using bucket sort algorithm and returns sorted array.
 

@@ -1,4 +1,4 @@
-def insertion_sort(A):
+def sort(A):
     """
     Sort an array of objects in place using insertion sorting algorithm.
 

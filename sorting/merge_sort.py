@@ -1,4 +1,4 @@
-def merge_sort(A):
+def sort(A):
     """
     Sorts an array of objects using merge-sort algorithm and returns sorted array.
 
@@ -24,8 +24,8 @@ def merge_sort(A):
         return A  # Already sorted by definition
     else:
         i_n_2 = n // 2  # Slice-point
-        L = merge_sort(A[:i_n_2])
-        R = merge_sort(A[i_n_2:])
+        L = sort(A[:i_n_2])
+        R = sort(A[i_n_2:])
         return merge(L, R)
 
 

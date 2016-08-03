@@ -1,4 +1,4 @@
-def quicksort(A, p=0, r=None):
+def sort(A, p=0, r=None):
     """
     Sorts an array of objects in place using quicksort algorithm.
 
@@ -28,8 +28,8 @@ def quicksort(A, p=0, r=None):
         r = len(A) - 1
     if p < r:
         q = partition(A, p, r)  # Gets next pivot point
-        quicksort(A, p, q - 1)  # Sort left sub-partition
-        quicksort(A, q + 1, r)  # Sort right sub-partition
+        sort(A, p, q - 1)  # Sort left sub-partition
+        sort(A, q + 1, r)  # Sort right sub-partition
 
 
 def partition(A, p, r):
