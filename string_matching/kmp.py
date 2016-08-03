@@ -23,15 +23,12 @@ def find(T, P):
     return out
 
 
-"""
-
-"""
 def kmp_prefix_function(P):
     """
     Constructs prefix function for use in Knuth-Morris-Pratt algorithm.
 
-    This precomputation procedure computes a partial match table `π` where `π[q]` is the
-     length of the longest prefix of pattern `P` that is a proper suffix of `P[q]`.
+    This procedure precomputes a partial match table `π` where `π[q]` is the length of
+     the longest prefix of pattern `P` that is a proper suffix of `P[q]`.
 
     Complexity: O(m) amortized.
     :param str P: Pattern string
