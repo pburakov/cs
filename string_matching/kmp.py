@@ -3,13 +3,13 @@ def find(T, P):
     Knuth-Morris-Pratt string matching algorithm.
 
     This optimized string matching algorithm is based on idea of string matching
-     automata, which examine each text character exatly once. Once a matching character
+     automata, that examine each text character exactly once. Once a matching character
      is found, the machine transitions to a pattern matching state and remains in such
-     while the next character is also accepted.
+     while the consequent character is also accepted.
 
-    When we are in the matching state and a potential pattern match is rejected, but
-     another patern occurrence can begin with the previously matched prefix, we can roll
-     back our pattern to the last matching character and continue our evaluation, without
+    When we are in the matching state and a potential pattern match is rejected, another
+     pattern occurrence can begin with the previously matched prefix. We can roll back
+     our pattern to the last matching character and continue our evaluation, without
      shifting the target string.
 
     Complexity: O(n) amortized.
