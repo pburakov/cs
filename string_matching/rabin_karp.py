@@ -29,7 +29,7 @@ def find(T, P, d=256, q=239):
     :param str T: Target string (haystack)
     :param str P: Pattern string (needle)
     :param int d: Cardinality of a character set (default is 256, corresponding to ASCII)
-    :param int q: Prime number (default is 239, closest to the space of 256)
+    :param int q: Prime number (default is 293, closest to the space of 256)
     :return list[int]: List of indices where pattern `P` occurs in a target string
     """
     n = len(T)
