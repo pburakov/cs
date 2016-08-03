@@ -2,16 +2,16 @@ def find(T, P, d=256, q=239):
     """
     Rabin-Karp string matching algorithm.
 
-    This optimized algorithm reduces the amount of spurious hits over the naive approach
-     by making use of character-based rolling hash.
+    This optimized algorithm reduces the amount of spurious hits seen in the naive
+     approach by using character-based rolling hash.
 
-    First it calculates the hash of the pattern. As it rolls the search window against
-     the string `T`, it copmutes the hash of the characters within that window in an
-     effective way. If both hashes match, finally it performs character-to-character
-     comparison to rule out false-positives.
+    First it calculates the hash of the pattern, and it remains constant. As it rolls the
+     search window against the string `T`, it computes the hash of all the characters
+     occurring within that window in an effective way. If both hashes match, it performs
+     final character-to-character comparison to rule out false-positives.
 
     Hash function takes advantage of the observation how characters shift in a rolling
-     window. Aside from one character rolling out of focus and one appearing, most of
+     window. Aside from one character rolling out of the focus and one appearing, most of
      the characters within the window remain the same. Hash function of a window can be
      written as:
     ```
