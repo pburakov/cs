@@ -68,7 +68,7 @@ def kmp(T, P):
     out = []
     for i in range(0, n):
         while q > 0 and P[q] != T[i]:
-            q = π[q]
+            q = π[q - 1]
         if P[q] == T[i]:
             q += 1
         if q == m:
@@ -93,7 +93,7 @@ def kmp_prefix_function(P):
     k = 0
     for q in range(1, m):
         while k > 0 and P[k] != P[q]:
-            k = π[k]
+            k = π[k - 1]
         if P[k] == P[q]:
             k += 1
         π[q] = k
