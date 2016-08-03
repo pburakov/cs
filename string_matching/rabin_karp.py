@@ -1,4 +1,4 @@
-def find(T, P, d=256, q=239):
+def find(T, P, d=256, q=293):
     """
     Rabin-Karp string matching algorithm.
 
