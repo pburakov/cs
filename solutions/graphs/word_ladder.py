@@ -1,9 +1,14 @@
 """
-This is a word production sequence problem, better known as word ladder, can be encountered in many different flavours. Although it involves strings, it is a great example how simple graph algorithms can be used to solve various seemingly unrelated problems.
+This is a word production sequence problem, better known as word ladder. It can be found
+ in many different flavours. Although it involves strings, it is a great example how
+ simple graph algorithms can be used to solve various seemingly unrelated problems.
 
-You are given a dictionary of words, consisting of lowercase letters. Example: `{"hot","hit","dot","dog","cog","lot","log"}`. Given a starting word and a target word find the shortest available transformation sequence, if exists. Two rules have to be maintained:
- - at each step only a single letter can be changed at a time,
- - every word in a sequence must exist in a dictionary.
+You are given a dictionary of words, consisting of lowercase letters. Example:
+ `{"hot","hit","dot","dog","cog","lot","log"}`. Given a starting word and a target word
+ find the shortest available transformation sequence, if exists. Two rules have to be
+ maintained:
+  - at each step only a single letter can be changed at a time,
+  - every word in a sequence must exist in a dictionary.
 
 Example ladder: `"hit" -> "hot" -> "dot" -> "dog" -> "cog"` of length of 5.
 """
@@ -13,7 +18,14 @@ def solution(D, s, t):
     """
     Word ladder solver using BFS shortest path.
 
-    This solution takes advantage of a property of BFS algorithm. If we follow parent pointers (a vertex from which other vertex was visited) in a breadth-first tree, we can reconstruct shortest path between two vertices. Let every word in a dictionary be a vertex in a graph. If we determine the path from `s` to `t` and reconstruct it, we'll get the exact word produciton sequence.
+    This solution takes advantage of a property of BFS algorithm. If we follow parent
+     pointers (a vertex from which other vertex was visited) in a breadth-first tree, we
+     can reconstruct shortest path between two vertices. Let every word in a dictionary
+     be a vertex in a graph. If we determine the path from `s` to `t` and reconstruct it,
+     we'll get the exact word produciton sequence.
+
+    Note, that this solution can be altered to return an integer distance without the
+     path reconstruction.
 
     :param set D: Dictionary (set) of words
     :param str s: Starting string
@@ -21,7 +33,7 @@ def solution(D, s, t):
     :return list: Production sequence
     """
     stack, out = [], []  # Sequence stack and the output list
-    v = build(D, s, t)
+    v = build(D, s, t)  # Return `v.distance` for path length
     # Getting production sequence backwards by reconstructing BFS path
     while v is not None:
         stack.append(v.candidate_string)
