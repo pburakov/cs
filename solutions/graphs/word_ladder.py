@@ -3,10 +3,10 @@ This is a word production sequence problem, better known as word ladder. It can 
  in many different flavours. Although it involves strings, it is a great example how
  simple graph algorithms can be used to solve various seemingly unrelated problems.
 
-You are given a dictionary of words, consisting of lowercase letters. Example:
- `{"hot","hit","dot","dog","cog","lot","log"}`. Given a starting word and a target word
- find the shortest available transformation sequence, if exists. Two rules have to be
- maintained:
+You are given a dictionary of words of the same lengths, consisting of lowercase letters.
+ Example: `{"hot","hit","dot","dog","cog","lot","log"}`. Given a starting word and a
+ target word, find the shortest available transformation sequence, if such exists. Two
+ rules have to be maintained:
   - at each step only a single letter can be changed at a time,
   - every word in a sequence must exist in a dictionary.
 
@@ -20,13 +20,14 @@ def solution(D, s, t):
 
     This solution takes advantage of a property of BFS algorithm. If we follow parent
      pointers (a vertex from which other vertex was visited) in a breadth-first tree, we
-     can reconstruct shortest path between two vertices. Let every word in a dictionary
-     be a vertex in a graph. If we determine the path from `s` to `t` and reconstruct it,
-     we'll get the exact word produciton sequence.
+     can reconstruct the shortest path between two vertices. Let every word in a
+     dictionary be a vertex in a graph. If we determine the path from `s` to `t` and
+     reconstruct it, we'll get the exact word production sequence.
 
     Note, that this solution can be altered to return an integer distance without the
      path reconstruction.
 
+    Complexity: O(Dm), see the copmlexity of the BFS subroutine.
     :param set D: Dictionary (set) of words
     :param str s: Starting string
     :param str t: Target string
@@ -48,8 +49,15 @@ def build(D, s, t):
     """
     Words production sequence path builder using BFS algorithm.
 
+    This BFS sub-routine connects vertices in a graph, writes parent pointers and
+     distance from the source string.
+
+    Complexity: O(D+Dm) from BFS, where `D` is the number of words in the dictionary and
+     `m` is the length of words used. Time devoted to construction of candidate strings
+     is constant bound to the alphabet size. The number of edges in the worst case is
+     `D^2`.
     :param set D: Dictionary (set) of words
-    :param str s: Starting string
+    :param str s: Source string
     :param str t: Target string
     :return Vertex|None: Vertex containing target string (if found)
     """
