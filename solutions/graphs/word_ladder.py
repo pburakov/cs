@@ -84,7 +84,7 @@ def build(D, s, t):
 
 
 """
-Constants and data structures used in a solution
+Constants and data structures used in the solution
 """
 
 
