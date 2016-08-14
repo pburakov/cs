@@ -70,7 +70,7 @@ def explore(M, y, x, visited):
     """
     DFS subroutine for exploring islands.
 
-    Complexity: O(V`+E') where `V'` is number of tiles in within the island and `E'` is
+    Complexity: O(V'+E') where `V'` is number of tiles in within the island and `E'` is
      number of edges connecting them.
     :param list[list[int]] M: Input map
     :param int y: Starting vertical coordinate
