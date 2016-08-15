@@ -1,14 +1,20 @@
 """
 Knight tour is famous mathematical puzzle often given to CS students.
 
-Given a chessboard of size `n` x `n` and a starting coordinates, find a sequence of moves of a knight, such that the knight visits every square only once.
+Given a chessboard of size `n` x `n` and a starting coordinates, find a sequence of
+ moves of a knight, such that the knight visits every square only once.
 """
 
 
 def solution(n, x, y):
     """
+    Recursive solution of Knight's tour problem with Warnsdorff heuristic.
 
+    The chess board is represented by a two-dimensional array of size `n` x `n`. Path is
+     represented by a consecutive move numbers on the board, starting with `1`. The
+     board is printed out once a solution is found.
 
+    Complexity: O(n), due to Warnsdorff heuristic, see implementation comments
     :param int n: Board size
     :param int x: Starting coordinate `x`
     :param int y: Starting coordinate `y`
@@ -31,13 +37,22 @@ def has_solution(B, x, y, m):
     """
     Backtracking sub-routine for knight tour solution.
 
+    Exhaustively searches for first solvable paths using DFS-like backtracking algorithm
+     with the implementation of Warnsdorff's rule.
 
+    Note that the use of recursion is suboptimal and may cause stack exhaustion for
+     large `n`. Backtracking is used for the purpose of code clarity, but can be easily
+     refactored to iteration, using saved copies of the board `B` state.
 
+    Complexity: O(k^(n^2)) for a normal backtracking algorithm, where `n` is the size of
+     the board and `k` is operations for calculating and sorting legal moves, bound by a
+     constant. Warnsdorff heuristic allows to locate the first solution in O(n) time.
     :param list[list[int]] B: List board representation
     :param int x: Starting coordinate `x`
     :param int y: Starting coordinate `y`
     :param int m: Current move
-    :return bool: Returns true if board is solvable with such position of the knight
+    :return bool: Returns true if board is solvable with such position of the knight,
+     board `B` is mutated in the process
     """
     n = len(B)
     if m == n * n + 1:  # Final move
@@ -45,12 +60,12 @@ def has_solution(B, x, y, m):
     else:
         moves = legal_moves(B, x, y)
         for xx, yy in sort_onward(B, moves):
-            B[xx][yy] = m
+            B[xx][yy] = m  # Saving the move
             if has_solution(B, xx, yy, m + 1):
-                return True
-            else:  # Backtracking in case of illegal move
-                B[xx][yy] = 0
-        return False  # Could not move from such `x, y` coordinates
+                return True  # Next move has a solution
+            else:
+                B[xx][yy] = 0  # Backtracking in case of illegal move
+        return False  # Could not find a legal move from given `x, y` coordinates
 
 
 def legal_moves(B, x, y):
@@ -79,20 +94,29 @@ def sort_onward(B, M):
     """
     Sorts list of moves in accordance with Warnsdorf's heuristic rule.
 
-    Warnsdorf's rule is a heuristic for finding a knight's tour that greatly increases the speed of finding a legal solution. The knight is moved so that it always proceeds to the square from which the knight will have the fewest legit onward moves.
+    Warnsdorff's rule is a heuristic for finding a knight's tour that greatly reduces the
+     cost of finding a legal solution. The knight is moved so that it always proceeds to
+     the square from which the knight will have the fewest legit onward moves.
 
-    Complexity: O(m log(m)) where `m` is the number of moves.
+    Great visualization for Warnsdorff heuristic can be found here: http://warnsdorff.com
+
+    Complexity: O(1), is bound by a constant, since there are at most 8 legal moves for
+     each coordinate.
     :param list[list[int]] B: List board representation
     :param list[(int, int)] M: List of moves
-    :return list[(int, int)]: List `M` sorted in accordance with Warnsdorf's heuristic from fewer moves to most moves
+    :return list[(int, int)]: List `M` sorted in accordance with Warnsdorf's heuristic
+     from fewer moves to most moves.
     """
     return sorted(M, key=lambda t: len(legal_moves(B, t[0], t[1])))
 
 
 def init_board(n):
     """
-    Builds an empty chess board representation cells containing 0.
+    Builds an empty chess board representation.
 
+    Every cell will contain 0 meaning no moves were made from that cell.
+
+    Complexity: O(n*n)
     :param int n: Board size
     :return list[list[int]]: List board representation
     """
@@ -101,12 +125,13 @@ def init_board(n):
 
 def print_board(B):
     """
-    Prints out list board representation.
+    Prints out given list board representation.
 
+    Complexity: O(n*n)
     :param list[list[int]] B: List board representation
     :return None: Prints to stdout
     """
     for line in B:
         for row in line:
-            print("{:3d}".format(row), end='')
+            print("{:5d}".format(row), end='')
         print()
