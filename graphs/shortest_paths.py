@@ -104,7 +104,7 @@ def dag_shortest_paths(G, s):
      relaxation, as each edge is relaxed exactly once (aggregated analysis).
     :param Graph G: Adjacency list weighted dag representation
     :param Vertex s: Starting vertex
-    :return:
+    :return None: Graph vertices are updated
     """
     from graphs.topological_sort import topological_sort
 
