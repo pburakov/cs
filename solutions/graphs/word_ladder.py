@@ -63,6 +63,7 @@ def build(D, s, t):
     """
     from basic_data_structures.queue import Queue
     from basic_data_structures.queue import enqueue, dequeue, next as peek
+
     n = len(D)
     Q = Queue(n)
     D.remove(s)  # Remove used word from a dictionary
