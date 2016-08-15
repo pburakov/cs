@@ -15,7 +15,7 @@ def move_tower(A, B, C, h=None):
     Recursive Tower of Hanoi solver that prints out the state after each move.
 
     We already have a solution for two disks. However, if we add another disk into the
-     problem (`h=4`), we're going to need to generalize the approach.
+     problem (`h=3`), we're going to need to generalize the approach.
 
     First we need to solve Tower of Hanoi problem for rods `A` and `C` and `h-1` (or
      first three disks), which is recursive step 1. We're going to need to use rod `B` as
@@ -26,7 +26,7 @@ def move_tower(A, B, C, h=None):
      as an auxiliary (recursive step 3).
 
     `h=1` becomes our base case when we halt the recursion and proceed to the next step,
-     which means that we need to keep track of the height of the tower.
+     which denotes that we also need to keep track of the height of the tower.
 
     Complexity: O(2^n). The time and space complexity is bounded by the number of moves,
      which grows exponentially with every added disk.
