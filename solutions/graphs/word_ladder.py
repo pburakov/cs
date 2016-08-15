@@ -61,12 +61,14 @@ def build(D, s, t):
     :param str t: Target string
     :return Vertex|None: Vertex containing target string (if found)
     """
-    from queue import Queue
-    Q = Queue()
+    from basic_data_structures.queue import Queue
+    from basic_data_structures.queue import enqueue, dequeue, next as peek
+    n = len(D)
+    Q = Queue(n)
     D.remove(s)  # Remove used word from a dictionary
-    Q.put(Vertex(s, 0))
-    while Q.empty() is False:
-        v = Q.queue[0]  # Peek at queue
+    enqueue(Q, Vertex(s, 0))
+    while Q.length > 0:
+        v = peek(Q)
         if v.candidate_string == t:
             return v  # Target is found
         cs = list(v.candidate_string)  # Converting to list, strings are immutable
@@ -77,9 +79,9 @@ def build(D, s, t):
                 cs_as_str = "".join(cs)
                 if cs_as_str in D:
                     D.remove(cs_as_str)
-                    Q.put(Vertex(cs_as_str, v.distance + 1, v))
+                    enqueue(Q, Vertex(cs_as_str, v.distance + 1, v))
             cs[i] = v.candidate_string[i]
-        Q.get()  # Pop from queue
+        dequeue(Q)
     return None
 
 
@@ -100,6 +102,9 @@ class Vertex:
         self.candidate_string = s
         self.distance = d
         self.parent = p
+
+    def __str__(self):
+        return self.candidate_string
 
 
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
