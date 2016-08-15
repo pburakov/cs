@@ -132,7 +132,7 @@ class Vertex:
         """
         self.d = None
 
-        self.f = None  # Time (counter) at which all DFS has finished the vertex
+        self.f = None  # Time (counter) at which DFS has finished the vertex
         self.color = None
         self.pt = 0.0  # Potential of a vertex (used in reduced edge cost estimation)
 
