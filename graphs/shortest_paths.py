@@ -81,7 +81,8 @@ def relax(G, u, v):
     :param Vertex v: Second vertex
     :return None: Vertex `v` is updated
     """
-    w = weight(G, u, v)
+    E = u.f_edges[v.key]
+    w = weight(E)
     if v.d > u.d + w:
         v.d = u.d + w
         v.p = u
