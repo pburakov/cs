@@ -74,15 +74,15 @@ class Graph:
 
     def E(self):
         """
-        Generates all edges in a graph.
+        Generates tuples of all edges in a graph.
 
-        :return __generator[Edge]: Next edge in a graph
+        :return __generator: Tuple of next edge in a graph
         """
         for i in self.map:
             u = self.map[i]
-            for edge in u.f_edges:
-                assert isinstance(edge, Edge)
-                yield edge
+            for j in u.f_edges:
+                v = self.map[j]
+                yield u, v
 
 
 class Edge:
@@ -119,7 +119,7 @@ def potential(v):
     return v.pt
 
 
-def weight(e):
+def weight(E):
     """
     Returns weight of an edge (u, v).
 
@@ -127,12 +127,12 @@ def weight(e):
      function, reducing the running time by prioritizing edges in a goal-directed
      search, thus allowing to hit the search target sooner.
 
-    :param Edge e: Subject edge
+    :param Edge E: Subject edge
     :return float: Weight of an edge
     """
-    if e.weight is None:
+    if E.weight is None:
         raise AttributeError("Not a weighted edge")
-    return e.weight - potential(e.u) + potential(e.v)
+    return E.weight - potential(E.u) + potential(E.v)
 
 
 class Vertex:
