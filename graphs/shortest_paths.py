@@ -41,7 +41,7 @@ def path_string(G, s, v):
     if v is s:
         return str(s)
     elif v.p is None:
-        raise RecursionError("No such path exists")
+        raise RecursionError("No such path is found")
     else:
         return path_string(G, s, v.p) + ' ' + str(v)
 
