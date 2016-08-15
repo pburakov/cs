@@ -1,5 +1,5 @@
 """
-Knight tour is famous mathematical puzzle often given to CS students.
+Knight tour is a famous mathematical puzzle often given to CS students.
 
 Given a chessboard of size `n` x `n` and a starting coordinates, find a sequence of
  moves of a knight, such that the knight visits every square only once.
@@ -94,9 +94,9 @@ def sort_onward(B, M):
     """
     Sorts list of moves in accordance with Warnsdorf's heuristic rule.
 
-    Warnsdorff's rule is a heuristic for finding a knight's tour that greatly reduces the
-     cost of finding a legal solution. The knight is moved so that it always proceeds to
-     the square from which the knight will have the fewest legit onward moves.
+    Warnsdorff's rule is a heuristic for finding a knight's tour, which greatly reduces
+     the cost of finding the first legal solution. The knight is moved so that it always
+     proceeds to the square from which the knight will have the fewest onward moves.
 
     Great visualization for Warnsdorff heuristic can be found here: http://warnsdorff.com
 
@@ -105,7 +105,7 @@ def sort_onward(B, M):
     :param list[list[int]] B: List board representation
     :param list[(int, int)] M: List of moves
     :return list[(int, int)]: List `M` sorted in accordance with Warnsdorf's heuristic
-     from fewer moves to most moves.
+     from fewer legal moves to most legal moves.
     """
     return sorted(M, key=lambda t: len(legal_moves(B, t[0], t[1])))
 
