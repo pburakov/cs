@@ -45,7 +45,7 @@ def has_solution(B, x, y, m):
 
     Note that the use of recursion is suboptimal and may cause stack exhaustion for
      large `n`. Backtracking is used for the purpose of code clarity, but can be easily
-     refactored to iteration, using saved copies of the board `B` state.
+     refactored to iteration, using saved copies of the state of the board `B`.
 
     Complexity: O(k^(n^2)) for a normal backtracking algorithm, where `n` is the size of
      the board and `k` is operations for calculating and sorting legal moves, bound by a
@@ -58,7 +58,7 @@ def has_solution(B, x, y, m):
      board `B` is mutated in the process
     """
     n = len(B)
-    if m == n * n + 1:  # Final move
+    if m == n * n + 1:  # Final move, solution is found
         return True
     else:
         moves = legal_moves(B, x, y)
@@ -68,7 +68,7 @@ def has_solution(B, x, y, m):
                 return True  # Next move has a solution
             else:
                 B[xx][yy] = 0  # Backtracking in case of illegal move
-        return False  # Could not find a legal move from given `x, y` coordinates
+        return False  # Could not find a move leading to a solution from given `x, y`
 
 
 def legal_moves(B, x, y):
@@ -117,7 +117,7 @@ def init_board(n):
     """
     Builds an empty chess board representation.
 
-    Every cell will contain 0 meaning no moves were made from that cell.
+    Every cell will contain 0, meaning no moves were made from every cell.
 
     Complexity: O(n*n)
     :param int n: Board size
