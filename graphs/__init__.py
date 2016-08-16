@@ -94,8 +94,9 @@ def weight(u, v):
     Returns weight of an edge (u, v).
 
     Assumes that edge is weighted. Note that weights can be affected by a vertex
-     potential, introducing heuristic and reducing the running time by prioritizing edges
-     in a goal-directed search, thus allowing to hit the search target sooner.
+     potential. Such occasion introduces heuristic and reducing the running time by
+     prioritizing edges in a goal-directed search, thus allowing to hit the search target
+     sooner.
 
     :param Vertex u: Source vertex
     :param Vertex v: Target vertex
