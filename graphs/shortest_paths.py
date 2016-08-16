@@ -61,7 +61,7 @@ def initialize_single_source(G, s):
     s.d = 0
 
 
-def relax(G, u, v):
+def relax(u, v):
     """
     Relaxes edge (u, v).
 
@@ -76,13 +76,11 @@ def relax(G, u, v):
     Longest path can be calculated using negated weights.
 
     Complexity: O(1)
-    :param Graph G: Adjacency list graph representation
-    :param Vertex u: First vertex
-    :param Vertex v: Second vertex
+    :param Vertex u: Source vertex
+    :param Vertex v: Target vertex
     :return None: Vertex `v` is updated
     """
-    E = u.f_edges[v.key]
-    w = weight(E)
+    w = weight(u, v)
     if v.d > u.d + w:
         v.d = u.d + w
         v.p = u
@@ -114,7 +112,7 @@ def dag_shortest_paths(G, s):
     for node in L:
         u = node.key  # Gets vertex from a linked list
         for v in G.Adj(u):
-            relax(G, u, v)
+            relax(u, v)
 
 
 def bellman_ford(G, s):
@@ -143,10 +141,10 @@ def bellman_ford(G, s):
     for i in range(0, n - 1):
         # Relax every edge `|V|-1` times
         for u, v in G.E():
-            relax(G, u, v)
+            relax(u, v)
     for u, v in G.E():
         # Check if edge cannot be further relaxed
-        if v.d > u.d + weight(G, u, v):
+        if v.d > u.d + weight(u, v):
             return False
     return True
 
@@ -190,7 +188,7 @@ def dijkstra(G, s):
         u = heap_extract_min(Q, False)  # Heap rebuilding is skipped
         S.append(u)
         for v in G.Adj(u):
-            relax(G, u, v)
+            relax(u, v)
     G.V = S  # Optional step to maintain Graph object
 
 
