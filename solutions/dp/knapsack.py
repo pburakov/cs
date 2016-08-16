@@ -19,10 +19,12 @@ Example:
 
 def backtrack(I, c, i=None):
     """
-    Top-down naive recursive solution to a Knapsack problem.
+    Top-down naive recursive solution to a 0/1 Knapsack problem.
 
     This is an exhaustive recurs ive solution, similar to a rod cutting problem, that
-     works for floating point weights and values.
+     works for floating point weights and values. The principle is the same as partitions
+     generation algorithm. At each step we decide whether we want to take an item or not,
+     hence the name 0/1.
 
     Complexity: O(2^n) where `n` is the total number of listed items
     :param list[Item] I: List of items
@@ -47,10 +49,12 @@ def backtrack(I, c, i=None):
 
 def dp(I, c):
     """
-    Knapsack solution for non-negative integer weights using DP.
+    0/1 Knapsack problem solution for non-negative integer weights using DP.
 
     Uses similar logic as the recursive solution but uses DP table to store the state.
 
+    Complexity: O(nc), can be reduced to O(c) time and space if values are re-written in a
+     1-dimensional array on every iteration.
     :param list[Item] I: List of items
     :param int c: Maximum capacity a knapsack can hold
     :return int: Maximum value gain
