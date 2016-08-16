@@ -81,6 +81,8 @@ def potential(x):
     """
     Returns a potential of a vertex.
 
+    Potential value greater than 0 introduces heuristic in weight calculation.
+
     :param Vertex x: Subject vertex
     :return float: Potential of a vertex
     """
@@ -91,9 +93,9 @@ def weight(u, v):
     """
     Returns weight of an edge (u, v).
 
-    Assumes that edge is weighted. Note that weights can be affected by a potential
-     function, reducing the running time by prioritizing edges in a goal-directed
-     search, thus allowing to hit the search target sooner.
+    Assumes that edge is weighted. Note that weights can be affected by a vertex
+     potential, introducing heuristic and reducing the running time by prioritizing edges
+     in a goal-directed search, thus allowing to hit the search target sooner.
 
     :param Vertex u: Source vertex
     :param Vertex v: Target vertex
@@ -128,7 +130,7 @@ class Vertex:
         self.f = None  # Time (counter) at which DFS has finished the vertex
         self.color = None  # Used to denote vertex discovery status
         self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.pt = 0.0  # Potential of a vertex (used in reduced edge cost estimation)
+        self.pt = 0.0  # Potential modifier of a vertex
 
     """
     Vertex comparison operators based on `d` value (used in Dijkstra edge prioritization)

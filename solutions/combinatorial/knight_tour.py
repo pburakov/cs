@@ -38,7 +38,7 @@ def has_solution(B, x, y, m):
     Backtracking sub-routine for knight tour solution.
 
     Exhaustively searches for first solvable paths using DFS-like backtracking algorithm
-     with the implementation of Warnsdorff's rule.
+     with the implementation of Warnsdorff heuristic.
 
     Note that the use of recursion is suboptimal and may cause stack exhaustion for
      large `n`. Backtracking is used for the purpose of code clarity, but can be easily
