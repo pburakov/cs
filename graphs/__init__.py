@@ -81,7 +81,7 @@ def potential(x):
     """
     Returns a potential of a vertex.
 
-    Potential value greater than 0 introduces heuristic in weight calculation.
+    Potential value greater than 0 alters weight calculation.
 
     :param Vertex x: Subject vertex
     :return float: Potential of a vertex
