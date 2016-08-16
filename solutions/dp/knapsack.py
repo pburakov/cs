@@ -1,10 +1,10 @@
 """
-Knapsack problem similar to a Rod Cutting problem is a common example of Dynamic
- Programming.
+Knapsack problem similar to a Rod Cutting problem is another example of a common approach
+ used in Dynamic Programming.
 
-Imagine you have a list of items, each has an associated value and weight. You
- are also given a bag of a limited capacity (maximum weight it can hold). Your
- task is to maximise the value of items a bag can hold.
+Imagine you have a list of items, each has an associated value and weight. You are also
+ given a bag of a limited capacity (maximum weight it can hold). Your task is to maximise
+ the value of items a bag can hold.
 
 Example:
 ```
@@ -21,8 +21,8 @@ def backtrack(I, c, i=None):
     """
     Top-down naive recursive solution to a Knapsack problem.
 
-    This is an exhaustive recursive solution, similar to a rod cutting problem,
-     that works for floating point weights and values.
+    This is an exhaustive recurs ive solution, similar to a rod cutting problem, that
+     works for floating point weights and values.
 
     Complexity: O(2^n) where `n` is the total number of listed items
     :param list[Item] I: List of items
@@ -49,8 +49,7 @@ def dp(I, c):
     """
     Knapsack solution for non-negative integer weights using DP.
 
-    Uses similar logic as the recursive solution but uses DP table to store the
-     state.
+    Uses similar logic as the recursive solution but uses DP table to store the state.
 
     :param list[Item] I: List of items
     :param int c: Maximum capacity a knapsack can hold
