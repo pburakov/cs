@@ -21,38 +21,6 @@ Adjacency list can be used to represent both directed and undirected graph types
 """
 
 
-def dict_to_graph(D):
-    """
-    Converts dictionary into a graph and set of vertex and edge objects.
-
-    Assumed dictionary representation is in following format:
-     - `{'A': ['B', 'C']}` for unweighted graphs
-     - `{'A': {'B': 3.0, 'C': 1.5}} for weighted graphs
-
-    Please note, that hash map (dict) data type does not guarantee order preservation,
-     which may lead to random results in certain algorithms, such as DFS.
-
-    :param dict D: Input dictionary
-    :return Graph: Output graph object
-    """
-    G = Graph()
-    for i in D:  # Creating pointers for all vertices
-        v = Vertex(i)
-        G.map[v.key] = v
-        G.V.append(v)
-    for i in D:  # Creating edges
-        u = G.map[i]
-        for j in D[i]:
-            if type(D[i]) is dict:
-                w = D[i][j]  # Weighted graph
-            else:
-                w = None
-            v = G.map[j]
-            u.f_edges[j] = Edge(u, v, w)
-            v.r_edges[i] = Edge(v, u, w)
-    return G
-
-
 class Graph:
     def __init__(self):
         """
@@ -183,3 +151,35 @@ class Vertex:
 
     def __str__(self):
         return str(self.key)
+
+
+def dict_to_graph(D):
+    """
+    Converts dictionary into a graph and set of vertex and edge objects.
+
+    Utility function. Assumed dictionary representation is in following format:
+     - `{'A': ['B', 'C']}` for unweighted graphs
+     - `{'A': {'B': 3.0, 'C': 1.5}} for weighted graphs
+
+    Please note, that hash map (dict) data type does not guarantee order preservation,
+     which may lead to random results in certain algorithms, such as DFS.
+
+    :param dict D: Input dictionary
+    :return Graph: Output graph object
+    """
+    G = Graph()
+    for i in D:  # Creating pointers for all vertices
+        v = Vertex(i)
+        G.map[v.key] = v
+        G.V.append(v)
+    for i in D:  # Creating edges
+        u = G.map[i]
+        for j in D[i]:
+            if type(D[i]) is dict:
+                w = D[i][j]  # Weighted graph
+            else:
+                w = None
+            v = G.map[j]
+            u.f_edges[j] = Edge(u, v, w)
+            v.r_edges[i] = Edge(v, u, w)
+    return G
