@@ -12,6 +12,8 @@ You are given a dictionary of words of the same lengths, consisting of lowercase
 
 Example ladder: `"hit" -> "hot" -> "dot" -> "dog" -> "cog"` of length of 5.
 """
+from basic_data_structures.queue import Queue
+from basic_data_structures.queue import enqueue, dequeue, next as peek
 
 
 def solution(D, s, t):
@@ -52,18 +54,15 @@ def build(D, s, t):
     This BFS sub-routine connects vertices in a graph, writes parent pointers and
      distance from the source string.
 
-    Complexity: O(D+Dm) from BFS, where `D` is the number of words in the dictionary and
+    Complexity: O(n+nm) from BFS, where `n` is the number of words in the dictionary and
      `m` is the length of words used. Time devoted to construction of candidate strings
      is constant bound to the alphabet size. The number of edges in the worst case is
-     `D^2`.
+     `n^2`.
     :param set D: Dictionary (set) of words
     :param str s: Source string
     :param str t: Target string
     :return Vertex|None: Vertex containing target string (if found)
     """
-    from basic_data_structures.queue import Queue
-    from basic_data_structures.queue import enqueue, dequeue, next as peek
-
     n = len(D)
     Q = Queue(n)
     D.remove(s)  # Remove used word from a dictionary
