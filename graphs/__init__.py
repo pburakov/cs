@@ -59,7 +59,7 @@ class Graph:
         Basic adjacency list graph representation.
         """
         self.map = {}  # Map of pointers to all vertices, keyed by their key
-        self.V = []  # List of pointers to all vertices, keyed by their key
+        self.V = []  # List of pointers to all vertices
 
     def Adj(self, v):
         """
@@ -109,17 +109,17 @@ def degree(v):
     return len(v.f_edges)
 
 
-def potential(v):
+def potential(x):
     """
     Returns a potential of a vertex.
 
-    :param Vertex v: Subject vertex
+    :param Vertex x: Subject vertex
     :return float: Potential of a vertex
     """
-    return v.pt
+    return x.pt
 
 
-def weight(E):
+def weight(u, v):
     """
     Returns weight of an edge (u, v).
 
@@ -127,12 +127,14 @@ def weight(E):
      function, reducing the running time by prioritizing edges in a goal-directed
      search, thus allowing to hit the search target sooner.
 
-    :param Edge E: Subject edge
+    :param Vertex u: Source vertex
+    :param Vertex v: Target vertex
     :return float: Weight of an edge
     """
+    E = u.f_edges[v.key]
     if E.weight is None:
         raise AttributeError("Not a weighted edge")
-    return E.weight - potential(E.u) + potential(E.v)
+    return E.weight - potential(u) + potential(v)
 
 
 class Vertex:
