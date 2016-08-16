@@ -14,6 +14,8 @@ Example:
       c    70    4          Answer: 80 (item b and d).
       d    30    2
 ```
+This problem is described in detail in the book "Elements of Programming Interviews" by
+ A. Aziz et al.
 """
 
 
