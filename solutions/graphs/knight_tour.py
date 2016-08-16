@@ -1,8 +1,11 @@
 """
 Knight tour is a famous mathematical puzzle often given to CS students.
 
-Given a chessboard of size `n` x `n` and a starting coordinates, find a sequence of
- moves of a knight, such that the knight visits every square only once.
+Given a chessboard of size `n` x `n` and a starting coordinates, find a sequence of moves
+ of a knight, such that the knight visits every square only once.
+
+Proposed solution to a Knight Tour problem is an interesting intersection of a
+ combinatorial search problem and a graph path search algorithm.
 """
 
 
@@ -59,7 +62,7 @@ def has_solution(B, x, y, m):
         return True
     else:
         moves = legal_moves(B, x, y)
-        for xx, yy in sort_onward(B, moves):
+        for xx, yy in sort_onward(B, moves):  # Moves are sorted using Warnsdorff's rule
             B[xx][yy] = m  # Saving the move
             if has_solution(B, xx, yy, m + 1):
                 return True  # Next move has a solution
@@ -92,7 +95,7 @@ def legal_moves(B, x, y):
 
 def sort_onward(B, M):
     """
-    Sorts list of moves in accordance with Warnsdorf's heuristic rule.
+    Sorts list of moves in accordance with Warnsdorff's heuristic.
 
     Warnsdorff's rule is a heuristic for finding a knight's tour, which greatly reduces
      the cost of finding the first legal solution. The knight is moved so that it always
