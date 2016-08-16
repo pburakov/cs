@@ -1,6 +1,6 @@
 """
-Knapsack problem similar to a Rod Cutting problem is another example of a common approach
- used in Dynamic Programming.
+Knapsack problem is similar to a Rod Cutting problem, It is another example of a common
+ approach, seen in Dynamic Programming.
 
 Imagine you have a list of items, each has an associated value and weight. You are also
  given a bag of a limited capacity (maximum weight it can hold). Your task is to maximise
