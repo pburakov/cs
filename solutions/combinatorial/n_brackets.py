@@ -13,7 +13,7 @@ def recursion(C, o, c=0, S=''):
      calls, one with added opening bracket, another one with the closing bracket, if
      applicable.
 
-    Complexity: ??? is closely related to formula for catalan numbers.
+    Complexity: O(2^o), as seen from the recursion tree.
     :param int o: Starting number or number of remaining opening brackets
     :param int c: Number of brackets remaining to be closed (used in recursion)
     :param str S: Intermediate result (used in recursion)
