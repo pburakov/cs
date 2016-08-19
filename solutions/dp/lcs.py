@@ -91,7 +91,7 @@ def dp(X, Y):
     return "".join(P)
 
 
-def length(A, B, i=0, j=0):
+def length(X, Y, i=0, j=0):
     """
     Simplified version of backtracking algorithm that only returns length.
 
@@ -102,12 +102,12 @@ def length(A, B, i=0, j=0):
     :param int j: Lookup index in a second string (used in recursion)
     :return int: Length of the longest common substring
     """
-    if i < len(A) and j < len(B):
-        if A[i] == B[j]:
-            return 1 + length(A, B, i + 1, j + 1)
+    if i < len(X) and j < len(Y):
+        if X[i] == Y[j]:
+            return 1 + length(X, Y, i + 1, j + 1)
         else:
-            l1 = length(A, B, i + 1, j)
-            l2 = length(A, B, i, j + 1)
+            l1 = length(X, Y, i + 1, j)
+            l2 = length(X, Y, i, j + 1)
             return max(l1, l2)
     else:
         return 0
