@@ -108,7 +108,7 @@ def length(X, Y):
     while i < n:
         j = 0
         while j < m:
-            c = 0  # Mathing characters counter
+            c = 0  # Matching characters counter
             while i + c < n and j + c < m and X[i + c] == Y[j + c]:
                 c += 1
             max_len = max(max_len, c)
