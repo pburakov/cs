@@ -77,12 +77,12 @@ def dp(X, Y):
     # Reconstructing solution based on results of the calculation
     i, j = m, n
     k = DP[i][j]  # Start at rightmost bottom cell (max length)
-    P = [str] * k  # Allocate memory for the output
+    P = ''  # Output string
     while i > 0 and j > 0:
         # Characters match: navigating diagonally one cell up-left
         a, b = X[i - 1], Y[j - 1]
         if a == b:
-            P[k - 1] = a  # Add to output
+            P += a
             i -= 1
             j -= 1
             k -= 1
@@ -91,7 +91,7 @@ def dp(X, Y):
             i -= 1  # Up (larger value is above)
         else:
             j -= 1  # Left (larger value is in the same row)
-    return "".join(P)
+    return P
 
 
 def length(X, Y):
