@@ -91,23 +91,27 @@ def dp(X, Y):
     return "".join(P)
 
 
-def length(X, Y, i=0, j=0):
+def length(X, Y):
     """
-    Simplified version of backtracking algorithm that only returns length.
+    Simplified version of LCS algorithm that only returns length.
 
-    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input strings.
+    Complexity: O((n^2)m) for `m=n`, where `m` and `n` are the lengths of the input strings,
+     and `n` being the bigger value string. Remarkably, it uses O(1) space.
     :param str X: First string
     :param str Y: Second string
-    :param int i: Lookup index in a first string (used in recursion)
-    :param int j: Lookup index in a second string (used in recursion)
     :return int: Length of the longest common substring
     """
-    if i < len(X) and j < len(Y):
-        if X[i] == Y[j]:
-            return 1 + length(X, Y, i + 1, j + 1)
-        else:
-            l1 = length(X, Y, i + 1, j)
-            l2 = length(X, Y, i, j + 1)
-            return max(l1, l2)
-    else:
-        return 0
+    i, j = 0, 0
+    max_len = 0
+    n = len(X)
+    m = len(Y)
+    while i < n:
+        j = 0
+        while j < m:
+            c = 0  # Mathing characters counter
+            while i + c < n and j + c < m and X[i + c] == Y[j + c]:
+                c += 1
+            max_len = max(max_len, c)
+            j += 1
+        i += 1
+    return max_len
