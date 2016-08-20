@@ -2,9 +2,10 @@
 Longest Common Substring, or LCS, is a very close variation of a Longest Common
  Subsequence and many other dynamic programming puzzles.
 
-Given two strings, `X` and `Y`, find the longest string which is substring of both `X` and
- `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is string
- "ABC" of length 3. Other common substrings are "A", "AB", "B", "BA", "BC" and "C".
+Given two strings, `X` and `Y`, find the longest string which is substring of both `X`
+ and `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is
+ string "ABC" of length 3. Other common substrings are "A", "AB", "B", "BA", "BC" and
+ "C".
 
 Its solution is based on Edit Distance solution routine, but returns an actual string.
 """
@@ -19,7 +20,8 @@ def backtrack(X, Y, i=0, j=0):
      characters are found, one recursive call is made with both indices shifted.
      Otherwise search continues recursively with one index shifted at a time.
 
-    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input strings.
+    Complexity: O(2^n) for `m=n`, where `m` and `n` are the lengths of the input
+     strings, tremendous usage of memory stack.
     :param str X: First string
     :param str Y: Second string
     :param int i: Lookup index in a first string (used in recursion)
@@ -47,15 +49,16 @@ def dp(X, Y):
     """
     Returns longest common sub-sequence of two strings calculated using DP.
 
-    Optimized solution to the same problem using dynamic programming. It almost reads like
-     magic, but it should be clear that the underlying logic is the same as the recursive
-     approach. Instead of keeping results in the stack, we store calculated lengths in
-     the table `DP`. Note that indexes are shifted to return valid output for empty strings.
+    Optimized solution to the same problem using dynamic programming. It almost reads
+     like magic, but it should be clear that the underlying logic is the same as the
+     recursive approach. Instead of keeping results in the stack, we store calculated
+     lengths in the table `DP`. Note that indexes are shifted to return valid output for
+     empty strings.
 
     The key to the solution is in reconstruction algorithm that reads the computed table
      in sequence and builds the output based on calculated lengths.
 
-    Complexity: O(mn) or O(n^2) if m=n.
+    Complexity: O(mn) or O(n^2) if m=n. O(mn) extra space.
     :param str X: First string
     :param str Y: Second string
     :return str: Output string
@@ -95,8 +98,8 @@ def length(X, Y):
     """
     Simplified version of LCS algorithm that only returns length.
 
-    Complexity: O((n^2)m) for `m=n`, where `m` and `n` are the lengths of the input strings,
-     and `n` being the bigger value string. Remarkably, it uses O(1) space.
+    Complexity: O((n^2)m) for `m=n`, where `m` and `n` are the lengths of the input
+     strings. Remarkably, it uses O(1) space.
     :param str X: First string
     :param str Y: Second string
     :return int: Length of the longest common substring
