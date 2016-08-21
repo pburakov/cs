@@ -12,7 +12,7 @@ def solution(M):
         if i == len(M) - 1:
             break
         dequeue(q)
-        for dice in range(1, 4):
+        for dice in range(1, 7):
             next_i = i + dice
             if next_i < len(M):
                 if visited[next_i] is False:
@@ -30,5 +30,5 @@ class Move:
         self.dist = d
 
 
-m1 = [0, 3, 0, 0, 2, 3, 0, 0]
+m1 = [0, 3, 0, 0, 2, 3, 8, 0, 0, 7, 0]
 print(solution(m1))
