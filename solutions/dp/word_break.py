@@ -3,7 +3,7 @@ Given an input string and a dictionary of words, find out if the input string ca
  segmented into a space-separated sequence of dictionary words. Words can appear more
  than once. Build the resulting sequence.
 
-Example: "amanaplanacanal", dictionary = {"a", "man", "plan", "canal"}
+Example: "amanaplanacanal", dictionary = {"a", "man", "plan", "panama", "canal"}
 Output: `['a', 'man', 'a', 'plan', 'a', 'canal']`
 """
 
@@ -15,12 +15,12 @@ def backtrack(S, D, P, i=0):
     Recursive approach is straightforward. The string is traversed. If the prefix is
      found in a dictionary, the procedure is repeated for the remainder of the string.
 
-    Complexity: O(nd) on the upper bound, where `n` is the length of a string and `d` is
-     the size of a dictionary. Complexity would be O(n^3) is we used substrings.
-     Unfortunately, O(n!) extra space is used for prefix storage.
+    Complexity: O((n^2)d) on the upper bound, where `n` is the length of a string and `d`
+     is the size of a dictionary. Unfortunately, O(n^2) extra space is used for prefix
+     storage and memory stack is absorbed on every match.
     :param str S: Input string
     :param set[str] D: Dictionary of words
-    :param list P: Output list
+    :param list P: Output list of words
     :param int i: Starting index (used in recursion)
     :return bool: Returns True if the whole string has been matched.
     """
@@ -42,41 +42,50 @@ def dp(S, D):
     Word Break solution using dynamic programming.
 
     The DP approach is based on the recursive formula, but uses a table to store the
-     state. `DP[0..(n-1)]` stores boolean values indicating if a prefix has been found at
-     `i`-th position. This denotes that the string can be broken at this index, which is
-     how the solution is constructed.
+     state. `DP[0..(n-1)]` stores matching prefixes found at `i`-th position.
 
-    Complexity: O(n^2d) and O(n) storage.
+    Usage of DP allows us to demonstrate an interesting approach to the reconstruction of
+     a solution. Here we refer to the DFS algorithm starting at the last matched word, if
+     such match has occurred at the left edge, just like in the recursive solution.
+
+    Complexity: O((n^2)d) time, O(nd) space
     :param str S: Input string
     :param set[str] D: Dictionary of words
-    :return list: Output list
+    :return list: Output list of words
     """
     n = len(S)
-    if n == 0:
-        return []
-    DP = [False] * n
-    prefix = ''
+    DP = [None] * (n + 1)
+    DP[0] = []  # Initial state
     for i in range(0, n):
-        prefix += S[i]
-        # Skipping dictionary lookup if the prefix was already found
-        if DP[i] is False and prefix in D:
-            DP[i] = True
-            prefix = ''
-        if DP[i] is True:
-            suffix = ''
-            for k in range(i + 1, n):
-                suffix += S[k]
-                # Skipping dictionary lookup if the prefix was already found
-                if DP[k] is False and suffix in D:
-                    DP[k] = True
-                    suffix = ''
-    # Reconstructing solution
+        if DP[i] is not None:
+            for j in range(i + 1, n + 1):
+                prefix = S[i:j]
+                if prefix in D:
+                    if DP[j] is None:
+                        DP[j] = []
+                    DP[j].append(prefix)
     P = []
-    prefix = ''
-    if DP[n - 1] is True:  # Successfully matched the whole string
-        for i in range(0, n):
-            prefix += S[i]
-            if DP[i] is True:
-                P.append(prefix)
-                prefix = ''
+    if DP[n] is not None:
+        dfs(DP, P, n)
     return P
+
+
+"""
+Auxiliary routines used in the DP solution
+"""
+
+
+def dfs(DP, P, i):
+    """
+    Subroutine to reconstruct DP solution.
+
+    Complexity: O(w) where `w` is number of matched words.
+    :param list DP: List of found and mapped words
+    :param P: Output list of words
+    :param int i: Starting index (top-down)
+    :return None: List `P` is updated
+    """
+    if DP[i] is not None:
+        for word in DP[i]:
+            P.insert(0, word)
+            dfs(DP, P, i - len(word))
