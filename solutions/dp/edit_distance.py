@@ -1,7 +1,7 @@
 """
-In computer science, edit distance is a way of quantifying how dissimilar two strings
- are to one another by counting the minimum number of operations required to transform
- one string into the other.
+In computer science, edit distance (Levenstein distance) is a way of quantifying how
+ dissimilar two strings are to one another by counting the minimum number of operations
+ required to transform one string into the other.
 
 You are given a source string `S` and a target string `T`. Three types of operations are
  possible, let `1` be the equal cost of each:
