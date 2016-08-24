@@ -5,7 +5,7 @@ This is combinatorial problem whose solution is given by the Catalan numbers.
 """
 
 
-def recursion(C, o, c=0, S=''):
+def recursion(o, c=0, S=''):
     """
     Recursive solution for the n bracket pairs problem.
 
@@ -23,6 +23,6 @@ def recursion(C, o, c=0, S=''):
         print(S)
         return
     if o > 0:
-        recursion(C, o - 1, c + 1, S + '(')
+        recursion(o - 1, c + 1, S + '(')
     if c > 0:
-        recursion(C, o, c - 1, S + ')')
+        recursion(o, c - 1, S + ')')
