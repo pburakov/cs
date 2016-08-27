@@ -6,6 +6,11 @@ Output = "this is mikes favorite food"
 
 
 def solution(S, D):
+    """
+    :param str S:
+    :param dict D:
+    :return str:
+    """
     _, M = spaces(S, D)
     return reconstruct(S, M)
 
