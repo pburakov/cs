@@ -13,7 +13,7 @@ def match(R, S, i=0, j=0):
     """
     Simple regex recursive problem solver.
 
-    Complexity: O(2^n)
+    Complexity: O(n) where `n` is length of the string.
     :param str R: Regex expression
     :param str S: Source string
     :param int i: Index in regex expression (used in recursion)
