@@ -36,13 +36,13 @@ def tokenize(S):
 
     Tokenization algorithm is based on a finite string automata. It has 3 states:
      a) Parse digits into integer values (collected number is kept as number of pattern
-      of repetitions for the next state)
-     b) Tokenize parenthesized expression (expression is recursively tokenized)
-     c) Tokenize single character
+      repetitions during the next state switch).
+     b) Tokenize parenthesized expression (enclosed expression is recursively tokenized).
+     c) Tokenize single character.
 
     State of the automata is triggered based on a character encountered. State is held
-     until another trigger is occurred. Result of this algorithm is a list representation
-     of a parse tree, containing tokenized characters and repeated expressions.
+     until another trigger occurs. Result of this algorithm is a list representation of
+     a parse tree, containing tokenized characters, nested and repeated expressions.
 
     Complexity: O(n*b) where `b` is number of matched opening brackets that may spawn
      recursive expression traversal.
