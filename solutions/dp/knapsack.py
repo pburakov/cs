@@ -23,7 +23,7 @@ def backtrack(I, c, i=None):
     """
     Top-down naive recursive solution to a 0/1 Knapsack problem.
 
-    This is an exhaustive recurs ive solution, similar to a rod cutting problem, that
+    This is an exhaustive recursive solution, similar to a rod cutting problem, that
      works for floating point weights and values. The principle is the same as partitions
      generation algorithm. At each step we decide whether we want to take an item or not,
      hence the name 0/1.
