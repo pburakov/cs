@@ -1,7 +1,8 @@
 """
 Given a simple syntax using numbers and square brackets, parse a given expression into a
  complete string. Numbers represent number of times following character or expression
- shall be repeated. Expressions are enclosed in square brackets.
+ shall be repeated. Default number of repetitions of a character or expression is 1,
+ unless explicitly specified. Nested expressions are enclosed in square brackets.
 
 Input: `ab4c`. Output: `abcccc`
 Input: `1a1b0c`. Output: `ab`
