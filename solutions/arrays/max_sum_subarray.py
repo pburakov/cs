@@ -2,7 +2,7 @@
 The maximum subarray problem is the task of finding the contiguous subarray within a
  one-dimensional array of numbers which has the largest sum. For example, for the
  sequence of values `[−2, 1, −3, 4, −1, 2, 1, −5, 4]`; the contiguous subarray with the
- largest sum is `[4, −1, 2, 1]`, with sum 6.
+ largest sum is `[4, −1, 2, 1]`, with the sum `6`.
 
 Linear-time solution is named after Jay Kadane who first found it in 1984.
 """
@@ -12,9 +12,9 @@ def subarray(A):
     """
     Returns continuous sub-array with the maximum sum.
 
-    Kadane's algorithm consists of a scan through the array values, computing at each
-     position the maximum subarray ending at that position. The implied starting position
-     is just after the last position at which the sum went negative.
+    Kadane's algorithm consists of a scan through the values in the array, computing at
+     each position the maximum subarray ending at that position. The implied starting
+     position is just after the last position at which the sum went negative.
 
     This algorithm can be viewed as a simple example of dynamic programming.
 
