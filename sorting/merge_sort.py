@@ -2,17 +2,18 @@ def sort(A):
     """
     Sorts an array of objects using merge-sort algorithm and returns sorted array.
 
-    Merge sort is a recursive sorting algorithm that first recursively splits an array
-     in half until it reaches two arrays containing a single element, that are already
-     sorted by definition.
+    Merge sort is a recursive sorting algorithm that first recursively splits an array in
+     half until it reaches two arrays containing a single element, that are already sorted
+     by definition.
 
     The recursive nature of merge sort is a great example of divide-and-conquer technique,
      when the problem is broken to smaller pieces each of which is trivially solved.
      Solved parts are combined back together.
 
     Merge operation does the both the "conquer" and "combine" part, merging two sorted
-     arrays. The body of the merge-sort method implements the recursive "divide", or
-     the slicing of the array.
+     arrays. The body of the merge-sort method implements the recursive "divide", or the
+     slicing of the array. Merge sort parallelizes well due to its use of divide-and-
+     conquer formulation.
 
     Complexity: O(n log(n)) in all cases. `Log(n)` for splitting, `n` for merge. Merge
      sort is stable and it requires additional memory to hold the sliced halves.
@@ -33,11 +34,13 @@ def merge(L, R):
     """
     Merges two sorted arrays into a single array and returns it.
 
-    The algorithm repeatedly looks at elements at the two pointers, picks the one that
-     is smaller and adds it to the output. The respective pointer is then shifted one
+    The algorithm repeatedly looks at elements at the two pointers, picks the one that is
+     smaller and adds it to the output. The respective pointer is then shifted one
      position and loop is repeated.
 
-    The merge routine is widely used in other algorithms in various optimized versions.
+    The merge routine is often found in various algorithms, sometimes in augmented
+     versions. It is also used in distributed or scalable systems. There it is called
+     external sort, and operates on not just two, but an arbitrary number of arrays.
 
     Complexity: O(k), where `k` is the sum of the length of two arrays.
     :param list L: Sorted array
