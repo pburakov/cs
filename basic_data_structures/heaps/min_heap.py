@@ -123,6 +123,7 @@ def min_heap_insert(A, z):
     Newly added element is forced to bubble-up to it's appropriate position to ensure
      that heap properties are maintained.
 
+    Complexity: O(h), where `h` is the height of the heap or worst case, O(log(n))
     :param list A: Array (list) to heapify
     :param object z: Pointer or an instance of a new element
     :return None: List `A` is mutated.
