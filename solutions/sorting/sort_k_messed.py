@@ -11,9 +11,9 @@ def sort(A, k):
     """
     Sort k-messed array.
 
-    There's an obvious regular sort with `O(n log(n))` complexity or even `O(nk)`
-     solution to this problem, however we can do better if we use heap to extract the
-     minimum at each step.
+    There's an obvious regular sort with `O(n log(n))` complexity or even `O(nk)` solution
+     to this problem, however we can do better. We use heap to extract the minimum as we
+     shift the `k`-sized window from the beginning to the end.
 
     Algorithm assumes that `k > 1`.
 
