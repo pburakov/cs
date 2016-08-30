@@ -1,7 +1,9 @@
 """
-Given an array `A` of length `n` where each element is at most `k > 1` places away from its sorted position, plan and code an efficient algorithm to sort `A`.
+Given an array `A` of length `n` where each element is at most `k > 1` places away from
+ its sorted position, plan and code an efficient algorithm to sort `A`.
 
-Example: With `A=[3, 1, 2, 5, 4, 7, 6]` and `k=2` the element belonging to index 3 in the sorted array, may be at indices 4, 5, 6, 7 or 8 on the given array.
+Example: With `A=[3, 1, 2, 5, 4, 7, 6]` and `k=2` the element belonging to index 3 in the
+ sorted array, may be at indices 4, 5, 6, 7 or 8 on the given array.
 """
 
 
@@ -9,7 +11,9 @@ def sort(A, k):
     """
     Sort k-messed array.
 
-    There's an obvious regular sort with `O(n log(n))` complexity or even `O(nk)` solution to this problem, however we can do better if we use heap to extract the minimum at each step.
+    There's an obvious regular sort with `O(n log(n))` complexity or even `O(nk)`
+     solution to this problem, however we can do better if we use heap to extract the
+     minimum at each step.
 
     Algorithm assumes that `k > 1`.
 
