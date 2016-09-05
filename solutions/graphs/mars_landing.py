@@ -1,5 +1,12 @@
 """
-Imagine you are sending a lander to Mars. Your lander has `p` probes on-board that can travel the shortest route at constant speed to designated points of interest for a scientific survey and then back following the same path. You are given map of surface sized `m`x`n`, where `-` are normal tiles and `x` are rocky tiles that cannot be traversed. You are also given `p` sets of coordinates `P` for all your probes. Your probes can move to adjacent horizontal and vertical tile, consuming 1 unit of fuel on every move. Find such a landing position for your lander so that the fuel consumption for all `p` probes is minimal. Assume that all points are reachable from any point.
+Imagine you are sending a lander to Mars. Your lander has `p` probes on-board that can
+ travel the shortest route at constant speed to designated points of interest for a
+ scientific survey and then back following the same path. You are given map of surface
+ sized `m`x`n`, where `-` are normal tiles and `x` are rocky tiles that are impassable.
+ You are also given `p` sets of coordinates `P` for all your probes. Your probes can move
+ to adjacent horizontal and vertical tile, consuming 1 unit of fuel on every move. Find
+ such a landing position for your lander so that the fuel consumption for all `p` probes
+ is minimal. Assume that all points are reachable (not blocked by rocks).
 
 Example:
 ```p=3; P=[(0, 0), (0, 3), (3, 1)]
@@ -19,9 +26,15 @@ def find_landing(M, P):
     """
     Mars landing solver.
 
-    The idea is to measure distances by building distance maps (fuel cost) for each survey point. Finding point with a minimal sum of those distances will be the best candidate for a landing.
+    The idea is to measure distances by building distance maps (fuel cost) for each
+     survey point. Finding point with a minimal sum of those distances will be the best
+     candidate for a landing.
 
-    Complexity: O(p(mn-x)+mn) where `p` is number of probes, `mn` is the number of map tiles and `x` is number of rocky tiles.
+    Algorithm assumes that all survey points are reachable and no region is completely
+     blocked by rocks.
+
+    Complexity: O(p(mn-x)+mn) where `p` is number of probes, `mn` is the total number of
+     map tiles and `x` is the number of unpassable rocky tiles.
     :param list[list[str]] M: Map of surface
     :param list[tuple] P: Points of interest
     :return tuple: Coordinates of proposed landing site
@@ -54,9 +67,12 @@ def build_dist_map(M, distance_map, x, y):
     """
     Populates distance map from a starting point.
 
-    This is a traditional bread-first search subroutine that puts distances to point `(x, y)` from any other point. Similar to inverse heat map, distance gets larger as BFS gets further away from the starting point. Rocky formations are excluded.
+    This is a traditional bread-first search subroutine that puts distances to point
+     `(x, y)` from any other point. Similar to inverse heat map, distance gets larger as
+     BFS gets further away from the starting point. Rocky formations are excluded.
 
-    Complexity: O(mn-x) where `mn` is the number of tiles and `x` is number or rocky tiles
+    Complexity: O(mn-x) where `mn` is the total number of tiles and `x` is number of
+     unpassable rocky tiles.
     :param list[list[str]] M: Input map
     :param list[list[int]] distance_map: Distance map
     :param int x: Vertical axis coordinate of a starting point
