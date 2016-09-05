@@ -81,16 +81,13 @@ def build_dist_map(M, distance_map, x, y):
     """
     from queue import Queue
     q = Queue()
-    visited = set()
     q.put((x, y))
-    visited.add((x, y))
     while q.empty() is False:
         (p_x, p_y) = q.get()
         d = distance_map[p_x][p_y]  # Distance at `p_x`, `p_y`
         for v_x, v_y in adj(M, p_x, p_y):
-            if M[v_x][v_y] != 'x' and (v_x, v_y) not in visited:
+            if M[v_x][v_y] != 'x' and distance_map[v_x][v_y] == 0:
                 distance_map[v_x][v_y] = d + 1
-                visited.add((v_x, v_y))
                 q.put((v_x, v_y))
 
 
