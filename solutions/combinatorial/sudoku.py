@@ -1,17 +1,23 @@
 """
-Sudoku is a popular combinatorial problem.
-
 A standard Sudoku puzzle contains 81 cells, in a 9 by 9 grid, and has 9 zones, each zone
  being the intersection of the first, middle, or last 3 rows, and the first, middle, or
  last 3 columns. Each cell may contain a number from one to nine; each number can only
  occur once in each zone, row, and column of the grid. Pre-filled cells are provided as
  clues.
 
-Backtracking algorithm follows a familiar pattern:
- 1) Construct a partial solution for first unfilled cell.
- 2) Try this solution.
- 3) If it worked for the board so far - continue, otherwise - backtrack.
- 4) Repeat 1 to 3 until all cells are filled out.
+Sudoku puzzle board is represented by two-dimensonal array of integers of size `9x9`.
+ Example input:
+ ```[
+     [5, 3, 0, 0, 7, 0, 0, 0, 0],
+     [6, 0, 0, 1, 9, 5, 0, 0, 0],
+     [0, 9, 0, 0, 0, 0, 0, 6, 0],
+     [8, 0, 0, 0, 6, 0, 0, 0, 3],
+     [4, 0, 0, 8, 0, 3, 0, 0, 1],
+     [7, 0, 0, 0, 2, 0, 0, 0, 6],
+     [0, 6, 0, 0, 0, 0, 2, 8, 0],
+     [0, 0, 0, 4, 1, 9, 0, 0, 5],
+     [0, 0, 0, 0, 8, 0, 0, 7, 9]
+ ]```
 """
 
 
@@ -19,13 +25,8 @@ def solve(B):
     """
     Sudoku puzzle solver.
 
-    Sudoku puzzle board is represented by two-dimensonal array of integers of size `9x9`.
-
-    Complexity: O(10^(b*b-k)) where `n` is a board edge and `k` is number of clues
-     (filled cells). Algorithm works through increasingly more cycles when searching
-     for Sudokus with 20 clues or fewer. Puzzles with 17 clues are notoriously difficult
-     to find. When the constraint of symmetry is applied, the expected search time will
-     dramatically increase yet further. See implementation details below.
+    Complexity: O(10^(b*b-k)) where `n` is a board edge and `k` is number of clues.
+     See implementation details below.
     :param list[list[int]] B: Sudoku board
     :return None: Prints to stdout
     """
@@ -51,8 +52,17 @@ def has_solution(B, x=0, y=0):
      unfilled cell. Those that don't lead to a legit solution are dropped and board
      state backtracked.
 
+    Backtracking algorithm follows a familiar pattern:
+     1) Construct a partial solution for first unfilled cell (containing `0`).
+     2) Try this solution.
+     3) If it worked for the board so far - continue, otherwise - backtrack.
+     4) Repeat steps 1 through 3 until all cells are filled out.
+
     Complexity: O(10^(b*b-k)) where `n` is a board edge and `k` is number of clues
-     (filled cells).
+     (filled cells). Algorithm works through increasingly more cycles when searching
+     for Sudokus with 20 clues or fewer. Puzzles with 17 clues are notoriously difficult
+     to find. When the constraint of symmetry is applied, the expected search time will
+     dramatically increase yet further.
     :param list[list[int]] B: Current state of Sudoku board
     :param int x: Row to start solution construction (used in recursion)
     :param int y: Column to start solution construction (used in recursion)
