@@ -25,7 +25,7 @@ def solve(B):
     """
     Sudoku puzzle solver.
 
-    Complexity: O(10^n) where `n` is the number of unfilled cells. See implementation
+    Complexity: O(9^n) where `n` is the number of unfilled cells. See implementation
      details below.
     :param list[list[int]] B: Sudoku board
     :return None: Prints to stdout
@@ -58,7 +58,7 @@ def has_solution(B, x=0, y=0):
      3) If it worked for the board so far - continue, otherwise - backtrack.
      4) Repeat steps 1 through 3 until all cells are filled out.
 
-    Complexity: O(10^n) where `n` is the number of unfilled cells. Algorithm works
+    Complexity: O(9^n) where `n` is the number of unfilled cells. Algorithm works
      through increasingly more cycles when searching for Sudokus with 20 clues or fewer.
      Puzzles with 17 clues are notoriously difficult to find. When the constraint of
      symmetry is applied, the expected search time will dramatically increase yet
@@ -75,7 +75,8 @@ def has_solution(B, x=0, y=0):
         return valid_board(B)
     else:
         if B[x][y] == 0:
-            for i in range(1, 10):  # Try every candidate integer into a cell
+            # Try every integer available for given board size in a cell
+            for i in range(1, BOARD_EDGE_SIZE + 1):
                 if zone_unique(i, B, x, y) and row_unique(i, B, x) and col_unique(i, B, y):
                     B[x][y] = i
                     if has_solution(B, x + 1, y):
@@ -87,40 +88,26 @@ def has_solution(B, x=0, y=0):
             return has_solution(B, x + 1, y)
 
 
-def init_freq_map():
-    """
-    Builds empty frequency map of size `b+1`.
-
-    Complexity: O(b). Here and in the other subroutines I consider `b` to be a constant
-     factor.
-    :return list: Frequency map containing zeroes.
-    """
-    return [0] * (BOARD_EDGE_SIZE + 1)
-
-
 def valid_board(B):
     """
-    Checks rows and columns of Sudoku board for duplicate values.
-
-    Checks integer uniqueness in the entire board using frequency maps. `0` values are
-     ignored.
+    Checks rows and columns of Sudoku board for duplicate non-zero values.
 
     Complexity: O(b^2) with O(b) space.
     :param list[list[int]] B: Sudoku board
     :return bool: Validation result
     """
-    for i in range(0, BOARD_EDGE_SIZE):  # Checking row `i`
+    for i in range(0, BOARD_EDGE_SIZE):
         row_freq_map = init_freq_map()
-        for x in B[i]:
+        for x in B[i]:  # Checking row `i`
             row_freq_map[x] += 1
             if x != 0 and row_freq_map[x] > 1:
                 return False
         # Checking col `i` within same loop
         col_freq_map = init_freq_map()
         for j in range(0, BOARD_EDGE_SIZE):
-            x = B[i][j]
-            col_freq_map[x] += 1
-            if x != 0 and col_freq_map[x] > 1:
+            y = B[j][i]
+            col_freq_map[y] += 1
+            if y != 0 and col_freq_map[y] > 1:
                 return False
     return True
 
@@ -129,7 +116,7 @@ def zone_unique(e, B, x, y):
     """
     Check candidate "uniqueness" within a board zone.
 
-    Complexity: O(z), bound by a constant zone size
+    Complexity: O(z^2), where `z` is constant zone size (default is 3)
     :param int e: Candidate value to validate
     :param list[list[int]] B: Sudoku board
     :param int x: Row coordinate of a value
@@ -173,6 +160,17 @@ def col_unique(e, B, c):
         if B[i][c] == e:
             return False
     return True
+
+
+def init_freq_map():
+    """
+    Builds empty frequency map of size `b+1`.
+
+    Complexity: O(b). Here and in the other subroutines I consider `b` to be a constant
+     factor.
+    :return list: Frequency map containing zeroes.
+    """
+    return [0] * (BOARD_EDGE_SIZE + 1)
 
 
 def print_board(B):
