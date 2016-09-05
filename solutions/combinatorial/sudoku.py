@@ -25,8 +25,8 @@ def solve(B):
     """
     Sudoku puzzle solver.
 
-    Complexity: O(10^(b*b-k)) where `n` is a board edge and `k` is number of clues.
-     See implementation details below.
+    Complexity: O(10^n) where `n` is the number of unfilled cells. See implementation
+     details below.
     :param list[list[int]] B: Sudoku board
     :return None: Prints to stdout
     """
@@ -58,11 +58,11 @@ def has_solution(B, x=0, y=0):
      3) If it worked for the board so far - continue, otherwise - backtrack.
      4) Repeat steps 1 through 3 until all cells are filled out.
 
-    Complexity: O(10^(b*b-k)) where `n` is a board edge and `k` is number of clues
-     (filled cells). Algorithm works through increasingly more cycles when searching
-     for Sudokus with 20 clues or fewer. Puzzles with 17 clues are notoriously difficult
-     to find. When the constraint of symmetry is applied, the expected search time will
-     dramatically increase yet further.
+    Complexity: O(10^n) where `n` is the number of unfilled cells. Algorithm works
+     through increasingly more cycles when searching for Sudokus with 20 clues or fewer.
+     Puzzles with 17 clues are notoriously difficult to find. When the constraint of
+     symmetry is applied, the expected search time will dramatically increase yet
+     further.
     :param list[list[int]] B: Current state of Sudoku board
     :param int x: Row to start solution construction (used in recursion)
     :param int y: Column to start solution construction (used in recursion)
@@ -91,7 +91,8 @@ def init_freq_map():
     """
     Builds empty frequency map of size `b+1`.
 
-    Complexity: O(b)
+    Complexity: O(b). Here and in the other subroutines I consider `b` to be a constant
+     factor.
     :return list: Frequency map containing zeroes.
     """
     return [0] * (BOARD_EDGE_SIZE + 1)
@@ -101,7 +102,8 @@ def valid_board(B):
     """
     Checks rows and columns of Sudoku board for duplicate values.
 
-    Checks integer uniqueness using frequency maps. `0` values are ignored.
+    Checks integer uniqueness in the entire board using frequency maps. `0` values are
+     ignored.
 
     Complexity: O(b^2) with O(b) space.
     :param list[list[int]] B: Sudoku board
@@ -127,7 +129,7 @@ def zone_unique(e, B, x, y):
     """
     Check candidate "uniqueness" within a board zone.
 
-    Complexity: O(1), bound by a constant zone size
+    Complexity: O(z), bound by a constant zone size
     :param int e: Candidate value to validate
     :param list[list[int]] B: Sudoku board
     :param int x: Row coordinate of a value
@@ -145,7 +147,7 @@ def row_unique(e, B, r):
     """
     Check candidate "uniqueness" within a board row.
 
-    Complexity: O(1), bound by a constant board edge size
+    Complexity: O(b)
     :param int e: Candidate value to validate
     :param list[list[int]] B: Sudoku board
     :param int r: Row coordinate of a value
@@ -161,7 +163,7 @@ def col_unique(e, B, c):
     """
     Check candidate "uniqueness" within a board column.
 
-    Complexity: O(1), bound by a constant board edge size
+    Complexity: O(b)
     :param list[list[int]] B: Sudoku board
     :param int e: Candidate value to validate
     :param int c: Column coordinate of a value
@@ -177,7 +179,7 @@ def print_board(B):
     """
     Prints out board.
 
-    Complexity: O(1), bound by a constant board edge size
+    Complexity: O(b^2)
     :param list[list[int]] B: Sudoku board
     :return None: Prints to stdout
     """
