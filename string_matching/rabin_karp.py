@@ -35,8 +35,8 @@ def find(T, P, d=256, q=293):
     n = len(T)
     m = len(P)
     h = pow(d, m - 1) % q  # May overflow for large `d`
-    p = 0
-    t = 0
+    p = 0  # Hash of a pattern
+    t = 0  # Hash of a window in a target string
     out = []
     for i in range(0, m):  # Preprocessing
         p = (d * p + ord(P[i])) % q
