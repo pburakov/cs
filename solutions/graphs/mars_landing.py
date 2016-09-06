@@ -72,13 +72,13 @@ def build_dist_map(M, distance_map, x, y):
      `(x, y)` from any other point. Similar to inverse heat map, distance gets larger as
      BFS gets further away from the starting point. Rocky formations are excluded.
 
-    Complexity: O(mn-x) where `mn` is the total number of tiles and `x` is number of
-     unpassable rocky tiles.
+    Complexity: O(mn-x) where `mn` is the total number of tiles and `x` is the number of
+     impassable rocky tiles.
     :param list[list[str]] M: Input map
     :param list[list[int]] distance_map: Distance map
     :param int x: Vertical axis coordinate of a starting point
     :param int y: Horizontal axis coordinate of a starting point
-    :return None: Distance map `R` is updated
+    :return None: Distance map is updated
     """
     from queue import Queue
     q = Queue()
