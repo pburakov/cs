@@ -27,8 +27,8 @@ def find_landing(M, P):
     Mars landing solver.
 
     The idea is to measure distances by building distance maps (fuel cost) for each
-     survey point. Finding point with a minimal sum of those distances will be the best
-     candidate for a landing.
+     survey point in relation to every potential landing location. Best candidate for
+     landing would be the cell with a minimal sum of those distances.
 
     Algorithm assumes that all survey points are reachable and no region is completely
      blocked by rocks.
@@ -44,6 +44,7 @@ def find_landing(M, P):
     for (x, y) in P:
         p_distances = init_dist_map(m, n)
         build_dist_map(M, p_distances, x, y)
+        # Sum up estimated fuel consumption for each landing location
         fuel = [[(fuel[i][j] + p_distances[i][j]) for j in range(n)] for i in range(m)]
     for x, y in P:
         fuel[x][y] = 0  # Can't land on survey point
