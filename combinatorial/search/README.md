@@ -28,3 +28,6 @@ Description of common steps of a backtracking algorithm:
 
 This module contains implementation templates and techniques for some of the most 
  common combinatorial search problems.
+
+###See code: 
+- [Combinatorial Search](/combinatorial/search/__init__.py)

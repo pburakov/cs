@@ -1,4 +1,4 @@
-# Dynamic Programming
+# Optimization and Dynamic Programming
 
 Optimization problems can have many possible solutions, each of which has a value, and
  we wish to find one with the optimal (minimum or maximum) value. These problems are
@@ -24,3 +24,6 @@ Some famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest C
 Below are some basic DP templates, that help introducing the concept. It is essential to
  thoroughly examine these, including comments. Keep in mind, that practical applications
  of DP go well beyond these examples and require substantial amount of practice.
+ 
+###See code: 
+- [Optimization](/combinatorial/optimization/__init__.py)
