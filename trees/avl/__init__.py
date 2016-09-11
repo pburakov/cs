@@ -1,4 +1,3 @@
-
 from trees.bst import BinarySearchTree
 from trees.bst import Node as BinarySearchTreeNode
 from trees.bst import right_rotate, left_rotate
