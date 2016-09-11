@@ -12,8 +12,8 @@ You are given a dictionary of words of the same lengths, consisting of lowercase
 
 Example ladder: `"hit" -> "hot" -> "dot" -> "dog" -> "cog"` of length of 5.
 """
-from basic_data_structures.queue import Queue
-from basic_data_structures.queue import enqueue, dequeue, next as peek
+from basic_data_structures.lifo_fifo import Queue
+from basic_data_structures.lifo_fifo import enqueue, dequeue, next as peek
 
 
 def solution(D, s, t):

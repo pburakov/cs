@@ -1,5 +1,5 @@
+from basic_data_structures.lifo_fifo import Queue, enqueue, dequeue
 from graphs import Graph, Vertex
-from basic_data_structures.queue import Queue, enqueue, dequeue
 
 
 def bfs(G, s):
