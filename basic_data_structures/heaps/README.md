@@ -4,8 +4,8 @@ Binary heap is a basic implementation of a **priority queue**. Although heap is 
  as a binary tree, is is usually implemented as an array (or a list in Python) because 
  the tree representation of a heap is nearly complete.
 
-Given that the first index of a tree starts at *0*, the index of a child node in an array
- representation can be computed as *i * 2 + 1* for left side child and *i * 2 + 2* for 
+Given that the first index of a tree starts at `0`, the index of a child node in an array
+ representation can be computed as `i * 2 + 1` for left side child and `i * 2 + 2` for 
  right side child.
 
 Representation invariant of a binary heap determines its main use and common variations:
