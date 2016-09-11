@@ -1,35 +1,3 @@
-"""
-BST (Binary Search Tree) is a convenient Binary Tree data structure that allows
- fast value lookup. Basic operations on a complete BST take time proportional to
- a height of a tree rather that the number of its elements.
-
-The values (or keys as named in CLRS) in a BST are stored in such a way as to
- satisfy the main BST property. For any parent node in a BST, its left child
- must hold a smaller value and its right child must hold a bigger value.
-
-Every node in a binary tree is a root to its own subtree. Inductively, BST property
- guarantees that any value in a left subtree will be smaller than the root node
- and any value in a right subtree will be bigger.
-
-In-order printing of nodes in a BST will produce sorted output of its values.
- Nodes in augmented BSTs can hold more properties and offer more efficient
- operations in a handful of applications.
-
-The correctness of these algorithms is guaranteed by the BST properties. Notice
- that the update algorithms implemented here, such as `tree_insert()`, `transplant()`
- and `tree_delete()` (algorithms that cause the dynamic set represented by BST
- to change) operate on an instance of BST, while query algorithms operate on
- arbitrary nodes.
-
-Most BST operations take O(h) time where `h` is a height of a tree. If tree is
- perfectly complete and balanced, `h` will be log(n). In worst case with all the
- nodes on one side, BST will resemble a linked list and take O(n) as its height
- will be proportional to the number of elements.
-
-There are many kinds of self-balanced BSTs, that maintain balanced tree structure.
- Most commonly mentioned are AVL tree and red-black tree but there are many other
- instances.
-"""
 from trees.binary import BinaryTree
 from trees.binary import Node as BinaryTreeNode
 
@@ -212,13 +180,13 @@ def transplant(T, u, v):
     :param Node v: Node to replace `u` with. Can be None
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    if u.parent is None:      # Node `u` is a root
+    if u.parent is None:  # Node `u` is a root
         T.root = v
     elif u is u.parent.left:  # Node `u` is a left child of its parent
         u.parent.left = v
-    else:                     # Node `u` is a right child of its parent
+    else:  # Node `u` is a right child of its parent
         u.parent.right = v
-    if v is not None:         # `u`'s parents become `v`'s parents
+    if v is not None:  # `u`'s parents become `v`'s parents
         v.parent = u.parent
 
 
@@ -234,17 +202,17 @@ def tree_delete(T, z):
     :param Node z: Node to be deleted
     :return None: Dynamic set of BST `T` is mutated in the process
     """
-    if z.left is None:     # `z` has only right child
+    if z.left is None:  # `z` has only right child
         transplant(T, z, z.right)
     elif z.right is None:  # `z` has only left child
         transplant(T, z, z.left)
-    else:                  # `z` has both left and right child
+    else:  # `z` has both left and right child
         y = tree_minimum(z.right)  # `z`'s successor
-        if y.parent is not z:      # Successor is not `z`'s right child
+        if y.parent is not z:  # Successor is not `z`'s right child
             transplant(T, y, y.right)
             y.right = z.right
             y.right.parent = y
-        transplant(T, z, y)        # Successor is `z`'s right child
+        transplant(T, z, y)  # Successor is `z`'s right child
         y.left = z.left
         y.left.parent = y
 
@@ -275,11 +243,11 @@ def left_rotate(T, x):
     if y.left is not None:
         y.left.parent = x
     y.parent = x.parent
-    if x.parent is None:      # `x` was root
+    if x.parent is None:  # `x` was root
         T.root = y
     elif x is x.parent.left:  # `x` was a left child
         x.parent.left = y
-    else:                     # `x` was a right child
+    else:  # `x` was a right child
         x.parent.right = y
     y.left = x
     x.parent = y
@@ -304,11 +272,11 @@ def right_rotate(T, x):
     if y.right is not None:
         y.right.parent = x
     y.parent = x.parent
-    if x.parent is None:       # `x` was a root
+    if x.parent is None:  # `x` was a root
         T.root = y
     elif x is x.parent.right:  # `x` was a right child
         x.parent.right = y
-    else:                      # `x` was a left child
+    else:  # `x` was a left child
         x.parent.left = y
     y.right = x
     x.parent = y
