@@ -1,5 +1,6 @@
 """
-In a two-dimensional matrix or integers, find the length of a path of increasing numbers. Ony vertical or horizontal moves are allowed (no diagonals).
+In a two-dimensional matrix or integers, find the length of a path of increasing numbers.
+ Ony vertical or horizontal moves are allowed (no diagonals).
 
 Example:
 ```Input: [
@@ -17,9 +18,11 @@ def scan(M):
     """
     Longest increasing path solver.
 
-    Constructs the cache and runs DFS-like longest path subroutine for every element in the matrix.
+    Constructs the cache and runs DFS-like longest path subroutine for every element in
+     the matrix.
 
-    Complexity: O(n) where `n` is total number of cells, O(n) space is used for memoization.
+    Complexity: O(n) where `n` is the total number of cells, O(n) space is used for
+     memoization.
     :param list[list[int]] M: Input matrix
     :return int: Length of a longest increasing path in the matrix
     """
@@ -32,13 +35,23 @@ def scan(M):
     return maximum
 
 
+"""
+Auxiliary subroutines used in the solution
+"""
+
+
 def longest_path(M, x, y, cache) -> int:
     """
     Longest increasing path subroutine.
 
-    DFS-like path search algorithm with memoization. We evaluate the path in 4 possibly directions from every cell in the matrix.
+    DFS-like path search algorithm with memoization. We evaluate the path in 4 possibly
+     directions from every cell in the matrix.
 
-    Complexity: O(1) amortized time. First run might give us O(n) runtime, but the use of memoization allows to calculate longest path exactly once for each cell, so every consecutive call will give O(1). Previously computed values are pulled from the cache. This allows dramatic optimization over O(4^n) if going in each direction recursively.
+    Complexity: O(1) amortized time. First run might give us O(n) runtime, but the use of
+     memoization allows to calculate longest path exactly once for each cell, so every
+     consecutive call will give O(1). Previously computed values are pulled from the
+     cache. This allows dramatic optimization over O(4^n) if going in each direction
+     recursively.
     :param list[list[int]] M: Input matrix
     :param int x: Vertical coordinate
     :param int y: Horizontal coordinate
