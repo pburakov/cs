@@ -13,3 +13,6 @@ This implementation uses an array of size *n* to store the elements and guarante
  that are still used in the stack from being replaced by newly added elements.
 
 The removed element is always at the top of the stack.
+
+###See code: 
+- [Stack](/__init__.py)

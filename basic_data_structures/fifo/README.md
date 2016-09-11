@@ -20,3 +20,6 @@ Keeping track of a quantity of currently enqueued elements helps making sure tha
 Like a newly arriving customer takes a place in the line, the enqueued element is
  added at the tail of the queue. And like the customer at the head of the line, the
  de-queued element is always at the head of a queue.
+
+###See code: 
+- [Queue](/__init__.py)

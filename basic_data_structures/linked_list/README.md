@@ -18,3 +18,6 @@ There are various kinds of linked lists. For instance, the last element of a **c
 
 Please note, that Python list is not implemented as a linked list. Internally Python
  lists are dynamic arrays (implemented as a vector of pointers).
+ 
+ ###See code: 
+- [Linked List](/__init__.py)
