@@ -79,7 +79,7 @@ def dag_shortest_paths(G, s):
     :param Vertex s: Starting vertex
     :return None: Graph vertices are updated
     """
-    from graphs.topological_sort import topological_sort
+    from graphs.topological_sort.__init__ import topological_sort
 
     L = topological_sort(G)
     initialize_single_source(G, s)
