@@ -30,4 +30,4 @@ This module contains implementation templates and techniques for some of the mos
  common combinatorial search problems.
 
 ###See code: 
-- [Combinatorial Search](/combinatorial/search/__init__.py)
+- [Recursive Operations on Sets](/combinatorial/search/__init__.py)
