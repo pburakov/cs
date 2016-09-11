@@ -6,7 +6,7 @@ Optimization problems can have many possible solutions, each of which has a valu
 
 There two key attributes that a problem must have in order for DP to be applicable:
  *overlapping sub-problems* and *optimal substructure*. DP usually involves the use of 
- some sort of *memoization* technique. Solutions are built on sub-problems that already 
+ some sort of **memoization** technique. Solutions are built on sub-problems that already 
  have been solved to optimality, or are being solved repeatedly.
 
 DP solution is not obvious. Suggested first step is finding a recursive solution first.
@@ -19,7 +19,7 @@ DP solution is not obvious. Suggested first step is finding a recursive solution
 Some famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
  Subsequence, Longest Increasing Sequence, Coin Change, Matrix Multiplication, Text
  Justification, Max Cost Grid Path and many more. Some of them can be found in the
- [Solutions](/solutions) section.
+ Solutions section.
 
 Below are some basic DP templates, that help introducing the concept. It is essential to
  thoroughly examine these, including comments. Keep in mind, that practical applications
