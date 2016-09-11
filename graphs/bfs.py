@@ -1,4 +1,4 @@
-from basic_data_structures.lifo_fifo import Queue, enqueue, dequeue
+from basic_data_structures.fifo import Queue, enqueue, dequeue
 from graphs import Graph, Vertex
 
 
