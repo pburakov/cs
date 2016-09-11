@@ -106,9 +106,18 @@ def dfs(G):
             dfs_visit(G, u, t)
 
 
+"""
+Constants and subroutines used in graph search
+"""
+WHITE = "WHITE"  # Unvisited
+GRAY = "GRAY"  # Discovered
+BLACK = "BLACK"  # Visited
+inf = float("inf")
+
+
 def dfs_visit(G, u, t):
     """
-    Vertex visit procedure.
+    DFS vertex visit procedure.
 
     Complexity: O(Adj) where `Adj` is number of adjacent vertices
     :param Graph G: Adjacency list graph representation
@@ -126,15 +135,6 @@ def dfs_visit(G, u, t):
     u.color = BLACK
     t.tick += 1
     u.f = t.tick  # Saving finishing time of vertex `u`
-
-
-"""
-Constants used in graph search
-"""
-WHITE = "WHITE"  # Unvisited
-GRAY = "GRAY"  # Discovered
-BLACK = "BLACK"  # Visited
-inf = float("inf")
 
 
 class Counter:

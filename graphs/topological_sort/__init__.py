@@ -33,9 +33,14 @@ def topological_sort(G):
     return L
 
 
+"""
+Subroutines used in topological sort
+"""
+
+
 def visit(G, u, t, L):
     """
-    Vertex visit procedure with topological sort.
+    Vertex visit procedure for topological sort.
 
     Finished vertex is inserted at the head of linked list. The code is almost identical
      to the `dfs_visit()` procedure with a simple addition of `list_insert()`.
