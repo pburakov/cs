@@ -19,11 +19,11 @@ DP solution is not obvious. Suggested first step is finding a recursive solution
 Some famous DP problems include: Knapsack, Rod Cutting, Edit Distance, Longest Common
  Subsequence, Longest Increasing Sequence, Coin Change, Matrix Multiplication, Text
  Justification, Max Cost Grid Path and many more. Some of them can be found in the
- Solutions section.
+ [Solutions](/solutions) section.
 
 Below are some basic DP templates, that help introducing the concept. It is essential to
  thoroughly examine these, including comments. Keep in mind, that practical applications
  of DP go well beyond these examples and require substantial amount of practice.
  
 ###See code: 
-- [Optimization](/combinatorial/optimization/__init__.py)
+- [Memoization, Dynamic Programming](/combinatorial/optimization/__init__.py)
