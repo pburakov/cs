@@ -1,5 +1,6 @@
 """
-Given singly linked list consisting of elements that have a second pointer pointing to an arbitrary node in the same list, write an effecient function to clone it.
+Given singly linked list consisting of elements that have a second pointer pointing to an
+ arbitrary node in the same list, write an efficient function to deeply clone it.
 
 Node structure for reference:
 ```
@@ -9,23 +10,38 @@ struct Node {
   Node other;
 }
 ```
+When solving this problem (an other linked-list related problems), make sure to draw out
+ the solution on paper or a whiteboard first, since it's very easy to lose track of
+ pointer operations.
 """
 
 
 def clone(L):
     """
-    Solution for cloned list problem.
+    Solution of cloned list problem.
 
-    Complexity: O(n)
+    Somewhat more easy-to-read solution involves storage of pointers in a hash table,
+     which gives O(n) time, but O(n) additional spce as well. The following algorithm only
+     performs pointer operations in place and doesn't consume any additional memory
+     (besides memory to allocate the cloned list itself).
+
+    The principle is simple. In the first run, we insert cloned nodes in between original
+     nodes and assigning them as next nodes in the list. This will make the list twice
+     its original length, with every first node to be an original one, and every second
+     one to be a clone. Second run clones secondary pointers by shifting them one position
+     ahead. Finally we do a third run, rearranging next node pointers to match the list
+     they belong to.
+
+    Complexity: O(n), three O(n) runs still give linear growth
     :param List L: Original list
     :return List: Cloned list
     """
     cloned_head = None
-    # First run (cloning)
+    # First run (cloning nodes)
     p = L.head
     while p:
         cloned_node = Node(p.key)
-        if cloned_head is None:
+        if cloned_head is None:  # Remembering the head of the cloned list
             cloned_head = cloned_node
         original_next = p.next
         cloned_node.next = original_next
