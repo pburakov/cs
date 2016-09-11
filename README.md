@@ -1,5 +1,7 @@
 # Algorithms and Data Structures
 
+> Jump to [contents](#contents)
+
 ## Overview
 Most companies measure candidate's skills by the ability to solve algorithmic problems 
  and his/her knowledge of data structures. 
@@ -8,13 +10,14 @@ Here you'll find implementations of most data structures and common algorithms a
  graduate should know. Implementations are accompanied by in-code comments and brief 
  essential information about them. 
 
-I started working on this repository when I was preparing for interviews as I needed to 
- brush up on my CS skills. Solutions repository contains solutions of some common 
- problems that are encountered on interviews or set the pattern for their solution.
-
 The code is written in **Python 3**. Data structures are implemented as Python modules. 
  If you never used Python before, I strongly recommend to get familiar with its syntax 
  and modules, before starting.
+
+The contents of this repository are not a replacement for Computer Science class. I 
+ started working on this repository when I was preparing for interviews as I needed to 
+ brush up on my CS skills. Solutions repository contains solutions of some common 
+ problems that are encountered on interviews or set the pattern for their solution. 
 
 ## Sources
 Most implementations are taken or adapted from the following books:
