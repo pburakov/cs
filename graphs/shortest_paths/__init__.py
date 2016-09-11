@@ -1,65 +1,6 @@
 from graphs import Graph, Vertex, weight
 
 
-def path_string(G, s, v):
-    """
-    Returns vertices on a shortest path between two vertices as a string.
-
-    This procedure assumes search/path has already computed the predecessor tree.
-
-    :param Graph G: Adjacency list graph representation
-    :param Vertex s: Starting vertex
-    :param Vertex v: Finishing vertex
-    :return str: Output string
-    """
-    if v is s:
-        return str(s)
-    elif v.p is None:
-        raise RecursionError("No such path is found")
-    else:
-        return path_string(G, s, v.p) + ' ' + str(v)
-
-
-def initialize_single_source(G, s):
-    """
-    Initialization of shortest-path estimates and predecessor pointers.
-
-    Complexity: O(V).
-    :param Graph G: Adjacency list graph representation
-    :param Vertex s: Starting vertex
-    :return None: Graph vertices are updated
-    """
-    for v in G.V:
-        v.d = inf
-        v.p = None
-    s.d = 0
-
-
-def relax(u, v):
-    """
-    Relaxes edge (u, v).
-
-    Term "relaxation" actually means tightening an upper bound. The process
-     consists of testing whether we can improve the shortest path to `v` found
-     so far by going through `u` and if so, updating both the estimate and
-     parent relation.
-
-    Once upper bound property (∂) is achieved, it never changes. Relaxed edges
-     also follow triangle inequality: `∂(s, v) ≤ ∂(s, u) + w(u, v)`.
-
-    Longest path can be calculated using negated weights.
-
-    Complexity: O(1)
-    :param Vertex u: Source vertex
-    :param Vertex v: Target vertex
-    :return None: Vertex `v` is updated
-    """
-    w = weight(u, v)
-    if v.d > u.d + w:
-        v.d = u.d + w
-        v.p = u
-
-
 def dag_shortest_paths(G, s):
     """
     Generic shortest-paths algorithm for dags.
@@ -167,6 +108,65 @@ def dijkstra(G, s):
 
 
 """
-Constants used in shortest paths
+Constants and subroutines used in shortest paths algorithms
 """
 inf = float("inf")
+
+
+def path_string(G, s, v):
+    """
+    Returns vertices on a shortest path between two vertices as a string.
+
+    This procedure assumes search/path has already computed the predecessor tree.
+
+    :param Graph G: Adjacency list graph representation
+    :param Vertex s: Starting vertex
+    :param Vertex v: Finishing vertex
+    :return str: Output string
+    """
+    if v is s:
+        return str(s)
+    elif v.p is None:
+        raise RecursionError("No such path is found")
+    else:
+        return path_string(G, s, v.p) + ' ' + str(v)
+
+
+def initialize_single_source(G, s):
+    """
+    Initialization of shortest-path estimates and predecessor pointers.
+
+    Complexity: O(V).
+    :param Graph G: Adjacency list graph representation
+    :param Vertex s: Starting vertex
+    :return None: Graph vertices are updated
+    """
+    for v in G.V:
+        v.d = inf
+        v.p = None
+    s.d = 0
+
+
+def relax(u, v):
+    """
+    Relaxes edge (u, v).
+
+    Term "relaxation" actually means tightening an upper bound. The process
+     consists of testing whether we can improve the shortest path to `v` found
+     so far by going through `u` and if so, updating both the estimate and
+     parent relation.
+
+    Once upper bound property (∂) is achieved, it never changes. Relaxed edges
+     also follow triangle inequality: `∂(s, v) ≤ ∂(s, u) + w(u, v)`.
+
+    Longest path can be calculated using negated weights.
+
+    Complexity: O(1)
+    :param Vertex u: Source vertex
+    :param Vertex v: Target vertex
+    :return None: Vertex `v` is updated
+    """
+    w = weight(u, v)
+    if v.d > u.d + w:
+        v.d = u.d + w
+        v.p = u
