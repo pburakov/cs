@@ -22,7 +22,7 @@ The contents of this repository are not a replacement for Computer Science class
 ## Usage Notes
 I often use single-letter variables, because that is how they appear in the most 
  academic descriptions. Python comes very close to pseudo-code, often used in these 
- books. In my subjective opinion, such notation forces reader to deeply understanding 
+ books. In my subjective opinion, such notation forces reader to a deeper understanding 
  of an algorithm. 
 
 Please note, that all methods and classes have **documentation** and a brief description
