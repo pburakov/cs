@@ -63,7 +63,7 @@ class Node:
         """
         Node of a singly linked list containing arbitrary pointer.
 
-        :param object key:
+        :param object key: Node key
         """
         self.key = key
         self.next = None
