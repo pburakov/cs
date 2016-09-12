@@ -1,5 +1,5 @@
 import unittest
-from solutions.strings.parse import *
+from solutions.strings.parse_syntax import *
 
 
 class TestSolution(unittest.TestCase):
