@@ -1,21 +1,3 @@
-"""
-Given singly linked list consisting of elements that have a second pointer pointing to an
- arbitrary node in the same list, write an efficient function to deeply clone it.
-
-Node structure for reference:
-```
-struct Node {
-  char key;
-  Node next;
-  Node other;
-}
-```
-When solving this problem (an other linked-list related problems), make sure to draw out
- the solution on paper or a whiteboard first, since it's very easy to lose track of
- pointer operations.
-"""
-
-
 def clone(L):
     """
     Solution of cloned list problem.
