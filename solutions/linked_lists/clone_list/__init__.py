@@ -84,7 +84,7 @@ class List:
         """
         Insertion procedure.
 
-        Complexity: O(n)
+        Complexity: O(1)
         :param Node x: Node to insert
         :return None: List is updated
         """
@@ -97,7 +97,8 @@ class List:
         while node:
             out += str(node)
             if node.other is not None:
-                out += '(->{})'.format(str(node.other))
-            out += ' '
+                out += "(^{})".format(str(node.other))
+            out += " -> "
             node = node.next
+        out += "null"
         return out
