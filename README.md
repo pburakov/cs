@@ -40,7 +40,7 @@ If you feel uncomfortable understanding the code:
 
 Also, all of the modules are ready for external use. You can reuse them in your 
  algorithms. Here's an example:
-```
+```python
 from trees.avl import Node
 from trees.avl import AVLTree as Tree
 from trees.avl import avl_insert
