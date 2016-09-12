@@ -1,9 +1,3 @@
-"""
-Given a string, find the length of the longest possible substring that has at most `k`
- unique characters.
-"""
-
-
 def recursive(S, k):
     """
     Length of a substring with at most k unique characters using recursion.
