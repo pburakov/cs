@@ -29,7 +29,7 @@
   * Word Ladder
 * Linked Lists
   * [Clone List with Arbitrary Pointer](./linked_lists/clone_list)
-  * Swap 
+  * [Two Sum](./linked_lists/two_sum)
 * LIFO/FIFO Structures
   * Queue of Two Stacks
 * Sorting
