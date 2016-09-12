@@ -19,3 +19,4 @@ Such operations that don't change the dynamic set of a tree are called **queryin
  
 ###See code:
 - [Binary Tree](/trees/binary/__init__.py)
+- [Tree Traversal](/trees/binary/__init__.py)
