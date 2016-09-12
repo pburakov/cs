@@ -28,8 +28,8 @@
   * Snakes and Ladders
   * Word Ladder
 * Linked Lists
-  * [Clone List with Arbitrary Pointer](./linked_lists/clone_list)
-  * [Two Sum](./linked_lists/two_sum)
+  * [Clone List with Arbitrary Pointer](./linked_lists/clone_list/README.md)
+  * [Two Sum](./linked_lists/two_sum/README.md)
 * LIFO/FIFO Structures
   * Queue of Two Stacks
 * Sorting
@@ -37,8 +37,8 @@
   * Nuts & Bolts
   * Sort K-messed Array
 * Strings
-  * [K-Unique Characters Substring](./strings/k_unique)
-  * [Minimum Window Substring](./strings/mws)
-  * [One Edit Away](./strings/one_away)
-  * [Parse Syntax](./strings/parse_syntax)
-  * [Simple Regex Matching](./strings/regex)
+  * [K-Unique Characters Substring](./strings/k_unique/README.md)
+  * [Minimum Window Substring](./strings/mws/README.md)
+  * [One Edit Away](./strings/one_away/README.md)
+  * [Parse Syntax](./strings/parse_syntax/README.md)
+  * [Simple Regex Matching](./strings/regex/README.md)
