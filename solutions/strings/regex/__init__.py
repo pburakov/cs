@@ -1,14 +1,3 @@
-"""
-Implement a simple regular expression matcher supporting following expressions:
- - a dot `.` matches a single character
- - a star `*` matches zero or arbitrary repeated characters
-
-Example:
- `R="a*c", S="abc" -> True`
- `R="a.c", S="abbc" -> False`
-"""
-
-
 def match(R, S, i=0, j=0):
     """
     Simple regex recursive problem solver.
