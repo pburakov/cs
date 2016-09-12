@@ -2,9 +2,13 @@ def solution(L, s):
     """
     Two sum solver.
 
-    Brute force solution would scan the list repeatedly to find a pair for every element in it, which would give us O(n^2) running time, but we can do better if we use some extra space for a hash table with O(1) lookup.
+    Brute force solution would scan the list repeatedly to find a pair for every element
+     in it, which would give us O(n^2) running time, but we can do better if we use some
+     extra space for a hash table with O(1) lookup.
 
-    The solution is simple. Construct a frequency map for every encountered element. The traverse the list again and check if a pair that adds up to a target sum is present in the frequency map.
+    The solution is simple. Construct a frequency map for every encountered element. Then
+     traverse the list again and check if a pair that adds up to a target sum is present
+     in the frequency map.
 
     Complexity: O(n) time, O(n) space
     :param List L: Input list

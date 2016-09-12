@@ -1,6 +1,7 @@
 # Sum of Two Elements
 
-Given a singly linked list with integer elements, find if it has two elements that add up to a given sum *s*.
+Given a singly linked list with integer elements, find if it has two elements that add up
+ to a given sum *s*.
  
 Example:
 ```
