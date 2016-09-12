@@ -28,3 +28,6 @@ Most BST operations take *O(h)* time where *h* is a height of a tree. If tree is
 
 There are many kinds of self-balanced BSTs, that maintain balanced tree structure. Most
  commonly mentioned are AVL tree and red-black tree but there are many other instances.
+ 
+###See code:
+- [Binary Search Tree](/trees/bst/__init__.py)

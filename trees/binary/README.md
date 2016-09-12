@@ -16,3 +16,6 @@ Traversal algorithms are called **pre-order**, **post-order** and **in-order**, 
 
 Such operations that don't change the dynamic set of a tree are called **querying**.
  Operations that cause change are called **updating**.
+ 
+###See code:
+- [Binary Tree](/trees/binary/__init__.py)
