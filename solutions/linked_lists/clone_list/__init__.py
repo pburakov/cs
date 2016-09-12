@@ -69,6 +69,9 @@ class Node:
         self.next = None
         self.other = None
 
+    def __str__(self):
+        return str(self.key)
+
 
 class List:
     def __init__(self):
@@ -76,3 +79,25 @@ class List:
         Singly linked list implementation.
         """
         self.head = None
+
+    def insert(self, x):
+        """
+        Insertion procedure.
+
+        Complexity: O(n)
+        :param Node x: Node to insert
+        :return None: List is updated
+        """
+        x.next = self.head
+        self.head = x
+
+    def __str__(self):
+        node = self.head
+        out = ''
+        while node:
+            out += str(node)
+            if node.other is not None:
+                out += '(->{})'.format(str(node.other))
+            out += ' '
+            node = node.next
+        return out
