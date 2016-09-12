@@ -64,7 +64,7 @@ Also, all of the modules are ready for external use. You can reuse them in your
 from trees.avl import Node
 from trees.avl import AVLTree as Tree
 from trees.avl import avl_insert
-from trees.binary import in_order
+from trees.binary.traversal import in_order
 
 my_tree = Tree()
 avl_insert(my_tree, Node(3))
