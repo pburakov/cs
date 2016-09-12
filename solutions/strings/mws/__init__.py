@@ -1,14 +1,3 @@
-"""
-Minimum Window Substring problem.
-
-Your are given a haystack string `S` and a significantly smaller needle string `T`. Find
- a minimum-length substring of `S` that would contain all the characters of a string `T`.
- Duplicates and other elements are allowed.
-
-Example: `S="ADOBECODEBANC", T="ABC". Output: "BANC".
-"""
-
-
 def solution(S, T):
     """
     Minimum window substring solver.
@@ -20,10 +9,10 @@ def solution(S, T):
     The key observation is that a substring will always begin and end with a character
      that is a member of a set `T`. Optimized algorithm used in this solution runs a
      rolling window, while keeping track of the target characters included in it. At first
-     it extends the rihgt edge of the window. As soon as all the target characters are
+     it extends the right edge of the window. As soon as all the target characters are
      seen within the window at least once it starts shrinking the window at left edge
      until one of the elements is no longer in the window. The achieved length of the
-     window and indices are saved for further comparison. The extention process is then
+     window and indices are saved for further comparison. The extension process is then
      repeated, all wrapped in a `while` loop.
 
     This solution will work for regular arrays.
@@ -39,7 +28,8 @@ def solution(S, T):
     l, r = 0, 1
     min_len = inf
     min_l, min_r = 0, 0
-    W[S[0]] += 1
+    if S[0] in W:
+        W[S[0]] += 1
     while r < n:
         if S[r] in W:
             W[S[r]] += 1
