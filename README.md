@@ -19,34 +19,14 @@ The contents of this repository are not a replacement for Computer Science class
  brush up on my CS skills. Solutions repository contains solutions of some common 
  problems that are encountered on interviews or set the pattern for their solution. 
 
-## Sources
-Most implementations are taken or adapted from the following books:
- * Thomas Cormen et al. Introduction To Algorithms (CLRS)
- * Steven Skiena. Algorithm Design Manual
- * Gyle McDowell. Cracking the Coding Interview
- * Adnan Aziz et al. Elements of Programming Interviews
- * Jon Bentley. Programming Pearls
-
-I highly recommend to keep CLRS book as a reference, while carefully studying at least 
- one of the remaining books. The more practice you do, the better you perform, and 
- there's simply no other way around it.
- 
-Some solutions may contain ideas or code snippets from sites:
-* [geeksforgeeks.com](http://www.geeksforgeeks.org)
-* [rosettacode.org](https://rosettacode.org)
-* [leetcode.com](https://leetcode.com)
-* [stackoverflow.com](https://stackoverflow.com)
-
-All of the above are great source of programming problems and their solutions.
- 
 ## Usage Notes
 I often use single-letter variables, because that is how they appear in the most 
  academic descriptions. Python comes very close to pseudo-code, often used in these 
  books. In my subjective opinion, such notation forces reader to deeply understanding 
  of an algorithm. 
 
-Please note, that **all methods and classes have documentation** and a brief description
- of principle of their operation as well as notes on **their running time and space 
+Please note, that all methods and classes have **documentation** and a brief description
+ of principle of their operation as well as notes on their **running time and space 
  complexity**.
 
 If you feel uncomfortable understanding the code:
@@ -76,6 +56,27 @@ in_order(my_tree.root, lambda x: print(x, end=' '))
 ```
 Modules are logically organized by the subject.
 
+
+## Sources
+Most implementations are taken or adapted from the following books:
+ * Thomas Cormen et al. Introduction To Algorithms (CLRS)
+ * Steven Skiena. Algorithm Design Manual
+ * Gyle McDowell. Cracking the Coding Interview
+ * Adnan Aziz et al. Elements of Programming Interviews
+ * Jon Bentley. Programming Pearls
+
+I highly recommend to keep CLRS book as a reference, while carefully studying at least 
+ one of the remaining books. The more practice you do, the better you perform, and 
+ there's simply no other way around it.
+ 
+Some solutions may contain ideas or code snippets from sites:
+* [geeksforgeeks.com](http://www.geeksforgeeks.org)
+* [rosettacode.org](https://rosettacode.org)
+* [leetcode.com](https://leetcode.com)
+* [stackoverflow.com](https://stackoverflow.com)
+
+All of the above are great source of programming problems and their solutions.
+ 
 ## Contents
 
 #####Basic Data Structures
