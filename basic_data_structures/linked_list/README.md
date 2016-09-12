@@ -20,4 +20,4 @@ Please note, that Python list is not implemented as a linked list. Internally Py
  lists are dynamic arrays (implemented as a vector of pointers).
  
 ###See code: 
-- [Linked List](__init__.py)
+- [Linked List](./__init__.py)
