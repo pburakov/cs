@@ -28,7 +28,7 @@
   * Snakes and Ladders
   * Word Ladder
 * Linked Lists
-  * Clone List
+  * [Clone List with Arbitrary Pointer](./linked_lists/clone_list)
   * Swap 
 * LIFO/FIFO Structures
   * Queue of Two Stacks
@@ -37,8 +37,8 @@
   * Nuts & Bolts
   * Sort K-messed Array
 * Strings
-  * K-Unique Characters Substring
-  * Minimum Window Substring
-  * One Edit Away
-  * Parse Syntax
-  * Simple Regex Matching 
+  * [K-Unique Characters Substring](./strings/k_unique)
+  * [Minimum Window Substring](./strings/mws)
+  * [One Edit Away](./strings/one_away)
+  * [Parse Syntax](./strings/parse_syntax)
+  * [Simple Regex Matching](./strings/regex)
