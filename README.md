@@ -80,7 +80,7 @@ All of the above are great source of programming problems and their solutions.
 ## Contents
 
 #####Basic Data Structures
-* [Linked List](basic_data_structures/linked_list/README.md)
+* [Linked List](basic_data_structures/linked_list)
 * [Queue](basic_data_structures/fifo)
 * [Stack](basic_data_structures/lifo)
 * [Min/Max Heap](basic_data_structures/heaps)
