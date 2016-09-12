@@ -17,4 +17,5 @@ When solving this problem (an other linked-list related problems), make sure to 
  pointer operations.
 
 ###See code:
-- [Solution](/solutions/arrays/clone_list/__init__.py)
+- [Solution](/solutions/linked_lists/clone_list/__init__.py)
+- [Test](/solutions/linked_lists/clone_list/test.py)
