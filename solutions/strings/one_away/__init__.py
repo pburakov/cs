@@ -1,17 +1,3 @@
-"""
-Write an algorithm to evaluate if two strings are one edit away from each other. Edit
- operation include deletion, insertion or replacement of a character.
-
- "pale", "ale" -> True
- "ple", "pale" -> True
- "pale", "gale" -> True
- "pale", "bake" -> False
-
-This problem is described in detail in Gayle McDowell's book "Cracking the Coding
- Interview".
-"""
-
-
 def solution(A, B):
     """
     One away linear time problem solver.
@@ -78,4 +64,4 @@ def one_insert_away(A, B):
         else:
             a += 1
             b += 1
-    return True
+    return errors < 2
