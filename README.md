@@ -80,52 +80,52 @@ All of the above are great source of programming problems and their solutions.
 ## Contents
 
 #####Basic Data Structures
-* [Linked List](./basic_data_structures/linked_list)
-* [Queue](/basic_data_structures/fifo)
-* [Stack](/basic_data_structures/lifo)
-* [Min/Max Heap](/basic_data_structures/heaps)
+* [Linked List](basic_data_structures/linked_list)
+* [Queue](basic_data_structures/fifo)
+* [Stack](basic_data_structures/lifo)
+* [Min/Max Heap](basic_data_structures/heaps)
 * Dynamic Hash Map
 
 #####Trees
-* [Binary Tree](/trees/binary)
-* [Binary Search Tree](/trees/bst)
-* [AVL Tree](/trees/avl)
+* [Binary Tree](trees/binary)
+* [Binary Search Tree](trees/bst)
+* [AVL Tree](trees/avl)
 * Red-Black Tree
 
 #####Sorting
 * Comparison
-  * [Insertion Sort](/sorting/insertion_sort.py)
-  * [Bubble Sort](/sorting/bubble_sort.py)
-  * [Heap Sort](/sorting/heap_sort.py)
+  * [Insertion Sort](sorting/insertion_sort.py)
+  * [Bubble Sort](sorting/bubble_sort.py)
+  * [Heap Sort](sorting/heap_sort.py)
 * Divide-and-conquer
-  * [Merge Sort](/sorting/merge_sort.py)
-  * [Quicksort](/sorting/quicksort.py)
+  * [Merge Sort](sorting/merge_sort.py)
+  * [Quicksort](sorting/quicksort.py)
 * Counting Sort
-  * [Bucket Sort](/sorting/bucket_sort.py)
-  * [Counting Sort](/sorting/counting_sort.py)
-  * [Radix Sort](/sorting/radix_sort.py)
+  * [Bucket Sort](sorting/bucket_sort.py)
+  * [Counting Sort](sorting/counting_sort.py)
+  * [Radix Sort](sorting/radix_sort.py)
 
 #####Numerical Algorithms 
-* [Basic Numerical Algorithms](/numerical)
+* [Basic Numerical Algorithms](numerical)
 
 #####String Matching Algorithms
-* [Naive](/string_matching/naive.py)
-* [Knuth-Morris-Pratt](/string_matching/kmp.py)
-* [Rabin-Karp Running Hash](/string_matching/rabin_karp.py)
-* [Manacher's Palindrome Matching](/string_matching/manacher.py)
+* [Naive](string_matching/naive.py)
+* [Knuth-Morris-Pratt](string_matching/kmp.py)
+* [Rabin-Karp Running Hash](string_matching/rabin_karp.py)
+* [Manacher's Palindrome Matching](string_matching/manacher.py)
 
 #####Graphs
-* [Graph Representation](/graphs)
-* [Graph Search Algorithms](/graphs/search)
-* [Topological Sort](/graphs/topological_sort)
-* [Shortest Paths Algorithms](/graphs/shortest_paths)
+* [Graph Representation](graphs)
+* [Graph Search Algorithms](graphs/search)
+* [Topological Sort](graphs/topological_sort)
+* [Shortest Paths Algorithms](graphs/shortest_paths)
 
 #####Combinatorial Search
-* [Recursive Operations on Sets](/combinatorial/search)
-* [Optimization, Memoization, Dynamic Programming](/combinatorial/optimization)
+* [Recursive Operations on Sets](combinatorial/search)
+* [Optimization, Memoization, Dynamic Programming](combinatorial/optimization)
 
 #####Appendix: 
-* [Solutions by Subject](/solutions)
+* [Solutions by Subject](solutions)
 
 ## Disclaimer
 This repository was created for personal use for the purpose of study. While I did my 
