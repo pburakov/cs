@@ -80,16 +80,16 @@ All of the above are great source of programming problems and their solutions.
 ## Contents
 
 #####Basic Data Structures
-* [Linked List](basic_data_structures/linked_list)
-* [Queue](basic_data_structures/fifo)
-* [Stack](basic_data_structures/lifo)
-* [Min/Max Heap](basic_data_structures/heaps)
+* [Linked List](basic_data_structures/linked_list/README.md)
+* [Queue](basic_data_structures/fifo/README.md)
+* [Stack](basic_data_structures/lifo/README.md)
+* [Min/Max Heap](basic_data_structures/heaps/README.md)
 * Dynamic Hash Map
 
 #####Trees
-* [Binary Tree](trees/binary)
-* [Binary Search Tree](trees/bst)
-* [AVL Tree](trees/avl)
+* [Binary Tree](trees/binary/README.md)
+* [Binary Search Tree](trees/bst/README.md)
+* [AVL Tree](trees/avl/README.md)
 * Red-Black Tree
 
 #####Sorting
@@ -106,7 +106,7 @@ All of the above are great source of programming problems and their solutions.
   * [Radix Sort](sorting/radix_sort.py)
 
 #####Numerical Algorithms 
-* [Basic Numerical Algorithms](numerical)
+* [Basic Numerical Algorithms](numerical/README.md)
 
 #####String Matching Algorithms
 * [Naive](string_matching/naive.py)
@@ -115,17 +115,17 @@ All of the above are great source of programming problems and their solutions.
 * [Manacher's Palindrome Matching](string_matching/manacher.py)
 
 #####Graphs
-* [Graph Representation](graphs)
-* [Graph Search Algorithms](graphs/search)
-* [Topological Sort](graphs/topological_sort)
-* [Shortest Paths Algorithms](graphs/shortest_paths)
+* [Graph Representation](graphs/README.md)
+* [Graph Search Algorithms](graphs/search/README.md)
+* [Topological Sort](graphs/topological_sort/README.md)
+* [Shortest Paths Algorithms](graphs/shortest_paths/README.md)
 
 #####Combinatorial Search
-* [Recursive Operations on Sets](combinatorial/search)
-* [Optimization, Memoization, Dynamic Programming](combinatorial/optimization)
+* [Recursive Operations on Sets](combinatorial/search/README.md)
+* [Optimization, Memoization, Dynamic Programming](combinatorial/optimization/README.md)
 
 #####Appendix: 
-* [Solutions by Subject](solutions)
+* [Solutions by Subject](solutions/README.md)
 
 ## Disclaimer
 This repository was created for personal use for the purpose of study. While I did my 
