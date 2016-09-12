@@ -77,18 +77,21 @@ in_order(my_tree.root, lambda x: print(x, end=' '))
 Modules are logically organized by the subject.
 
 ## Contents
-##### Basic Data Structures
+
+#####Basic Data Structures
 * [Linked List](/basic_data_structures/linked_list)
 * [Queue](/basic_data_structures/fifo)
 * [Stack](/basic_data_structures/lifo)
 * [Min/Max Heap](/basic_data_structures/heaps)
 * Dynamic Hash Map
-##### Trees
+
+#####Trees
 * [Binary Tree](/trees/binary)
 * [Binary Search Tree](/trees/bst)
 * [AVL Tree](/trees/avl)
 * Red-Black Tree
-##### Sorting
+
+#####Sorting
 * Comparison
   * [Insertion Sort](/sorting/insertion_sort.py)
   * [Bubble Sort](/sorting/bubble_sort.py)
@@ -100,22 +103,27 @@ Modules are logically organized by the subject.
   * [Bucket Sort](/sorting/bucket_sort.py)
   * [Counting Sort](/sorting/counting_sort.py)
   * [Radix Sort](/sorting/radix_sort.py)
-##### Numerical Algorithms 
-* [Numerical Algorithms](/numerical)
-##### String Matching Algorithms
+
+#####Numerical Algorithms 
+* [Basic Numerical Algorithms](/numerical)
+
+#####String Matching Algorithms
 * [Naive](/string_matching/naive.py)
 * [Knuth-Morris-Pratt](/string_matching/kmp.py)
 * [Rabin-Karp Running Hash](/string_matching/rabin_karp.py)
 * [Manacher's Palindrome Matching](/string_matching/manacher.py)
-##### Graphs
+
+#####Graphs
 * [Graph Representation](/graphs)
 * [Graph Search Algorithms](/graphs/search)
 * [Topological Sort](/graphs/topological_sort)
 * [Shortest Paths Algorithms](/graphs/shortest_paths)
-##### Combinatorial Search
+
+#####Combinatorial Search
 * [Recursive Operations on Sets](/combinatorial/search)
 * [Optimization, Memoization, Dynamic Programming](/combinatorial/optimization)
-##### Appendix: 
+
+#####Appendix: 
 * [Solutions by Subject](/solutions)
 
 ## Disclaimer
