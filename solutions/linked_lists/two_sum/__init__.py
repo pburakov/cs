@@ -36,7 +36,7 @@ def solution(L, s):
 
 
 """
-Auxiliary data structures used in the solution
+Data structures used in the solution
 """
 
 
