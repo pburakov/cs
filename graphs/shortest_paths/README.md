@@ -25,6 +25,6 @@ Algorithms in this module cover solutions to **single-source shortest paths** pr
  here). Longest path can be calculated by negating weights.
  
 ###See code:
-- [DAG Shortest Path](/graphs/shortest_paths/__init__.py)
-- [Bellman-Ford](/graphs/shortest_paths/__init__.py)
-- [Dijkstra](/graphs/shortest_paths/__init__.py)
+- [DAG Shortest Path](./__init__.py)
+- [Bellman-Ford](./__init__.py)
+- [Dijkstra](./__init__.py)

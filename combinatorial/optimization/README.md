@@ -26,4 +26,4 @@ Below are some basic DP templates, that help introducing the concept. It is esse
  of DP go well beyond these examples and require substantial amount of practice.
  
 ###See code: 
-- [Memoization, Dynamic Programming](/combinatorial/optimization/__init__.py)
+- [Memoization, Dynamic Programming](./__init__.py)

@@ -15,4 +15,4 @@ This implementation uses an array of size *n* to store the elements and guarante
 The removed element is always at the top of the stack.
 
 ###See code: 
-- [Stack](/basic_data_structures/lifo/__init__.py)
+- [Stack](./__init__.py)

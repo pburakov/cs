@@ -30,4 +30,4 @@ There are many kinds of self-balanced BSTs, that maintain balanced tree structur
  commonly mentioned are AVL tree and red-black tree but there are many other instances.
  
 ###See code:
-- [Binary Search Tree](/trees/bst/__init__.py)
+- [Binary Search Tree](./__init__.py)

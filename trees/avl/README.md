@@ -16,4 +16,4 @@ Augmented BST structure stores height attribute in every node in order to reduce
  number of height computations.
 
 ###See code:
-- [AVL Tree](/trees/avl/__init__.py)
+- [AVL Tree](./__init__.py)

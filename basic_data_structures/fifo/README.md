@@ -21,4 +21,4 @@ Like a newly arriving customer takes a place in the line, the enqueued element i
  element is always at the head of a queue.
 
 ###See code: 
-- [Queue](/basic_data_structures/fifo/__init__.py)
+- [Queue](./__init__.py)

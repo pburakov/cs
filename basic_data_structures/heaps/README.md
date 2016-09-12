@@ -20,5 +20,5 @@ Heap structure is useful when a fast *O(n)* access to the top element is require
  help reducing running times in various cases.
  
 ###See code: 
-- [Min-heap](/basic_data_structures/heaps/min_heap.py)
-- [Max-heap](/basic_data_structures/heaps/min_heap.py)
+- [Min-heap](./min_heap.py)
+- [Max-heap](./min_heap.py)

@@ -14,5 +14,5 @@ This problem is described in detail in Gayle McDowell's book "Cracking the Codin
  Interview".
  
 ###See code:
-- [Solution](/solutions/strings/one_away/__init__.py)
-- [Test](/solutions/strings/one_away/test.py)
+- [Solution](./__init__.py)
+- [Test](./test.py)

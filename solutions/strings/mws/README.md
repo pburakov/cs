@@ -7,5 +7,5 @@ Your are given a haystack string `S` and a significantly smaller needle string `
 Example: `S="ADOBECODEBANC", T="ABC". Output: "BANC"`
 
 ###See code:
-- [Solution](/solutions/strings/mws/__init__.py)
-- [Test](/solutions/strings/mws/test.py)
+- [Solution](./__init__.py)
+- [Test](./test.py)

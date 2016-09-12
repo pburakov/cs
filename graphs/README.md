@@ -21,4 +21,4 @@ Adjacency list can be used to represent both directed and **undirected graph** t
  in a directed graph, it is not necessarily the case.
  
 ###See code:
-- [Graph Representation](/graphs/__init__.py)
+- [Graph Representation](./__init__.py)

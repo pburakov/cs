@@ -18,5 +18,5 @@ Such operations that don't change the dynamic set of a tree are called **queryin
  Operations that cause change are called **updating**.
  
 ###See code:
-- [Binary Tree](/trees/binary/__init__.py)
-- [Binary Tree Traversal](/trees/binary/traversal.py)
+- [Binary Tree](./__init__.py)
+- [Binary Tree Traversal](./traversal.py)
