@@ -100,7 +100,7 @@ Modules are logically organized by the subject.
       * [Bucket Sort](/sorting/bucket_sort.py)
       * [Counting Sort](/sorting/counting_sort.py)
       * [Radix Sort](/sorting/radix_sort.py)
-* [Numeric Algorithms](/numeric)
+* [Numerical Algorithms](/numerical)
 * String Matching Algorithm
   * [Naive](/string_matching/naive.py)
   * [Knuth-Morris-Pratt](/string_matching/kmp.py)
