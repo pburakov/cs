@@ -1,3 +1,5 @@
+# Longest Increasing Path in a Matrix
+
 In a two-dimensional matrix or integers, find the length of a path of increasing numbers.
  Ony vertical or horizontal moves are allowed (no diagonals).
 
