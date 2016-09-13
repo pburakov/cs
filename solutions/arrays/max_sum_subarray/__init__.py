@@ -1,13 +1,3 @@
-"""
-The maximum subarray problem is the task of finding the contiguous subarray within a
- one-dimensional array of numbers which has the largest sum. For example, for the
- sequence of values `[-2, 1, -3, 4, -1, 2, 1, -5, 4]`; the contiguous subarray with the
- largest sum is `[4, -1, 2, 1]`, with the sum `6`.
-
-Linear-time solution is named after Jay Kadane who first found it in 1984.
-"""
-
-
 def subarray(A):
     """
     Returns continuous sub-array with the maximum sum.
@@ -23,19 +13,19 @@ def subarray(A):
     :return list[int]: Maximum subarray
     """
     n = len(A)
-    q = A[0]  # Maximum at current position
-    m = A[0]  # Maximum seen so far
+    p = A[0]  # Maximum at current position
+    q = A[0]  # Maximum seen so far
     l, r = 0, 1  # Left and right pointer of sub-array window
     m_l = 0  # Left pointer at the time last maximum was found
     for i in range(1, n):
         x = A[i]
-        if q + x > x:
-            q += x
+        if p + x > x:
+            p += x
         else:
-            q = x
-        if q > m:
+            p = x
+        if p > q:
             r = i + 1
-            m = q
+            q = p
             m_l = l
         else:
             l = i + 1
@@ -53,9 +43,9 @@ def max_sum(A):
     :return int: Maximum subarray sum
     """
     n = len(A)
-    q = A[0]  # Maximum at current position
-    m = A[0]  # Maximum seen so far
+    p = A[0]  # Maximum at current position
+    q = A[0]  # Maximum seen so far
     for x in A[1:n]:
-        q = max(x, q + x)
-        m = max(m, q)
-    return m
+        p = max(x, p + x)
+        q = max(q, p)
+    return q
