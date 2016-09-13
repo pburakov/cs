@@ -34,8 +34,8 @@ If you feel uncomfortable understanding the code:
 - try step-running an algorithm with your own test-case using debugger; 
 - read up and re-write an algorithm using your own notation.
 
-[PyCharm IDE](https://www.jetbrains.com/pycharm) is a great tool for all of those. I.e. 
- you can get information and navigate to the implementation by just hovering your mouse
+[PyCharm IDE](https://www.jetbrains.com/pycharm) is a great tool to navigate the code. 
+ I.e. you can get information and go to the implementation by just hovering your mouse
  over a function or an object while holding `command` button (on Mac).
 
 Also, all of the modules are ready for external use. You can reuse them in your 

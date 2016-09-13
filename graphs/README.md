@@ -13,7 +13,7 @@ The number of outgoing edges a vertex has is called a vertex **degree**. Every f
  people's hands.
 
 There are several ways to represent a graph. Most commonly used are **adjacency list**
- (array) and **adjacency matrix** (2D array) representations. This implementation uses
+ (map) and **adjacency matrix** (2D array) representations. This implementation uses
  vertex and edge objects with a combination of adjacency maps.
 
 Adjacency list can be used to represent both directed and **undirected graph** types.
