@@ -84,7 +84,7 @@ All of the above are great source of programming problems and their solutions.
 * [Queue](basic_data_structures/fifo/README.md)
 * [Stack](basic_data_structures/lifo/README.md)
 * [Min/Max Heap](basic_data_structures/heaps/README.md)
-* Dynamic Hash Map
+* Dynamic Hash Table
 
 #####Trees
 * [Binary Tree](trees/binary/README.md)
