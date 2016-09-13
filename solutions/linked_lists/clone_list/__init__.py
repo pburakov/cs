@@ -2,10 +2,11 @@ def clone(L):
     """
     Solution of cloned list problem.
 
-    Somewhat more easy-to-read solution involves storage of pointers in a hash table,
-     which gives O(n) time, but O(n) additional spce as well. The following algorithm only
-     performs pointer operations in place and doesn't consume any additional memory
-     (besides memory to allocate the cloned list itself).
+    In an interview with a company I've been suggested to use a map to store pointers
+     (I'm assuming keyed by their in-memory address) in a somewhat "brute-force"
+     solution. It gives O(n) time, but O(n) additional space as well. The following
+     algorithm only performs pointer operations in place and doesn't consume any
+     additional memory (besides memory to allocate the cloned list itself).
 
     The principle is simple. In the first run, we insert cloned nodes in between original
      nodes and assigning them as next nodes in the list. This will make the list twice
