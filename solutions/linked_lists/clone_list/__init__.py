@@ -14,6 +14,10 @@ def clone(L):
      ahead. Finally we do a third run, rearranging next node pointers to match the list
      they belong to.
 
+    When solving this problem (an other linked-list related problems), make sure to draw
+     out the solution on paper or a whiteboard first, since it's very easy to lose track
+     of pointer operations.
+
     Complexity: O(n), three O(n) runs still give linear growth
     :param List L: Original list
     :return List: Cloned list
