@@ -1,18 +1,3 @@
-"""
-Given a list of tuples, where each tuple is two integers `(start, end)`, merge
- overlapping intervals:
-    ```
-     [ - - - - - - - - -]
-       1---3       7---9
-       1-------5
-         2---4
-           3-----6
-    ```
-Input: `[(1, 3), (3, 6), (1, 5), (2, 4), (7, 8)]`
-Output: `[(1, 6), (7, 8)]`
-"""
-
-
 def solution(L):
     """
     Returns list of merged intervals.
