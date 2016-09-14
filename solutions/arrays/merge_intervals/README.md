@@ -1,6 +1,7 @@
 # Merge Intervals
 
-Given a list of intervals as tuples, where each tuple is two integers `(start, end)`, merge overlapping intervals:
+Given a list of intervals as tuples of two integers `(start, end)`, merge overlapping 
+ intervals.
 ```
 Input: [(1, 3), (3, 6), (1, 5), (2, 4), (7, 8)]
 0 [ - - - - - - - - - ] 10
