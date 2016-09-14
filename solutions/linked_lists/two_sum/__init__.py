@@ -1,3 +1,6 @@
+from basic_data_structures.linked_list import LinkedList as List
+
+
 def solution(L, s):
     """
     Two sum solver.
@@ -33,51 +36,3 @@ def solution(L, s):
         freq_map[node.key] += 1
         node = node.next
     return False
-
-
-"""
-Data structures used in the solution
-"""
-
-
-class Node:
-    def __init__(self, key):
-        """
-        Node of a singly linked list containing arbitrary pointer.
-
-        :param object key: Node key
-        """
-        self.key = key
-        self.next = None
-
-    def __str__(self):
-        return str(self.key)
-
-
-class List:
-    def __init__(self):
-        """
-        Singly linked list implementation.
-        """
-        self.head = None
-
-    def insert(self, x):
-        """
-        Insertion procedure.
-
-        Complexity: O(1)
-        :param Node x: Node to insert
-        :return None: List is updated
-        """
-        x.next = self.head
-        self.head = x
-
-    def __str__(self):
-        node = self.head
-        out = ''
-        while node:
-            out += str(node)
-            out += " -> "
-            node = node.next
-        out += "null"
-        return out
