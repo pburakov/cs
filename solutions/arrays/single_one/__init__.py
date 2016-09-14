@@ -1,12 +1,3 @@
-"""
-Given an array of integers, every element appears twice except for one. Find that single
- one.
-
-Input : [1, 2, 2, 3, 1]
-Output : 3
-"""
-
-
 def freq_map(A):
     """
     Linear solution using frequency map.
@@ -31,6 +22,8 @@ def freq_map(A):
 def binary(A):
     """
     Linear solution using binary logic.
+
+    Advanced solution using XOR operation.
 
     Complexity: O(n) time, no extra space (except the output)
     :param list[int] A: Input array
