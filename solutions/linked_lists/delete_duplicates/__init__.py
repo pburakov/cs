@@ -5,6 +5,9 @@ def solution(head):
     """
     Deletes duplicate values from a sorted linked list.
 
+    Algorithm is very straightforward. Instead of keeping track of the values and edge
+     cases, we can take advantage from the fact that the list is sorted. We simply
+     "fast-forward" the next pointer to the next element that has a different key.
 
     Complexity: O(n) where `n` is the size of an input list
     :param Node head: Head of an input list
