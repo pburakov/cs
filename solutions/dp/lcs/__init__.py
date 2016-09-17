@@ -1,16 +1,3 @@
-"""
-Longest Common Substring, or LCS, is a very close variation of a Longest Common
- Subsequence and many other dynamic programming puzzles.
-
-Given two strings, `X` and `Y`, find the longest string which is substring of both `X`
- and `Y`. The longest common substring of the strings "ABABC", "BABCA" and "ABCBA" is
- string "ABC" of length 3. Other common substrings are "A", "AB", "B", "BA", "BC" and
- "C".
-
-Its solution is based on Edit Distance solution routine, but returns an actual string.
-"""
-
-
 def backtrack(X, Y, i=0, j=0):
     """
     Returns longest common substring of two strings calculated recursively.
@@ -31,7 +18,7 @@ def backtrack(X, Y, i=0, j=0):
     if i < len(X) and j < len(Y):
         a, b = X[i], Y[j]
         if a == b:
-            return backtrack(X, Y, i + 1, j + 1) + a  # Adding character to a substring
+            return a + backtrack(X, Y, i + 1, j + 1)  # Adding character to a substring
         else:
             # Recursive calls increasing index for each of the string
             s1 = backtrack(X, Y, i, j + 1)
