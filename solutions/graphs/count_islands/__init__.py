@@ -1,20 +1,3 @@
-"""
-The input is a 2-D matrix of integers `0` and `1`. Let `1` represent a tile of land. A
- group of vertically and horizontally connected `1`s forms an island. Count the number
- of "islands" on a map.
-
- Example input:
- ```
-    [[0, 0, 0, 1, 1],
-     [1, 1, 0, 0, 1],
-     [0, 1, 0, 1, 1],
-     [0, 0, 0, 0, 1],
-     [0, 0, 1, 0, 0]]
- ```
- Output: `3`.
-"""
-
-
 def solution(M):
     """
     Count Islands problem solver.
