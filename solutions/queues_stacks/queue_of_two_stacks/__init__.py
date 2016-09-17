@@ -1,8 +1,3 @@
-"""
-Implement a queue using two stacks.
-"""
-
-
 class Queue:
     def __init__(self):
         """
