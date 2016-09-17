@@ -14,7 +14,7 @@ def subarray(A):
     :param list[int] A: Input array
     :return list[int]: Maximum subarray
     """
-    # TODO: Still fails on last test case
+    # TODO: Run more tests, might still fail on some edge case
     n = len(A)
     p = A[0]  # Maximum at current position
     q = p  # Maximum seen so far

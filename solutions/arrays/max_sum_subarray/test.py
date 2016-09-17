@@ -8,7 +8,7 @@ class TestSolution(unittest.TestCase):
         a2 = [0, 1, -1, 2, -2, 4, -3]
         a3 = [10, -4, 3, 2, -10]
         a4 = [0]
-        a5 = [-2, -4, 2, -1, 1, -3]
+        a5 = [-2, -4, 2, 0, 1, -3]
         self.assertEqual(max_sum(a1), 6)
         self.assertEqual(subarray(a1), [4, -1, 2, 1])
         self.assertEqual(max_sum(a2), 4)
@@ -17,5 +17,5 @@ class TestSolution(unittest.TestCase):
         self.assertEqual(subarray(a3), [10, -4, 3, 2])
         self.assertEqual(max_sum(a4), 0)
         self.assertEqual(subarray(a4), [0])
-        self.assertEqual(max_sum(a5), 2)
-        self.assertEqual(subarray(a5), [2, -1, 1])
+        self.assertEqual(max_sum(a5), 3)
+        self.assertEqual(subarray(a5), [2, 0, 1])
