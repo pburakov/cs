@@ -40,9 +40,9 @@ This is not a repository of interview problems (there's a much better collection
 * LIFO/FIFO Structures
   * [Queue of Two Stacks](./queues_stacks/queue_of_two_stacks)
 * Sorting
-  * Merge In-Place
-  * Nuts & Bolts
-  * Sort K-messed Array
+  * [Merge In-Place](./sorting/merge_in_place)
+  * [Nuts & Bolts](./sorting/nuts_bolts)
+  * [Sort K-messed Array](./sorting/sort_k_messed)
 * Strings
   * [K-Unique Characters Substring](./strings/k_unique)
   * [Minimum Window Substring](./strings/mws)
