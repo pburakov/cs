@@ -33,6 +33,25 @@ def gcd(a, b):
     return a
 
 
+def ϕ(n):
+    """
+    Euler's totient function.
+
+    Euler's totient function (also called Euler's phi function) counts the positive
+     integers up to a given integer n that are relatively prime to n. It's the number of
+     integers `k` in the range `1 ≤ k ≤ n` for which the greatest common divisor is `1`.
+
+    Complexity: O(n^2)
+    :param int n: Input integer
+    :return int: Number of relatively prime numbers in sequence.
+    """
+    count = 0
+    for k in range(1, n + 1):
+        if gcd(n, k) == 1:
+            count += 1
+    return count
+
+
 def swap(a, b):
     """
     Swaps two integers without using extra memory.
