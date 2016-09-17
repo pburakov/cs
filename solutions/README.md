@@ -28,11 +28,11 @@ This is not a repository of interview problems (there's a much better collection
   * [Longest Increasing Substring](./dp/lis)
   * [Word Break Problem](./dp/word_break)
 * Graphs
-  * Cound Islands
-  * Knight's Tour
-  * Mars Lander Problem
-  * Snakes and Ladders
-  * Word Ladder
+  * [Count Islands](./graphs/count_islands)
+  * [Knight's Tour](./graphs/knight_tour)
+  * [Mars Lander Problem](./graphs/mars_landing)
+  * [Snakes and Ladders](./graphs/snakes_ladders)
+  * [Word Ladder](./graphs/word_ladder)
 * Linked Lists
   * [Clone List with Arbitrary Pointer](./linked_lists/clone_list)
   * [Delete Duplicates](./linked_lists/delete_duplicates)
