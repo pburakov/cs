@@ -30,6 +30,7 @@ def spaces(S, D, M=None, k=0):
     :param int k: Rolling index (used in recursion)
     :return (int, list[bool]): Tuple of remaining unmatched characters and
     """
+    # TODO: Loops on test cases (fix)
     n = len(S)
     if M is None:  # Initialize intermediate whitespace map
         M = [False] * n

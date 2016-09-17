@@ -12,6 +12,7 @@ def subarray(A):
     :param list[int] A: Input array
     :return list[int]: Maximum subarray
     """
+    # TODO: Fails on some cases (fix)
     n = len(A)
     p = A[0]  # Maximum at current position
     q = A[0]  # Maximum seen so far
