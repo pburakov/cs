@@ -15,6 +15,7 @@ def backtrack(X, Y, i=0, j=0):
     :param int j: Lookup index in a second string (used in recursion)
     :return str: Output string
     """
+    # TODO: Fails on tests (fix)
     if i < len(X) and j < len(Y):
         a, b = X[i], Y[j]
         if a == b:
