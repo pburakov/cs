@@ -10,3 +10,8 @@ D = {"a", "man", "plan", "panama", "canal"}
 s = "amanaplanacanal"
 Output: ["a", "man", "a", "plan", "a", "canal"]
 ```
+
+###See code:
+- [Solution (Recursive)](./__init__.py)
+- [Solution (DP)](./__init__.py)
+- [Test](./test.py)
