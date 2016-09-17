@@ -22,3 +22,6 @@ Best landing site: (2, 1).
 ```
 I was given this problem when I was interviewing at Google. Here is my stab at it.
 
+###See code:
+- [Solution](./__init__.py)
+- [Test](./test.py)
