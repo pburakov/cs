@@ -1,14 +1,3 @@
-"""
-N-queens is the problem of placing `n` chess queens on an `n`×`n` chessboard so that no
- two queens threaten each other. Thus, a solution requires that no two queens share the
- same row, column, or diagonal.
-
-There are no solutions for `n` less than 4. Interestingly, the 6-queens puzzle has fewer
- solutions than the 5-queens puzzle. There are 22,317,699,616,364,044 solutions for
- `n=26`.
-"""
-
-
 def solution(n):
     """
     Solves N-queens problem for n-sized board.
@@ -19,7 +8,7 @@ def solution(n):
 
     Since queens cannot share same row or column, one of the dimensions can be taken out
      of the problem completely. Each generated permutation is checked for validity of a
-     solution. Copmlete 2-dimensional board can be easily reconstructed once the
+     solution. Complete 2-dimensional board can be easily reconstructed once the
      solution is found.
 
     Complexity: There is currently no known formula for the exact number of solutions,
