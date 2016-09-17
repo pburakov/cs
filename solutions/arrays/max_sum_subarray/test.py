@@ -4,6 +4,15 @@ from solutions.arrays.max_sum_subarray import *
 
 class TestSolution(unittest.TestCase):
     def test(self):
-        l1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
-        self.assertEqual(max_sum(l1), 6)
-        self.assertEqual(subarray(l1), [4, -1, 2, 1])
+        a1 = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+        a2 = [0, 1, -1, 2, -2, 4, -3]
+        a3 = [10, -4, 3, 2, -10]
+        a4 = [1]
+        self.assertEqual(max_sum(a1), 6)
+        self.assertEqual(subarray(a1), [4, -1, 2, 1])
+        self.assertEqual(max_sum(a2), 4)
+        self.assertEqual(subarray(a2), [4])
+        self.assertEqual(max_sum(a3), 11)
+        self.assertEqual(subarray(a3), [10, -4, 3, 2])
+        self.assertEqual(max_sum(a4), 1)
+        self.assertEqual(subarray(a4), [1])
