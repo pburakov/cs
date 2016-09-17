@@ -1,5 +1,11 @@
 # Solutions by Subject
 
+## Disclaimer
+This is not a repository of interview problems (there's a much better collection at 
+ [geeksforgeeks.com](http://geeksforgeeks.com)). These are the problems that I 
+ encountered during interviews and/or found personally challenging or illustrating a 
+ certain pattern for a class of problems.
+
 ## Contents
 * Arrays
   * [Longest Increasing Path](./arrays/longest_increasing_path)
