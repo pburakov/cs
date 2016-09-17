@@ -26,6 +26,7 @@ This is not a repository of interview problems (there's a much better collection
   * [Knapsack Problem](./dp/knapsack)
   * [Longest Common Substring](./dp/lcs)
   * [Longest Increasing Substring](./dp/lis)
+  * [Paths in Matrix](./dp/matrix_paths)
   * [Word Break Problem](./dp/word_break)
 * Graphs
   * [Count Islands](./graphs/count_islands)
