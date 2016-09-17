@@ -1,24 +1,3 @@
-"""
-Knapsack problem is similar to a Rod Cutting problem, It is another example of a common
- approach, seen in Dynamic Programming.
-
-Imagine you have a list of items, each has an associated value and weight. You are also
- given a bag of a limited capacity (maximum weight it can hold). Your task is to maximise
- the value of items a bag can hold.
-
-Example:
-```
-    Item Value Weight
-      a    60    5          Bag capacity = 5.
-      b    50    3
-      c    70    4          Answer: 80 (item b and d).
-      d    30    2
-```
-This problem is described in detail in the book "Elements of Programming Interviews" by
- A. Aziz et al.
-"""
-
-
 def backtrack(I, c, i=None):
     """
     Top-down naive recursive solution to a 0/1 Knapsack problem.
