@@ -29,7 +29,7 @@ This is not a repository of interview problems (there's a much better collection
   * [Word Break Problem](./dp/word_break)
 * Graphs
   * Cound Islands
-  * Knight Tour
+  * Knight's Tour
   * Mars Lander Problem
   * Snakes and Ladders
   * Word Ladder

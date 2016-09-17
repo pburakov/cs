@@ -1,4 +1,4 @@
-# Knight Tour
+# Knight's Tour
 
 Knight tour is a famous mathematical puzzle often given to CS students.
 
