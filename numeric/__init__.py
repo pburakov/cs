@@ -41,6 +41,8 @@ def ϕ(n):
      integers up to a given integer n that are relatively prime to n. It's the number of
      integers `k` in the range `1 ≤ k ≤ n` for which the greatest common divisor is `1`.
 
+    This function plays a key role in the definition of RSA encryption system.
+
     Complexity: O(n^2)
     :param int n: Input integer
     :return int: Number of relatively prime numbers in sequence.
