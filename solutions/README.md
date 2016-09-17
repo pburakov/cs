@@ -14,11 +14,11 @@ This is not a repository of interview problems (there's a much better collection
   * [Single One](./arrays/single_one)
   * [Three Sum](./arrays/three_sum)
 * Recursion and Combinatorial Search
-  * N Brackets
-  * N Queens
-  * Sudoku Solver
-  * Symbolic Parentheses
-  * Tower Of Hanoi
+  * [N Brackets](./combinatorial/n_brackets)
+  * [N Queens](./combinatorial/n_queens)
+  * [Sudoku Solver](./combinatorial/sudoku)
+  * [Symbolic Parentheses](./combinatorial/symbolic_parens)
+  * [Tower Of Hanoi](./combinatorial/tower_of_hanoi)
 * Optimization and Dynamic Programming
   * Add Spaces
   * Rod Cutting
