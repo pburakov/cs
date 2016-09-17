@@ -1,10 +1,3 @@
-"""
-Write a function that prints all possible combinations of `n` well formed bracket pairs.
-
-This is combinatorial problem whose solution is given by the Catalan numbers.
-"""
-
-
 def recursion(o, c=0, S=''):
     """
     Recursive solution for the n bracket pairs problem.
