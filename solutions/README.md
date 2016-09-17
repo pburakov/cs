@@ -38,7 +38,7 @@ This is not a repository of interview problems (there's a much better collection
   * [Delete Duplicates](./linked_lists/delete_duplicates)
   * [Two Sum](./linked_lists/two_sum)
 * LIFO/FIFO Structures
-  * Queue of Two Stacks
+  * [Queue of Two Stacks](./queues_stacks/queue_of_two_stacks)
 * Sorting
   * Merge In-Place
   * Nuts & Bolts
