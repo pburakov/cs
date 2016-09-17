@@ -20,13 +20,13 @@ This is not a repository of interview problems (there's a much better collection
   * [Symbolic Parentheses](./combinatorial/symbolic_parens)
   * [Tower Of Hanoi](./combinatorial/tower_of_hanoi)
 * Optimization and Dynamic Programming
-  * Add Spaces
-  * Rod Cutting
-  * Edit (Levenstein) Distance
-  * Knapsack Problem
-  * Longest Common Substring
-  * Longest Increasing Substring
-  * Word Break Problem
+  * [Add Spaces](./dp/add_spaces)
+  * [Rod Cutting](./dp/cut_rod)
+  * [Edit (Levenstein) Distance](./dp/edit_distance)
+  * [Knapsack Problem](./dp/knapsack)
+  * [Longest Common Substring](./dp/lcs)
+  * [Longest Increasing Substring](./dp/lis)
+  * [Word Break Problem](./dp/word_break)
 * Graphs
   * Cound Islands
   * Knight Tour
