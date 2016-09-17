@@ -2,11 +2,11 @@
 
 ## Contents
 * Arrays
-  * Longest Increasing Path
-  * Maximum Sum Subarray
-  * Merge Intervals
-  * Single One
-  * Three Sum
+  * [Longest Increasing Path](./arrays/longest_increasing_path)
+  * [Maximum Sum Subarray](./arrays/max_sum_subarray)
+  * [Merge Intervals](./arrays/merge_intervals)
+  * [Single One](./arrays/single_one)
+  * [Three Sum](./arrays/three_sum)
 * Recursion and Combinatorial Search
   * N Brackets
   * N Queens
