@@ -5,7 +5,8 @@ def build_tree(A, l=None, r=None):
     """
     Builds a binary search tree from a sorted array.
 
-    Algorithm is a basic backwards version of a binary search. A tree is guaranteed to be a properly balanced BST, because the array is already sorted.
+    Algorithm is a basic inverted version of a binary search. A tree is guaranteed to be a
+     properly balanced BST, because the array is already sorted.
 
     Complexity: O(n), bound by the size of an array
     :param list[int] A: Input array

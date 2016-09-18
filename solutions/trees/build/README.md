@@ -1,6 +1,7 @@
 # Build a Binary Search Tree
 
-Implement an algorithm to build a BST from a sorted array of comparable objects (integers).
+Implement an algorithm to build a BST from a sorted array of comparable objects (for 
+ example, integers).
 
 Example:
 ```
