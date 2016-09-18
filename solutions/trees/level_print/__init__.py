@@ -5,7 +5,9 @@ def level_print(x):
     """
     Prints out binary tree nodes level by level.
 
-    A tree is a linked data structure that can be regarded as a graph. Level by level tree traversal is performed using bread-first search-like algorithm. Level is printed out as soon as the frotnier had been discovered.
+    A tree is a linked data structure that can be regarded as a graph. Level by level
+     tree traversal is performed using bread-first search-like algorithm. Level is
+     printed out as soon as the frotnier had been discovered.
 
     Complexity: O(n)
     :param Node x: Starting node
