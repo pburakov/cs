@@ -51,4 +51,6 @@ This is not a repository of interview problems (there's a much better collection
   * [Parse Syntax](./strings/parse_syntax)
   * [Simple Regex Matching](./strings/regex)
 * Trees
+  * [Build Tree from Array](./trees/build)
   * [Lowest Common Ancestor](./trees/lca)
+  * [Level Print](./trees/level_print)
