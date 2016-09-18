@@ -50,3 +50,5 @@ This is not a repository of interview problems (there's a much better collection
   * [One Edit Away](./strings/one_away)
   * [Parse Syntax](./strings/parse_syntax)
   * [Simple Regex Matching](./strings/regex)
+* Trees
+  * [Lowest Common Ancestor](./trees/lca)
