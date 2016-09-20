@@ -3,8 +3,8 @@ def find(A):
     Finds majority element in the list.
 
     Complexity: O(n), no extra space is used
-    :param list A: Input list
-    :return object: Majority element or None if not found
+    :param list[object] A: Input list
+    :return Optional[object]: Majority element or None if not found
     """
     c = 0  # Candidate index
     count = 1

@@ -1,6 +1,8 @@
 # Majority Element
 
-In an array of comparable objects (e.g. integers), find the majority element. If *n* is the size of the array, majority element is an element that occurs at least *|n/2|* times in the array. Return `null` if no majority element is present.
+In an array of comparable objects (e.g. integers), find the majority element. If *n* is
+ the size of the array, majority element is an element that occurs at least *|n/2|* times
+ in the array. Return `null` if no majority element is present.
 
 Example:
 ```
@@ -11,3 +13,7 @@ Output: None
 ```
 
 The algorithm should use constant space.
+
+###See code:
+- [Solution](./__init__.py)
+- [Test](./test.py)
