@@ -1,0 +1,9 @@
+import unittest
+from problems.dp.lcs import *
+
+
+class TestSolution(unittest.TestCase):
+    def test(self):
+        self.assertEqual(backtrack("BABCA", "ABCBA"), "ABC")
+        self.assertEqual(dp("BABCA", "ABCBA"), "ABC")
+        self.assertEqual(length("BABCA", "ABCBA"), 3)

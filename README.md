@@ -14,10 +14,9 @@ The code is written in **Python 3**. Data structures are implemented as Python m
  If you never used Python before, I strongly recommend to get familiar with its syntax 
  and modules, before starting.
 
-The contents of this repository are not a replacement for Computer Science class. I 
- started working on this repository when I was preparing for interviews as I needed to 
- brush up on my CS skills. Solutions repository contains solutions of some common 
- problems that are encountered on interviews or set the pattern for their solution. 
+The contents of this repository is sort of a cheat-sheet for a Computer Science class. I 
+ started working on this repository when I was preparing for interviews as I wanted to 
+ brush up on my CS skills.
 
 ## Usage Notes
 I often use single-letter variables, because that is how they appear in the most 
@@ -68,15 +67,7 @@ Most implementations are taken or adapted from the following books:
 I highly recommend to keep CLRS book as a reference, while carefully studying at least 
  one of the remaining books. The more practice you do, the better you perform, and 
  there's simply no other way around it.
- 
-Some solutions may contain ideas or code snippets from sites:
-* [geeksforgeeks.com](http://www.geeksforgeeks.org)
-* [rosettacode.org](https://rosettacode.org)
-* [leetcode.com](https://leetcode.com)
-* [stackoverflow.com](https://stackoverflow.com)
-
-All of the above are great source of programming problems and their solutions.
- 
+  
 ## Contents
 
 #####Basic Data Structures
@@ -125,7 +116,7 @@ All of the above are great source of programming problems and their solutions.
 * [Optimization, Memoization, Dynamic Programming](combinatorial/optimization/README.md)
 
 #####Appendix: 
-* [Solutions by Subject](solutions/README.md)
+* [Problems by Subject](problems/README.md)
 
 ## Disclaimer
 This repository was created for personal use for the purpose of study. While I did my 
