@@ -17,7 +17,7 @@ Output:
 
 Return the root of a tree.
 """
-from trees.bst import Node
+from trees.bst import BSTNode as Node
 
 
 def build_tree(A, l=None, r=None):

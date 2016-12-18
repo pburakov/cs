@@ -18,7 +18,7 @@ LCA('d', 'c') -> 'a'
 You are given a pointer to a root of a tree two pointers to the target nodes. Your
  algorithm should not use parent pointers.
 """
-from trees.binary import Node
+from trees.binary import BinaryTreeNode as Node
 
 
 def find(x, a, b):

@@ -7,7 +7,7 @@ For example,
 Given `1->1->2`, return `1->2`.
 Given `1->1->2->3->3`, return `1->2->3`.
 """
-from basic.linked_list import Node
+from basic.linked_list import LinkedListNode as Node
 
 
 def solution(head):
@@ -20,7 +20,7 @@ def solution(head):
 
     Complexity: O(n) where `n` is the size of an input list
     :param Node head: Head of an input list
-    :return Node: Head of updated list
+    :return: Head of updated list
     """
     node = head
     while node:

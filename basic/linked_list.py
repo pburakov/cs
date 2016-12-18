@@ -23,7 +23,7 @@ lists are dynamic arrays (implemented as a vector of pointers).
 """
 
 
-class Node:
+class LinkedListNode:
     """Node of a doubly linked list.
     """
 
@@ -93,7 +93,7 @@ def list_insert(L, x):
         :math:`O(1)`, only the head pointer of a list is updated.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param basic.linked_list.Node x: Pointer to a new doubly linked list node to insert.
+    :param LinkedListNode x: Pointer to a new doubly linked list node to insert.
 
     """
     x.next = L.head
@@ -110,7 +110,7 @@ def list_delete(L, x):
         :math:`O(1)`, for a known node, since only the pointers are removed.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param basic.linked_list.Node x: Pointer to a doubly linked list node to remove.
+    :param LinkedListNode x: Pointer to a doubly linked list node to remove.
 
     """
     if x.prev is not None:
