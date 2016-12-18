@@ -28,7 +28,7 @@ class BinaryTree:
         self.root = None
 
 
-class BinaryTreeNode:
+class Node:
     """Node of a binary tree.
     """
 
@@ -55,8 +55,8 @@ def pre_order(x, f):
         :math:`O(n)` where :math:`n` is the number of nodes in the tree and :math:`f` is
         :math:`O(1)`.
 
-    :param BinaryTreeNode x: Starting node.
-    :param (BinaryTreeNode)->Any f: Procedure applied to a node on traversal.
+    :param Node x: Starting node.
+    :param (Node)->Any f: Procedure applied to a node on traversal.
 
     """
     if x is not None:
@@ -72,8 +72,8 @@ def in_order(x, f):
         :math:`O(n)` where :math:`n` is the number of nodes in the tree and :math:`f` is
         :math:`O(1)`.
 
-    :param BinaryTreeNode x: Starting node.
-    :param (BinaryTreeNode)->Any f: Procedure applied to a node on traversal.
+    :param Node x: Starting node.
+    :param (Node)->Any f: Procedure applied to a node on traversal.
 
     """
     if x is not None:
@@ -89,8 +89,8 @@ def post_order(x, f):
         :math:`O(n)` where :math:`n` is the number of nodes in the tree and :math:`f` is
         :math:`O(1)`.
 
-    :param BinaryTreeNode x: Starting node.
-    :param (BinaryTreeNode)->Any f: Procedure applied to a node on traversal.
+    :param Node x: Starting node.
+    :param (Node)->Any f: Procedure applied to a node on traversal.
 
     """
     if x is not None:

@@ -17,19 +17,18 @@ node lookup, insertion and deletion in :math:`O(\log n)` time.
 Augmented BST structure stores height attribute in every node in order to reduce the
 number of height computations.
 """
-from trees.bst import BinarySearchTree
-from trees.bst import BSTNode
+from trees.bst import BST, Node as BSTNode
 from trees.bst import right_rotate, left_rotate
 from trees.bst import tree_insert, tree_delete
 
 
-class AVLTree(BinarySearchTree):
+class AVLTree(BST):
     """AVL tree is a self-balanced implementation of a BST.
     """
     pass
 
 
-class AVLNode(BSTNode):
+class Node(BSTNode):
     """Augmented BST node with additional height attribute.
     """
     def __init__(self, key):
@@ -52,7 +51,7 @@ def height(x):
     Complexity:
         :math:`O(1)`.
 
-    :param AVLNode x: Subject node.
+    :param Node x: Subject node.
     :return int: Height of node.
 
     """
@@ -71,7 +70,7 @@ def update_height(x):
     Complexity:
         :math:`O(1)`.
 
-    :param AVLNode x: Subject node.
+    :param Node x: Subject node.
 
     """
     x.height = max(height(x.left), height(x.right)) + 1
@@ -86,7 +85,7 @@ def balance_factor(x):
     Complexity:
         :math:`O(1)`.
 
-    :param AVLNode x: Subject node.
+    :param Node x: Subject node.
     :return int: Balance factor :math:`f` of a node.
 
     """
@@ -109,7 +108,7 @@ def avl_rebalance(T, x):
         :math:`O(\log n)`. Rotations take :math:`O(1)` time.
 
     :param AVLTree T: Instance of an AVL tree to update.
-    :param AVLNode x: Node to adjust (if needed).
+    :param Node x: Node to adjust (if needed).
 
     """
     if x is not None:
@@ -147,7 +146,7 @@ def avl_insert(T, z):
         and :math:`O(\log n)` for average rebalancing.
 
     :param AVLTree T: Instance of an AVL tree to update.
-    :param AVLNode z: Node to insert.
+    :param Node z: Node to insert.
 
     """
     tree_insert(T, z)
@@ -163,7 +162,7 @@ def avl_delete(T, z):
         :math:`O(\log n)`, same as :func:`avl_insert()`.
 
     :param AVLTree T: Instance of an AVL tree to update.
-    :param AVLNode z: Node to remove.
+    :param Node z: Node to remove.
 
     """
     p = z.parent

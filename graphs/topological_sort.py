@@ -3,7 +3,7 @@ Topological Sort
 ================
 """
 from basic.linked_list import list_insert
-from basic.linked_list import LinkedList, LinkedListNode as Node
+from basic.linked_list import LinkedList, Node as Node
 from graphs import Graph, Vertex
 from graphs.search import Counter, WHITE, GRAY, BLACK
 

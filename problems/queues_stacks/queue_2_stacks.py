@@ -2,13 +2,13 @@
 Queue of Two Stacks
 ===================
 
-Implement a queue using two stacks. Queue has to support normal `enqueue` and `dequeue`
+Implement a queue using two stacks. Queue has to support `enqueue` and `dequeue`
 operations.
 
 """
 
 
-class Queue:
+class QueueTwoStacks:
     """Implementation of a Queue using two stacks.
 
     Implementation details: Let stack 1 serve as a main storage. Let stack 2 be used as an

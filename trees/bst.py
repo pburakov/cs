@@ -28,16 +28,16 @@ perfectly complete and **balanced**, *h* will be *log(n)*. In worst case with al
 nodes on one side, BST will resemble a linked list and take *O(n)* as its height will be
 proportional to the number of elements.
 """
-from trees.binary import BinaryTree, BinaryTreeNode
+from trees.binary import BinaryTree, Node as BinaryTreeNode
 
 
-class BinarySearchTree(BinaryTree):
+class BST(BinaryTree):
     """Similar to a regular BinaryTree, holds a pointer to the root node.
     """
     pass
 
 
-class BSTNode(BinaryTreeNode):
+class Node(BinaryTreeNode):
     """Augmented variant of a BinaryTreeNode with a pointer to its parent.
     """
 
@@ -57,7 +57,7 @@ def tree_search(x, k):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the search with.
+    :param Node x: Node to start the search with.
     :param object k: A key to search.
     :return: A found node or :data:`None` if key was not found in a tree.
 
@@ -79,7 +79,7 @@ def iterative_tree_search(x, k):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the search with.
+    :param Node x: Node to start the search with.
     :param object k: A key to search.
     :return: A found node or :data:`None` if key was not found in a tree.
 
@@ -100,7 +100,7 @@ def tree_minimum(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the lookup.
+    :param Node x: Node to start the lookup.
     :return: Node holding minimum value.
 
     """
@@ -117,7 +117,7 @@ def tree_maximum(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the lookup.
+    :param Node x: Node to start the lookup.
     :return: Node holding maximum value.
     """
     while x.right is not None:
@@ -133,7 +133,7 @@ def tree_successor(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the lookup.
+    :param Node x: Node to start the lookup.
     :return: Will return successor node if it exists, :data:`None` otherwise.
 
     """
@@ -158,7 +158,7 @@ def tree_predecessor(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param BSTNode x: Node to start the lookup.
+    :param Node x: Node to start the lookup.
     :return: Will return predecessor node if it exists, :data:`None` otherwise.
 
     """
@@ -184,8 +184,8 @@ def tree_insert(T, z):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree, worst case :math:`\log n`.
 
-    :param BinarySearchTree T: Instance of a BST to update.
-    :param BSTNode z: New node, holding unique value (key).
+    :param BST T: Instance of a BST to update.
+    :param Node z: New node, holding unique value (key).
 
     """
     p = None  # Pointer to a parent of a `z` node.
@@ -218,9 +218,9 @@ def transplant(T, u, v):
     Complexity:
         :math:`O(1)`.
 
-    :param BinarySearchTree T: Instance of a BST to update.
-    :param BSTNode u: Node to be replaced.
-    :param BSTNode v: Node to replace :math:`u` with. Can be :data:`None`.
+    :param BST T: Instance of a BST to update.
+    :param Node u: Node to be replaced.
+    :param Node v: Node to replace :math:`u` with. Can be :data:`None`.
 
     """
     if u.parent is None:  # Node `u` is a root
@@ -242,8 +242,8 @@ def tree_delete(T, z):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree, worst case :math:`\log n`.
 
-    :param BinarySearchTree T: Instance of a BST to update.
-    :param BSTNode z: Node to be deleted.
+    :param BST T: Instance of a BST to update.
+    :param Node z: Node to be deleted.
 
     """
     if z.left is None:  # `z` has only right child
@@ -276,8 +276,8 @@ def left_rotate(T, x):
     Complexity:
         :math:`O(1)`, only pointers are changed, other attributes of a node remain the same.
 
-    :param BinarySearchTree T: Instance of a BST to update.
-    :param BSTNode x: Node to pivot the tree around.
+    :param BST T: Instance of a BST to update.
+    :param Node x: Node to pivot the tree around.
 
     """
     if x.right is None:
@@ -328,8 +328,8 @@ def successor_order(x, f):
     Complexity:
         :math:`O(n)` amortized.
 
-    :param BSTNode x: Starting node.
-    :param (BSTNode)->Any f: Procedure called on node on traversal.
+    :param Node x: Starting node.
+    :param (Node)->Any f: Procedure called on node on traversal.
 
     """
     m = tree_minimum(x)

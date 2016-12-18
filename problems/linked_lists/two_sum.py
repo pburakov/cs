@@ -1,35 +1,38 @@
 """
-# Sum of Two Elements
+Sum of Two Elements
+===================
 
 Given a singly linked list with integer elements, find if it has two elements that add up
- to a given sum *s*.
+to a given sum :math:`s`.
 
-Example:
-```
-Input: [1 -> 2 -> 3 -> 4], s=5. Output: True
-Input: [1 -> 2 -> 3], s=2. Output: False
-Input: [1 -> 2 -> 3 -> 1 -> 6], s=2. Output: True
-```
+Example::
+
+    (1->2->3->4, s=5) -> True
+    (1->2->3, s=2) -> False
+    (1->2->3->1->6, s=2) -> True
+
 """
-from basic.linked_list import LinkedList as List
+from basic.linked_list import LinkedList
 
 
 def solution(L, s):
-    """
-    Two sum solver.
+    """Two sum solver.
 
-    Brute force solution would scan the list repeatedly to find a pair for every element
-     in it, which would give us O(n^2) running time, but we can do better if we use some
-     extra space for a hash table with O(1) lookup.
+    Brute force solution would scan the list repeatedly to find a pair for every element in
+    it, which would give us :math:`O(n^2)` running time, but we can do better if we use
+    some extra space for a hash table with :math:`O(1)` lookup.
 
     The solution is simple. Construct a frequency map for every encountered element. Then
-     traverse the list again and check if a pair that adds up to a target sum is present
-     in the frequency map.
+    traverse the list again and check if a pair that adds up to a target sum is present in
+    the frequency map.
 
-    Complexity: O(n) time, O(n) space
-    :param List L: Input list
-    :param int s: Target sum
-    :return bool: Returns True if list contains the target sum, False otherwise
+    Complexity:
+        :math:`O(n)` time, :math:`O(n)` space.
+
+    :param LinkedList L: Input list.
+    :param int s: Target sum.
+    :return: Returns :data:`True` if list contains the target sum, :data:`False` otherwise.
+
     """
     freq_map = {}
     # First run (populate the frequency map)

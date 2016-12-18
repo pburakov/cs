@@ -17,7 +17,7 @@ b c
 d e f
 ```
 """
-from trees.binary import BinaryTreeNode as Node
+from trees.binary import Node as Node
 
 
 def level_print(x):

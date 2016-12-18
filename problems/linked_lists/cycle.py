@@ -1,39 +1,41 @@
 """
-# Cycle in a Linked List
+Cycle in a Linked List
+======================
 
-This another version of infamous "detect cycle in a list" problem. Given a linked list,
- not only detect the cycle, but return the node where the cycle begins. If there is no
- cycle, return `null`.
+This another version of infamous "detect cycle in a list" problem. Given a linked list, not
+only detect the cycle, but return the node where the cycle begins. If there is no cycle,
+return ``null``.
 
-Example :
+Example::
 
-```
-Input:
-          __________
-         |          |
-         \/         |
-a -> b -> c -> d -> e
+    Input:
+              __________
+             |          |
+             \/         |
+    a -> b -> c -> d -> e
 
-Output: pointer to 'c'.
-```
+    Output: pointer to 'c'.
 
-Your solution should use constant space.
+Solution should use constant space.
+
 """
 from basic.linked_list import LinkedList
 
 
-def find(L):
-    """
-    Detects beginning of a cycle in a linked list.
+def solution(L):
+    """Detects beginning of a cycle in a linked list.
 
-    When the cycle is detected (using two list runners), we observe that the meeting
-     point is somewhere inside the cycle. If we shift one of the pointers back to the
-     head of the list and move them again, one step at a time, the two pointers will meet
-     exactly at the desired node.
+    When the cycle is detected (using two list runners), we observe that the meeting point
+    is somewhere inside the cycle. If we shift one of the pointers back to the head of the
+    list and move them again, one step at a time, the two pointers will meet exactly at the
+    desired node.
 
-    Complexity: O(n), no extra space
-    :param LinkedList L: Input linked list
-    :return Optional[Node]: Pointer to a first node in a cycle.
+    Complexity:
+        :math:`O(n)`, no extra space.
+
+    :param LinkedList L: Input linked list.
+    :return: Pointer to a first node in a cycle.
+
     """
     p1 = p2 = L.head
     has_loop = False
