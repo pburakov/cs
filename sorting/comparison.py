@@ -40,8 +40,7 @@ def heap_sort(A):
     :param list A: Array to sort.
 
     """
-    from basic_data_structures.heaps.max_heap import build_max_heap
-    from basic_data_structures.heaps.max_heap import max_heapify
+    from basic_data_structures.heaps import build_max_heap, max_heapify
 
     n = len(A)
     i_n = n - 1  # Index of a last element
