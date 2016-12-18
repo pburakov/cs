@@ -11,7 +11,6 @@ def bubble_sort(A):
         is a stable in-place sorting algorithm.
 
     :param list A: Array to sort.
-    :return: :data:`None`. Input array is mutated.
 
     """
     n = len(A)
@@ -39,7 +38,6 @@ def heap_sort(A):
         calls to heapify function takes :math:`\log n`.
 
     :param list A: Array to sort.
-    :return: :data:`None`. Input array is mutated.
 
     """
     from basic_data_structures.heaps.max_heap import build_max_heap
@@ -73,7 +71,6 @@ def insertion_sort(A):
         elements in place and does not require additional storage.
 
     :param list A: Array to sort.
-    :return: :data:`None`. Input array is mutated.
 
     """
     n = len(A)

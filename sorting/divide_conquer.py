@@ -25,7 +25,6 @@ def quicksort(A, p=0, r=None):
     :param list A: Input array.
     :param int p: Lower bound (default is :math:`0`).
     :param int r: Upper bound (default is :math:`| A | - 1`).
-    :return: None. Input array is mutated.
 
     """
     if r is None:

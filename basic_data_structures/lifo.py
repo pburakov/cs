@@ -62,7 +62,7 @@ def push(S, x):
 
     :param Stack S: Instance of a stack.
     :param object x: Pointer or an instance of an element to insert into stack.
-    :return: :data:`None`. Stack is updated.
+
     """
     if S.top + 1 >= S.size:
         raise OverflowError("Stack overflow")

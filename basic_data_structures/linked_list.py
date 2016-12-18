@@ -91,7 +91,6 @@ def list_insert(L, x):
 
     :param LinkedList L: An instance of a doubly linked list.
     :param Node x: Pointer to a new doubly linked list node to insert.
-    :return: :data:`None`. List is mutated.
 
     """
     x.next = L.head
@@ -109,7 +108,7 @@ def list_delete(L, x):
 
     :param LinkedList L: An instance of a doubly linked list.
     :param Node x: Pointer to a doubly linked list node to remove.
-    :return: :data:`None`. List is mutated.
+
     """
     if x.prev is not None:
         x.prev.next = x.next

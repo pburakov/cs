@@ -54,7 +54,6 @@ def enqueue(Q, x):
     :param Queue Q: Instance of a queue
     :param object x: Pointer or an instance of an element to insert into a tail of
      the queue
-    :return: :data:`None`. Queue is updated
 
     """
     if Q.length == Q.size:
