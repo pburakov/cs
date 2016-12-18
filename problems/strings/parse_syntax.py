@@ -1,29 +1,31 @@
 """
-# Parse Syntax
+Parse Syntax
+============
 
 Given a simple syntax, using numbers and square brackets, parse a given expression into a
- complete string. Numbers specify how many times following character or expression shall
- be repeated. Default number of repetitions of a character or an expression is 1, unless
- explicitly specified. Nested expressions are enclosed in square brackets.
+complete string. Numbers specify how many times following character or expression shall be
+repeated. Default number of repetitions of a character or an expression is :math:`1`,
+unless explicitly specified. Nested expressions are enclosed in square brackets.
 
-Examples:
-```
-Input: "ab4c". Output: "abcccc"
-Input: "ab0c". Output: "ab"
-Input: "2[a2bc]". Output: "abbcabbc"
-Input: "2[ab3[cd]]x3yz". Output: "abcdcdcdabcdcdcdxyyyz"
-```
+Examples::
+
+    "ab4c" -> "abcccc"
+    "ab0c" -> "ab"
+    "2[a2bc]" -> "abbcabbc"
+    "2[ab3[cd]]x3yz" -> "abcdcdcdabcdcdcdxyyyz"
+
 I've been asked this problem when I was interviewing with Google. Below is my stab at it.
 """
 
 
 def solution(S):
-    """
-    Parse string problem solver.
+    """Parse syntax problem solver.
 
-    Complexity: O(n*b) where `b` is number of matched opening brackets.
-    :param str S: Input expression
-    :return str: Final string
+    Complexity:
+        :math:`O(nb)` where :math:`b` is number of matched opening brackets.
+
+    :param str S: Input expression.
+    :return: Final string.
     """
     parse_tree = tokenize(S)
     return reconstruct(parse_tree)
@@ -35,23 +37,26 @@ Auxiliary routines and constants used in the solution
 
 
 def tokenize(S):
-    """
-    Tokenize the string and build the parse tree.
+    """Tokenizes the string and builds the parse tree.
 
     Tokenization algorithm is based on a finite string automata. It has 3 states:
-     a) Parse digits into integer values (collected number is kept as number of pattern
-      repetitions during the next state switch).
-     b) Tokenize parenthesized expression (enclosed expression is recursively tokenized).
-     c) Tokenize single character.
+
+    A. Parse digits into integer values (collected number is kept as number of pattern
+       repetitions during the next state switch);
+    B. Tokenize parenthesized expression (enclosed expression is recursively tokenized);
+    C. Tokenize single character.
 
     State of the automata is triggered based on a character encountered. State is held
-     until another trigger occurs. Result of this algorithm is a list representation of
-     a parse tree, containing tokenized characters, nested and repeated expressions.
+    until another trigger occurs. Result of this algorithm is a list representation of a
+    parse tree, containing tokenized characters, nested and repeated expressions.
 
-    Complexity: O(n*b) where `b` is number of matched opening brackets that may spawn
-     recursive expression traversal.
-    :param str S: Input string
-    :return list: Parse tree list representation
+    Complexity:
+        :math:`O(nb)` where :math:`b` is number of matched opening brackets that spawn
+        recursive expression traversal.
+
+    :param str S: Input string.
+    :return: Parse tree as a multilevel ``list``.
+
     """
     n = len(S)
     buffer = []
@@ -89,12 +94,14 @@ def tokenize(S):
 
 
 def reconstruct(T):
-    """
-    Builds final string off a parse tree.
+    """Builds final string off a parse tree.
 
-    Complexity: O(n) where `n` is length of a final string
-    :param list T: Parse tree of a tokenized expression
-    :return str: Final string
+    Complexity:
+        :math:`O(n)` where :math:`n` is length of a final string.
+
+    :param list T: Parse tree of a tokenized expression.
+    :return: Final string.
+
     """
     out = ''
     for t in T:

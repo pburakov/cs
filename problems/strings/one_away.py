@@ -1,31 +1,36 @@
 """
-# One Away
+One Away
+========
 
 Write an algorithm to evaluate if two strings are one edit away from each other. Edit
- operation include deletion, insertion or replacement of a character.
+operation include deletion, insertion or replacement of a character.
 
-Examples:
-```
- "pale", "ale" -> True
- "ple", "pale" -> True
- "pale", "gale" -> True
- "pale", "bake" -> False
-```
-This problem is described in detail in Gayle McDowell's book "Cracking the Coding
- Interview".
+Examples::
+
+    "pale", "ale" -> True
+    "ple", "pale" -> True
+    "pale", "gale" -> True
+    "pale", "bake" -> False
+
+This problem is described in detail in Gayle McDowell's book *Cracking the Coding
+Interview*.
+
 """
 
 
 def solution(A, B):
-    """
-    One away linear time problem solver.
+    """One away linear time problem solver.
 
     Subroutines are divided for code clarity, but they can be combined.
 
-    Complexity: O(n)
-    :param str A: First string
-    :param str B: Second string
-    :return bool: True if `A` and `B` are one edit away from each other, False otherwise
+    Complexity:
+        :math:`O(n)`.
+
+    :param str A: First string.
+    :param str B: Second string.
+    :return: :data:`True` if strings are one edit away from each other, :data:`False`
+     otherwise.
+
     """
     if len(A) == len(B):
         return one_replacement_away(A, B)
@@ -40,15 +45,17 @@ Auxiliary routines used in the solution
 
 
 def one_replacement_away(A, B):
-    """
-    Subroutine, determining if two strings are more than one replacement away.
+    """Subroutine, determining if two strings are more than one replacement away.
 
-    Complexity: O(n) where `n` is the length of string, and `A` and `B` are of the same
-     length.
-    :param str A: First string
-    :param str B: Second string
-    :return bool: True if `A` and `B` are one replacement away from each other, False
+    Complexity:
+        :math:`O(n)` where :math:`n` is the length of string, assuming strings :math:`A`
+        and :math:`B` are of the same length.
+
+    :param str A: First string.
+    :param str B: Second string.
+    :return: :data:`True` if strings are one replacement away from each other, :data:`False`
      otherwise.
+
     """
     errors = 0
     for i in range(0, len(A)):
@@ -60,14 +67,15 @@ def one_replacement_away(A, B):
 
 
 def one_insert_away(A, B):
-    """
-    Subroutine, determining if two strings are more than one insert/delete away.
+    """Subroutine, determining if two strings are more than one insertion away.
 
-    Complexity: O(n) where `n` is the length of a smaller string
-    :param str A: First string
-    :param str B: Second string
-    :return bool: True if `A` and `B` are one insert/delete away from each other, False
-     otherwise.
+    Complexity:
+        :math:`O(n)` where :math:`n` is the length of a smaller string.
+
+    :param str A: First string.
+    :param str B: Second string.
+    :return: :data:`True` if strings are one insertion or deletion away from each other,
+     :data:`False` otherwise.
     """
     a, b = 0, 0  # Rolling indices
     errors = 0
