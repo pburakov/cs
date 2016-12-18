@@ -4,15 +4,14 @@ This repository was created and used during my preparation for technical intervi
  
 Have fun! 
 
-## Description
-The code is written in Python 3. [PyCharm IDE](https://www.jetbrains.com/pycharm) is a great
- tool to navigate this code. 
- 
-Modules are organized by subject and accompanied by lots of comments. I often use
- single-letter variables, because that is how they appear in the most academic descriptions
- such as CLRS ("Introduction to Algorithms" by Thomas Cormen at al).
+___
+The code is written in Python 3. [PyCharm IDE](https://www.jetbrains.com/pycharm) is a great 
+ tool to navigate this code. Modules are organized by subject and accompanied by lots of 
+ comments. I often use single-letter variables, only because that is how they appear in the 
+ most academic descriptions such as CLRS ("Introduction to Algorithms" by Thomas Cormen 
+ et al).
 
-## Disclaimer
+#### Disclaimer
 This repository was created for personal use for the purpose of study. I do not 
  encourage production use of any of these code snippets.
 
