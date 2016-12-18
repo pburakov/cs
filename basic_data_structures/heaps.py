@@ -1,4 +1,7 @@
 """
+Binary Heap
+===========
+
 Binary heap is a basic implementation of a **priority queue**. Although heap is presented
 as a binary tree, is is usually implemented as an array (or a list in Python) because the
 tree representation of a heap is nearly complete.

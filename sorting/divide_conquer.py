@@ -1,3 +1,9 @@
+"""
+Divide and Conquer Sorting Algorithms
+=====================================
+"""
+
+
 def quicksort(A, p=0, r=None):
     """Sorts an array of objects in place using quicksort algorithm.
 

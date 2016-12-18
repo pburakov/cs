@@ -1,3 +1,9 @@
+"""
+Comparison Sorting Algorithms
+=============================
+"""
+
+
 def bubble_sort(A):
     """Sorts an array of objects in place using bubble sorting algorithm.
 

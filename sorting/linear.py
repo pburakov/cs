@@ -1,3 +1,9 @@
+"""
+Linear Sorting Algorithms
+=========================
+"""
+
+
 def counting_sort(A, k):
     """Sorts an array of integer elements using counting sort and returns sorted array.
 
@@ -134,9 +140,9 @@ def digit_counting_sort(A, i, b=10):
 
     :param list[int] A: Input array.
     :param int i: Digit to sort on (reversed). :math:`i=0` being the least significant
-    digit.
+     digit.
     :param int b: Base of integers in the input array. Base here serves as an upper bound
-    :math:`k` for digits involved in sorting. Default base is 10.
+     :math:`k` for digits involved in sorting. Default base is 10.
     :return: Sorted array.
 
     """
@@ -171,7 +177,7 @@ def get_digit(n, i, b=10):
 
     :param int n: Input integer.
     :param int i: Digit to return (reversed). :math:`i=0` being the least significant
-    digit. Using out-of-bounds :math:`i` will produce trailing 0.
+     digit. Using out-of-bounds :math:`i` will produce trailing 0.
     :param int b: Base of :math:`n` (default base is 10).
     :return: :math:`i`-th digit of an input integer or trailing 0.
 
