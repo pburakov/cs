@@ -75,7 +75,7 @@ def dequeue(Q):
         :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
-    :return: A pointer to an element at the head of the queue.
+    :return: A pointer to a removed element.
 
     """
     if Q.length == 0:

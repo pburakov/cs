@@ -80,7 +80,7 @@ def pop(S):
         :math:`O(1)`.
 
     :param Stack S: Instance of a stack.
-    :return: A pointer to an element at the top of the stack.
+    :return: A pointer to a removed element.
     """
     if stack_empty(S):
         raise ValueError("Stack underflow")
