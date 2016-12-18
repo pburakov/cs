@@ -1,10 +1,14 @@
 def bubble_sort(A):
     """Sorts an array of objects in place using bubble sorting algorithm.
 
-    Bubble Sort is considered one the most ineffective sorting methods. It makes *n* runs over the whole array. In every pass it iterates backwards over the yet-to-be-sorted part and repeatedly swaps neighbour elements that are out of order. As a result elements "bubble" up or down (depending on sorting direction) in the array.
+    Bubble Sort is considered one the most ineffective sorting methods. It makes *n* runs
+    over the whole array. In every pass it iterates backwards over the yet-to-be-sorted
+    part and repeatedly swaps neighbour elements that are out of order. As a result
+    elements "bubble" up or down (depending on sorting direction) in the array.
 
     Complexity
-        Average/worst :math:`O(n^2)`. :math:`O(n)` if array is already sorted. Bubble sort is a stable in-place sorting algorithm.
+        Average/worst :math:`O(n^2)`. :math:`O(n)` if array is already sorted. Bubble sort
+        is a stable in-place sorting algorithm.
 
     :param list A: Array to sort
     :return: None. Input array is mutated
@@ -21,12 +25,18 @@ def bubble_sort(A):
 def heap_sort(A):
     """Sorts an array of objects in place using heap sorting algorithm.
 
-    Heap Sort takes an advantage of one of the main properties of the max-heap, that is that the max element is always at the top of the heap. For more information about the max-heap data structure, see trees/max_heap.
+    Heap Sort takes an advantage of one of the main properties of the max-heap, that is
+    that the max element is always at the top of the heap. For more information about the
+    max-heap data structure, see trees/max_heap.
 
-    Heap sort is performed in-place, and `max_heapify()` is applied to a reduced subset of an input array after each iteration. Heap sort is one of the most optimal sorting algorithms using comparison model.
+    Heap sort is performed in-place, and `max_heapify()` is applied to a reduced subset of
+    an input array after each iteration. Heap sort is one of the most optimal sorting
+    algorithms using comparison model.
 
     Complexity:
-        :math:`O(n \log n)`. Heap Sort is not stable, its runtime depends on the implementation of the heap. Heap is built in :math:`n` time, each of :math:`n-1` calls to heapify function takes :math:`\log n`.
+        :math:`O(n \log n)`. Heap Sort is not stable, its runtime depends on the
+        implementation of the heap. Heap is built in :math:`n` time, each of :math:`n-1`
+        calls to heapify function takes :math:`\log n`.
 
     :param list A: Array to sort
     :return: None. Input array is mutated.
@@ -49,12 +59,18 @@ def heap_sort(A):
 def insertion_sort(A):
     """Sorts an array of objects in place using insertion sorting algorithm.
 
-    Insertion Sort traverses the list starting with a second element and assumes that items to the left of the pointer are already sorted. It "picks" the next element to the right of the pointer and puts it in its position in the sorted part of an array, iteratively comparing it with previous elements. The best analogy for insertion sort is sorting a hand of cards.
+    Insertion Sort traverses the list starting with a second element and assumes that items
+    to the left of the pointer are already sorted. It "picks" the next element to the right
+    of the pointer and puts it in its position in the sorted part of an array, iteratively
+    comparing it with previous elements. The best analogy for insertion sort is sorting a
+    hand of cards.
 
-    Insertion Sort generally shows good performance on small number of elements due to less constant-time operations (compared to merge sort, for example).
+    Insertion Sort generally shows good performance on small number of elements due to less
+    constant-time operations (compared to merge sort, for example).
 
     Complexity:
-        Best :math:`O(n)`. Average/worst :math:`O(n^2)`. Insertion Sort is stable, swaps elements in place and does not require additional storage.
+        Best :math:`O(n)`. Average/worst :math:`O(n^2)`. Insertion Sort is stable, swaps
+        elements in place and does not require additional storage.
 
     :param list A: Array to sort
     :return: None. Input array is mutated.
