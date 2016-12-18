@@ -1,6 +1,6 @@
 This repository was created and used during my preparation for technical interviews as a 
- way to brush up and summarize (and keep) my CS and problem-solving skills. Maybe it will be 
- useful to someone else. That's why it's here. 
+ way to brush up and summarize my CS and problem-solving skills. Maybe it will be useful 
+ to someone else one day. That's why it's here. 
  
 Have fun!
 
