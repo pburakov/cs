@@ -1,14 +1,21 @@
+"""
+Numerical Algorithms
+====================
+"""
+
+
 def base(I, b):
-    """
-    Base converter.
+    """Base converter.
 
-    Converts decimal number into base representation of 2 through 16.
+    Converts decimal number into base representation of :math:`2` through :math:`16`.
 
-    Complexity: O(n) pseudo-polynomial time where `n` is number of times integer can be
-     divided by 2.
-    :param int I: Decimal integer
-    :param int b: Radix base
-    :return str: Binary string
+    Complexity:
+        :math:`O(n)` pseudo-polynomial time where :math:`n` is number of times integer can
+        be divided by radix base.
+
+    :param int I: Decimal integer.
+    :param int b: Radix base.
+    :return: Base representation as a string.
     """
     if not 1 < b <= 16:
         raise ValueError("Unable to convert to base {}".format(b))
@@ -20,13 +27,14 @@ def base(I, b):
 
 
 def gcd(a, b):
-    """
-    Returns greatest common divisor using Euclid's method.
+    """Returns greatest common divisor using Euclid's method.
 
-    Complexity: O(n) where `n` is the larger number
-    :param int a: First integer
-    :param int b: Second integer
-    :return int: GCD of two integers
+    Complexity:
+        :math:`O(n)` where :math:`n` is the larger number.
+
+    :param int a: First integer.
+    :param int b: Second integer.
+    :return: GCD of two integers.
     """
     while b:
         a, b = b, a % b
@@ -34,18 +42,23 @@ def gcd(a, b):
 
 
 def ϕ(n):
-    """
-    Euler's totient function.
+    """Euler's totient function.
 
-    Euler's totient function (also called Euler's phi function) counts the positive
-     integers up to a given integer n that are relatively prime to n. It's the number of
-     integers `k` in the range `1 ≤ k ≤ n` for which the greatest common divisor is `1`.
+    Euler's totient function (also called Euler's :math:`\phi` (phi) function) counts the
+    positive integers up to a given integer n that are relatively prime to n. It's the
+    number of integers :math:`k` in range :math:`1 ≤ k ≤ n` for which the greatest common
+    divisor :math:`gcd(k, n) = 1`.
+
+    For example, the totatives of :math:`n=9` are :math:`\{1, 2, 4, 5, 7, 8\}`. All numbers
+    in this set are relatively prime to 9, therefore :math:`\phi (9) = 6`.
 
     This function plays a key role in the definition of RSA encryption system.
 
-    Complexity: O(n^2)
-    :param int n: Input integer
-    :return int: Number of relatively prime numbers in sequence.
+    Complexity:
+        :math:`O(n^2)`.
+
+    :param int n: Input integer.
+    :return: Number of relatively prime numbers in sequence.
     """
     count = 0
     for k in range(1, n + 1):
