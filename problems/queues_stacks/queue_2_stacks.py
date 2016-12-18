@@ -1,34 +1,38 @@
 """
-# Queue of Two Stacks
+Queue of Two Stacks
+===================
 
-Implement a queue using two stacks.
+Implement a queue using two stacks. Queue has to support normal `enqueue` and `dequeue`
+operations.
+
 """
 
 
 class Queue:
+    """Implementation of a Queue using two stacks.
+
+    Implementation details: Let stack 1 serve as a main storage. Let stack 2 be used as an
+    auxiliary storage that we're going to use to rearrange items on dequeue. To keep aux
+    stack from redundant rearrangement, store a flag that it's safe to use it.
+
+    Stacks are implemented using Python lists (to save us some coding time).
+    :func:`append()` and :func:`pop()` operations are :math:`O(1)`.
+
+    """
+
     def __init__(self):
-        """
-        Implementation of a Queue using two stacks.
-
-        Implementation details: Let stack 1 serve as a main storage. Let stack 2 be used
-         as an auxiliary storage that we're going to use to rearrange items on dequeue.
-         To keep aux stack from redundant rearrangement, store a flag that it's safe to
-         use it.
-
-        Stacks are implemented using Python lists (to save us some coding time).
-         `append()` and `pop()` operations are O(1).
-        """
         self.main = []
         self.aux = []
         self.use_aux = False
 
     def enqueue(self, x):
-        """
-        Puts new item into the queue.
+        """Puts new item into the queue.
 
-        Complexity: O(n) where `n` is the current number of items in the queue.
+        Complexity:
+            :math:`O(n)` where :math:`n` is the current number of items in the queue.
+
         :param object x: Object to insert
-        :return None: Queue is updated
+
         """
         if self.use_aux is True:  # Rearrangement is required
             n = len(self.aux)
@@ -39,11 +43,13 @@ class Queue:
         self.use_aux = False
 
     def dequeue(self):
-        """
-        Removes an item from the head of the queue.
+        """Removes an item from the head of the queue and returns it.
 
-        Complexity: O(n) where `n` is the current number of items in the queue.
-        :return object: Removed object.
+        Complexity:
+            :math:`O(n)` where :math:`n` is the current number of items in the queue.
+
+        :return: Pointer to a removed object.
+
         """
         n = len(self.main)
         if self.use_aux is False:  # Rearrangement is required
