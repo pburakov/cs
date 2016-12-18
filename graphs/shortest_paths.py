@@ -118,14 +118,14 @@ def dijkstra(G, s):
     :param Vertex s: Starting vertex
     :return None: Graph vertices are updated
     """
-    from basic_data_structures.heaps import build_min_heap, heap_extract_min
+    from basic_data_structures.heaps import build_min_heap, min_heap_extract
 
     initialize_single_source(G, s)
     S = []  # Set of vertices whose final shortest-path weights have been determined
     Q = G.V
     while len(Q) > 0:
         build_min_heap(Q)  # Weights might have been updated after relaxation
-        u = heap_extract_min(Q, False)  # Heap rebuilding is skipped
+        u = min_heap_extract(Q, False)  # Heap rebuilding is skipped
         S.append(u)
         for v in G.Adj(u):
             relax(u, v)

@@ -40,25 +40,6 @@ def max_heapify(A, i, n=None):
         pass  # No changes
 
 
-def min_heapify(A, i, n=None):
-    """Rearranges elements in array to maintain max-heap properties.
-    """
-    if n is None:
-        n = len(A)
-    l = 2 * i + 1
-    r = 2 * i + 2
-    i_smallest = i
-    if l < n and A[l] < A[i]:
-        i_smallest = l
-    if r < n and A[r] < A[i_smallest]:
-        i_smallest = r
-    if i_smallest != i:
-        A[i], A[i_smallest] = A[i_smallest], A[i]
-        min_heapify(A, i_smallest, n)
-    else:
-        pass
-
-
 def build_max_heap(A):
     """Rearranges an array into a representation of a max-heap.
 
@@ -77,16 +58,7 @@ def build_max_heap(A):
         max_heapify(A, i)
 
 
-def build_min_heap(A):
-    """Rearranges an array into a representation of a min-heap.
-    """
-    i_n = len(A) - 1
-    i_n_p = i_n // 2
-    for i in range(i_n_p, -1, -1):
-        min_heapify(A, i)
-
-
-def heap_extract_max(A, fix=True):
+def max_heap_extract(A, fix=True):
     """Removes max element from the top of the heap and returns it.
 
     Array is mutated in the process.
@@ -113,23 +85,6 @@ def heap_extract_max(A, fix=True):
         return m
 
 
-def heap_extract_min(A, fix=True):
-    """Removes min element from the top of the heap and returns it.
-    """
-    n = len(A)
-    i_n = n - 1
-    if n < 1:
-        raise ValueError("Heap underflow")
-    elif n == 1:
-        return A.pop(0)
-    else:
-        m = A[0]
-        A[0] = A.pop(i_n)
-        if fix is True:
-            min_heapify(A, 0)
-        return m
-
-
 def max_heap_increase_key(A, i):
     """Causes element in a heap to "bubble up" to its appropriate position.
 
@@ -145,15 +100,6 @@ def max_heap_increase_key(A, i):
     if p >= 0 and A[i] > A[p]:
         A[p], A[i] = A[i], A[p]  # Exchange child with parent
         max_heap_increase_key(A, p)  # Repeat one level up
-
-
-def min_heap_increase_key(A, i):
-    """Causes element in a heap to "bubble up" to its appropriate position.
-    """
-    p = (i - 1) // 2
-    if p >= 0 and A[i] < A[p]:
-        A[p], A[i] = A[i], A[p]
-        min_heap_increase_key(A, p)
 
 
 def max_heap_insert(A, z):
@@ -173,6 +119,65 @@ def max_heap_insert(A, z):
     i_n = n - 1  # Index of last element
     if n > 1:
         max_heap_increase_key(A, i_n)
+
+
+"""
+Mirrored algorithms for min-heap
+"""
+
+
+def min_heapify(A, i, n=None):
+    """Rearranges elements in array to maintain max-heap properties.
+    """
+    if n is None:
+        n = len(A)
+    l = 2 * i + 1
+    r = 2 * i + 2
+    i_smallest = i
+    if l < n and A[l] < A[i]:
+        i_smallest = l
+    if r < n and A[r] < A[i_smallest]:
+        i_smallest = r
+    if i_smallest != i:
+        A[i], A[i_smallest] = A[i_smallest], A[i]
+        min_heapify(A, i_smallest, n)
+    else:
+        pass
+
+
+def build_min_heap(A):
+    """Rearranges an array into a representation of a min-heap.
+    """
+    i_n = len(A) - 1
+    i_n_p = i_n // 2
+    for i in range(i_n_p, -1, -1):
+        min_heapify(A, i)
+
+
+def min_heap_extract(A, fix=True):
+    """Removes min element from the top of the heap and returns it.
+    """
+    n = len(A)
+    i_n = n - 1
+    if n < 1:
+        raise ValueError("Heap underflow")
+    elif n == 1:
+        return A.pop(0)
+    else:
+        m = A[0]
+        A[0] = A.pop(i_n)
+        if fix is True:
+            min_heapify(A, 0)
+        return m
+
+
+def min_heap_increase_key(A, i):
+    """Causes element in a heap to "bubble up" to its appropriate position.
+    """
+    p = (i - 1) // 2
+    if p >= 0 and A[i] < A[p]:
+        A[p], A[i] = A[i], A[p]
+        min_heap_increase_key(A, p)
 
 
 def min_heap_insert(A, z):
