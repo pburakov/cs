@@ -54,24 +54,6 @@ def ϕ(n):
     return count
 
 
-def swap(a, b):
-    """
-    Swaps two integers without using extra memory.
-
-    Bitwise XOR sets the bits in the result to 1 if either, but not both, of the
-     corresponding bits in the two operands is 1.
-
-    Complexity: O(1), no extra space.
-    :param int a:
-    :param int b:
-    :return tuple:
-    """
-    a ^= b
-    b ^= a
-    a ^= b
-    return a, b
-
-
 """
 Constants used in this module
 """
