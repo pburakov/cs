@@ -1,29 +1,33 @@
 """
-# Three Sum
+Three Sum
+=========
 
 Find integer triplets in an array with the sum of 0.
 
-Example:
-```
- Input: [1, -6, 3, 8, -2, 2] -> sort -> [-6, -2, 1, 2, 3, 8]
- Output: (-6, -2, 8)
-```
-This might seem like a trivial problem, yet it can be regarded as a decently good
- approach to iterating the array using three pointers in quadratic time.
+Example::
+
+    Input: [1, -6, 3, 8, -2, 2] -> sort -> [-6, -2, 1, 2, 3, 8]
+    Output: (-6, -2, 8)
+
 """
 
 
 def solution(A):
-    """
-    Finds integers triplets in an array with the sum of 0.
+    """Finds integers triplets in an array with the sum of zero.
 
-    First two pointers go forward one after another and third one traverses array
-     backwards. An array has to be sorted first in order to correctly find all possible
-     solutions and break the traversal when no further solution can be found.
+    First two pointers go forward one after another and third one traverses array backwards.
+    An array has to be sorted first in order to correctly find all possible solutions and
+    break the traversal when no further solution can be found.
 
-    Complexity: O(n^2)
-    :param list[int] A: Input array
-    :return list[tuple]: List of output integer triplets
+    This solution has interesting approach to iterating the array using three pointers in
+    quadratic time.
+
+    Complexity:
+        :math:`O(n^2)`.
+
+    :param list[int] A: Input array.
+    :return: List of output integer triplets.
+
     """
     n = len(A)
     P = []

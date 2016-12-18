@@ -1,33 +1,35 @@
 """
-# Longest Increasing Path in a Matrix
+Longest Increasing Path in a Matrix
+===================================
 
 In a two-dimensional matrix or integers, find the length of a path of increasing numbers.
- Ony vertical or horizontal moves are allowed (no diagonals).
+Ony vertical or horizontal moves are allowed (no diagonals).
 
-Example:
-```
-Input:
-   [[3, 6, 7, 5],
-    [2, 8, 9, 1],
-    [4, 8,10, 0],
-    [6, 7, 3, 9]]
-Output: 6
-(path: 2->3->6->7->9->10)
-```
+Example::
+
+    Input:
+       [[3, 6, 7, 5],
+        [2, 8, 9, 1],
+        [4, 8,10, 0],
+        [6, 7, 3, 9]]
+    Output: 6 (path: 2->3->6->7->9->10)
+
 """
 
 
-def scan(M):
-    """
-    Longest increasing path solver.
+def solution(M):
+    """Longest increasing path solver.
 
-    Constructs the cache and runs DFS-like longest path subroutine for every element in
-     the matrix.
+    Constructs the cache and runs DFS-like longest path subroutine for every element in the
+    matrix.
 
-    Complexity: O(n) where `n` is the total number of cells, O(n) space is used for
-     memoization.
-    :param list[list[int]] M: Input matrix
-    :return int: Length of a longest increasing path in the matrix
+    Complexity:
+        :math:`O(n)` where :math:`n` is the total number of cells, :math:`O(n)` space is
+        used for memoization.
+
+    :param list[list[int]] M: Input matrix.
+    :return: Length of a longest increasing path in the matrix.
+
     """
     cache = [[0 for _ in range(len(M[0]))] for _ in range(len(M))]
     maximum = 0
@@ -43,23 +45,25 @@ Auxiliary subroutines used in the solution
 """
 
 
-def longest_path(M, x, y, cache) -> int:
-    """
-    Longest increasing path subroutine.
+def longest_path(M, x, y, cache):
+    """Longest increasing path subroutine.
 
     DFS-like path search algorithm with memoization. We evaluate the path in 4 possibly
-     directions from every cell in the matrix.
+    directions from every cell in the matrix.
 
-    Complexity: O(1) amortized time. First run might give us O(n) runtime, but the use of
-     memoization allows to calculate longest path exactly once for each cell, so every
-     consecutive call will give O(1). Previously computed values are pulled from the
-     cache. This allows dramatic optimization over O(4^n) if going in each direction
-     recursively.
-    :param list[list[int]] M: Input matrix
-    :param int x: Vertical coordinate
-    :param int y: Horizontal coordinate
-    :param list[list[int]] cache: Memoized solutions cache
-    :return int: Length of a longest path starting at `x` and `y`
+    Complexity:
+        :math:`O(1)` amortized time. First run might give us :math:`O(n)` runtime, but the
+        use of memoization allows to calculate longest path exactly once for each cell, so
+        every consecutive call with the same argument will give :math:`O(1)`. Previously
+        computed values are pulled from the cache. This allows dramatic optimization over
+        :math:`O(4^n)` if going in each direction recursively.
+
+    :param list[list[int]] M: Input matrix.
+    :param int x: Vertical coordinate.
+    :param int y: Horizontal coordinate.
+    :param list[list[int]] cache: Memoized solutions cache.
+    :return: Length of a longest path starting at given coordinates.
+
     """
     if cache[x][y] != 0:
         return cache[x][y]
