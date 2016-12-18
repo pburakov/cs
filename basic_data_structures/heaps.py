@@ -1,27 +1,44 @@
 """
-Binary heap is a basic implementation of a **priority queue**. Although heap is presented as a binary tree, is is usually implemented as an array (or a list in Python) because the tree representation of a heap is nearly complete.
+Binary heap is a basic implementation of a **priority queue**. Although heap is presented
+as a binary tree, is is usually implemented as an array (or a list in Python) because the
+tree representation of a heap is nearly complete.
 
-Given that the first index of a tree starts at `0`, the index of a child node in an array representation can be computed as `i * 2 + 1` for left side child and `i * 2 + 2` for right side child.
+Given that the first index of a tree starts at :math:`0`, the index of a child node in an
+array representation can be computed as :math:`2i + 1` for left side child and :math:`2i +
+2` for right side child.
 
-Representation invariant of a binary heap determines its main use and common variations: **max-heap** and **min-heap**. For max-heap, every element is bigger than its children (vise versa for min heap). Thus, by induction, it can be proven that the largest (or smallest in case of min-heap) element will always be on the top as long as heap properties are maintained at any modification made to its structure.
+Representation invariant of a binary heap determines its main use and common variations:
+**max-heap** and **min-heap**. For max-heap, every element is bigger than its children
+(vise versa for min heap). Thus, by induction, it can be proven that the largest (or
+smallest in case of min-heap) element will always be on the top as long as heap properties
+are maintained at any modification made to its structure.
 
-Heap structure is useful when a fast *O(n)* access to the top element is required. However, the remainder of the array is kept partially unsorted. Heaps are commonly in various algorithms. This heap implementation contains various additional properties, that help reducing running times in various cases.
+Heap structure is useful when a fast :math:`O(1)` access to the top element is required.
+However, the remainder of the array is kept partially unsorted. Heaps are commonly in
+various algorithms. This heap implementation contains various additional properties, that
+help reducing running times in various cases.
 """
 
 
 def max_heapify(A, i, n=None):
     """Rearranges elements in array to maintain max-heap properties.
 
-    It implicitly assumes that binary trees rooted at indexes :math:`l` and :math:`r` (children of :math:`A[i]`) are max-heaps, but that :math:`A[i]` might violate max-heap property of being larger element.
+    It implicitly assumes that binary trees rooted at indexes :math:`l` and :math:`r`
+    (children of :math:`A[i]`) are max-heaps, but that :math:`A[i]` might violate max-heap
+    property of being larger element.
 
-    This algorithm lets the value at :math:`A[i]` "float-down" in the max-heap. As a result of this operation, the subtree rooted at index :math:`i` obeys the max-heap property.
+    This algorithm lets the value at :math:`A[i]` "float-down" in the max-heap. As a
+    result of this operation, the subtree rooted at index :math:`i` obeys the max-heap
+    property.
 
     Complexity:
-        :math:`O(\log n)` due to recurrence, or :math:`O(h)` where :math:`h` is the height of the heap.
+        :math:`O(\log n)` due to recurrence, or :math:`O(h)` where :math:`h` is the height
+        of the heap.
 
     :param list A: Array to heapify.
     :param int i: Integer index of an element to float down.
-    :param int n: Optional integer length of the subset of an input array (used in heap sort). When defined, array won't be "heapified" below index of :math:`n-1`.
+    :param int n: Optional integer length of the subset of an input array (used in heap
+     sort). When defined, array won't be "heapified" below index of :math:`n-1`.
 
     """
     if n is None:
@@ -43,7 +60,8 @@ def max_heapify(A, i, n=None):
 def build_max_heap(A):
     """Rearranges an array into a representation of a max-heap.
 
-    Heap is built in a "bottom-up" manner, starting at second to last level of nodes and ensuring that the heap properties are maintained.
+    Heap is built in a "bottom-up" manner, starting at second to last level of nodes and
+    ensuring that the heap properties are maintained.
 
     Complexity:
         :math:`O(n \log n)` on upper bound, :math:`O(n)` on tighter asymptotic bound.
@@ -66,8 +84,10 @@ def max_heap_extract(A, fix=True):
     Complexity:
         :math:`O(\log n)` from use of :func:`max_heapify()`.
 
-    :param A: Array to heapify.
-    :param bool fix: Determines if heap-fixing step should be performed immediately after extraction (default is :data:`True`). Heap properties will not be guaranteed when skipped.
+    :param list A: Array to heapify.
+    :param bool fix: Determines if heap-fixing step should be performed immediately after
+     extraction (default is :data:`True`). Heap properties will not be guaranteed when
+     skipped.
     :return: Pointer to the largest elements in the array.
 
     """
@@ -88,10 +108,13 @@ def max_heap_extract(A, fix=True):
 def max_heap_increase_key(A, i):
     """Causes element in a heap to "bubble up" to its appropriate position.
 
-    It is implicitly assumed that heap properties are not violated through the rest of the heap. This method is a "bottom-up" version of max-heapify.
+    It is implicitly assumed that heap properties are not violated through the rest of the
+    heap. This method is a "bottom-up" version of max-heapify.
 
     Complexity:
-        :math:`O(h)`, where `h` is the height of the heap or worst case. :math:`O(\log n)` when element is percolated from bottom to the root.
+        :math:`O(h)`, where `h` is the height of the heap or worst case. :math:`O(\log n)`
+        when element is percolated from bottom to the root.
+
     :param list A: Array to heapify.
     :param int i: Integer index of an element to bubble up.
 
@@ -105,10 +128,12 @@ def max_heap_increase_key(A, i):
 def max_heap_insert(A, z):
     """Inserts a new element into the heap.
 
-    Newly added element is forced to bubble-up to it's appropriate position to ensure that heap properties are maintained.
+    Newly added element is forced to bubble-up to it's appropriate position to ensure that
+    heap properties are maintained.
 
     Complexity:
-        :math:`O(h)`, where :math:`h` is the height of the heap or worst case, :math:`O(\log n)`.
+        :math:`O(h)`, where :math:`h` is the height of the heap or worst case, :math:`O(
+        \log n)`.
 
     :param list A: Array to heapify.
     :param object z: A new element.
