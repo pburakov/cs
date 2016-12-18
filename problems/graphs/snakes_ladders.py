@@ -28,7 +28,7 @@ def solution(M):
     :param list[int] M: List board representation
     :return int: Minimum amount of dice throws required to reach the final cell
     """
-    from basic_data_structures.fifo import Queue, enqueue, dequeue, next as peek
+    from basic.fifo import Queue, enqueue, dequeue, next as peek
 
     visited = [False] * (len(M) + 1)  # Map of visited cells
     visited[0] = True

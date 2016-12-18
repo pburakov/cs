@@ -19,7 +19,7 @@ Output: pointer to 'c'.
 
 Your solution should use constant space.
 """
-from basic_data_structures.linked_list import LinkedList, Node
+from basic.linked_list import LinkedList, Node
 
 
 def find(L):

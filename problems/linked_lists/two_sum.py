@@ -11,7 +11,7 @@ Input: [1 -> 2 -> 3], s=2. Output: False
 Input: [1 -> 2 -> 3 -> 1 -> 6], s=2. Output: True
 ```
 """
-from basic_data_structures.linked_list import LinkedList as List
+from basic.linked_list import LinkedList as List
 
 
 def solution(L, s):

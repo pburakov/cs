@@ -26,7 +26,7 @@ def sort(A, k):
     :param int k: Max "messiness" distance
     :return None: List `A` is updated
     """
-    from basic_data_structures.heaps.min_heap import min_heap_insert, heap_extract_min
+    from basic.heaps.min_heap import min_heap_insert, heap_extract_min
 
     n = len(A)
     H = []

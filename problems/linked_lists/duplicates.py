@@ -7,7 +7,7 @@ For example,
 Given `1->1->2`, return `1->2`.
 Given `1->1->2->3->3`, return `1->2->3`.
 """
-from basic_data_structures.linked_list import Node
+from basic.linked_list import Node
 
 
 def solution(head):

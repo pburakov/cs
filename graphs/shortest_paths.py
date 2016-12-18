@@ -127,7 +127,7 @@ def dijkstra(G, s):
     :param Vertex s: Starting vertex.
 
     """
-    from basic_data_structures.heaps import build_min_heap, min_heap_extract
+    from basic.heaps import build_min_heap, min_heap_extract
 
     initialize_single_source(G, s)
     S = []  # Set of vertices whose final shortest-path weights have been determined

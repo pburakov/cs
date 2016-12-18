@@ -2,7 +2,7 @@
 Graph Search Algorithms
 =======================
 """
-from basic_data_structures.fifo import Queue, enqueue, dequeue
+from basic.fifo import Queue, enqueue, dequeue
 from graphs import Graph, Vertex
 
 

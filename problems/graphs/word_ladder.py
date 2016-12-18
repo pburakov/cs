@@ -18,8 +18,8 @@ Output: "hit" -> "hot" -> "dot" -> "dog" -> "cog" (length: 5)
 ```
 """
 
-from basic_data_structures.fifo import Queue
-from basic_data_structures.fifo import enqueue, dequeue, next as peek
+from basic.fifo import Queue
+from basic.fifo import enqueue, dequeue, next as peek
 
 
 def solution(D, s, t):
