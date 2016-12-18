@@ -1,6 +1,6 @@
 """
-Graphs
-======
+Graph Representation
+====================
 
 Graph is a linked data structure comprised of **vertices** (nodes or points) and **edges**
 (lines, arrows or arcs) representing relationships between vertices.

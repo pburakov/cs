@@ -4,7 +4,7 @@ Single Source Shortest Paths
 
 In a shortest path problem we are given a **weighted directed graph**. The weight of a
 path is the sum of weights of all of its constituent edges. Shortest path :math:`\delta
-(u, v)` is defined by a minimum path weight, that is if a path :math:`u \to v` exists, or
+(u, v)` is defined by a minimum path weight, that is if a path :math:`u → v` exists, or
 by infinity otherwise. Note that edge weights can represent different metrics, not just
 the distance.
 
