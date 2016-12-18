@@ -11,9 +11,7 @@ The code is written in Python 3. [PyCharm IDE](https://www.jetbrains.com/pycharm
  most academic descriptions such as CLRS ("Introduction to Algorithms" by Thomas Cormen 
  et al).
 
-#### Disclaimer
 This repository was created for personal use for the purpose of study. I do not 
  encourage production use of any of these code snippets.
 
-___
-Paul Burakov
+Author: Paul Burakov
