@@ -15,8 +15,8 @@ Maximum value in 8-bit representation is 2<sup>8</sup> - 1 or `255` or `1111 111
 
 **AND** operation (`&`) is used in **bit masking**. Masking to `1` allows to query bit's
  status, i.e. `5 & 1` is `1` (`0101 & 0001 = 0001`), in other words we verify that the
- least significant (rightmost) bit is set. Similarly, bit masking to `0` allows switching
- the bit off.
+ least significant bit (rightmost bit representing least power of 2, **LSB** for short) is
+ set. Similarly, bit masking to `0` allows switching the bit off.
 
 **XOR** is a logical operation that outputs true only when inputs differ (one is true, the
  other is false. Based on this definition, bitwise XOR-to-1 is commonly used for switching
@@ -48,23 +48,31 @@ def count1(x):
         x >>= 1
     return bits
 
+
 def parity(x):
     """
     Returns parity of a binary word.
 
-    Parity is true if number of set bits in a binary representation of a number.
+    Parity is 1 if a number of set bits in a binary word is odd. Parity checks are used
+     to detect single-bit errors in data stream or storage.
 
-    :param int x:
-    :return bool:
+    Complexity: O(n), where *n* is number of bits in a word
+    :param int x: Input integer
+    :return int: Parity of an input integer
     """
+    p = 0
+    while x:
+        p ^= x & 1  # Switch `p` if LSB is different from previously saved `p`
+        x >>= 1
+    return p
 
 
 def swap(a, b):
     """
     Swaps two integers in a tuple without using extra memory.
 
-    Bitwise XOR sets the bits in the result to 1 if either, but not both, of the
-     corresponding bits in the two operands is 1.
+    This algorithm is based on properties of XOR operation. Binary values are "flipped"
+     twice against each other.
 
     Complexity: O(1), no extra space.
     :param int a: Input integer
