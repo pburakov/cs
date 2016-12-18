@@ -33,7 +33,7 @@ class Queue:
         count of enqueued elements and pointers to the first and the last element in the
         queue.
 
-        :param int n: Maximum size of the queue
+        :param int n: Maximum size of the queue.
 
         """
         self.head = 0
@@ -49,12 +49,12 @@ def enqueue(Q, x):
     Exceeding allocated memory will cause a "queue overflow" error.
 
     Complexity:
-        :math:`O(1)`
+        :math:`O(1)`.
 
     :param Queue Q: Instance of a queue
     :param object x: Pointer or an instance of an element to insert into a tail of
      the queue
-    :return: None. Queue is updated
+    :return: :data:`None`. Queue is updated
 
     """
     if Q.length == Q.size:
@@ -73,7 +73,7 @@ def dequeue(Q):
     Attempt to dequeue from an empty queue will cause a "queue underflow" error.
 
     Complexity:
-        :math:`O(1)`
+        :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
     :return: A pointer to an element at the head of the queue.
@@ -96,7 +96,7 @@ def next(Q):
     Attempt to lookup next element in an empty queue will cause an "empty queue" error.
 
     Complexity:
-        :math:`O(1)`
+        :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
     :return: A pointer to an element at the head of the queue.

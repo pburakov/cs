@@ -106,7 +106,7 @@ def radix_sort(A, d, b=10):
     :param int d: Maximum number of digits for elements in array. Using out-of-bounds
      :math:`d` will result in unnecessary iterations of sorting subroutine.
     :param int b: Base of integer elements in the array (default base is 10).
-    :return: Sorted input array.
+    :return: Sorted array.
 
     """
     P = A.copy()

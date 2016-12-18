@@ -6,12 +6,12 @@ def bubble_sort(A):
     part and repeatedly swaps neighbour elements that are out of order. As a result
     elements "bubble" up or down (depending on sorting direction) in the array.
 
-    Complexity
+    Complexity:
         Average/worst :math:`O(n^2)`. :math:`O(n)` if array is already sorted. Bubble sort
         is a stable in-place sorting algorithm.
 
     :param list A: Array to sort.
-    :return: None. Input array is mutated.
+    :return: :data:`None`. Input array is mutated.
 
     """
     n = len(A)
@@ -29,9 +29,9 @@ def heap_sort(A):
     that the max element is always at the top of the heap. For more information about the
     max-heap data structure, see trees/max_heap.
 
-    Heap sort is performed in-place, and `max_heapify()` is applied to a reduced subset of
-    an input array after each iteration. Heap sort is one of the most optimal sorting
-    algorithms using comparison model.
+    Heap sort is performed in-place, and :func:`max_heapify()` is applied to a reduced
+    subset of an input array after each iteration. Heap sort is one of the most optimal
+    sorting algorithms using comparison model.
 
     Complexity:
         :math:`O(n \log n)`. Heap Sort is not stable, its runtime depends on the
@@ -39,7 +39,7 @@ def heap_sort(A):
         calls to heapify function takes :math:`\log n`.
 
     :param list A: Array to sort.
-    :return: None. Input array is mutated.
+    :return: :data:`None`. Input array is mutated.
 
     """
     from basic_data_structures.heaps.max_heap import build_max_heap
@@ -73,7 +73,7 @@ def insertion_sort(A):
         elements in place and does not require additional storage.
 
     :param list A: Array to sort.
-    :return: None. Input array is mutated.
+    :return: :data:`None`. Input array is mutated.
 
     """
     n = len(A)
