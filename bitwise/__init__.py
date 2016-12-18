@@ -1,17 +1,17 @@
 """
-# Primitive Types and Bitwise Operations
+Bit-level operations are essential, since this is how data primitives are presented and
+ operated in computer's memory.
 
-Binary operations are important to understand, because this is how numbers, characters
- and other primitives are represented in computer's memory.
+For example, integer `6` in 8-bit binary representation is `0000 0110`. Each register
+ represent whether the next power of 2 should be added to the total value, counting from
+ right (2<sup>0</sup>) to left (2<sup>8</sup>).
 
-For example, integer `6` in 8-bit binary representation is `110` or 0 • 2<sup>0</sup> + 1
- • 2<sup>1</sup> + 1 • 2<sup>2</sup>. Maximum value in 8-bit representation is
- 2<sup>8</sup> - 1 or `255` or `1111 1111`. Modern languages use 16-, 32-bit integer
- type, such as `int` and `long` in C. Python 3 has unified `int` type which has no
- conventional bounds.
+Maximum value in 8-bit representation is 2<sup>8</sup> - 1 or `255` or `1111 1111`. Modern
+ languages use 16-, 32-bit integer type, such as `unsigned int` and `long` in C. Python 3
+ has unified `int` type which has no conventional bounds.
 
-**Bitwise operators** (`&`, `|`, `^`, `~`, `>>`, `<<` ) operate on numbers treating
- them not as a single value, but as a string of bits.
+**Bitwise operators** (`&`, `|`, `^`, `~`, `>>`, `<<` ) operate on numbers treating them
+ not as a single value, but as a string of bits.
 
 **AND** operation (`&`) is used in **bit masking**. Masking to `1` allows to query bit's
  status, i.e. `5 & 1` is `1` (`0101 & 0001 = 0001`), in other words we verify that the
@@ -47,6 +47,16 @@ def count1(x):
         bits += x & 1
         x >>= 1
     return bits
+
+def parity(x):
+    """
+    Returns parity of a binary word.
+
+    Parity is true if number of set bits in a binary representation of a number.
+
+    :param int x:
+    :return bool:
+    """
 
 
 def swap(a, b):
