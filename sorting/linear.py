@@ -19,10 +19,10 @@ def counting_sort(A, k):
         Counting sort is stable and requires additional :math:`n` storage for the output
         and auxiliary working storage of size :math:`k` for count.
 
-    :param list[int] A: Array to sort
+    :param list[int] A: Array to sort.
     :param int k: Inclusive upper bound for the range of integers in the array, for
      instance for :math:`A = \{ 0, 1, 3 \}`, :math:`k = 3` or :math:`max(A)`.
-    :return: Sorted array
+    :return: Sorted array.
 
     """
     n = len(A)
@@ -66,8 +66,8 @@ def bucket_sort(A):
         :math:`O(n+k)` in average case for uniformly or evenly distributed input, where
         :math:`k` is the number of "buckets". Worst case :math:`O(n^2)`.
 
-    :param list[int] A: Input array
-    :return: Sorted array
+    :param list[int] A: Input array.
+    :return: Sorted array.
 
     """
     n = len(A)
@@ -102,11 +102,11 @@ def radix_sort(A, d, b=10):
         stable algorithm. This implementation requires additional :math:`O(n+k)` storage
         for a counting sort subroutine and additional :math:`O(n)` for the output array.
 
-    :param list[int] A: Array to sort
+    :param list[int] A: Array to sort.
     :param int d: Maximum number of digits for elements in array. Using out-of-bounds
      :math:`d` will result in unnecessary iterations of sorting subroutine.
-    :param int b: Base of integer elements in the array (default base is 10)
-    :return: Sorted input array
+    :param int b: Base of integer elements in the array (default base is 10).
+    :return: Sorted input array.
 
     """
     P = A.copy()
@@ -132,12 +132,12 @@ def digit_counting_sort(A, i, b=10):
         :math:`O(n+b)`, where :math:`n` is the number of elements in array. This is a
         stable sorting algorithm, storage requirements are :math:`O(n+b)`.
 
-    :param list[int] A: Input array
+    :param list[int] A: Input array.
     :param int i: Digit to sort on (reversed). :math:`i=0` being the least significant
     digit.
     :param int b: Base of integers in the input array. Base here serves as an upper bound
     :math:`k` for digits involved in sorting. Default base is 10.
-    :return: Sorted array
+    :return: Sorted array.
 
     """
     n = len(A)
@@ -169,11 +169,11 @@ def digit_counting_sort(A, i, b=10):
 def get_digit(n, i, b=10):
     """Returns given digit of an integer in arbitrary base representation.
 
-    :param int n: Input integer
+    :param int n: Input integer.
     :param int i: Digit to return (reversed). :math:`i=0` being the least significant
     digit. Using out-of-bounds :math:`i` will produce trailing 0.
-    :param int b: Base of :math:`n` (default base is 10)
-    :return: :math:`i`-th digit of an input integer or trailing 0
+    :param int b: Base of :math:`n` (default base is 10).
+    :return: :math:`i`-th digit of an input integer or trailing 0.
 
     """
     return (n // b ** i) % b

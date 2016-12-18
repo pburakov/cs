@@ -22,10 +22,10 @@ def quicksort(A, p=0, r=None):
         efficiency due to a small amount of constant operations in its notation. Quicksort
         is unstable, however, it does not require additional space.
 
-    :param list A: Input array
-    :param int p: Lower bound (default is :math:`0`)
-    :param int r: Upper bound (default is :math:`| A | - 1`)
-    :return: None. Input array is mutated
+    :param list A: Input array.
+    :param int p: Lower bound (default is :math:`0`).
+    :param int r: Upper bound (default is :math:`| A | - 1`).
+    :return: None. Input array is mutated.
 
     """
     if r is None:
@@ -57,8 +57,8 @@ def merge_sort(A):
         merge. Merge sort is stable and it requires additional memory to hold the sliced
         halves.
 
-    :param list A: Array to sort
-    :return: Sorted array
+    :param list A: Array to sort.
+    :return: Sorted array.
 
     """
     n = len(A)
@@ -92,10 +92,10 @@ def partition(A, p, r):
     Complexity:
         :math:`O(k)`, where :math:`k` is the size of a subarray.
 
-    :param list A: Input array
-    :param int p: Lower bound of the partition
-    :param int r: Upper bound of the partition, initial index of pivot element
-    :return: Index of final position of pivot element
+    :param list A: Input array.
+    :param int p: Lower bound of the partition.
+    :param int r: Upper bound of the partition, initial index of pivot element.
+    :return: Index of final position of pivot element.
 
     """
     x = A[r]  # Pivot element
@@ -122,9 +122,9 @@ def merge(L, R):
     Complexity:
         :math:`O(k)`, where :math:`k` is the sum of the length of two arrays.
 
-    :param list L: Sorted array
-    :param list R: Sorted array
-    :return: Merged sorted set from input arrays
+    :param list L: Sorted array.
+    :param list R: Sorted array.
+    :return: Merged sorted set from input arrays.
 
     """
     s = len(L) + len(R)  # Final size of the resulting set

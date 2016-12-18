@@ -10,8 +10,8 @@ def bubble_sort(A):
         Average/worst :math:`O(n^2)`. :math:`O(n)` if array is already sorted. Bubble sort
         is a stable in-place sorting algorithm.
 
-    :param list A: Array to sort
-    :return: None. Input array is mutated
+    :param list A: Array to sort.
+    :return: None. Input array is mutated.
 
     """
     n = len(A)
@@ -38,7 +38,7 @@ def heap_sort(A):
         implementation of the heap. Heap is built in :math:`n` time, each of :math:`n-1`
         calls to heapify function takes :math:`\log n`.
 
-    :param list A: Array to sort
+    :param list A: Array to sort.
     :return: None. Input array is mutated.
 
     """
@@ -72,7 +72,7 @@ def insertion_sort(A):
         Best :math:`O(n)`. Average/worst :math:`O(n^2)`. Insertion Sort is stable, swaps
         elements in place and does not require additional storage.
 
-    :param list A: Array to sort
+    :param list A: Array to sort.
     :return: None. Input array is mutated.
 
     """
