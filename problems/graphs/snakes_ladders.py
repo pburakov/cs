@@ -1,34 +1,38 @@
 """
-# Snakes and Ladders
+Snakes and Ladders
+==================
 
 Implement an algorithm that will find the minimum amount of dice throws required to win
- "Snake and Ladders" game.
+"Snake and Ladders" game.
 
 Game board is represented by an array with non-zero values representing index where the
- player will have to jump if he/she lands on that cell.
+player will have to jump to if he/she lands on that cell.
 
-Example:
-```
-M = [0, 0, 0, 7, 2, 0, 0, 0, 5, 0]
-Output: 2
-```
+Example::
+
+    [0, 0, 0, 7, 2, 0, 0, 0, 5, 0] -> 2
+
 """
 
 
 def solution(M):
-    """
-    Snake and Ladders minimum moves solver.
+    """Snake and Ladders minimum moves solver.
 
     Every throw of dice generates one move possibility. Together they form a graph of all
-     possible moves and associated distance, or number of preceding moves required to
-     reach that cell. Using simple breadth-first search algorithm we'll be able to find
-     the shortest distance to the last cell.
+    possible moves and associated distance, or number of preceding moves required to reach
+    that cell. Using simple breadth-first search algorithm we'll be able to find the
+    shortest distance to the last cell.
 
-    Complexity: O(V+E) where `V` is number of cells and `E` is number of possible "jumps"
-    :param list[int] M: List board representation
-    :return int: Minimum amount of dice throws required to reach the final cell
+    Complexity:
+        :math:`O(V+E)` where :math:`V` is number of cells and :math:`E` is number of
+        possible "jumps".
+
+    :param list[int] M: List board representation.
+    :return: Minimum integer amount of dice throws required to reach the final cell.
+
     """
-    from basic.fifo import Queue, enqueue, dequeue, next as peek
+    from basic.fifo import Queue
+    from basic.fifo import enqueue, dequeue, next as peek
 
     visited = [False] * (len(M) + 1)  # Map of visited cells
     visited[0] = True
@@ -58,12 +62,15 @@ Data structures used in the solution
 
 
 class Move:
+    """Snakes and Ladders move representation.
+    """
+
     def __init__(self, c, d):
-        """
-        Snakes and Ladders move representation.
+        """Snakes and Ladders move representation.
 
         :param int c: Cell number (index)
         :param int d: Distance (number of moves)
+
         """
         self.cell = c
         self.dist = d

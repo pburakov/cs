@@ -1,46 +1,56 @@
 """
-# Mars Lander
+Mars Lander
+===========
 
-Imagine you are sending a lander to Mars. Your lander has *p* probes on-board that can
- travel the shortest route at constant speed to designated points of interest for a
- scientific survey and then back following the same path. You are given a map of surface
- sized *m*x*n*, where `-` are normal tiles and `x` are rocky tiles that are impassable.
- You are also given *p* sets of coordinates *P* for all your probes. Your probes can move
- to adjacent horizontal and vertical tile, consuming 1 unit of fuel on every move. Find
- such a landing position for your lander so that the fuel consumption for all *p* probes
- is minimal. Assume that all points are reachable (not blocked by rocks).
+Imagine you are sending a lander to Mars. Your lander has :math:`p` probes on-board that
+can travel the shortest route at constant speed to designated points of interest for a
+scientific survey and then back following the same path. You are given a map of surface
+sized :math:`m×n`. Map tiles are encoded. ``X`` are rocky tiles which are impassable and
+``-`` are normal tiles.
 
-Example:
-```
-p=3; P=[(0, 0), (0, 3), (3, 1)]
-M = [
-    ['-', 'x', 'x', '-'],
-    ['-', '-', 'x', '-'],
-    ['-', '-', '-', '-'],
-    ['-', '-', '-', '-'],
-]
-Best landing site: (2, 1).
-```
+You are given set of coordinates :math:`P` of your point of interest, :math:`(x, y) \in P
+: |P| = p`, one survey point per probe. Your probes can move to adjacent horizontal and
+vertical tile, consuming exactly :math:`1` unit of fuel on every move.
+
+Find such a landing position for your lander so that the fuel consumption for all *p*
+probes is minimal. Assume that all points are reachable (not blocked by rocks).
+
+Example::
+
+    P=[(0, 0), (0, 3), (3, 1)]
+
+    M = [
+        ['-', 'X', 'X', '-'],
+        ['-', '-', 'X', '-'],
+        ['-', '-', '-', '-'],
+        ['-', '-', '-', '-'],
+    ]
+
+    solve(M, P) -> (2, 1)
+
 I was given this problem when I was interviewing at Google. Below is my stab at it.
+
 """
 
 
-def find_landing(M, P):
-    """
-    Mars landing solver.
+def solution(M, P):
+    """Mars landing solver.
 
-    The idea is to measure distances by building distance maps (fuel cost) for each
-     survey point in relation to every potential landing location. Best candidate for
-     landing would be the cell with a minimal sum of those distances.
+    The idea is to measure distances by building distance maps (fuel cost) for each survey
+    point in relation to every potential landing location. Best candidate for landing
+    would be the cell with a minimal sum of those distances.
 
     Algorithm assumes that all survey points are reachable and no region is completely
-     blocked by rocks.
+    blocked by rocks.
 
-    Complexity: O(p(mn-x)+mn) where `p` is number of probes, `mn` is the total number of
-     map tiles and `x` is the number of unpassable rocky tiles.
-    :param list[list[str]] M: Map of surface
-    :param list[tuple] P: Points of interest
-    :return tuple: Coordinates of proposed landing site
+    Complexity:
+        :math:`O(p(mn-x)+mn)` where :math:`p` is number of probes, :math:`mn` is the total
+        number of map tiles and :math:`x` is the number of unpassable rocky tiles.
+
+    :param list[list[str]] M: Map of surface.
+    :param list[tuple] P: Points of interest.
+    :return: Coordinates of proposed landing site.
+
     """
     m, n = len(M), len(M[0])
     fuel = init_dist_map(m, n)
@@ -68,20 +78,21 @@ inf = float("inf")
 
 
 def build_dist_map(M, distance_map, x, y):
-    """
-    Populates distance map from a starting point.
+    """Populates distance map from a starting point.
 
     This is a traditional bread-first search subroutine that puts distances to point
-     `(x, y)` from any other point. Similar to inverse heat map, distance gets larger as
-     BFS gets further away from the starting point. Rocky formations are excluded.
+    :math:`(x, y)` from any other point. Similar to inverse heat map, distance gets larger
+    as BFS gets further away from the starting point. Rocky formations are excluded.
 
-    Complexity: O(mn-x) where `mn` is the total number of tiles and `x` is the number of
-     impassable rocky tiles.
-    :param list[list[str]] M: Input map
-    :param list[list[int]] distance_map: Distance map
-    :param int x: Vertical axis coordinate of a starting point
-    :param int y: Horizontal axis coordinate of a starting point
-    :return None: Distance map is updated
+    Complexity:
+        :math:`O(mn-x)` where `mn` is the total number of tiles and `x` is the number of
+        impassable rocky tiles.
+
+    :param list[list[str]] M: Input map.
+    :param list[list[int]] distance_map: Mutable distance map.
+    :param int x: Vertical axis coordinate of a starting point.
+    :param int y: Horizontal axis coordinate of a starting point.
+
     """
     from queue import Queue
     q = Queue()
@@ -96,26 +107,32 @@ def build_dist_map(M, distance_map, x, y):
 
 
 def init_dist_map(m, n):
-    """
-    Initializes two-dimensional matrix, containing only zeroes.
+    """Initializes two-dimensional matrix, containing only zeroes.
 
-    Complexity: O(mn)
-    :param int m: Vertical size
-    :param int n: Horizontal size
-    :return list[list[int]]: Empty distances map
+    Complexity:
+        :math:`O(mn)`.
+
+    :param int m: Vertical size.
+    :param int n: Horizontal size.
+    :return: Empty distances map.
+
     """
     return [[0 for _ in range(n)] for _ in range(m)]
 
 
 def adj(M, x, y):
-    """
-    Generator of coordinates of adjacent tiles within bounds.
+    """Generator of coordinates of adjacent tiles within bounds.
 
-    Complexity: O(1). Will yield 4 adjacent coordinates.
-    :param list[list[str]] M: Input map
-    :param int x: Vertical axis coordinate
-    :param int y: Horizontal axis coordinate
-    :return __generator[int, int]: Coordinates of next adjacent tile
+    Will yield :math:`4` adjacent coordinates, including impassable tiles.
+
+    Complexity:
+        :math:`O(1)`.
+
+    :param list[list[str]] M: Input map.
+    :param int x: Vertical axis coordinate.
+    :param int y: Horizontal axis coordinate.
+    :return: Coordinates of next adjacent tile.
+
     """
     if x - 1 >= 0:
         yield x - 1, y
