@@ -192,8 +192,6 @@ def relax(u, v):
     Once upper bound property :math:`\delta` is achieved, it never changes. Relaxed edges
     also follow triangle inequality: :math:`\delta (s, v) ≤ \delta (s, u) + w(u, v)`.
 
-    Longest path can be calculated using negated weights.
-
     Complexity:
         :math:`O(1)`.
 

@@ -116,17 +116,21 @@ def weight(u, v):
 
 class Vertex:
     """Basic graph node with attributes.
-    """
 
-    def __init__(self, k):
-        """Basic graph node with attributes.
-
-        Depending on a running algorithm, value ``d`` represents different attributes of a
-        vertex:
+    :ivar color: Used to denote vertex discovery status.
+    :ivar d: Depending on a running algorithm, represents different attributes:
 
         - in BFS - distance to the vertex from a starting vertex;
         - in DFS - time (counter) at which it was discovered;
         - in shortest-paths - :math:`(s, v)` path-weight estimate after edge relaxation.
+    :ivar f: Time (counter) at which DFS has finished the vertex.
+    :ivar p: Pointer to a parent :data:`Vertex` (from which it was visited).
+    :ivar pt: Potential :data:`float` modifier of a vertex.
+
+    """
+
+    def __init__(self, k):
+        """Basic graph node with attributes.
 
         :param object k: Key (or label) held by a vertex
 
@@ -136,11 +140,10 @@ class Vertex:
         self.r_edges = {}  # Reverse (incoming) edges keyed by source vertex key
 
         self.d = None
-
-        self.f = None  # Time (counter) at which DFS has finished the vertex
-        self.color = None  # Used to denote vertex discovery status
-        self.p = None  # Pointer to a parent vertex (from which it was visited)
-        self.pt = 0.0  # Potential modifier of a vertex
+        self.f = None
+        self.color = None
+        self.p = None
+        self.pt = 0.0
 
     """
     Vertex comparison operators based on `d` value (used in Dijkstra edge prioritization)
