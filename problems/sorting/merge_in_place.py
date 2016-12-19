@@ -1,23 +1,32 @@
 """
-# Merge In-place
+Merge In-place
+==============
 
-Given two sorted arrays `A` and `B`, with array `B` having additional memory allocated in
- its tail to store elements from both `A` and `B`, merge both arrays in place.
+Given two sorted arrays :math:`A` and :math:`B`, array :math:`B` having additional memory
+allocated in its tail to store elements from both `A` and `B`, merge both arrays in place.
 
-Example:
-```
-merge(A=[1, 250, 600], B=[100, 200, 300, 0, 0, 0]) -> B=[1, 100, 200, 250, 300, 600]
-```
+Example::
+
+    A = [1, 250, 600]
+    B = [100, 200, 300, 0, 0, 0]
+
+    B` = [1, 100, 200, 250, 300, 600]
+
 """
 
 
-def sort(A, B):
-    """
-    Merge routine for the solution.
+def solution(A, B):
+    """Merge routine for the solution.
 
-    :param list A: First array
-    :param list B: Second array of length 2*|A|, second half filled with `0`s
-    :return list None: Sorted product goes into array `B` (in place sorting)
+    It's a special case of merge routing from `merge-sort`.
+
+    Complexity:
+        :math:`O(|B|)`.
+
+    :param list A: First array.
+    :param list B: Mutable second array of length :math:`2|A|`, second half filled with
+     ``0``.
+
     """
     n = len(A)
     a = n - 1  # pointer in array A
