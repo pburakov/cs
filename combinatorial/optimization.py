@@ -24,6 +24,7 @@ Justification, Max Cost Grid Path and many more.
 Below are some basic DP templates, that help introducing the concept. However, practical
 applications of DP go well beyond these examples and require substantial amount of practice.
 """
+from functools import wraps
 
 
 def memoize(f):
@@ -42,6 +43,7 @@ def memoize(f):
     """
     cache = {}
 
+    @wraps(f)
     def run(*args):
         if args not in cache:
             cache[args] = f(*args)
