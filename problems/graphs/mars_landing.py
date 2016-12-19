@@ -5,8 +5,8 @@ Mars Lander
 Imagine you are sending a lander to Mars. Your lander has :math:`p` probes on-board that
 can travel the shortest route at constant speed to designated points of interest for a
 scientific survey and then back following the same path. You are given a map of surface
-sized :math:`m×n`. Map tiles are encoded. ``X`` are rocky tiles which are impassable and
-``-`` are normal tiles.
+sized :math:`m \\times n`. Map tiles are encoded. ``X`` are rocky tiles which are
+impassable and ``-`` are normal tiles.
 
 You are given set of coordinates :math:`P` of your point of interest, :math:`(x, y) \in P
 : |P| = p`, one survey point per probe. Your probes can move to adjacent horizontal and

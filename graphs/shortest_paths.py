@@ -4,7 +4,7 @@ Single Source Shortest Paths
 
 In a shortest path problem we are given a **weighted directed graph**. The weight of a
 path is the sum of weights of all of its constituent edges. Shortest path :math:`\delta
-(u, v)` is defined by a minimum path weight, that is if a path :math:`u → v` exists, or
+(u, v)` is defined by a minimum path weight, that is if a path :math:`u \\to v` exists, or
 by infinity otherwise. Note that edge weights can represent different metrics, not just
 the distance.
 
@@ -117,7 +117,7 @@ def dijkstra(G, s):
 
     Complexity:
         :math:`O(E \log V)` (or :math:`O(EV)` with this implementation of min-heap). There
-        are at most :math:`|\term{reachable } E|` relax operations. If we manage to
+        are at most :math:`|\\textrm{reachable } E|` relax operations. If we manage to
         maintain heap properties after each relaxation it is possible to keep
         :func:`min_heap_extract()` operation at :math:`\log V` time. :math:`O(V  \lg V +
         E)` running time is achievable with a Fibonacci heap.

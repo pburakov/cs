@@ -1,18 +1,17 @@
 """
-# Symbolic Parentheses
+Symbolic Parentheses
+====================
 
-Given a symbolic boolean expression containing `0`s (False), `1`s (True) and symbols `^`
- (XOR), `|` (OR) and `&` (AND), count in how many ways it can be parenthesized in order
- to evaluate to a given boolean.
+Given a symbolic boolean expression containing symbols: ``0`` (False), ``1`` (True) and
+symbols ``^`` (XOR), ``|`` (OR) and ``&`` (AND), count in how many ways it can be
+parenthesized in order to evaluate to a given boolean.
 
-Examples:
-```
-count_ways("1^0|0|1", False) -> 2
-count_ways("0&0&0&1^1|0", True) -> 10
-```
+Examples::
 
-This problem is described in detail in Gayle McDowell's book "Cracking the Coding
- Interview".
+    count_ways("1^0|0|1", False) -> 2
+    count_ways("0&0&0&1^1|0", True) -> 10
+
+This problem is described in detail in Gayle McDowell's book *Cracking the Coding Interview*.
 """
 
 from combinatorial.optimization import memoize
@@ -20,18 +19,19 @@ from combinatorial.optimization import memoize
 
 @memoize
 def count_ways(S, b):
-    """
-    Recursive solution to symbolic parenthesis problem.
+    """Recursive solution to symbolic parenthesis problem.
 
-    This algorithm exhaustively evaluates all possible outcomes of parenthesizing
-     expression to the both left and right sides of every logic operator (`^`, `|`, `&`).
+    This algorithm exhaustively evaluates all possible outcomes of parenthesizing expression to the both left and right sides of every logic operator (``^``, ``|``, ``&``).
 
-    Complexity: Exponential to the number of operators, but is greatly optimized with the
-     use of memoization. There is a closed form expression that gives the correct answer,
-     which is given by the formula for Catalan numbers.
-    :param str S: Input expression
-    :param bool b: Boolean result
-    :return int: Number of ways expression `S` can be parenthesized
+    Complexity:
+        Exponential to the number of operators, but is greatly optimized with the use of
+        memoization. There is a closed form expression that gives the correct answer, which
+        is given by the formula for Catalan numbers.
+
+    :param str S: Input expression.
+    :param bool b: Boolean result.
+    :return: Integer number of ways expression `S` can be parenthesized.
+
     """
     n = len(S)
     if n == 0:

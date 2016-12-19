@@ -4,8 +4,8 @@ Knight's Tour
 
 Knight tour is a famous mathematical puzzle often given to CS students.
 
-Given a chessboard of size :math:`n × n` and a starting coordinates, find a sequence of
-moves of a knight, such that the knight visits every square only once.
+Given a chessboard of size :math:`n \\times n` and a starting coordinates, find a sequence
+of moves of a knight, such that the knight visits every square only once.
 
 Proposed solution to a Knight Tour problem is an interesting intersection of a
 combinatorial search problem and a graph path search algorithm.
@@ -15,8 +15,8 @@ combinatorial search problem and a graph path search algorithm.
 def solution(n, x, y):
     """Recursive solution of Knight's tour problem with Warnsdorff heuristic.
 
-    The chess board is represented by a two-dimensional array of size :math:`n × n`. Path
-    is represented by a consecutive move numbers on the board, starting with `1`. The
+    The chess board is represented by a two-dimensional array of size :math:`n \\times n`.
+    Path is represented by a consecutive move numbers on the board, starting with `1`. The
     board is printed out once a solution is found.
 
     Complexity:
