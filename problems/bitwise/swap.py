@@ -9,7 +9,7 @@ def swap(a, b):
     """Swaps two integers in a tuple without using extra memory.
 
     This algorithm is based on properties of XOR operation. Binary values are "flipped"
-     twice against each other.
+    twice against each other.
 
     Complexity:
         :math:`O(1)`, no extra space.

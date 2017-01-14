@@ -58,7 +58,7 @@ def parity(x):
     """Returns parity of a binary word.
 
     Parity is 1 if a number of set bits in a binary word is odd. Parity checks are used
-     to detect single-bit errors in data stream or storage.
+    to detect single-bit errors in data stream or storage.
 
     Complexity:
         :math:`O(n)`, where :math:`n` is number of bits in a word.
