@@ -41,7 +41,7 @@ def gcd(a, b):
     return a
 
 
-def ϕ(n):
+def totient(n):
     """Euler's totient function.
 
     Euler's totient function (also called Euler's :math:`\phi` (phi) function) counts the
@@ -65,6 +65,20 @@ def ϕ(n):
         if gcd(n, k) == 1:
             count += 1
     return count
+
+
+def is_probable_prime(n):
+    """Evaluates if a number is a probable prime using Fermat method.
+
+    :param int n: Input integer.
+    :return: :data:`True` is number is a probable prime, :data:`False` otherwise.
+
+    """
+    if n == 2:
+        return True
+    if not n & 1:
+        return False
+    return pow(2, n - 1, n) == 1
 
 
 """
