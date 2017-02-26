@@ -65,7 +65,7 @@ def bucket_sort(A):
 
     Implementation of bucket sort largely depends on the input data. This variant assumes
     that, for :math:`n`-sized array :math:`A`, items are uniformly distributed integers
-    across an interval :math:[0..n]`. In order to maintain stability of the sort, buckets
+    across an interval :math:`[0..n]`. In order to maintain stability of the sort, buckets
     are represented by dynamic LIFO structures or stacks.
 
     Complexity:
