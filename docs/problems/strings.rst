@@ -11,3 +11,5 @@ Strings
    :members:
 .. automodule:: problems.strings.simple_regex
    :members:
+.. automodule:: problems.strings.yoda_reverse
+   :members:
