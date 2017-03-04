@@ -2,7 +2,8 @@
 Yoda Reverse
 ============
 
-Write an algorithm to reverse the words in a string, keeping punctuation symbols in the original order.
+Write an algorithm to reverse the words in a string, keeping punctuation symbols in the
+original order.
 
 Example::
 
@@ -15,7 +16,10 @@ Example::
 def solve(S):
     """Yoda Reverse problem solver.
 
-    The algorithm first tokenizes the string. It puts every word and punctuation mark into an array in their original order. The array is then traversed with two pointers, one starting at the beginning, another one at the end. Words at the pointers are swapped, but punctuation symbols are skipped. The output string is constructed.
+    The algorithm first tokenizes the string. It puts every word and punctuation mark into
+    an array in their original order. The array is then traversed with two pointers, one
+    starting at the beginning, another one at the end. Words at the pointers are swapped,
+    but punctuation symbols are skipped. The output string is constructed.
 
     :param str S: Input string.
     :return: Reversed string.
