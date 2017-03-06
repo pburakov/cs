@@ -21,6 +21,9 @@ def solve(S):
     starting at the beginning, another one at the end. Words at the pointers are swapped,
     but punctuation symbols are skipped. The output string is constructed.
 
+    Complexity:
+        :math:`O(n)` where :math:`n` is a number of characters in a string.
+
     :param str S: Input string.
     :return: Reversed string.
 
@@ -60,6 +63,9 @@ Auxiliary routines used in the solution.
 def valid_letter(c):
     """Evaluates if input character is a letter.
 
+    Complexity:
+        :math:`O(1)` for constant character code comparison.
+
     :param str c: Input character.
     :return: :data:`True` if character is a letter, :data:`False` otherwise.
 
@@ -69,6 +75,9 @@ def valid_letter(c):
 
 def valid_word(word):
     """Evaluates if string contains only letters.
+
+    Complexity:
+        :math:`O(c)` where :math:`c` is number of characters in the string.
 
     :param str word: Input string.
     :return: :data:`True` if string is valid, :data:`False` otherwise.
