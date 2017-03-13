@@ -7,6 +7,7 @@ Trees
     :members:
 .. autoclass:: BinaryTree
 .. autoclass:: BinaryTreeNode
+
 .. automodule:: trees.bst
     :members:
 .. autoclass:: BinarySearchTree
