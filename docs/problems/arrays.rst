@@ -3,6 +3,8 @@
 Arrays
 ======
 
+.. automodule:: problems.arrays.candies
+   :members:
 .. automodule:: problems.arrays.lip
    :members:
 .. automodule:: problems.arrays.majority
