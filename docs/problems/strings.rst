@@ -3,6 +3,8 @@
 Strings
 =======
 
+.. automodule:: problems.strings.longest_unique
+   :members:
 .. automodule:: problems.strings.mws
    :members:
 .. automodule:: problems.strings.one_away
