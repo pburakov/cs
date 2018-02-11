@@ -109,12 +109,12 @@ def kmp(T, P):
     """
     n = len(T)
     m = len(P)
-    π = kmp_prefix_function(P)
+    p = kmp_prefix_function(P)
     q = 0
     out = []
     for i in range(0, n):
         while q > 0 and P[q] != T[i]:
-            q = π[q - 1]  # Next character does not match
+            q = p[q - 1]  # Next character does not match
         if P[q] == T[i]:
             q += 1  # Next character matches
         if q == m:
@@ -137,7 +137,7 @@ def kmp_prefix_function(P):
     string against the pattern, only prefix function encapsulates knowledge about how the
     pattern matches against itself.
 
-    Example table for ``P="ababaca"``: ``π=[0, 0, 1, 2, 3, 0, 1]``.
+    Example table for ``P="ababaca"``: ``p=[0, 0, 1, 2, 3, 0, 1]``.
 
     Complexity:
         :math:`O(m)` amortized.
@@ -147,12 +147,12 @@ def kmp_prefix_function(P):
 
     """
     m = len(P)
-    π = [0] * m  # Partial match table or prefix function
+    p = [0] * m  # Partial match table or prefix function
     k = 0
     for q in range(1, m):
         while k > 0 and P[k] != P[q]:
-            k = π[k - 1]
+            k = p[k - 1]
         if P[k] == P[q]:
             k += 1
-        π[q] = k
-    return π
+        p[q] = k
+    return p
