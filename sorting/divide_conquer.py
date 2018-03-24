@@ -1,6 +1,13 @@
 """
 Divide and Conquer Sorting Algorithms
 =====================================
+
+The recursive nature of merge sort and quicksort are a great example of divide-and-conquer
+technique, when the problem is broken to smaller pieces each of which is trivially solved.
+Solved parts are combined back together.
+
+Due to the use of divide-and-conquer paradigm, both quicksort and merge sort are well
+parallelized.
 """
 
 
@@ -13,20 +20,20 @@ def quicksort(A, p=0, r=None):
     the pivot point are on the right side. After such rearrangement, the final position of
     a pivot element is also its final position in a sorted array.
 
-    These left and right sub-arrays are called partitions. They are not immediately
-    sorted, and the same operation is then applied recursively to both partitions.
+    The left and right sub-arrays are called partitions. They are not immediately sorted.
+    The same operation is then ran recursively on both partitions.
 
     The key to the algorithm is in the partitioning procedure, which can be implemented in
     a variety of ways. In this implementation partitioning starts with the last item of
-    the array as the initial pivot element. Other implementations use random choice of
-    pivot to avoid worst case running time on sorted input.
+    an array as the initial pivot element. Other implementations use random choice of a
+    pivot point to avoid worst case running time on sorted input.
 
-    Quick sort parallelizes well due to the use of divide-and-conquer method.
+    Quicksort is well parallelized thanks to the use of divide-and-conquer paradigm.
 
     Complexity:
         :math:`O(n \log n)`. :math:`O(n^2)` worst case. Quicksort shows good average-case
         efficiency due to a small amount of constant operations in its notation. Quicksort
-        is unstable, however, it does not require additional space.
+        is unstable. It does not require additional space.
 
     :param list A: Input array.
     :param int p: Lower bound (default is :math:`0`).
@@ -44,23 +51,18 @@ def quicksort(A, p=0, r=None):
 def merge_sort(A):
     """Sorts an array of objects using merge-sort algorithm and returns sorted array.
 
-    Merge sort is a recursive sorting algorithm that first recursively splits an array in
-    half until it reaches two arrays containing a single element, that are already sorted
-    by definition.
+    Merge sort is a divide-and-conquer sorting algorithm that recursively splits array
+    in half, until halves a reduced to a single element, which effectively makes them
+    sorted by definition. Sorted halves are then rearranged back together.
 
-    The recursive nature of merge sort is a great example of divide-and-conquer technique,
-    when the problem is broken to smaller pieces each of which is trivially solved. Solved
-    parts are combined back together.
-
-    Merge operation does the both the "conquer" and "combine" part, merging two sorted
-    arrays. The body of the merge-sort method implements the recursive "divide", or the
-    slicing of the array. Merge sort parallelizes well due to its use of divide-and-conquer
-    formulation.
+    Merge operation does both the "conquer" and "combine" part as it produces a sorted
+    output. The body of the merge-sort method implements the recursive "divide", or the
+    slicing of the array.
 
     Complexity:
         :math:`O(n \log n)` in all cases. :math:`\log n` for splitting, :math:`n` for
-        merge. Merge sort is stable and it requires additional memory to hold the sliced
-        halves.
+        merge. Merge sort is stable. Merge sort requires additional memory to hold the
+        sliced halves.
 
     :param list A: Array to sort.
     :return: Sorted array.
@@ -85,11 +87,11 @@ def partition(A, p, r):
     """Partitioning procedure of a quicksort algorithm.
 
     Partitioning procedure rearranges subarray :math:`A[p..r]` in place. As it runs, the
-    array becomes partitioned into four (possibly empty) regions. :math:`A[p..i]` contains
-    only elements that a less than pivot element :math:`x`. :math:`A[i..j]` contains only
-    elements that are greater than :math:`x`. :math:`A[j..r]` are not covered by any of
-    these cases. :math:`A[r]` is the pivot element that is placed to its final position at
-    index :math:`i`.
+    array becomes partitioned into four (possibly empty) regions. :math:`A[p..i]`
+    contains only the elements that a less than pivot element :math:`x`. :math:`A[i..j]`
+    contains only the elements that are greater than :math:`x`. :math:`A[j..r]` are not
+    covered by any of these cases. :math:`A[r]` is the pivot element that is placed to its
+    final position at index :math:`i`.
 
     This partitioning scheme is called Lomuto. Partitioning operation has many variations
     (Hoare, parallellized quicksort and others) and is widely used in other algorithms.
@@ -116,11 +118,11 @@ def partition(A, p, r):
 def merge(L, R):
     """Merges two sorted arrays into a single array and returns it.
 
-    The algorithm repeatedly looks at elements at the two pointers, picks the one that is
-    smaller and adds it to the output. The respective pointer is then shifted one position
-    and loop is repeated.
+    The algorithm looks at elements at both sides using two pointers, picks the one that
+    is smaller and adds it to the output. The respective pointer is then shifted one
+    position and the loop is repeated.
 
-    The merge routine is often found in various algorithms, sometimes in augmented
+    The merge routine is often found in various algorithms, sometimes in its augmented
     versions. It is also used in distributed or scalable systems. There it is called
     external sort, and operates on not just two, but an arbitrary number of arrays.
 

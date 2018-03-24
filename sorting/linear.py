@@ -1,33 +1,33 @@
 """
 Linear Sorting Algorithms
 =========================
+
+Linear sorting algorithms such as counting sort, radix sort and bucket sort break the
+lower bound of comparison sort :math:`log(n)`. In fact, for each of these algorithms, no
+comparisons between input elements occur in the code.
 """
 
 
 def counting_sort(A, k):
-    """Sorts an array of integer elements using counting sort and returns sorted array.
+    """Sorts an array of integers using counting sort and returns a sorted array.
 
-    Counting sort assumes that each element in the array is an integer in the range
+    Counting sort assumes that each element in the array is an integer within the range
     :math:`[0..k]`. The algorithm determines, for each element :math:`x`, the number of
     elements less than :math:`x`. It uses this information to place element :math:`x`
-    directly into its position in the output array. The values of the elements are used to
-    index.
-
-    Counting sort algorithm breaks the lower bound of comparison sort :math:`log(n)`. In
-    fact, no comparisons between input elements occur in the code.
+    directly into its position in the output array.
 
     Note that this is a stable implementation of counting sort. Stability is not important
     for sorting arrays of integers without satellite data carried with them, but it is
-    critical, when counting sort is used as a subroutine in radix sort.
+    critical, when counting sort is used as a subroutine of a radix sort.
 
     Complexity:
         :math:`O(n+k)`, where :math:`k` is the number of distinct elements in the array.
-        Counting sort is stable and requires additional :math:`n` storage for the output
-        and auxiliary working storage of size :math:`k` for count.
+        Counting sort is a stable sorting algorithm. Counting sort requires additional
+        :math:`n` storage for the output and an auxiliary storage of size :math:`k`.
 
     :param list[int] A: Array to sort.
-    :param int k: Inclusive upper bound for the range of integers in the array, for
-     instance for :math:`A = \{ 0, 1, 3 \}`, :math:`k = 3` or :math:`max(A)`.
+    :param int k: Inclusive upper bound for the range of integers in the array. For
+     example, for :math:`A = \{ 0, 1, 3 \}`, :math:`k = 3` or :math:`max(A)`.
     :return: Sorted array.
 
     """
@@ -49,24 +49,24 @@ def counting_sort(A, k):
         # since indexes are zero-based, but the counts are not.
         i = C[e] - 1
         P[i] = e
-        # Counter is updated in order to keep next element of the same value from
-        # overwriting previous one.
+        # Counter is updated in order to keep the next element with the same value from
+        # overwriting a previous one.
         C[e] -= 1
     return P
 
 
 def bucket_sort(A):
-    """Sorts an array of integers using bucket sort algorithm and returns sorted array.
+    """Sorts an array of integers using bucket sort algorithm and returns a sorted array.
 
-    Bucket sort is fast because it makes certain assumptions about the input. It is
-    efficient when input is drawn from a uniform distribution. Evenly distributed items
-    can be sorted into individual buckets and then drawn back in order. Depending on the
-    nature of the input additional sorting routines may be performed on each bucket.
+    Bucket sort is fast because it makes assumptions about the input. It is efficient
+    when the input is drawn from a uniform distribution. Evenly distributed items can be
+    sorted into individual buckets and then drawn back in order. Depending on the nature
+    of the input, additional sorting routines may be performed on each bucket.
 
-    Implementation of bucket sort largely depends on the input data. This variant assumes
-    that, for :math:`n`-sized array :math:`A`, items are uniformly distributed integers
-    across an interval :math:`[0..n]`. In order to maintain stability of the sort, buckets
-    are represented by dynamic LIFO structures or stacks.
+    The implementation of bucket sort largely depends on the input data. This variant
+    assumes that, for :math:`n`-sized array :math:`A`, items are uniformly distributed
+    integers across an interval :math:`[0..n]`. In order to maintain stability of the
+    sort, buckets are represented by dynamic LIFO structures (stacks).
 
     Complexity:
         :math:`O(n+k)` in average case for uniformly or evenly distributed input, where
@@ -92,25 +92,26 @@ def bucket_sort(A):
 
 
 def radix_sort(A, d, b=10):
-    """Sorts an array of integer elements using radix sort and returns sorted array.
+    """Sorts an array of integer elements using radix sort and returns a sorted array.
 
-    Radix sort is the algorithm used by the old card-sorting machines. In typical
+    Radix sort is the algorithm used by the old card-sorting machines. In a typical
     computer, radix sort is sometimes used to sort records of information that are keyed
     by multiple fields. For instance, dates, represented by year, month and day.
 
     Counterintuitively, radix sort sorts by least significant digit first. The process is
-    repeated towards most significant digit until entire array is sorted. In order for
-    radix sort to work correctly digit sorts must be stable. This implementation uses an
-    adapted implementation of counting sort.
+    repeated towards the most significant digit until the entire array is sorted. In order
+    for radix sort to work correctly, the sorting of digits must be stable. This
+    implementation uses an adapted implementation of counting sort.
 
     Complexity:
-        :math:`O(d(n+k))` given an array of :math:`n` :math:`d`-digit numbers. This is a
-        stable algorithm. This implementation requires additional :math:`O(n+k)` storage
-        for a counting sort subroutine and additional :math:`O(n)` for the output array.
+        :math:`O(d(n+k))` given an array of :math:`n` :math:`d`-digit numbers. Radix sort
+         is a stable sorting algorithm. This implementation requires additional
+         :math:`O(n+k)` storage for a counting sort subroutine and additional :math:`O(n)`
+         for the output array.
 
     :param list[int] A: Array to sort.
-    :param int d: Maximum number of digits for elements in array. Using out-of-bounds
-     :math:`d` will result in unnecessary iterations of sorting subroutine.
+    :param int d: Maximum number of digits for all elements found in an array. Using
+     greater :math:`d` will result in unnecessary iterations of the sorting subroutine.
     :param int b: Base of integer elements in the array (default base is 10).
     :return: Sorted array.
 
@@ -128,19 +129,18 @@ Subroutines used in Radix Sort
 
 
 def digit_counting_sort(A, i, b=10):
-    """Stable linear-time sort of an array on a single digit.
+    """Stable linear-time sorting algorithm of an array based on a single digit.
 
     This is an adapted implementation of counting sort which sorts elements of an entire
     array based on a single digit. Differences between regular counting sort are
-    highlighted with inline comments.
+    highlighted in inline comments.
 
     Complexity:
         :math:`O(n+b)`, where :math:`n` is the number of elements in array. This is a
-        stable sorting algorithm, storage requirements are :math:`O(n+b)`.
+        stable sorting algorithm. Storage requirements are :math:`O(n+b)`.
 
     :param list[int] A: Input array.
-    :param int i: Digit to sort on (reversed). :math:`i=0` being the least significant
-     digit.
+    :param int i: Digit to sort on, :math:`i=0` being the least significant digit.
     :param int b: Base of integers in the input array. Base here serves as an upper bound
      :math:`k` for digits involved in sorting. Default base is 10.
     :return: Sorted array.
@@ -173,13 +173,13 @@ def digit_counting_sort(A, i, b=10):
 
 
 def get_digit(n, i, b=10):
-    """Returns given digit of an integer in arbitrary base representation.
+    """Returns i-th digit of an integer in an arbitrary base representation.
 
     :param int n: Input integer.
-    :param int i: Digit to return (reversed). :math:`i=0` being the least significant
-     digit. Using out-of-bounds :math:`i` will produce trailing 0.
-    :param int b: Base of :math:`n` (default base is 10).
-    :return: :math:`i`-th digit of an input integer or trailing 0.
+    :param int i: Digit to return, :math:`i=0` being the least significant digit. Using
+     greater :math:`i` will produce trailing zeroes.
+    :param int b: Base of :math:`n`. Default base is 10.
+    :return: :math:`i`-th digit of an input integer.
 
     """
     return (n // b ** i) % b
