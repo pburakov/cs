@@ -81,6 +81,32 @@ def is_probable_prime(n):
     return pow(2, n - 1, n) == 1
 
 
+def primes():
+    """An infinite generator of sequence of prime numbers.
+
+    This generator implements dynamically populated Sieve of Eratosthenes.
+
+    Composite numbers and all their found divisors are stored in a hash table as the
+    generator runs forward.
+
+    :return: Next prime.
+
+    """
+    D = {}
+    q = 2  # integer tested for primality
+    while True:
+        if q not in D:
+            yield q  # new prime is found
+            D[q * q] = [q]  # add q's next multiple - it's not prime by definition
+        else:
+            # q is not prime. p = D[q] is the list of primes that were found dividing it.
+            # Add next multiple of p - it's also not prime by definition
+            for p in D[q]:
+                D.setdefault(p + q, []).append(p)
+            del D[q]  # discard since values < q are no longer needed
+        q += 1
+
+
 """
 Constants used in this module
 """
