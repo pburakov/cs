@@ -53,8 +53,8 @@ def bfs(G, s):
         for v in G.Adj(u):
             if v.color is WHITE:
                 v.color = GRAY
-                v.d = u.d + 1
-                v.p = u
+                v.d = u.d + 1  # calculate distance to vertex v
+                v.p = u  # save pointer to parent
                 enqueue(Q, v)
         u.color = BLACK
 

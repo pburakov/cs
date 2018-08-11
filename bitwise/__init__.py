@@ -3,31 +3,30 @@ Bitwise Operations
 ==================
 
 Bit-level operations are essential, since this is how data primitives are presented and
-operated in computer's memory.
+operated in the computer's memory.
 
 For example, integer 6 in 8-bit binary representation is ``0000 0110``. Each register
-represent whether the next power of 2 should be added to the total value, counting from
-right (:math:`2^0`) to left (:math:`2^8`).
-
-Maximum value in 8-bit representation is :math:`2^8 - 1 = 255` or ``1111 1111``. Modern
-languages use 16-, 32-bit integer type, such as ``int`` and ``long`` in C. Python 3 has
-unified ``int`` type which has no conventional bounds.
+represents whether the next power of 2 should be added to the total value, counting from
+right (:math:`2^0`) to left (:math:`2^8`). Maximum value in 8-bit representation is
+:math:`2^8 - 1 = 255` or ``1111 1111``. Modern languages use 32-, 64-bit integer type, such
+as ``int`` and ``long`` in Java. Python 3 has unified ``int`` type which has no conventional
+bounds.
 
 Bitwise operators (``&``, ``|``, ``^``, ``~``, ``>>``, ``<<`` ) operate on numbers treating
 them not as a single value, but as a string of bits.
 
 AND operation (``&``) is used in **bit masking**. Masking to 1 allows to query bit's
-status, i.e. ``5 & 1 = 1`` (``0101 & 0001 = 0001``), in other words we verify that the
+status, i.e. ``5 & 1 = 1`` (``0101 & 0001 = 0001``). In other words we can verify that the
 least significant bit (rightmost bit representing least power of 2, **LSB** for short) is
-set. Similarly, bit masking to 0 allows switching the bit off.
+set. Bit masking to 0 allows switching the bit off.
 
-XOR is a logical operation that outputs true only when inputs differ (one is true, the
+XOR is a logical operation that outputs true only when the inputs differ (one is true, the
 other is false). Based on this definition, bitwise XOR-to-1 is commonly used for switching
 bit state, i.e. ``5 ^ 15 = 10`` (``0101 ^ 1111 = 1010``).
 
 **Bit shifting** will shift all the bits in a word by arbitrary number of positions.
 Shifting *n* times is roughly the analog of multiplying (``<<``) or dividing (``>>``) the
-value by :math:`2^n`. During left shift an unset bit is "shifted-in" at the least
+value by :math:`2^n`. During left shift an unset (`0`) bit is "shifted-in" at the least
 significant side. During right shift the least significant bit is discarded. For example,
 ``5 >> 1 = 2`` (``0101 >> 1 = 0010``).
 
@@ -58,7 +57,7 @@ def parity(x):
     """Returns parity of a binary word.
 
     Parity is 1 if a number of set bits in a binary word is odd. Parity checks are used
-    to detect single-bit errors in data stream or storage.
+    to detect single-bit errors in a data stream or a storage.
 
     Complexity:
         :math:`O(n)`, where :math:`n` is number of bits in a word.

@@ -3,13 +3,13 @@ Linked List
 ===========
 
 Linked list is a simple data structure in which the objects are arranged in a linear
-order. Unlike an array, however, in which elements are ordered by the array indices,
-linked list is ordered using pointers in each object. Linked list provides a simple,
-flexible, although not very efficient, representation for dynamic sets.
+order. Unlike an array, in which elements are ordered by the array indices, linked list is
+ordered using pointers to the next element. Linked list provides a simple, flexible,
+although not very efficient, representation for dynamic sets.
 
 Every node of a basic linked list holds some data, called the **key** and a reference to
 the **next** element. Last element of the singly linked list points to a null object. Head
-of the list points to a first object in the list. In order to find an element with a given
+of the list points to a first element in the list. In order to find an element with a given
 key, the list has to be searched starting at the head.
 
 There are various kinds of linked lists. For instance, the last element of a **circular
@@ -19,7 +19,7 @@ for inserting. This is an implementation of a **doubly linked** list where every
 additionally holds a reference to a previous element.
 
 Please note, that Python `list` is not implemented as a linked list. Internally Python
-lists are dynamic arrays (implemented as a vector of pointers).
+lists are dynamic arrays.
 """
 
 
@@ -30,8 +30,8 @@ class Node:
     def __init__(self, key):
         """Node of a doubly linked list.
 
-        Has a value and two pointer attributes: the next and previous adjacent element in
-        the list.
+        Holds a value (key) and two pointer attributes: the next and previous adjacent
+        element in the list.
 
         :param object key: Node's key.
 
@@ -77,7 +77,7 @@ def list_search(L, k):
 
     :param LinkedList L: An instance of a linked list.
     :param object k: A key to search.
-    :return: A pointer to a element or :data:`None` if key was not found.
+    :return: A :data:`Node` or :data:`None` if key was not found.
 
     """
     x = L.head
@@ -93,7 +93,7 @@ def list_insert(L, x):
         :math:`O(1)`, only the head pointer of a list is updated.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param Node x: Pointer to a new doubly linked list node to insert.
+    :param Node x: A new node to insert.
 
     """
     x.next = L.head
@@ -107,10 +107,10 @@ def list_delete(L, x):
     """Removes a node from a doubly linked list.
 
     Complexity:
-        :math:`O(1)`, for a known node, since only the pointers are removed.
+        :math:`O(1)` since only the pointers are removed.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param Node x: Pointer to a doubly linked list node to remove.
+    :param Node x: Pointer to a node to remove.
 
     """
     if x.prev is not None:
