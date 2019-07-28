@@ -102,9 +102,9 @@ def radix_sort(A, d, b=10):
 
     Complexity:
         :math:`O(d(n+k))` given an array of :math:`n` :math:`d`-digit numbers. Radix sort
-         is a stable sorting algorithm. This implementation requires additional
-         :math:`O(n+k)` storage for a counting sort subroutine and additional :math:`O(n)`
-         for the output array.
+        is a stable sorting algorithm. This implementation requires additional
+        :math:`O(n+k)` storage for a counting sort subroutine and additional :math:`O(n)`
+        for the output array.
 
     :param list[int] A: Array to sort.
     :param int d: Maximum number of digits for all elements found in an array. Using
