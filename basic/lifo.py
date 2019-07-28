@@ -7,32 +7,33 @@ element deleted from the set is the one most recently inserted.
 
 Stack can be implemented using a linked list where the head of the list is also the top of
 the stack.
-
-This implementation uses an array of size :math:`n` to store the elements and to guarantee
-:math:`O(1)` time for LIFO operations. :math:`n` is the maximum amount of elements that
-the stack can hold. Elements are never removed from the array. Instead, the index in the
-array pointing to the top element of the stack is shifted. This pointer keeps elements
-that are still used in the stack from being replaced by newly added elements.
 """
 
 
 class Stack:
     """Basic implementation of a fixed size LIFO structure.
+
+    This implementation uses an array of size :math:`n` to store the elements and to
+    guarantee :math:`O(1)` time for LIFO operations. :math:`n` is the maximum amount of
+    elements that the stack can hold. Elements are never removed from the array. Instead,
+    the index in the array pointing to the top element of the stack is shifted. The
+    index pointer keeps elements that are still used in the stack from being replaced by
+    newly added elements.
+
     """
+    top = -1
+    size = 0
+    items = []
 
     def __init__(self, n):
         """Basic implementation of a fixed size LIFO structure.
-
-        This implementation uses an array (Python list) to store elements (or pointers to
-        elements) in the stack. Additionally, stored are allocated memory size and the
-        pointer to the current top element of the stack.
 
         :param int n: Maximum size of the stack.
 
         """
         self.top = -1
         self.size = n
-        self.items = [object] * n  # Allocated memory for elements in the stack
+        self.items = [None] * n  # Allocated memory for elements in the stack
 
 
 def stack_empty(S):
@@ -60,7 +61,7 @@ def push(S, x):
         :math:`O(1)`.
 
     :param Stack S: Instance of a stack.
-    :param object x: Pointer or an instance of an element to insert into stack.
+    :param object x: An element to insert into stack.
 
     """
     if S.top + 1 >= S.size:
@@ -78,7 +79,7 @@ def pop(S):
         :math:`O(1)`.
 
     :param Stack S: Instance of a stack.
-    :return: A pointer to a removed element.
+    :return: A removed element.
     """
     if stack_empty(S):
         raise ValueError("Stack underflow")
@@ -97,7 +98,7 @@ def peek(S):
         :math:`O(1)`.
 
     :param Stack S: Instance of a stack.
-    :return: A pointer to an element at the top of the stack.
+    :return: An element at the top of the stack.
 
     """
     if stack_empty(S):

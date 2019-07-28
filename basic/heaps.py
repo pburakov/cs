@@ -2,50 +2,45 @@
 Binary Heap
 ===========
 
-Binary heap is a basic implementation of a **priority queue**. Although heap is presented
-as a binary tree, is is usually implemented as an array (or a list in Python) because the
-tree representation of a heap is nearly complete.
+Binary heap is a basic implementation of a **priority queue**. Although heap is best
+described as a binary tree, it is usually implemented as an array (or a Python list)
+because the tree representation of a heap is nearly complete.
 
-Given that the first index of a tree starts at :math:`0`, the index of a child node in an
-array can be computed as :math:`2i + 1` for the left side child and :math:`2i + 2` for the
-right side child.
+Given that the first index of a tree starts at :math:`0`, the index of a child node can be
+computed as :math:`2i + 1` for the left-side child and :math:`2i + 2` for the right-side
+child.
 
-Representation invariant of a binary heap determines its main use and common variations:
+Representation invariant of a binary heap determines its main use and its common variations:
 **max-heap** and **min-heap**. For max-heap, every element is bigger than its children
-(vise versa for min heap). Thus, by induction, it can be proven that the largest (or
-smallest in case of min-heap) element will always be on the top as long as heap properties
-are maintained.
+(and vise versa for min-heap). Thus, by induction, it can be proven that the largest (or
+the smallest, in case of a min-heap) element will always be on the top, as long as the heap
+properties are maintained.
 
-Heap structure is useful when a fast :math:`O(1)` access to the top element is required.
+A heap structure is useful when a fast :math:`O(1)` access to the top element is required.
 However, the remainder of the array is kept partially unsorted. Heaps are commonly used in
-various algorithms. This heap implementation contains various additional properties, that
-help reducing running times in various cases.
+various algorithms where a fast prioritization of elements is required.
 """
 
 
-def max_heapify(A, i, n=None):
+def max_heapify(A, i):
     """Rearranges elements in array to maintain max-heap properties.
 
-    It implicitly assumes that binary trees rooted at indexes :math:`l` and :math:`r`
-    (children of :math:`A[i]`) are max-heaps, but that :math:`A[i]` might violate max-heap
-    property by being a smaller element.
+    The algorithm implicitly assumes that binary trees rooted at indexes :math:`l` and
+    :math:`r` (children of :math:`A[i]`) are max-heaps, but :math:`A[i]` might violate
+    max-heap property by being a smaller element.
 
-    This algorithm lets the value at :math:`A[i]` "float-down" in the max-heap. As a
-    result of this operation, the subtree rooted at index :math:`i` will obey max-heap
-    property.
+    This algorithm lets the value at :math:`A[i]` "sink" in the max-heap. As a result of
+    this operation, the subtree rooted at index :math:`i` will obey max-heap properties.
 
     Complexity:
         :math:`O(\log n)` due to recurrence, or :math:`O(h)` where :math:`h` is the height
         of the heap.
 
     :param list A: Array to heapify.
-    :param int i: Integer index of an element to float down.
-    :param int n: Optional integer length of the subset of an input array (used in heap
-     sort). When defined, array won't be "heapified" below index of :math:`n-1`.
+    :param int i: Integer index of an element to "sink".
 
     """
-    if n is None:
-        n = len(A)  # Heapify entire array
+    n = len(A)
     l = 2 * i + 1  # Index of a left child
     r = 2 * i + 2  # Index of a right child
     i_largest = i  # Index of a largest element (`i` by default)
@@ -63,11 +58,11 @@ def max_heapify(A, i, n=None):
 def build_max_heap(A):
     """Rearranges an array into a representation of a max-heap.
 
-    Heap is built in a "bottom-up" manner, starting at second to last level of nodes and
+    Heap is built in a "bottom-up" manner, starting at a second-to-last level of nodes and
     ensuring that heap properties are maintained.
 
     Complexity:
-        :math:`O(n \log n)` on upper bound, :math:`O(n)` on tighter asymptotic bound.
+        :math:`O(n \log n)` on upper bound; :math:`\\theta(n)` tighter asymptotic bound.
 
     :param list A: Array to heapify.
 
@@ -79,18 +74,15 @@ def build_max_heap(A):
         max_heapify(A, i)
 
 
-def max_heap_extract(A, fix=True):
+def max_heap_extract(A):
     """Removes max element from the top of the heap and returns it.
 
     Array is mutated in the process.
 
     Complexity:
-        :math:`O(\log n)` from use of :func:`max_heapify()`.
+        :math:`O(\log n)` from the use of :func:`max_heapify()`.
 
     :param list A: Array to heapify.
-    :param bool fix: Determines if heap-fixing step should be performed immediately after
-     extraction (default is :data:`True`). Heap properties will not be guaranteed when
-     skipped.
     :return: Pointer to the largest elements in the array.
 
     """
@@ -103,8 +95,7 @@ def max_heap_extract(A, fix=True):
     else:
         m = A[0]  # Take the top element
         A[0] = A.pop(i_n)  # Move bottom element to the top
-        if fix is True:
-            max_heapify(A, 0)  # Fix the heap
+        max_heapify(A, 0)  # Fix the heap
         return m
 
 
@@ -116,7 +107,7 @@ def max_heap_increase_key(A, i):
 
     Complexity:
         :math:`O(h)`, where `h` is the height of the heap or worst case :math:`O(\log n)`
-        when element is percolated from bottom to the root.
+        when an element is percolated from bottom to the root.
 
     :param list A: Array to heapify.
     :param int i: Integer index of an element to bubble up.
@@ -135,7 +126,7 @@ def max_heap_insert(A, z):
     that heap properties continue to hold.
 
     Complexity:
-        :math:`O(h)`, where :math:`h` is the height of the heap or worst case,
+        :math:`O(h)`, where :math:`h` is the height of the heap, or worst case
         :math:`O(\log n)`.
 
     :param list A: Array to heapify.
@@ -154,11 +145,10 @@ Mirrored algorithms for min-heap
 """
 
 
-def min_heapify(A, i, n=None):
+def min_heapify(A, i):
     """Rearranges elements in array to maintain max-heap properties.
     """
-    if n is None:
-        n = len(A)
+    n = len(A)
     l = 2 * i + 1
     r = 2 * i + 2
     i_smallest = i
@@ -168,7 +158,7 @@ def min_heapify(A, i, n=None):
         i_smallest = r
     if i_smallest != i:
         A[i], A[i_smallest] = A[i_smallest], A[i]
-        min_heapify(A, i_smallest, n)
+        min_heapify(A, i_smallest)
     else:
         pass
 
@@ -182,7 +172,7 @@ def build_min_heap(A):
         min_heapify(A, i)
 
 
-def min_heap_extract(A, fix=True):
+def min_heap_extract(A):
     """Removes min element from the top of the heap and returns it.
     """
     n = len(A)
@@ -194,8 +184,7 @@ def min_heap_extract(A, fix=True):
     else:
         m = A[0]
         A[0] = A.pop(i_n)
-        if fix is True:
-            min_heapify(A, 0)
+        min_heapify(A, 0)
         return m
 
 

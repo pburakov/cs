@@ -2,19 +2,21 @@
 Comparison Sorting Algorithms
 =============================
 """
+from basic.heaps import build_max_heap, max_heapify
 
 
 def bubble_sort(A):
-    """Sorts an array of objects in place using bubble sort algorithm.
+    """Sorts an array in place using bubble sort algorithm.
 
     Bubble Sort is considered one the most ineffective sorting methods. It makes *n* runs
-    over the whole array. In every pass it iterates backwards over the yet-to-be-sorted
-    part and repeatedly swaps neighbour elements that are out of order. As a result
-    elements "bubble" up or down (depending on sorting direction) in the array.
+    over the whole array. In every pass, it iterates backwards over the yet-to-be-sorted
+    part and repeatedly swaps neighbour elements that are out of order. As a result,
+    the elements "bubble" up or down (depending on sorting direction) in the array.
+
+    Bubble sort is a stable sorting algorithm.
 
     Complexity:
-        Average/worst :math:`O(n^2)`. :math:`O(n)` if the array is already sorted. Bubble
-        sort is a stable in-place sorting algorithm.
+        Average/worst :math:`O(n^2)`. :math:`O(n)` if the array is already sorted.
 
     :param list A: Array to sort.
 
@@ -28,26 +30,20 @@ def bubble_sort(A):
 
 
 def heap_sort(A):
-    """Sorts an array of objects in place using heap sort algorithm.
+    """Sorts an array in place using heap sort algorithm.
 
-    Heap Sort takes advantage of one of the main properties of a max-heap, which is
-    the max element is always at the top of the heap. For more information about the
-    max-heap data structure, see max heap implementation.
+    Heap Sort takes advantage of the main property of a max-heap, which state that the max
+    element is always at the top of the heap. Heap sort is one of the most optimal sorting
+    algorithms using a comparison model.
 
-    Heap sort is performed in-place, and :func:`max_heapify()` is applied to a reduced
-    subset of an input array after each iteration. Heap sort is one of the most optimal
-    sorting algorithms using a comparison model.
+    Heap Sort is not a stable sorting algorithm.
 
     Complexity:
-        :math:`O(n \log n)`. Heap Sort is not stable, its runtime depends on the
-        implementation of the heap. Heap is built in :math:`n` time, each of :math:`n-1`
-        calls to heapify function takes :math:`\log n`.
+        :math:`O(n \log n)`, the runtime depends on the implementation of the heap.
 
     :param list A: Array to sort.
 
     """
-    from basic.heaps import build_max_heap, max_heapify
-
     n = len(A)
     i_n = n - 1  # Index of a last element
     build_max_heap(A)
@@ -55,25 +51,24 @@ def heap_sort(A):
         # Stash top element at the end of the array, replace top element with
         # the one at the bottom of the heap.
         A[0], A[i] = A[i], A[0]
-        # Elements below `i` are stashed in a sorted order.
-        max_heapify(A, 0, i)  # Fix the still heapified, reduced by 1, subset of `A`
+        max_heapify(A, 0)  # Let top element sink down to its place in the heap
 
 
 def insertion_sort(A):
-    """Sorts an array of objects in place using insertion sort algorithm.
+    """Sorts an array in place using insertion sort algorithm.
 
     Insertion Sort traverses the list starting with a second element and assumes that items
-    to the left of the pointer are already sorted. It "picks" the next element to the right
-    of the pointer and puts it in its position in the sorted part of an array, iteratively
-    comparing it with previous elements. The best analogy for insertion sort is sorting a
-    hand of cards.
+    to the left of the pointer are already sorted. It "picks" the next element at the right
+    side of the pointer and puts it in its position in the sorted part of an array. The best
+    analogy for insertion sort is sorting a hand of cards.
 
     Insertion Sort generally shows good performance on a small number of elements due to
-    fewer constant-time operations (compared to merge sort, for example).
+    fewer constant-time operations.
+
+    Insertion sort is a stable sorting algorithm.
 
     Complexity:
-        Best :math:`O(n)`. Average/worst :math:`O(n^2)`. Insertion Sort is stable.
-        Insertion sort swaps elements in place and does not require additional storage.
+        Best :math:`O(n)`. Average/worst :math:`O(n^2)`.
 
     :param list A: Array to sort.
 

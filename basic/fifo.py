@@ -9,41 +9,40 @@ Like a newly arriving customer takes a place in the line, the enqueued element i
 the tail of the queue. And like the customer at the head of the line, the de-queued
 element is always at the head of a queue.
 
-Queue can be implemented using a doubly linked list using pointers to the head as the head
-of the queue and tail of the list as the tail of the queue.
+Queue can be implemented using a doubly linked list with pointers to the head as the head
+of the queue and a tail of the list as the tail of the queue.
 
-This implementation uses an array of size :math:`n` to store the elements. :math:`n` is
-the maximum amount of elements that the queue can hold. Elements are never being removed
-from the array. Only pointers to the head and the tail of the queue, represented by array
-indices, are shifted. Pointers keep elements that are still used in the queue from being
-replaced by newly added elements.
-
-Keeping track of a quantity of currently enqueued elements helps makes sure that the
-allocated size is never exceeded. In some sense, this representation of a queue resembles
-a snake chasing its own tail.
 """
 
 
 class Queue:
     """Basic implementation of a fixed size FIFO structure.
+
+    This implementation uses an array of size :math:`n` to store the elements. :math:`n` is
+    the maximum amount of elements that the queue can hold. Elements are never being
+    removed from the array; only the pointers to the head and the tail of the queue,
+    represented by array indices, are shifted. Pointers help elements that are still used
+    in the queue from being replaced by newly added elements.
+
+    Keeping track of the quantity of enqueued elements helps makes sure that the
+    allocated size is never exceeded. In some sense, this representation of a queue
+    resembles a snake chasing its own tail.
     """
+
+    head = 0
+    tail = 0
+    size = 0
+    items = []
+    length = 0  # Number of currently enqueued items
 
     def __init__(self, n):
         """Basic implementation of a fixed size FIFO structure.
 
-        This implementation uses an array (Python list) to store elements (or pointers to
-        elements) in the queue. Additionally, stored are allocated memory size, current
-        count of enqueued elements and pointers to the first and the last element in the
-        queue.
-
         :param int n: Maximum size of the queue.
 
         """
-        self.head = 0
-        self.tail = 0
         self.size = n
-        self.items = [object] * n  # Allocated memory for elements in the queue
-        self.length = 0  # Number of currently enqueued items
+        self.items = [None] * n  # Allocated memory for elements in the queue
 
 
 def enqueue(Q, x):
@@ -55,7 +54,7 @@ def enqueue(Q, x):
         :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
-    :param object x: Pointer or an instance of an element to insert at a tail of the queue.
+    :param object x: An element to insert at a tail of the queue.
 
     """
     if Q.length == Q.size:
@@ -77,7 +76,7 @@ def dequeue(Q):
         :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
-    :return: A pointer to a removed element.
+    :return: Removed element.
 
     """
     if Q.length == 0:
@@ -100,7 +99,7 @@ def next(Q):
         :math:`O(1)`.
 
     :param Queue Q: Instance of a queue.
-    :return: A pointer to an element at the head of the queue.
+    :return: An element at the head of the queue.
 
     """
     if Q.length == 0:

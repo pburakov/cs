@@ -3,8 +3,8 @@ Divide and Conquer Sorting Algorithms
 =====================================
 
 The recursive nature of merge sort and quicksort are a great example of divide-and-conquer
-technique, when the problem is broken to smaller pieces each of which is trivially solved.
-Solved parts are combined back together.
+technique. The problem is broken to smaller pieces, each of which is trivially solved.
+Solved parts are joined back together.
 
 Due to the use of divide-and-conquer paradigm, both quicksort and merge sort are well
 parallelized.
@@ -12,28 +12,29 @@ parallelized.
 
 
 def quicksort(A, p=0, r=None):
-    """Sorts an array of objects in place using quicksort algorithm.
+    """Sorts an array in place using quicksort algorithm.
 
-    Quicksort, like merge sort, applies the divide-and-conquer paradigm. It chooses an
-    arbitrary pivot element. Then the array is rearranged in such a way, that the elements
-    smaller than the pivot point are on the left side, and elements that are greater than
-    the pivot point are on the right side. After such rearrangement, the final position of
-    a pivot element is also its final position in a sorted array.
+    Quicksort starts with choosing an arbitrary pivot element. Then the array is rearranged
+    in such a way, that the elements smaller than the pivot point are on the left side, and
+    the elements that are greater than the pivot point are on the right side. After such
+    rearrangement, the final position of a pivot element is also its final position in a
+    sorted array.
 
     The left and right sub-arrays are called partitions. They are not immediately sorted.
     The same operation is then ran recursively on both partitions.
 
     The key to the algorithm is in the partitioning procedure, which can be implemented in
-    a variety of ways. In this implementation partitioning starts with the last item of
-    an array as the initial pivot element. Other implementations use random choice of a
-    pivot point to avoid worst case running time on sorted input.
+    a variety of ways. In this implementation, partitioning starts with the last item of
+    the array. Other implementations use random choice of a pivot point to avoid worst case
+    running time on a sorted input.
 
-    Quicksort is well parallelized thanks to the use of divide-and-conquer paradigm.
+    Quicksort is unstable. Quicksort parallelizes well thanks to the use of
+    divide-and-conquer paradigm.
 
     Complexity:
         :math:`O(n \log n)`. :math:`O(n^2)` worst case. Quicksort shows good average-case
-        efficiency due to a small amount of constant operations in its notation. Quicksort
-        is unstable. It does not require additional space.
+        efficiency due to a small amount of constant operations in its notation. It does
+        not require additional space.
 
     :param list A: Input array.
     :param int p: Lower bound (default is :math:`0`).
@@ -49,20 +50,21 @@ def quicksort(A, p=0, r=None):
 
 
 def merge_sort(A):
-    """Sorts an array of objects using merge-sort algorithm and returns sorted array.
+    """Sorts an array using merge-sort algorithm and returns sorted array.
 
-    Merge sort is a divide-and-conquer sorting algorithm that recursively splits array
-    in half, until halves a reduced to a single element, which effectively makes them
-    sorted by definition. Sorted halves are then rearranged back together.
+    Merge sort recursively splits an array in half, until halves a reduced to a single
+    element, which effectively makes them sorted by definition. Sorted halves are then
+    rearranged back together.
 
-    Merge operation does both the "conquer" and "combine" part as it produces a sorted
-    output. The body of the merge-sort method implements the recursive "divide", or the
+    Merge operation does both the "conquer" and "combine" part as it produces the sorted
+    output. The body of the merge-sort method implements the "divide" step, or the
     slicing of the array.
+
+    Merge sort is a stable sorting algorithm.
 
     Complexity:
         :math:`O(n \log n)` in all cases. :math:`\log n` for splitting, :math:`n` for
-        merge. Merge sort is stable. Merge sort requires additional memory to hold the
-        sliced halves.
+        merge. Merge sort requires additional memory to hold the sliced halves.
 
     :param list A: Array to sort.
     :return: Sorted array.
@@ -72,9 +74,9 @@ def merge_sort(A):
     if n < 2:
         return A  # Already sorted by definition
     else:
-        i_n_2 = n // 2  # Slice-point
-        L = merge_sort(A[:i_n_2])
-        R = merge_sort(A[i_n_2:])
+        k = n // 2  # Slice-point
+        L = merge_sort(A[0:k])
+        R = merge_sort(A[k:n])
         return merge(L, R)
 
 
@@ -94,7 +96,7 @@ def partition(A, p, r):
     final position at index :math:`i`.
 
     This partitioning scheme is called Lomuto. Partitioning operation has many variations
-    (Hoare, parallellized quicksort and others) and is widely used in other algorithms.
+    (for example, Hoare), and is widely used in other algorithms.
 
     Complexity:
         :math:`O(k)`, where :math:`k` is the size of a subarray.
@@ -108,7 +110,7 @@ def partition(A, p, r):
     x = A[r]  # Pivot element
     i = p  # Partitions divider pointer
     for j in range(p, r):
-        if A[j] <= x:
+        if A[j] <= x:  # Flip this comparison for reversed order
             A[i], A[j] = A[j], A[i]
             i += 1
     A[i], A[r] = A[r], A[i]  # Transplant pivot element to its final position
@@ -123,8 +125,8 @@ def merge(L, R):
     position and the loop is repeated.
 
     The merge routine is often found in various algorithms, sometimes in its augmented
-    versions. It is also used in distributed or scalable systems. There it is called
-    external sort, and operates on not just two, but an arbitrary number of arrays.
+    versions. A distributed version of merge routine is called external sort. It operates
+    on not just two, but an arbitrary number of arrays.
 
     Complexity:
         :math:`O(k)`, where :math:`k` is the sum of the length of two arrays.
