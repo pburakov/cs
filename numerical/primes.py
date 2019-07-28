@@ -1,40 +1,20 @@
 """
-Numerical Algorithms
-====================
+Primes and Primality Testing
+============================
+
+This module demonstrates some useful algorithms used in cryptography.
 """
 
 
-def base(I, b):
-    """Base converter.
-
-    Converts decimal number into base representation of :math:`2` through :math:`16`.
-
-    Complexity:
-        :math:`O(n)` pseudo-polynomial time where :math:`n` is number of times integer can
-        be divided by radix base.
-
-    :param int I: Decimal integer.
-    :param int b: Radix base.
-    :return: Base representation as a string.
-    """
-    if not 1 < b <= 16:
-        raise ValueError("Unable to convert to base {}".format(b))
-    if I > 0:
-        rem = I % b
-        return base(I // b, b) + CHARS[rem]
-    else:
-        return ''
-
-
 def gcd(a, b):
-    """Returns greatest common divisor using Euclid's method.
+    """Calculates greatest common divisor using Euclid's method.
 
     Complexity:
-        :math:`O(n)` where :math:`n` is the larger number.
+        :math:`O(k)` where :math:`k` is the number of digits in a larger number.
 
     :param int a: First integer.
     :param int b: Second integer.
-    :return: GCD of two integers.
+    :return: GCD of the two integers.
     """
     while b:
         a, b = b, a % b
@@ -45,17 +25,22 @@ def totient(n):
     """Euler's totient function.
 
     Euler's totient function (also called Euler's :math:`\phi` (phi) function) counts the
-    positive integers up to a given integer n that are relatively prime to n. It's the
-    number of integers :math:`k` in range :math:`1 ≤ k ≤ n` for which the greatest common
-    divisor :math:`gcd(k, n) = 1`.
+    positive integers up to a given integer :math:`n` that are relatively prime to
+    :math:`n`. :math:`\phi(n)` is the number of integers :math:`k` in range
+    :math:`1 ≤ k ≤ n` for which the greatest common divisor :math:`gcd(k,n)=1`.
 
     For example, the totatives of :math:`n=9` are :math:`\{1, 2, 4, 5, 7, 8\}`. All numbers
     in this set are relatively prime to 9, therefore :math:`\phi (9) = 6`.
 
-    This function plays a key role in the definition of RSA encryption system.
+    :math:`\phi` plays a key role in the definition of RSA encryption system. This is a
+    naive implementation of :math:`\phi` function. More optimal algorithms can be derived
+    from Euler's product formula which states that the value of totient function is a
+    product over all prime factors :math:`p` of :math:`n`:
+    :math:`\phi(n)=n\\prod_{p|n}(1-\\frac{1}{p})`.
 
     Complexity:
-        :math:`O(n^2)`.
+        :math:`O(n\log k)`. There can be at most :math:`k=\log_{10} n` digits in all positive
+        numbers up to :math:`n`.
 
     :param int n: Input integer.
     :return: Number of relatively prime numbers in sequence.
@@ -69,6 +54,9 @@ def totient(n):
 
 def is_probable_prime(n):
     """Evaluates if a number is a probable prime using Fermat method.
+
+    Complexity:
+        :math:`O(1)`.
 
     :param int n: Input integer.
     :return: :data:`True` is number is a probable prime, :data:`False` otherwise.
@@ -105,9 +93,3 @@ def primes():
                 D.setdefault(p + q, []).append(p)
             del D[q]  # discard since values < q are no longer needed
         q += 1
-
-
-"""
-Constants used in this module
-"""
-CHARS = "0123456789abcdef"

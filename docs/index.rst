@@ -13,7 +13,6 @@ Data Structures and Algorithms
    bitwise
    string_matching
    numerical
-   hashing
    sorting
    tables
    trees
