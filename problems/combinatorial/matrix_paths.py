@@ -22,14 +22,15 @@ programming solution.
 def backtrack(M, x=None, y=None):
     """Matrix path recursive solver.
 
-    Imagine that we're solving this problem for the matrix of size `4`x`3` with only free
-    cells. Observe that any path will take `m + n - 2 = 5` moves corner-to-corner, for
-    example: DDRRR, RRRDD, RDRDR (D=down, R=right) and so on. Observe that each route will
-    have 2 D's and 3 R's. Which looks like a permutation problem.
+    Imagine that we're solving this problem for the matrix of size :math:`4\\times3` with
+    only free cells. Observe that any path will take :math:`m+n-2=5` moves corner-to-corner.
+    For example: DDRRR, RRRDD, RDRDR (D=down, R=right) and so on. Observe that each route
+    will have 2 D's and 3 R's. Which looks like a permutation problem.
 
-    If matrix has nothing but free cells (no `1`s), the solution would be as easy as
-    solving n-choose-k forumla: `5!/(2!3!) = 10`. Since some of the cells are not
-    traversable we can solve it using backtracking for a reduced number of possible moves.
+    If matrix has nothing but free cells (no "1" cells), the solution would be as easy as
+    solving n-choose-k formula: :math:`\\frac{5!}{(2!3!)} = 10`. Since some of the cells
+    are not traversable we can solve it using backtracking for a reduced number of possible
+    moves.
 
     We have only three cases:
 
@@ -44,7 +45,7 @@ def backtrack(M, x=None, y=None):
     :param list[list[int]] M: Input matrix.
     :param int x: Vertical index (used in recursion).
     :param int y: Horizontal index (user in recursion).
-    :return Integer number of paths.
+    :return: Integer number of paths.
 
     """
     if x is None or y is None:  # Initialize coordinates for bottom-up solution
