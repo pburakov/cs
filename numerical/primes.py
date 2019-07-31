@@ -52,6 +52,41 @@ def totient(n):
     return count
 
 
+def is_prime(n):
+    """Evaluates if a number is a prime using 6k±1 method.
+
+    A trivial way to test for primality is called trial division method. Given an input
+    number :math:`n`, check whether any prime integer :math:`m\\in 2...\sqrt n` evenly
+    divides :math:`n` (the division leaves no remainder). If :math:`n` is divisible by any
+    :math:`m` then :math:`n` is composite, otherwise it is prime.
+
+    :math:`6k±1` algorithm is an improvement over trial division. We observe that all
+    primes greater than :math:`6` are of the form :math:`6k±1`. This is because all
+    integers can be expressed as :math:`(6k+i)` for some integer :math:`k` and for
+    :math:`i=−1,0,1,2,3`, or :math:`4`; :math:`2` divides :math:`(6k+0),(6k+2),(6k+4)`; and
+    :math:`3` divides :math:`(6k+3)`. So, a more efficient method is to test if :math:`n`
+    is divisible by :math:`2` or :math:`3`, then to check through all the numbers of the
+    form :math:`6k±1≤\sqrt n`. This is 3 times as fast as testing all :math:`m`.
+
+    Complexity:
+        :math:`O(\sqrt n)`.
+
+    :param int n: Input integer.
+    :return: :data:`True` is number is a prime, :data:`False` otherwise.
+
+    """
+    if n <= 3:
+        return n > 1
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+
 def is_probable_prime(n):
     """Evaluates if a number is a probable prime using Fermat method.
 
