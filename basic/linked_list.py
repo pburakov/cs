@@ -47,9 +47,17 @@ class Node:
 class LinkedList:
     """Basic implementation of a doubly linked list, holds a pointer to its head.
     """
+    head = None
 
-    def __init__(self):
-        self.head = None
+    def __str__(self):
+        out = ""
+        x = self.head
+        while x is not None:
+            out += str(x)
+            out += "->"
+            x = x.next
+        out += "null"
+        return out
 
     """
     Python implementation for linked list iteration
