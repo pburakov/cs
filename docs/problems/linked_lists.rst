@@ -7,6 +7,8 @@ Linked Lists
    :members:
 .. automodule:: problems.linked_lists.cycle
    :members:
+.. automodule:: problems.linked_lists.delete_middle
+   :members:
 .. automodule:: problems.linked_lists.duplicates
    :members:
 .. automodule:: problems.linked_lists.two_sum
