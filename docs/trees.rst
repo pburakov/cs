@@ -9,3 +9,5 @@ Trees
     :members:
 .. automodule:: trees.avl
     :members:
+.. automodule:: trees.red_black
+    :members:
