@@ -1,6 +1,6 @@
 This repository was created and used during my preparation for technical interviews as a 
-way to brush up and summarize my CS and problem-solving skills. Maybe it will be useful to 
-someone else some day. That's why this repositary is here.
+way to brush up and summarize my CS and problem-solving skills. Maybe it will be useful for 
+someone else some day.
  
 Have fun!
 
@@ -25,3 +25,5 @@ Bibliography:
 
 This repository was created for personal use. I do not encourage production use of any of 
 these code snippets.
+
+Author: P. Burakov

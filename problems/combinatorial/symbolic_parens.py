@@ -19,9 +19,10 @@ from combinatorial.optimization import memoize
 
 @memoize
 def count_ways(S, b):
-    """Recursive solution to symbolic parenthesis problem.
+    """Recursive solution to symbolic parenthesis problem
 
-    This algorithm exhaustively evaluates all possible outcomes of parenthesizing expression to the both left and right sides of every logic operator (``^``, ``|``, ``&``).
+    This algorithm exhaustively evaluates all possible outcomes of parenthesizing expression
+    to the both left and right sides of every logic operator (``^``, ``|``, ``&``).
 
     Complexity:
         Exponential to the number of operators, but is greatly optimized with the use of

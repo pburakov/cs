@@ -82,7 +82,7 @@ def build(D, s, t):
     n = len(D)
     Q = Queue(n)
     D.remove(s)  # Remove used word from a dictionary
-    enqueue(Q, Vertex(s, 0))
+    enqueue(Q, Candidate(s, 0))
     while Q.length > 0:
         v = peek(Q)
         if v.candidate_string == t:
@@ -95,7 +95,7 @@ def build(D, s, t):
                 cs_as_str = "".join(cs)
                 if cs_as_str in D:
                     D.remove(cs_as_str)
-                    enqueue(Q, Vertex(cs_as_str, v.distance + 1, v))
+                    enqueue(Q, Candidate(cs_as_str, v.distance + 1, v))
             cs[i] = v.candidate_string[i]
         dequeue(Q)
     return None
@@ -106,7 +106,7 @@ Constants and data structures used in the solution
 """
 
 
-class Vertex:
+class Candidate:
     """Graph vertex representing candidate string with a distance value.
     """
 
@@ -115,7 +115,7 @@ class Vertex:
 
         :param str s: Candidate string.
         :param int d: Distance.
-        :param Vertex p: Parent vertex.
+        :param Candidate p: Parent vertex.
         """
         self.candidate_string = s
         self.distance = d

@@ -6,25 +6,17 @@ BST (Binary Search Tree) is a convenient binary tree data structure that allows 
 lookup. Basic operations on a complete BST take time proportional to a **height** of a
 tree rather that the number of its elements.
 
-The values (or **keys** as named in CLRS) in a BST are stored in such a way as to satisfy
-the main BST property. For any **parent node** in a BST, its left child must hold a
-smaller value and its right child must hold a bigger value.
+The keys in a BST are stored in a way to satisfy the main BST property. For any **parent
+node** in a BST, its left child must hold a smaller value and its right child must hold a
+larger value. Inductively, any value in a left subtree will be smaller than the root node
+and any value in a right subtree will be larger.
 
-Every node in a binary tree is a **root** to its own **subtree**. Inductively, BST
-property guarantees that any value in a left subtree will be smaller than the root node
-and any value in a right subtree will be bigger.
+In-order printing of nodes in a BST will produce a sorted output of its values. Augmented
+BST nodes with more properties offer more efficient operations in a handful of
+applications.
 
-In-order printing of nodes in a BST will produce sorted output of its values. Nodes in
-augmented BSTs can hold more properties and offer more efficient operations in a handful
-of applications.
-
-The correctness of these algorithms is guaranteed by the BST properties. Notice that the
-update algorithms implemented here, such as :func:`tree_insert()`, :func:`transplant()`
-and :func:`tree_delete()` (algorithms that cause the dynamic set represented by BST to
-change) operate on an instance of BST, while query algorithms operate on arbitrary nodes.
-
-Most BST operations take :math:`O(h)` time where *h* is a height of a tree. If tree is
-perfectly complete and **balanced**, *h* will be *log(n)*. In worst case with all the
+Most BST operations take :math:`O(h)` time where *h* is a height of a tree. If a tree is
+perfectly complete and **balanced**, *h* will be *log(n)*. In worst case, with all the
 nodes on one side, BST will resemble a linked list and take *O(n)* as its height will be
 proportional to the number of elements.
 """
@@ -38,17 +30,17 @@ class BST(BinaryTree):
 
 
 class Node(BinaryTreeNode):
-    """Augmented variant of a BinaryTreeNode with a pointer to its parent.
+    """An augmented variant of a BinaryTreeNode with a pointer to its parent.
     """
+    p = None
 
     def __init__(self, key):
-        """Augmented variant of a BinaryTreeNode with a pointer to its parent.
+        """An augmented variant of a BinaryTreeNode with a pointer to its parent.
 
         :param object key: Node's key.
 
         """
         super().__init__(key)
-        self.parent = None
 
 
 def tree_search(x, k):
@@ -57,9 +49,9 @@ def tree_search(x, k):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the search with.
+    :param trees.bst.Node x: Root node.
     :param object k: A key to search.
-    :return: A found node or :data:`None` if key was not found in a tree.
+    :return: A found node or :data:`None` if a key was not found in a tree.
 
     """
     if x is None or x.key == k:
@@ -79,9 +71,9 @@ def iterative_tree_search(x, k):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the search with.
+    :param trees.bst.Node x: Root node.
     :param object k: A key to search.
-    :return: A found node or :data:`None` if key was not found in a tree.
+    :return: A found node or :data:`None` if a key was not found in a tree.
 
     """
     while k is not None and k != x.key:
@@ -93,15 +85,15 @@ def iterative_tree_search(x, k):
 
 
 def tree_minimum(x):
-    """Returns a pointer to a node holding a minimum key.
+    """Returns a node with a minimum key.
 
     According to BST properties it is the leftmost node in a tree.
 
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the lookup.
-    :return: Node holding minimum value.
+    :param trees.bst.Node x: Root node.
+    :return: Node with a minimum key.
 
     """
     while x.left is not None:
@@ -110,15 +102,15 @@ def tree_minimum(x):
 
 
 def tree_maximum(x):
-    """Returns a pointer to a node holding a maximum key.
+    """Returns a node with a maximum key.
 
     According to BST properties it is the rightmost node in a tree.
 
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the lookup.
-    :return: Node holding maximum value.
+    :param trees.bst.Node x: Root node.
+    :return: Node with a maximum key.
     """
     while x.right is not None:
         x = x.right
@@ -133,8 +125,8 @@ def tree_successor(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the lookup.
-    :return: Will return successor node if it exists, :data:`None` otherwise.
+    :param trees.bst.Node x: Root node.
+    :return: Successor node if it exists, :data:`None` otherwise.
 
     """
     if x.right is not None:
@@ -143,11 +135,11 @@ def tree_successor(x):
     else:
         # -- or, if there is no right child, go up the tree from `x` until
         # we encounter a node that is the left child of its parent.
-        p = x.parent
-        while p is not None and x is p.right:
-            x = p
-            p = p.parent
-        return p
+        y = x.p
+        while y is not None and x is y.right:
+            x = y
+            y = y.p
+        return y
 
 
 def tree_predecessor(x):
@@ -158,8 +150,8 @@ def tree_predecessor(x):
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree.
 
-    :param Node x: Node to start the lookup.
-    :return: Will return predecessor node if it exists, :data:`None` otherwise.
+    :param trees.bst.Node x: Root node.
+    :return: Predecessor node if it exists, :data:`None` otherwise.
 
     """
     if x.left is not None:
@@ -168,50 +160,50 @@ def tree_predecessor(x):
     else:
         # -- or, if there is no left child, go up the tree from `x` until
         # we encounter a node that is the right child of its parent
-        p = x.parent
-        while p is not None and x is p.left:
-            x = p
-            p = p.parent
-        return p
+        y = x.p
+        while y is not None and x is y.left:
+            x = y
+            y = y.p
+        return y
 
 
 def tree_insert(T, z):
     """Inserts a new node into BST.
 
-    The node is inserted in such a way, that the properties of BST continue to hold. This
-    algorithm is similar to `tree_search()` and can also be implemented recursively.
+    The node is inserted in such a way, so that the properties of BST continue to hold.
+    This algorithm is similar to `tree_search()` and can also be implemented recursively.
 
     Complexity:
         :math:`O(h)` where :math:`h` is the height of a tree, worst case :math:`\log n`.
 
     :param BST T: Instance of a BST to update.
-    :param Node z: New node, holding unique value (key).
+    :param trees.bst.Node z: New node.
 
     """
-    p = None  # Pointer to a parent of a `z` node.
-    q = T.root  # Node to start iteration with
+    y = None  # Pointer to a parent of a `z` node.
+    x = T.root  # Node to start iteration with
     # Locate parent `p` to "attach" a new node to, while satisfying BST properties
-    while q is not None:
-        p = q  # Keep a trailing pointer to a parent
-        if z.key == q.key:
+    while x is not None:
+        y = x  # Keep a trailing pointer to a parent
+        if z.key == x.key:
             raise ValueError("Duplicate keys")
-        elif z.key < q.key:
-            q = q.left
-        elif z.key > q.key:
-            q = q.right
-    z.parent = p  # `p` will remain None if new node is a root
-    if p is None:
+        elif z.key < x.key:
+            x = x.left
+        elif z.key > x.key:
+            x = x.right
+    z.p = y  # `p` will remain None if new node is a root
+    if y is None:
         T.root = z  # Tree was empty
-    elif z.key < p.key:
-        p.left = z
-    elif z.key > p.key:
-        p.right = z
+    elif z.key < y.key:
+        y.left = z
+    elif z.key > y.key:
+        y.right = z
 
 
 def transplant(T, u, v):
-    """Replaces one subtree as a child of its parent with another subtree.
+    """Replaces subtree as a child of its parent with another subtree.
 
-    This simple utility method only helps moving subtrees around. It does not maintain BST
+    This simple utility method helps with moving subtrees around. It does not maintain BST
     properties, and does not update :math:`v` child sub-trees. It only maintains
     appropriate relations for parents of replaced nodes (if exists).
 
@@ -219,22 +211,23 @@ def transplant(T, u, v):
         :math:`O(1)`.
 
     :param BST T: Instance of a BST to update.
-    :param Node u: Node to be replaced.
-    :param Node v: Node to replace :math:`u` with. Can be :data:`None`.
+    :param trees.bst.Node u: Node to be replaced.
+    :param trees.bst.Node v: Node to replace :math:`u` with. Using :data:`None` will
+     delete the subtree.
 
     """
-    if u.parent is None:  # Node `u` is a root
+    if u.p is None:  # Node `u` is a root
         T.root = v
-    elif u is u.parent.left:  # Node `u` is a left child of its parent
-        u.parent.left = v
+    elif u is u.p.left:  # Node `u` is a left child of its parent
+        u.p.left = v
     else:  # Node `u` is a right child of its parent
-        u.parent.right = v
+        u.p.right = v
     if v is not None:  # `u`'s parents become `v`'s parents
-        v.parent = u.parent
+        v.p = u.p
 
 
 def tree_delete(T, z):
-    """Removes a node from a BST maintaining BST properties.
+    """Removes a node from a BST while maintaining the BST properties.
 
     This algorithm organizes its cases according to node location in a tree. These cases
     are described in detail in inline comments.
@@ -243,7 +236,7 @@ def tree_delete(T, z):
         :math:`O(h)` where :math:`h` is the height of a tree, worst case :math:`\log n`.
 
     :param BST T: Instance of a BST to update.
-    :param Node z: Node to be deleted.
+    :param trees.bst.Node z: Node to be deleted.
 
     """
     if z.left is None:  # `z` has only right child
@@ -252,13 +245,13 @@ def tree_delete(T, z):
         transplant(T, z, z.left)
     else:  # `z` has both left and right child
         y = tree_minimum(z.right)  # `z`'s successor
-        if y.parent is not z:  # Successor is not `z`'s right child
+        if y.p is not z:  # Successor is not `z`'s right child
             transplant(T, y, y.right)
             y.right = z.right
-            y.right.parent = y
+            y.right.p = y
         transplant(T, z, y)  # Successor is `z`'s right child
         y.left = z.left
-        y.left.parent = y
+        y.left.p = y
 
 
 def left_rotate(T, x):
@@ -270,14 +263,14 @@ def left_rotate(T, x):
 
     Order of operations is important so that no pointers are lost in the process. The
     method is accompanied by step-by-step inline comments to help remember these. In-order
-    traversal of a tree should remain the same after rotation, thus proving that rotation
-    did not damage BST properties.
+    traversal of a tree should remain the same after rotation, thus proving that the
+    rotation did not damage BST properties.
 
     Complexity:
-        :math:`O(1)`, only pointers are changed, other attributes of a node remain the same.
+        :math:`O(1)`.
 
     :param BST T: Instance of a BST to update.
-    :param Node x: Node to pivot the tree around.
+    :param trees.bst.Node x: Node to pivot the tree around.
 
     """
     if x.right is None:
@@ -285,16 +278,16 @@ def left_rotate(T, x):
     y = x.right  # right subtree of `x`
     x.right = y.left
     if y.left is not None:
-        y.left.parent = x
-    y.parent = x.parent
-    if x.parent is None:  # `x` was root
+        y.left.p = x
+    y.p = x.p
+    if x.p is None:  # `x` was root
         T.root = y
-    elif x is x.parent.left:  # `x` was a left child
-        x.parent.left = y
+    elif x is x.p.left:  # `x` was a left child
+        x.p.left = y
     else:  # `x` was a right child
-        x.parent.right = y
+        x.p.right = y
     y.left = x
-    x.parent = y
+    x.p = y
 
 
 def right_rotate(T, x):
@@ -305,16 +298,16 @@ def right_rotate(T, x):
     y = x.left  # left subtree of `x`
     x.left = y.right
     if y.right is not None:
-        y.right.parent = x
-    y.parent = x.parent
-    if x.parent is None:
+        y.right.p = x
+    y.p = x.p
+    if x.p is None:  # `x` was root
         T.root = y
-    elif x is x.parent.right:
-        x.parent.right = y
-    else:
-        x.parent.left = y
+    elif x is x.p.right:  # `x` was a right child
+        x.p.right = y
+    else:  # `x` was a left child
+        x.p.left = y
     y.right = x
-    x.parent = y
+    x.p = y
 
 
 def successor_order(x, f):
@@ -328,8 +321,8 @@ def successor_order(x, f):
     Complexity:
         :math:`O(n)` amortized.
 
-    :param Node x: Starting node.
-    :param (Node)->Any f: Procedure called on node on traversal.
+    :param trees.bst.Node x: Starting node.
+    :param (trees.bst.Node)->Any f: Procedure called on node on traversal.
 
     """
     m = tree_minimum(x)

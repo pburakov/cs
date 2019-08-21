@@ -13,16 +13,22 @@ def find(x, a, b):
     """Returns lowest common ancestor of two nodes in a binary tree.
 
     By definition and the properties of binary tree representation, the lowest common
-    ancestor (LCA) is the first node which has both nodes :math:`a` and :math:`b` and
+    ancestor (LCA) is the first node which has both nodes :math:`a` and :math:`b` in
     different sub-trees. This is a top-down recursive algorithm that does not use a parent
     pointer.
+
+    This algorithm assumes that both nodes :math:`a` and :math:`b` are present in the tree,
+    however it can be updated to support an edge case when one or no target nodes are not
+    in the tree. For example, we increment a counter every time a target node (or both) is
+    found. If after the traversal the counter is anything but :math:`2`, then one (or both)
+    of the target nodes is missing.
 
     Complexity:
         :math:`O(n)` where :math:`n` is the number of nodes in a tree.
 
     :param Node x: Starting node.
-    :param Node a: Pointer to the first node.
-    :param Node b: Pointer to the second node.
+    :param Node a: Pointer to the first target node.
+    :param Node b: Pointer to the second target node.
     :return: Lowest common ancestor of two nodes, if it exists.
 
     """

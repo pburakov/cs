@@ -4,16 +4,17 @@ Hash Functions
 
 Hash function maps keys from the universe of all possible keys :math:`U` to a finite set of 
 keys :math:`m`: :math:`h:U \\rightarrow \{ 0, 1, ..., m-1 \}`. Since mapping an infite set 
-into a smaller finite set is impossible by definition, value **collisions** may occur. A 
+into a smaller finite set is impossible by definition, value *collisions* may occur. A
 hash function that does not result in collisions is called a **perfect hash function**. A 
-property of a hash function that guarantees even distribution of values in the resulting 
-set :math: `m` is called **hash function uniformity**. This property is used in hash tables.
+property of a hash function that guarantees even distribution of values in the resulting
+set :math:`m` is called **hash function uniformity**. This property is used in hash tables,
+and has many other useful applications, such as load-balancing in distributed memory.
 
 Basic hash functions implemented here are vulnerable to collisions. The approach in which
-a hash function ia chosen randomly from a family of functions :math:`\\mathcal{H}`
-independently of the keys is called **universal hashing** (not implemented here).
+a hash function is chosen randomly from a family of functions :math:`\\mathcal{H}`
+independently of the keys is called *universal hashing*.
 
-Python's built-in hash function (`hash()`) supports encoding of any object to its hash 
+Python's built-in hash function :data:`hash()` supports encoding of any object to its hash
 value.
 """
 import math
@@ -27,10 +28,10 @@ def h_division(k, m):
     for :math:`m`, such as :math:`m = 701`.
 
     Complexity:
-        :math:`O(1)`. Computation is fast due to a single division operation.
+        :math:`O(1)`.
 
     :param int k: Input key.
-    :param int m: Size of a table (total number of slots).
+    :param int m: Size of a target set.
     :return: Hash value.
 
     """
@@ -41,20 +42,20 @@ def h_multiplication(k, m, A=(math.sqrt(5) - 1) / 2):
     """Hash function implemented using multiplication method.
 
     The multiplication method operates in two steps. First, we multiply the key :math:`k`
-    by a constant A in the range :math:`0 < A < 1` and extract the fractional part of
-    :math:`kA`. Then, we multiply this value by :math:`m` and take the floor of the result.
-    In short, :math:`h(k) = \\lfloor m(kA\mod 1) \\rfloor`.
+    by a constant A within the range :math:`0<A<1` and extract the fractional part of
+    :math:`k\\times A`. Then, we multiply this value by :math:`m` and take the floor of
+    the result. In short, :math:`h(k) = \\lfloor m(kA\mod 1) \\rfloor`.
 
     An advantage of the multiplication method is that the value of :math:`m` is not
     critical. Although it works with any value of :math:`A` within the range, some values
-    work better than others. Value :math:`A \\approx (\sqrt{5} - 1) / 2 = 0.6180339887...`
+    work better than others. :math:`A \\approx (\sqrt{5} - 1) / 2 = 0.6180339887...`
     was suggested by Knuth.
 
     Complexity:
         :math:`O(1)`.
 
     :param int k: Input key.
-    :param int m: Size of a table (total number of slots).
+    :param int m: Size of a target set.
     :param A: Constant in the range :math:`0 < A < 1`.
     :return: Hash value.
 

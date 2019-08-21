@@ -13,12 +13,12 @@ Data Structures and Algorithms
    bitwise
    string_matching
    numerical
-   hashing
    sorting
    tables
    trees
    graphs
    combinatorial
+   concepts
    problems
 
 * :ref:`genindex`

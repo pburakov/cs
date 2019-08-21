@@ -3,8 +3,8 @@ Linear Sorting Algorithms
 =========================
 
 Linear sorting algorithms such as counting sort, radix sort and bucket sort break the
-lower bound of comparison sort :math:`log(n)`. In fact, for each of these algorithms, no
-comparisons between input elements occur in the code.
+lower bound of comparison sort. In fact, for each of these algorithms, no comparisons
+between input elements occur in the code.
 """
 
 
@@ -13,17 +13,17 @@ def counting_sort(A, k):
 
     Counting sort assumes that each element in the array is an integer within the range
     :math:`[0..k]`. The algorithm determines, for each element :math:`x`, the number of
-    elements less than :math:`x`. It uses this information to place element :math:`x`
-    directly into its position in the output array.
+    elements less than :math:`x`. It uses this information to place an element :math:`x`
+    onto its position in the output array.
 
-    Note that this is a stable implementation of counting sort. Stability is not important
-    for sorting arrays of integers without satellite data carried with them, but it is
-    critical, when counting sort is used as a subroutine of a radix sort.
+    Counting sort is a stable sorting algorithm. Stability is not important for sorting
+    arrays of integers without any satellite data carried with them, but it is critical,
+    when the counting sort is used as a subroutine of a radix sort.
 
     Complexity:
         :math:`O(n+k)`, where :math:`k` is the number of distinct elements in the array.
-        Counting sort is a stable sorting algorithm. Counting sort requires additional
-        :math:`n` storage for the output and an auxiliary storage of size :math:`k`.
+        Counting sort requires additional :math:`n`-sized storage for the output and an
+        auxiliary storage of size :math:`k`.
 
     :param list[int] A: Array to sort.
     :param int k: Inclusive upper bound for the range of integers in the array. For
@@ -63,10 +63,7 @@ def bucket_sort(A):
     sorted into individual buckets and then drawn back in order. Depending on the nature
     of the input, additional sorting routines may be performed on each bucket.
 
-    The implementation of bucket sort largely depends on the input data. This variant
-    assumes that, for :math:`n`-sized array :math:`A`, items are uniformly distributed
-    integers across an interval :math:`[0..n]`. In order to maintain stability of the
-    sort, buckets are represented by dynamic LIFO structures (stacks).
+    Bucket sort is stable if buckets maintain LIFO properties.
 
     Complexity:
         :math:`O(n+k)` in average case for uniformly or evenly distributed input, where
@@ -105,9 +102,9 @@ def radix_sort(A, d, b=10):
 
     Complexity:
         :math:`O(d(n+k))` given an array of :math:`n` :math:`d`-digit numbers. Radix sort
-         is a stable sorting algorithm. This implementation requires additional
-         :math:`O(n+k)` storage for a counting sort subroutine and additional :math:`O(n)`
-         for the output array.
+        is a stable sorting algorithm. This implementation requires additional
+        :math:`O(n+k)` storage for a counting sort subroutine and additional :math:`O(n)`
+        for the output array.
 
     :param list[int] A: Array to sort.
     :param int d: Maximum number of digits for all elements found in an array. Using
@@ -135,9 +132,11 @@ def digit_counting_sort(A, i, b=10):
     array based on a single digit. Differences between regular counting sort are
     highlighted in inline comments.
 
+    This is a stable sorting algorithm.
+
     Complexity:
-        :math:`O(n+b)`, where :math:`n` is the number of elements in array. This is a
-        stable sorting algorithm. Storage requirements are :math:`O(n+b)`.
+        :math:`O(n+b)`, where :math:`n` is the number of elements in array. Storage
+        requirements are :math:`O(n+b)`.
 
     :param list[int] A: Input array.
     :param int i: Digit to sort on, :math:`i=0` being the least significant digit.

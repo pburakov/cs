@@ -5,18 +5,17 @@ Linked List
 Linked list is a simple data structure in which the objects are arranged in a linear
 order. Unlike an array, in which elements are ordered by the array indices, linked list is
 ordered using pointers to the next element. Linked list provides a simple, flexible,
-although not very efficient, representation for dynamic sets.
+although not very efficient, representation of a dynamic set.
 
 Every node of a basic linked list holds some data, called the **key** and a reference to
-the **next** element. Last element of the singly linked list points to a null object. Head
-of the list points to a first element in the list. In order to find an element with a given
-key, the list has to be searched starting at the head.
+the **next** element. Last element of the singly linked list points to a null object. The
+head of the list points to a first element in the list. In order to locate an element with
+a given key, the list has to be searched starting at the head.
 
 There are various kinds of linked lists. For instance, the last element of a **circular
 list** has no null pointer. Instead it points to the head element, effectively making a
-loop. Ordered linked lists offer certain advantages in searching, but increase the cost
-for inserting. This is an implementation of a **doubly linked** list where every element
-additionally holds a reference to a previous element.
+loop. Ordered linked lists such as **skip list** offer certain advantages in searching,
+but increase the cost for inserting.
 
 Please note, that Python `list` is not implemented as a linked list. Internally Python
 lists are dynamic arrays.
@@ -25,20 +24,21 @@ lists are dynamic arrays.
 
 class Node:
     """Node of a doubly linked list.
+
+    Holds a value (key) and two pointer attributes: the next and previous adjacent
+    element in the list.
     """
+    key = None
+    next = None
+    prev = None
 
     def __init__(self, key):
         """Node of a doubly linked list.
-
-        Holds a value (key) and two pointer attributes: the next and previous adjacent
-        element in the list.
 
         :param object key: Node's key.
 
         """
         self.key = key
-        self.next = None
-        self.prev = None
 
     def __str__(self):
         return str(self.key)
@@ -47,9 +47,17 @@ class Node:
 class LinkedList:
     """Basic implementation of a doubly linked list, holds a pointer to its head.
     """
+    head = None
 
-    def __init__(self):
-        self.head = None
+    def __str__(self):
+        out = ""
+        x = self.head
+        while x is not None:
+            out += str(x)
+            out += "->"
+            x = x.next
+        out += "null"
+        return out
 
     """
     Python implementation for linked list iteration
@@ -90,10 +98,10 @@ def list_insert(L, x):
     """Inserts a new node at the head of a doubly linked list.
 
     Complexity:
-        :math:`O(1)`, only the head pointer of a list is updated.
+        :math:`O(1)`.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param Node x: A new node to insert.
+    :param basic.linked_list.Node x: A new node to insert.
 
     """
     x.next = L.head
@@ -107,10 +115,10 @@ def list_delete(L, x):
     """Removes a node from a doubly linked list.
 
     Complexity:
-        :math:`O(1)` since only the pointers are removed.
+        :math:`O(1)`.
 
     :param LinkedList L: An instance of a doubly linked list.
-    :param Node x: Pointer to a node to remove.
+    :param basic.linked_list.Node x: Node to remove.
 
     """
     if x.prev is not None:
