@@ -18,6 +18,7 @@ Data Structures and Algorithms
    trees
    graphs
    combinatorial
+   concepts
    problems
 
 * :ref:`genindex`
