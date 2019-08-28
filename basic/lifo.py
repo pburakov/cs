@@ -21,9 +21,6 @@ class Stack:
     newly added elements.
 
     """
-    top = -1
-    size = 0
-    items = []
 
     def __init__(self, n):
         """Basic implementation of a fixed size LIFO structure.

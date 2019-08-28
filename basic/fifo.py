@@ -29,19 +29,16 @@ class Queue:
     resembles a snake chasing its own tail.
     """
 
-    head = 0
-    tail = 0
-    size = 0
-    items = []
-    length = 0  # Number of currently enqueued items
-
     def __init__(self, n):
         """Basic implementation of a fixed size FIFO structure.
 
         :param int n: Maximum size of the queue.
 
         """
-        self.size = n
+        self.head = 0  # Index of head
+        self.tail = 0  # Index of tail
+        self.size = n  # Max size
+        self.length = 0  # Number of currently enqueued items
         self.items = [None] * n  # Allocated memory for elements in the queue
 
 

@@ -29,7 +29,6 @@ class Node(BSTNode):
 
     Height attribute in every node in helps to reduce the number of height computations.
     """
-    height = 0
 
     def __init__(self, key):
         """Augmented BST node with additional height attribute.
@@ -38,6 +37,7 @@ class Node(BSTNode):
 
         """
         super().__init__(key)
+        self.height = 0
 
 
 def height(x):

@@ -28,10 +28,14 @@ as Python lists.
 class DynamicTable:
     """Basic implementation of a dynamic table.
     """
-    table = []
-    size = 0  # Total number of allocated slots
-    num = 0  # Number of non-empty slots in the table
-    used = 0  # Used slots (including marked as empty)
+
+    def __init__(self):
+        """Basic implementation of a dynamic table.
+        """
+        self.table = []
+        self.size = 0  # Total number of allocated slots
+        self.num = 0  # Number of non-empty slots in the table
+        self.used = 0  # Used slots (including marked as empty)
 
     def allocate(self, s):
         """Re-allocates a table of given size with existing elements.

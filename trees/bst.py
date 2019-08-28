@@ -32,7 +32,6 @@ class BST(BinaryTree):
 class Node(BinaryTreeNode):
     """An augmented variant of a BinaryTreeNode with a pointer to its parent.
     """
-    p = None
 
     def __init__(self, key):
         """An augmented variant of a BinaryTreeNode with a pointer to its parent.
@@ -41,6 +40,7 @@ class Node(BinaryTreeNode):
 
         """
         super().__init__(key)
+        self.p = None
 
 
 def tree_search(x, k):

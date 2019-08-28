@@ -27,7 +27,6 @@ class RedBlackTree(BST):
 class Node(BSTNode):
     """An augmented BST node with an additional color bit.
     """
-    color = None
 
     def __init__(self, key):
         """An augmented BST node with an additional color bit.
@@ -36,10 +35,11 @@ class Node(BSTNode):
 
         """
         super().__init__(key)
+        self.color = None
 
 
 def rb_insert(T, z):
-    """
+    """TODO
 
     :param RedBlackTree T: Instance of Red-Black Tree to update.
     :param trees.red_black.Node z: Node to insert.
@@ -68,7 +68,7 @@ def rb_insert(T, z):
 
 
 def rb_insert_fixup(T, z):
-    """
+    """TODO
 
     :param RedBlackTree T:
     :param trees.red_black.Node z:
@@ -92,5 +92,5 @@ def rb_insert_fixup(T, z):
 
 # TODO
 
-BLACK = "black"
-RED = "red"
+BLACK = 0
+RED = 1

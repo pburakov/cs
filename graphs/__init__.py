@@ -28,8 +28,12 @@ class Graph:
 
     This implementation uses a hash-map to store vertices.
     """
-    map = {}  # Map of vertices, keyed by their key
-    V = []  # List of pointers to all vertices
+
+    def __init__(self):
+        """Basic adjacency list graph representation.
+        """
+        self.map = {}  # Map of vertices, keyed by their key
+        self.V = []  # Vertices as list
 
     def Adj(self, v):
         """Iterates through adjacent vertices of a vertex.
@@ -60,9 +64,6 @@ class Edge:
 
     Points to source vertex, target vertex and has an optional weight value.
     """
-    u = None
-    v = None
-    weight = None
 
     def __init__(self, u, v, w=None):
         """Edge of a graph.
@@ -123,27 +124,7 @@ def weight(u, v):
 
 class Vertex:
     """Basic graph node with attributes.
-
-    :param color: Used to denote vertex discovery status.
-    :param d: Depending on a running algorithm, represents one of the following:
-
-        - in BFS - distance to this vertex from a starting vertex;
-        - in DFS - the time (counter) at which it was discovered;
-        - in shortest-paths - :math:`(s, v)` path-weight estimate after edge relaxation.
-    :param f: The time (counter) at which DFS has finished the vertex.
-    :param p: Pointer to a parent :data:`Vertex` (from which it was visited).
-    :param pt: Potential modifier of a vertex.
-
     """
-    d = None
-    f = None
-    color = None
-    p = None
-    pt = 0.0
-
-    key = None
-    f_edges = {}  # Forward edges keyed by destination vertex key
-    r_edges = {}  # Reverse (incoming) edges keyed by source vertex key
 
     def __init__(self, k):
         """Basic graph node with attributes.
@@ -152,6 +133,19 @@ class Vertex:
 
         """
         self.key = k
+
+        self.d = None
+        # Depending on a running algorithm, `d` represents one of the following:
+        #  - in BFS - distance to this vertex from a starting vertex;
+        #  - in DFS - the time (counter) at which it was discovered;
+        #  - in shortest-paths - :math:`(s, v)` path-weight estimate after edge relaxation.
+
+        self.f = None  # The time (counter) at which DFS has finished the vertex.
+        self.color = None  # Denotes vertex discovery status.
+        self.p = None  # Pointer to a parent :data:`Vertex` (from which it was visited).
+        self.pt = 0.0  # Potential modifier of a vertex.
+        self.f_edges = {}  # Forward edges keyed by destination vertex key
+        self.r_edges = {}  # Reverse (incoming) edges keyed by source vertex key
 
     """
     Vertex comparison operators based on `d` value (used in Dijkstra edge prioritization)

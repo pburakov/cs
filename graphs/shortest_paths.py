@@ -122,15 +122,14 @@ def dijkstra(G, s):
 
     """
     initialize_single_source(G, s)
-    S = []  # Set of vertices whose final shortest-path weights have been determined
-    Q = G.V
+    S = []  # Set of vertices whose final shortest-path weights have been calculated
+    Q = G.V  # Queue all vertices
     while len(Q) > 0:
         build_min_heap(Q)  # Weights might have been updated after relaxation
         u = min_heap_extract(Q)
         S.append(u)
         for v in G.Adj(u):
             relax(u, v)
-    G.V = S  # Optional step to update Graph object
 
 
 """

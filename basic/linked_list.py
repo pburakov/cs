@@ -28,9 +28,6 @@ class Node:
     Holds a value (key) and two pointer attributes: the next and previous adjacent
     element in the list.
     """
-    key = None
-    next = None
-    prev = None
 
     def __init__(self, key):
         """Node of a doubly linked list.
@@ -39,6 +36,8 @@ class Node:
 
         """
         self.key = key
+        self.next = None
+        self.prev = None
 
     def __str__(self):
         return str(self.key)
@@ -47,7 +46,11 @@ class Node:
 class LinkedList:
     """Basic implementation of a doubly linked list, holds a pointer to its head.
     """
-    head = None
+
+    def __init__(self):
+        """Basic implementation of a doubly linked list, holds a pointer to its head.
+        """
+        self.head = None
 
     def __str__(self):
         out = ""
