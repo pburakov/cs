@@ -11,6 +11,8 @@ Arrays
    :members:
 .. automodule:: problems.arrays.merge_intervals
    :members:
+.. automodule:: problems.arrays.shifted
+   :members:
 .. automodule:: problems.arrays.single_one
    :members:
 .. automodule:: problems.arrays.three_sum
