@@ -12,20 +12,17 @@ Candies distribution is subjected to the following requirements:
     - each child must have at least one candy.
     - children with a higher rating get more candies than their neighbors.
 
-What is the minimum candies you must give so that all children are happy?
+What is the minimum number of candies you must give while keeping children happy?
 
 Example::
 
-    n = 3, R = [1, 2, 2]
-    Output: 4 (Optimal distribution is [1, 2, 1])
-
-    n = 10, R = [2, 4, 2, 6, 1, 7, 8, 9, 2, 1]
-    Output: 19 ([1, 2, 1, 2, 1, 2, 3, 4, 2, 1])
+    [1, 2, 2] -> 4  # Optimal distribution is [1, 2, 1]
+    [2, 4, 2, 6, 1, 7, 8, 9, 2, 1] -> 19  # [1, 2, 1, 2, 1, 2, 3, 4, 2, 1]
 
 """
 
 
-def solution(R):
+def candies(R):
     """Returns minimum amount of candies based on input ratings.
 
     The algorithm starts with everyone having one candy. Then it makes two passes: from
@@ -36,7 +33,7 @@ def solution(R):
     Complexity:
         :math:`O(n)` running time, :math:`O(n)` for storage.
 
-    :param list[float] R: List of ratings.
+    :param list R: List of ratings.
     :return: Minimum amount of candies.
 
     """

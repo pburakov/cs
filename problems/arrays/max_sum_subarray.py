@@ -5,14 +5,15 @@ Maximum Sum Subarray
 The maximum subarray problem is the task of finding the maximum sum that can be yielded
 from contiguous subarray within a one-dimensional array of numbers.
 
-For example, for the array :math:`\{-2, 1, -3, 4, -1, 2, 1, -5, 4\}`; such contiguous
-subarray is :math:`\{4, -1, 2, 1\}`, with the sum :math:`6`.
+Example::
+
+    [-2, 1, -3, 4, -1, 2, 1, -5, 4] -> 6  # [4, -1, 2, 1]
 
 Linear-time solution is named after Jay Kadane who first found it in 1984.
 """
 
 
-def solution(A):
+def max_sum_subarray(A):
     """Returns value of the maximum subarray sum.
 
     This is a simplified version of Kadane's algorithm that returns the target sum.
@@ -33,7 +34,7 @@ def solution(A):
     return q
 
 
-def solution_advanced(A):
+def max_sum_subarray_adv(A):
     """Adaptation of Kadane's algorithm, returning subarray boundaries.
 
     Right boundary is exclusive (Python range style).

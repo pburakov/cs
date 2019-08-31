@@ -7,30 +7,28 @@ intervals.
 
 Example::
 
-    Input: [(1, 3), (3, 6), (1, 5), (2, 4), (7, 8)]
-
     0 [ - - - - - - - - - ] 10
         1---3       7---9
         1-------5
           2---4
             3-----6
 
-    Output: [(1, 6), (7, 8)]
+    [(1, 3), (3, 6), (1, 5), (2, 4), (7, 9)] -> [(1, 6), (7, 9)]
+
 """
 
 
-def solution(L):
+def merge(L):
     """Returns list of merged intervals.
 
-    Solution is pretty straightforward. Algorithm traverses the array and looks if the next
-    interval starts before current one ends. Special care should be taken when preparing
-    edge cases for testing.
+    Algorithm traverses the array and looks if the next interval starts before current one
+    ends. Special care should be taken when preparing edge cases for testing.
 
     Complexity:
         :math:`O(n \log n)`, array is sorted using Python's timsort, :math:`O(1)` space for
         keeping single current interval in memory.
 
-    :param list[tuple]] L: Non-empty list of intervals.
+    :param list L: Non-empty list of intervals.
     :return: List of merged interval tuples.
 
     """

@@ -7,22 +7,21 @@ one.
 
 Example::
 
-    Input : [1, 2, 2, 3, 1]
-    Output : 3
+    [1, 2, 2, 3, 1] -> 3
 
 """
 
 
-def solution(A):
-    """Linear solution using frequency map.
+def single_one(A):
+    """Finds a single element in an array.
 
-    Straightforward algorithm that scans the array and constructs a frequency map.
+    The algorithm scans the array and constructs a frequency map.
 
     Complexity:
         :math:`O(n)` time, :math:`O(n)` space for frequency map.
 
-    :param list[int] A: Input array.
-    :return: Missing integer.
+    :param list A: Input array.
+    :return: A single element.
 
     """
     M = {}
@@ -36,16 +35,16 @@ def solution(A):
     return 0
 
 
-def solution_advanced(A):
-    """Linear solution using binary logic.
+def single_one_adv(A):
+    """Finds a single element in an array.
 
-    Advanced solution using XOR operation.
+    The algorithm uses binary XOR operation to find the element.
 
     Complexity:
-        :math:`O(n)` time, no extra space (except the output).
+        :math:`O(n)` time, no extra space.
 
-    :param list[int] A: Input array.
-    :return: Missing integer number.
+    :param list A: Input array.
+    :return: A single element.
 
     """
     out = 0
