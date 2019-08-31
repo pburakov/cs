@@ -7,3 +7,5 @@ Numerical
    :members:
 .. automodule:: problems.numerical.excel_columns
    :members:
+.. automodule:: problems.numerical.random
+   :members:
