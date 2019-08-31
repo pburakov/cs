@@ -17,5 +17,3 @@ Arrays
    :members:
 .. automodule:: problems.arrays.single_one
    :members:
-.. automodule:: problems.arrays.three_sum
-   :members:
