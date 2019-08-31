@@ -3,10 +3,11 @@ Snakes and Ladders
 ==================
 
 Implement an algorithm that will find the minimum amount of dice throws required to win
-"Snake and Ladders" game.
+a "Snake and Ladders" game.
 
-Game board is represented by an array with non-zero values representing index where the
-player will have to jump to if he/she lands on that cell.
+Game board is represented by an array with non-zero values representing the index to which
+the player will have to jump to if he/she lands on that cell. Normal cells are marked with
+:math:`0`.
 
 Example::
 
@@ -15,20 +16,20 @@ Example::
 """
 
 
-def solution(M):
-    """Snake and Ladders minimum moves solver.
+def minimum_throws(M):
+    """Calculates the minimum amount of dice throws required to win a game board.
 
-    Every throw of dice generates one move possibility. Together they form a graph of all
-    possible moves and associated distance, or number of preceding moves required to reach
-    that cell. Using simple breadth-first search algorithm we'll be able to find the
+    Every throw of a dice generates a m possibility. Together they form a graph of all
+    possible moves with an associated distance. The distance is the number of preceding
+    moves required to reach that cell. Using BFS-like algorithm we'll be able to find the
     shortest distance to the last cell.
 
     Complexity:
         :math:`O(V+E)` where :math:`V` is number of cells and :math:`E` is number of
         possible "jumps".
 
-    :param list[int] M: List board representation.
-    :return: Minimum integer amount of dice throws required to reach the final cell.
+    :param list M: Game board.
+    :return: The minimunm amount of dice throws required to win the game board.
 
     """
     from basic.fifo import Queue
@@ -36,41 +37,36 @@ def solution(M):
 
     visited = [False] * (len(M) + 1)  # Map of visited cells
     visited[0] = True
-    q = Queue(len(M))
-    move = Move(0, 0)  # Generate first move
-    enqueue(q, move)
-    while q.length > 0:
-        move = peek(q)
-        if move.cell == len(M) - 1:
-            break  # Reached the end, `move` is the last cell
-        dequeue(q)
-        for dice in range(1, 7):  # Try all the dice throws
-            next_i = move.cell + dice
+    Q = Queue(len(M))
+    m = Move(0, 0)  # Generate first move
+    enqueue(Q, m)
+    while Q.length > 0:
+        m = peek(Q)
+        if m.i == len(M) - 1:
+            break  # Reached the last cell
+        dequeue(Q)
+        for t in range(1, 7):  # Try all the dice throws
+            next_i = m.i + t
             if next_i < len(M):
                 if visited[next_i] is False:
                     visited[next_i] = True
                     if M[next_i] == 0:
-                        enqueue(q, Move(next_i, move.dist + 1))
+                        enqueue(Q, Move(next_i, m.d + 1))
                     else:
-                        enqueue(q, Move(M[next_i], move.dist + 1))
-    return move.dist
-
-
-"""
-Data structures used in the solution
-"""
+                        enqueue(Q, Move(M[next_i], m.d + 1))
+    return m.d
 
 
 class Move:
-    """Snakes and Ladders move representation.
+    """A move vertex in a game search space.
     """
 
-    def __init__(self, c, d):
-        """Snakes and Ladders move representation.
+    def __init__(self, i, d):
+        """A move vertex in a game search space.
 
-        :param int c: Cell number (index)
-        :param int d: Distance (number of moves)
+        :param int i: Cell index.
+        :param int d: Distance, number of moves it took to reach the cell.
 
         """
-        self.cell = c
-        self.dist = d
+        self.i = i
+        self.d = d

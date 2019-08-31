@@ -2,83 +2,77 @@
 Longest Increasing Path in a Matrix
 ===================================
 
-In a two-dimensional matrix or integers, find the length of a path of increasing numbers.
-Ony vertical or horizontal moves are allowed (no diagonals).
+In a two-dimensional matrix or integers, find the length of a longest path of increasing
+numbers. Ony vertical or horizontal moves are allowed (no diagonals).
 
 Example::
 
-    Input:
-       [[3, 6, 7, 5],
-        [2, 8, 9, 1],
-        [4, 8,10, 0],
-        [6, 7, 3, 9]]
-    Output: 6 (path: 2->3->6->7->9->10)
+    ([[3, 6, 7, 5],
+      [2, 8, 9, 1],
+      [4, 8,10, 0],
+      [6, 7, 3, 9]]) -> 6  # path: 2->3->6->7->9->10)
 
 """
 
 
-def solution(M):
-    """Longest increasing path solver.
+def lip(M):
+    """Computes the length of the longest increasing path in a two-dimensional matrix.
 
-    Constructs the cache and runs DFS-like longest path subroutine for every element in the
-    matrix.
+    Constructs the cache and runs a DFS subroutine for every element in the matrix.
 
     Complexity:
-        :math:`O(n)` where :math:`n` is the total number of cells, :math:`O(n)` space is
-        used for memoization.
+        :math:`O(mn)` where :math:`m` and :math:`n` are the vertical and horizontal size of
+        the matrix; :math:`O(mn)` space is used for the memoization.
 
     :param list[list[int]] M: Input matrix.
-    :return: Length of a longest increasing path in the matrix.
+    :return: Length of the longest increasing path in the matrix.
 
     """
     cache = [[0 for _ in range(len(M[0]))] for _ in range(len(M))]
     maximum = 0
-    for i in range(len(M)):
-        for j in range(len(M[i])):
-            longest_path(M, i, j, cache)
-            maximum = max(maximum, cache[i][j])
+    for y in range(len(M)):
+        for x in range(len(M[y])):
+            longest_path(M, y, x, cache)
+            maximum = max(maximum, cache[y][x])
     return maximum
 
 
-"""
-Auxiliary subroutines used in the solution
-"""
+def longest_path(M, y, x, cache):
+    """Computes the length of the longest increasing path starting at the given coordinates.
 
-
-def longest_path(M, x, y, cache):
-    """Longest increasing path subroutine.
-
-    DFS-like path search algorithm with memoization. We evaluate the path in 4 possibly
-    directions from every cell in the matrix.
+    The path-finding routine locates the next step in four possible directions for every
+    onward cell in the path. This DFS algorithm uses a cache to store computed values.
 
     Complexity:
-        :math:`O(1)` amortized time. First run might give us :math:`O(n)` runtime, but the
-        use of memoization allows to calculate longest path exactly once for each cell, so
-        every consecutive call with the same argument will give :math:`O(1)`. Previously
-        computed values are pulled from the cache. This allows dramatic optimization over
-        :math:`O(4^n)` if going in each direction recursively.
+        First run has a :math:`O(mn)` runtime complexity, where :math:`m` and :math:`n` are
+        the vertical and horizontal size of the matrix. The use of memoization allows to
+        calculate longest path exactly once for each cell. Every consecutive call with the
+        same argument will give :math:`O(1)` as previously computed values are found in the
+        cache. The use of cache yields a dramatic optimization over :math:`O(4^n)` if
+        exploring each direction recursively.
 
     :param list[list[int]] M: Input matrix.
-    :param int x: Vertical coordinate.
-    :param int y: Horizontal coordinate.
+    :param int y: Starting vertical coordinate.
+    :param int x: Starting horizontal coordinate.
     :param list[list[int]] cache: Memoized solutions cache.
-    :return: Length of a longest path starting at given coordinates.
+    :return: Length of the longest increasing path in the matrix starting at the given
+     coordinates.
 
     """
-    if cache[x][y] != 0:
-        return cache[x][y]
-    if 0 <= x < len(M) or 0 <= y < len(M[0]):
-        val = M[x][y]
+    if cache[y][x] != 0:
+        return cache[y][x]
+    if 0 <= y < len(M) or 0 <= x < len(M[y]):
+        v = M[y][x]  # Value at (x,y)
         up, down, left, right = 0, 0, 0, 0
-        if x - 1 >= 0 and M[x - 1][y] < val:
-            up = longest_path(M, x - 1, y, cache)
-        if y + 1 < len(M[x]) and M[x][y + 1] < val:
-            right = longest_path(M, x, y + 1, cache)
-        if y - 1 >= 0 and M[x][y - 1] < val:
-            left = longest_path(M, x, y - 1, cache)
-        if x + 1 < len(M) and M[x + 1][y] < val:
-            down = longest_path(M, x + 1, y, cache)
-        cache[x][y] = 1 + max(up, right, left, down)
-        return cache[x][y]
+        if y - 1 >= 0 and M[y - 1][x] < v:
+            up = longest_path(M, y - 1, x, cache)
+        if x + 1 < len(M[y]) and M[y][x + 1] < v:
+            right = longest_path(M, y, x + 1, cache)
+        if x - 1 >= 0 and M[y][x - 1] < v:
+            left = longest_path(M, y, x - 1, cache)
+        if y + 1 < len(M) and M[y + 1][x] < v:
+            down = longest_path(M, y + 1, x, cache)
+        cache[y][x] = 1 + max(up, right, left, down)
+        return cache[y][x]
     else:
         return 0

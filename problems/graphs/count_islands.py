@@ -2,36 +2,35 @@
 Count Islands
 =============
 
-The input is a 2-D matrix :math:`M` of integers :math:`0` and :math:`1`. Let :math:`1`
-represent a tile of land. A group of vertically and horizontally connected land tiles forms
-an island. Count the number of "islands" on a map.
+The input is a two-dimensional matrix :math:`M` of integers :math:`0` and :math:`1`. Let
+:math:`1` represent a tile of land. A group of vertically and horizontally connected land
+tiles forms an island. Count the number of "islands" on a map.
 
 Example::
 
-    M = [[0, 0, 0, 1, 1],
-         [1, 1, 0, 0, 1],
-         [0, 1, 0, 1, 1],
-         [0, 0, 0, 0, 1],
-         [0, 0, 1, 0, 0]]
-
-    count(M) -> 3
+    (M=[[0, 0, 0, 1, 1],
+        [1, 1, 0, 0, 1],
+        [0, 1, 0, 1, 1],
+        [0, 0, 0, 0, 1],
+        [0, 0, 1, 0, 0]]) -> 3
 
 """
 
 
-def solution(M):
-    """Count Islands problem solver.
+def count_islands(M):
+    """Counts number of 1-islands in a 0-1 two-dimensional matrix.
 
-    This is a variation of a solution strongly connected components of a DAG. The problem
-    can be easily solved by applying DFS on each component. In each DFS call, a component
-    or a sub-graph is visited. If we keep track of visited tiles and count the number of
-    calls to DFS we'll get the count of connected components. BFS can also be used.
+    This is a variation of a solution for strongly connected components of a DAG using
+    DFS algorithm. In each invocation of DFS on a valid element, a component sub-graph is
+    visited. If we keep track of visited tiles and count the number of calls to DFS, we'll
+    get the count of connected components. BFS can also be used.
 
     Complexity:
-        :math:`O(V+E')` where :math:`E'` is number of edges within "islands".
+        In relation to the input, the runtime is :math:`\Theta(mn)` where :math:`m`
+        and :math:`n` are the vertical and horizontal size of the map.
 
     :param list[list[int]] M: Input map.
-    :return: Integer count of islands.
+    :return: Number of of islands.
 
     """
     count = 0  # Output counter
@@ -47,11 +46,6 @@ def solution(M):
     return count
 
 
-"""
-Auxiliary routines used in the solution
-"""
-
-
 def adj(M, y, x):
     """Generator of coordinates of adjacent island tiles.
 
@@ -61,7 +55,7 @@ def adj(M, y, x):
     :param list[list[int]] M: Input map.
     :param int y: Vertical coordinate.
     :param int x: Horizontal coordinate.
-    :return: Coordinates of next adjacent land tile
+    :return: Coordinates of a next adjacent land tile
 
     """
     if y - 1 > 0 and M[y - 1][x] == 1:
@@ -78,8 +72,7 @@ def explore(M, y, x, visited):
     """DFS subroutine for exploring islands.
 
     Complexity:
-        :math:`O(V'+E')` where :math:`V'` is number of tiles in within the island and
-        :math:`E'` is number of edges connecting them.
+        :math:`O(V')` where :math:`V'` is the number of tiles forming the island.
 
     :param list[list[int]] M: Input map.
     :param int y: Starting vertical coordinate.
