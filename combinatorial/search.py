@@ -8,8 +8,9 @@ Time and space complexity of such problems are coherent with the size of their o
 
 This type of problems is often called **"n-choose-k"**, due to the binomial coefficient,
 often used in combinatorics. Binomial coefficient denotes the number of
-:math:`k`-permutations of an :math:`n`-set. It is usually written as
-:math:`{n\\choose k} = C(n,k) = \\frac{n!}{k!(n-k)!}`.
+:math:`k`-permutations of an :math:`n`-set, that is *the number of ways* in which
+:math:`k` elements can be chosen out of a set of :math:`n` elements. It is usually written
+as :math:`{n\\choose k} = C(n,k) = \\frac{n!}{k!(n-k)!}`.
 
 Combinatorial search algorithms without optimization use recursion with a **backtracking**
 technique. Recursive solutions resemble a depth-first search algorithm where the graph
