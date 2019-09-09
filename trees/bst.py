@@ -24,7 +24,7 @@ from trees.binary import BinaryTree, Node as BinaryTreeNode
 
 
 class BST(BinaryTree):
-    """Similar to a regular BinaryTree, holds a pointer to the root node.
+    """An ordered binary tree, holds a pointer to the root node.
     """
     pass
 

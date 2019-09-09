@@ -21,11 +21,11 @@ Operations that cause change are called **updating**.
 
 
 class BinaryTree:
-    """Binary Tree set representation class that holds a pointer to its root.
+    """A tree data structure in which each node has at most two children.
     """
 
     def __init__(self):
-        """Binary Tree set representation class that holds a pointer to its root.
+        """A tree data structure in which each node has at most two children.
         """
         self.root = None
 

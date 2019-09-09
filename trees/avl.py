@@ -19,7 +19,7 @@ from trees.bst import tree_insert, tree_delete
 
 
 class AVLTree(BST):
-    """AVL tree is a self-balanced implementation of a BST.
+    """A self-balanced implementation of a BST.
     """
     pass
 
