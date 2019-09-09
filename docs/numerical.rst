@@ -9,3 +9,5 @@ Number Theory
     :members:
 .. automodule:: numerical.hashing
     :members:
+.. automodule:: numerical.bloom
+    :members:
