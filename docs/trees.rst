@@ -11,3 +11,5 @@ Trees
     :members:
 .. automodule:: trees.red_black
     :members:
+.. automodule:: trees.b_tree
+    :members:
