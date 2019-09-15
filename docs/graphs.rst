@@ -11,3 +11,5 @@ Graphs
     :members:
 .. automodule:: graphs.shortest_paths
     :members:
+.. automodule:: graphs.mst
+    :members:

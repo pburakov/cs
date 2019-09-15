@@ -77,6 +77,9 @@ class Edge:
         self.v = v
         self.weight = w
 
+    def __str__(self):
+        return str(self.u) + ' -> ' + str(self.v)
+
 
 def degree(v):
     """Returns degree of a vertex.
