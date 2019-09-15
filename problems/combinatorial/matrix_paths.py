@@ -2,19 +2,17 @@
 Paths in Matrix
 ===============
 
-Given a 2-D array :math:`M` sized :math:`m \\times n`, find number of ways to get from the
-top left corner to the bottom right corner by moving strictly right or down. Cells with a
+Given a 2-D array :math:`M` sized :math:`m \\times n`, find the number of ways to reach the
+bottom right corner from the top left corner by moving strictly right or down. Cells with a
 value of :math:`1` cannot be traversed.
 
 Example::
 
-    M = [[0, 0, 1],
-         [0, 0, 0],
-         [1, 0, 0]]
+    paths([[0, 0, 1],
+           [0, 0, 0],
+           [1, 0, 0]]) -> 4
 
-    paths(M) -> 4
-
-This is a combinatorial problem that also has the necessary properties for a dynamic
+This is a combinatorial problem that also has all the necessary properties for a dynamic
 programming solution.
 """
 
@@ -23,14 +21,14 @@ def backtrack(M, x=None, y=None):
     """Matrix path recursive solver.
 
     Imagine that we're solving this problem for the matrix of size :math:`4\\times3` with
-    only free cells. Observe that any path will take :math:`m+n-2=5` moves corner-to-corner.
-    For example: DDRRR, RRRDD, RDRDR (D=down, R=right) and so on. Observe that each route
-    will have 2 D's and 3 R's. Which looks like a permutation problem.
+    only free cells. Observe that any path will take :math:`n+m-2=5` moves corner-to-corner.
+    For example: `DDRRR`, `RRRDD`, `RDRDR` and so on, where `D` is down, `R` is right.
+    Observe that each route will have a set of 3 `R`'s and 2 `D`'s in various permutations.
 
-    If matrix has nothing but free cells (no "1" cells), the solution would be as easy as
-    solving n-choose-k formula: :math:`\\frac{5!}{(2!3!)} = 10`. Since some of the cells
-    are not traversable we can solve it using backtracking for a reduced number of possible
-    moves.
+    If a matrix had nothing but the free cells, the solution would be as easy as solving
+    n-choose-k formula: :math:`\\frac{(n+m-2)!}{(n-1)!(m-1)!}=\\frac{5!}{3!2!} = 10`.
+    Since some of the cells are not traversable, we can use backtracking to reduce the
+    number of possible moves.
 
     We have only three cases:
 
