@@ -25,7 +25,8 @@ Algorithms in this module cover solutions to a **single-source shortest paths** 
 They share the steps of initialization, edge relaxation and shortest-path estimation.
 Other powerful method worth mentioning is a *bidirectional search*.
 """
-from basic.heaps import build_min_heap, min_heap_extract
+from heapq import heappop
+
 from graphs import Graph, Vertex, weight
 from graphs.topological_sort import topological_sort
 
@@ -123,10 +124,9 @@ def dijkstra(G, s):
     """
     initialize_single_source(G, s)
     S = []  # Set of vertices whose final shortest-path weights have been calculated
-    Q = G.V  # Queue all vertices
+    Q = G.V.copy()  # Queue all vertices
     while len(Q) > 0:
-        build_min_heap(Q)  # Weights might have been updated after relaxation
-        u = min_heap_extract(Q)
+        u = heappop(Q)
         S.append(u)
         for v in G.Adj(u):
             relax(u, v)

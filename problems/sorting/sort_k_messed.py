@@ -10,6 +10,7 @@ sorted :math:`A'`, may be at indices :math:`i' \in \{1,2,3,4,5\}`.
 Array must be sorted in place.
 
 """
+from heapq import heappush, heappop
 
 
 def sort(A, k):
@@ -28,17 +29,15 @@ def sort(A, k):
     :param int k: Max "messiness" distance.
 
     """
-    from basic.heaps import min_heap_insert, min_heap_extract
-
     n = len(A)
     H = []
     i = 0
     for i in range(0, k):  # O(k log(k))
-        min_heap_insert(H, A[i])
+        heappush(H, A[i])
     for i in range(0, n - k):
-        A[i] = min_heap_extract(H)  # O(log k)
-        min_heap_insert(H, A[i + k])  # O(log k)
+        A[i] = heappop(H)  # O(log k)
+        heappush(H, A[i + k])  # O(log k)
     i += 1
     while i < n and len(H) > 0:  # Remaining elements
-        A[i] = min_heap_extract(H)
+        A[i] = heappop(H)
         i += 1
