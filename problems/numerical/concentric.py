@@ -6,10 +6,8 @@ Write a program that will print a concentric rectangular pattern in a two-dimens
 matrix given an input value :math:`n`. The outermost rectangle is formed by :math:`n`,
 then the next outermost is formed by :math:`n-1` and so on.
 
-Example::
+Example output for :math:`n=3`::
 
-    Input: n = 3.
-    Output:
         3 3 3 3 3
         3 2 2 2 3
         3 2 1 2 3

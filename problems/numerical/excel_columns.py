@@ -14,16 +14,23 @@ Examples::
 """
 
 
-def solution(S):
-    """Converts Excel's column name to a serial number.
+def excel(S):
+    """Returns the serial number of Excel's column name.
+
+    The algorithm iterates backwards over the input string and adds the exponent of the
+    character's ordinal number in the string to the total.
+
+    Complexity:
+        :math:`O(k)` where :math:`k` is the number of characters in the string.
 
     :param str S: String representation of column.
     :return: Integer serial number of a column.
 
     """
     n = 0
-    i = 0
-    for c in S[::-1]:
-        n += (ord(c) - ord('A') + 1) * ((ord('Z') - ord('A') + 1) ** i)
-        i += 1
+    k = 0
+    for c in S[::-1]:  # Iterate backwards
+        a = ord(c.capitalize()) - ord('A') + 1  # Character ordinal number in the alphabet
+        n += a * 26 ** k
+        k += 1
     return n
