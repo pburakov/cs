@@ -6,7 +6,7 @@ Minimum Spanning Trees
 from heapq import heappush, heappop
 
 from basic.disjoint_set import make_set, find_set, union
-from graphs import Graph, Edge, Vertex, weight
+from graphs import Graph, Vertex, weight
 
 
 def mst_kruskal(G):
@@ -24,10 +24,11 @@ def mst_kruskal(G):
         make_set(v)
     E = []
     for u, v in G.E():  # Sort edges by their weight
-        heappush(E, (weight(u, v), (u, v)))
-    for _, (u, v) in E:
+        heappush(E, u.f_edges[v.key])
+    for edge in E:
+        u, v = edge.u, edge.v
         if find_set(u) is not find_set(v):
-            A.append(Edge(u, v))
+            A.append(u.f_edges[v.key])
             union(u, v)
     return A
 
@@ -43,18 +44,18 @@ def mst_prim(G, r):
 
     """
     for u in G.V:
-        u.k = inf  # Using `k` as `key` is reserved
+        u.d = inf  # `d` parameter helps to order the vertices
         u.p = None
-    r.k = 0
+    r.d = 0
     Q = []
-    for v in G.V:  # Sort vertices by their `k` attribute
-        heappush(Q, (v.k, v))
+    for v in G.V:  # Sort vertices by their `d` attribute
+        heappush(Q, (v.d, v))
     while len(Q) > 0:
         _, u = heappop(Q)
         for v in G.Adj(u):
-            if in_queue(v, Q) and weight(u, v) < v.k:
+            if in_queue(v, Q) and weight(u, v) < v.d:
                 v.p = u
-                v.k = weight(u, v)
+                v.d = weight(u, v)
 
 
 def in_queue(x, Q):

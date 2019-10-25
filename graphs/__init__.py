@@ -77,6 +77,18 @@ class Edge:
         self.v = v
         self.weight = w
 
+    def __lt__(self, other):
+        return self.weight < other.weight
+
+    def __le__(self, other):
+        return self.weight <= other.weight
+
+    def __gt__(self, other):
+        return self.weight > other.weight
+
+    def __ge__(self, other):
+        return self.weight >= other.weight
+
     def __str__(self):
         return str(self.u) + ' -> ' + str(self.v)
 
@@ -136,23 +148,8 @@ class Vertex:
 
         """
         self.key = k
-
-        self.d = None
-        # Depending on a running algorithm, `d` represents one of the following:
-        #  - in BFS - distance to this vertex from a starting vertex;
-        #  - in DFS - the time (counter) at which it was discovered;
-        #  - in shortest-paths - :math:`(s, v)` path-weight estimate after edge relaxation.
-
-        self.f = None  # The time (counter) at which DFS has finished the vertex.
-        self.color = None  # Denotes vertex discovery status.
-        self.p = None  # Pointer to a parent :data:`Vertex` (from which it was visited).
         self.pt = 0.0  # Potential modifier of a vertex.
         self.f_edges = {}  # Forward edges keyed by destination vertex key
-        self.r_edges = {}  # Reverse (incoming) edges keyed by source vertex key
-
-    """
-    Vertex comparison operators based on `d` value (used in Dijkstra edge prioritization)
-    """
 
     def __lt__(self, other):
         return self.d < other.d
@@ -165,9 +162,6 @@ class Vertex:
 
     def __ge__(self, other):
         return self.d >= other.d
-
-    def __eq__(self, other):
-        return self.d == other.d
 
     def __str__(self):
         return str(self.key)
@@ -201,7 +195,6 @@ def dict_to_graph(D):
                 w = None
             v = G.map[j]
             u.f_edges[j] = Edge(u, v, w)
-            v.r_edges[i] = Edge(v, u, w)
     return G
 
 
